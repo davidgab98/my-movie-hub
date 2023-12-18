@@ -1,0 +1,28 @@
+{
+    "appTitle": "My Movie Hub",
+    "homeTitle": "Inicio ES",
+    "error": {
+        "notImplemented": "Not Implemented",
+        "requestCancelled": "Request Cancelled",
+        "internalServerError": "Internal Server Error",
+        "serviceUnavailable": "Service unavailable",
+        "methodNotAllowed": "Method Not Allowed",
+        "badRequest": "Bad Request",
+        "unauthorizedRequest": "Unauthorized request",
+        "unexpectedError": "Unexpected error occurred",
+        "requestTimeout": "Connection request timeout",
+        "noInternetConnection": "No internet connection",
+        "conflict": "Error due to a conflict",
+        "sendTimeout": "Send timeout in connection with API server",
+        "unableToProcess": "Unable to process the data",
+        "formatException": "Oops something went wrong",
+        "notAcceptable": "Not acceptable",
+        "custom": {
+            "invalidSignInCredentialsException": "Email o PIN incorrectos",
+            "exampleSpecificExceptionWithExtraParameter": "Example Specific Exception With Extra Parameter: {}"
+        },
+        "default": {
+            "signIn": "Ha habido un problema iniciando sesión"
+        }
+    }
+}
