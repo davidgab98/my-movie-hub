@@ -1,14 +1,13 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
   "configurations": [
+    /// my_movie_hub
     {
-      "name": "Launch development",
+      "name": "my_movie_hub - development (debug mode)",
       "request": "launch",
       "type": "dart",
+      "cwd": "my_movie_hub",
       "program": "lib/main_development.dart",
+      "flutterMode": "debug",
       "args": [
         "--flavor",
         "development",
@@ -17,18 +16,156 @@
       ]
     },
     {
-      "name": "Launch staging",
+      "name": "my_movie_hub - development (profile mode)",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_staging.dart",
-      "args": ["--flavor", "staging", "--target", "lib/main_staging.dart"]
+      "cwd": "my_movie_hub",
+      "program": "lib/main_development.dart",
+      "flutterMode": "profile",
+      "args": [
+        "--flavor",
+        "development",
+        "--target",
+        "lib/main_development.dart"
+      ]
     },
     {
-      "name": "Launch production",
+      "name": "my_movie_hub - development (release mode)",
       "request": "launch",
       "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_development.dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "development",
+        "--target",
+        "lib/main_development.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - staging (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_staging.dart",
+      "flutterMode": "debug",
+      "args": [
+        "--flavor",
+        "staging",
+        "--target",
+        "lib/main_staging.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - staging (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_staging.dart",
+      "flutterMode": "profile",
+      "args": [
+        "--flavor",
+        "staging",
+        "--target",
+        "lib/main_staging.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - staging (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_staging.dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "staging",
+        "--target",
+        "lib/main_staging.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - production (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
       "program": "lib/main_production.dart",
-      "args": ["--flavor", "production", "--target", "lib/main_production.dart"]
-    }
+      "flutterMode": "debug",
+      "args": [
+        "--flavor",
+        "production",
+        "--target",
+        "lib/main_production.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - production (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_production.dart",
+      "flutterMode": "profile",
+      "args": [
+        "--flavor",
+        "production",
+        "--target",
+        "lib/main_production.dart"
+      ]
+    },
+    {
+      "name": "my_movie_hub - production (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "my_movie_hub",
+      "program": "lib/main_production.dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "production",
+        "--target",
+        "lib/main_production.dart"
+      ]
+    },
+    /// ui_kit_storybook
+    {
+      "name": "ui_kit_storybook (debug mode)",
+      "cwd": "ui/ui_kit_storybook",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "debug"
+    },
+    {
+      "name": "ui_kit_storybook (profile mode)",
+      "cwd": "ui/ui_kit_storybook",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "ui_kit_storybook (release mode)",
+      "cwd": "ui/ui_kit_storybook",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "release"
+    },
+    /// Golden tests
+    {
+      "name": "Golden",
+      "request": "launch",
+      "type": "dart",
+      "codeLens": {
+        "for": [
+          "run-test",
+          "run-test-file"
+        ]
+      },
+      "args": [
+        "--update-goldens"
+      ]
+    },
   ]
 }
