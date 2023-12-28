@@ -1,19 +1,20 @@
 import 'package:dio/dio.dart';
+import 'package:my_movie_hub/src/core/network/api_config.dart';
 import 'package:my_movie_hub/src/core/network/endpoints.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
 
 class DioClient extends NetworkService {
-  DioClient(this._dio) {
+  DioClient(this._dio, {ApiConfig? apiConfig})
+      : _apiConfig = apiConfig ?? ApiConfig() {
     _dio
       ..options.baseUrl = Endpoints.baseUrl
-      ..options.connectTimeout =
-          const Duration(milliseconds: Endpoints.connectionTimeout)
-      ..options.receiveTimeout =
-          const Duration(milliseconds: Endpoints.receiveTimeout)
-      ..options.responseType = ResponseType.json
-      ..options.headers.addEntries({'Accept': 'application/json'}.entries);
+      ..options.connectTimeout = _apiConfig.connectionTimeout
+      ..options.receiveTimeout = _apiConfig.receiveTimeout
+      ..options.responseType = _apiConfig.responseType;
   }
+
   final Dio _dio;
+  final ApiConfig _apiConfig;
 
   @override
   Future<Response<dynamic>> get(
@@ -27,7 +28,8 @@ class DioClient extends NetworkService {
       final response = await _dio.get<dynamic>(
         url,
         queryParameters: queryParameters,
-        options: options,
+        options: options?.copyWith(headers: _apiConfig.headers) ??
+            Options(headers: _apiConfig.headers),
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
@@ -52,7 +54,8 @@ class DioClient extends NetworkService {
         url,
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        options: options?.copyWith(headers: _apiConfig.headers) ??
+            Options(headers: _apiConfig.headers),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
@@ -78,7 +81,8 @@ class DioClient extends NetworkService {
         url,
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        options: options?.copyWith(headers: _apiConfig.headers) ??
+            Options(headers: _apiConfig.headers),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
@@ -104,7 +108,8 @@ class DioClient extends NetworkService {
         url,
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        options: options?.copyWith(headers: _apiConfig.headers) ??
+            Options(headers: _apiConfig.headers),
         cancelToken: cancelToken,
       );
       return response.data;
