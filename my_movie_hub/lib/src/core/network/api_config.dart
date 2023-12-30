@@ -6,15 +6,8 @@ class ApiConfig {
   final Duration receiveTimeout = const Duration(milliseconds: 15000);
   final Duration connectionTimeout = const Duration(milliseconds: 15000);
   final ResponseType responseType = ResponseType.json;
+  final Map<String, String> defaultContentType = {'accept': 'application/json'};
 
-  // TheMovieDataBase API Read Access Token
-  final apiReadAccessToken =
-      'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDg0YTdlNDQxMDUyYTAyZWVhMjA4NDRhMDFiOGQyOCIsInN1YiI6IjY1ODBjYzZlODc1ZDFhMDdhYWFlYmUwZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Hiu0dmXNK7ojkwN-ZMRvp6QbpZxUGI0qKIHuwSY4tpE';
-
-  Map<String, String> get headers {
-    return {
-      'accept': 'application/json',
-      'Authorization': 'Bearer $apiReadAccessToken',
-    };
-  }
+  /// The Movie Data Base ApiKey
+  final String apiKey = '4d84a7e441052a02eea20844a01b8d28';
 }
