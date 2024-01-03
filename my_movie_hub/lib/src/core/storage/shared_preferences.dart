@@ -5,20 +5,20 @@ class SharedPreferencesService extends LocalStorageService {
   SharedPreferencesService({required this.preferences});
   final SharedPreferences preferences;
 
-  static const exampleDataKey = 'exampleDataKey';
+  static const sessionIdKey = 'sessionIdKey';
 
   @override
-  String? getExampleData() {
-    return preferences.getString(exampleDataKey);
+  String? getSessionId() {
+    return preferences.getString(sessionIdKey);
   }
 
   @override
-  void setExampleData(String exampleData) {
-    preferences.setString(exampleDataKey, exampleData);
+  void setSessionId(String sessionId) {
+    preferences.setString(sessionIdKey, sessionId);
   }
 
   @override
-  void removeExampleData() {
-    preferences.remove(exampleDataKey);
+  void removeSessionId() {
+    preferences.remove(sessionIdKey);
   }
 }

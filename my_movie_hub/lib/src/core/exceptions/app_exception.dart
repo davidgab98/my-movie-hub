@@ -28,3 +28,16 @@ class ExampleSpecificExceptionWithExtraParameter extends BaseAppException {
 
   final String parameter;
 }
+
+class InvalidSignInCredentialsException extends BaseAppException {
+  InvalidSignInCredentialsException({
+    this.message,
+  }) : super(
+          ExceptionData(
+            'invalid-sign-in-credentials-exception',
+            message ?? 'Invalid username and/or password',
+          ),
+        );
+
+  final String? message;
+}

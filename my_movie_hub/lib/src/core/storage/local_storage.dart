@@ -1,5 +1,5 @@
 abstract class LocalStorageService {
-  void setExampleData(String exampleData);
-  String? getExampleData();
-  void removeExampleData();
+  void setSessionId(String sessionId);
+  String? getSessionId();
+  void removeSessionId();
 }

@@ -1,7 +1,13 @@
 class Endpoints {
   Endpoints._();
 
-  // endpoints
+  /// environment
   static const String baseUrl = 'https://api.themoviedb.org/3';
-  static const String examples = '/examples';
+
+  /// auth
+  static const String createRequestToken = '/authentication/token/new';
+  static const String validateRequestToken =
+      '/authentication/token/validate_with_login';
+  static const String createSession = '/authentication/session/new';
+  static const String getAccount = '/account';
 }
