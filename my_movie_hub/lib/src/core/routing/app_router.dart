@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
+import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/sign_in/presentation/sign_in_screen.dart';
 import 'package:my_movie_hub/src/features/start_app/presentation/start_app_screen.dart';
@@ -12,6 +13,7 @@ enum AppRoute {
   startApp('/'),
   signIn('/signIn'),
   home('/home'),
+  favorites('/favorites'),
   a('/a'),
   b('/b');
 
@@ -20,6 +22,8 @@ enum AppRoute {
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorFavoritesKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Favorites');
 final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shell A');
 final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shell B');
 
@@ -37,6 +41,19 @@ final goRouter = GoRouter(
         );
       },
       branches: [
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorFavoritesKey,
+          routes: [
+            GoRoute(
+              name: AppRoute.favorites.name,
+              path: AppRoute.favorites.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: FavoritesScreen(),
+              ),
+              routes: [],
+            ),
+          ],
+        ),
         StatefulShellBranch(
           navigatorKey: _shellNavigatorAKey,
           routes: [

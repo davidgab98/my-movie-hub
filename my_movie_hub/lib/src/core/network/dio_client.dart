@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:my_movie_hub/src/core/network/api_config.dart';
 import 'package:my_movie_hub/src/core/network/endpoints.dart';
+import 'package:my_movie_hub/src/core/network/interceptors/account_id_interceptor.dart';
 import 'package:my_movie_hub/src/core/network/interceptors/api_key_interceptor.dart';
+import 'package:my_movie_hub/src/core/network/interceptors/language_interceptor.dart';
+import 'package:my_movie_hub/src/core/network/interceptors/session_id_interceptor.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
 
 class DioClient extends NetworkService {
@@ -13,7 +16,10 @@ class DioClient extends NetworkService {
       ..options.receiveTimeout = _apiConfig.receiveTimeout
       ..options.responseType = _apiConfig.responseType
       ..options.headers.addAll(_apiConfig.defaultContentType)
-      ..interceptors.add(ApiKeyInterceptor(apiKey: _apiConfig.apiKey));
+      ..interceptors.add(ApiKeyInterceptor(apiKey: _apiConfig.apiKey))
+      ..interceptors.add(SessionIdInterceptor(sessionId: _apiConfig.sessionId))
+      ..interceptors.add(AccountIdInterceptor(accountId: _apiConfig.accountId))
+      ..interceptors.add(LanguageInterceptor(language: _apiConfig.language));
   }
 
   final Dio _dio;

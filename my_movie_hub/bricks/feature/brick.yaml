@@ -28,6 +28,6 @@ environment:
 vars:
   name:
     type: string
-    description: Feature creation
+    description: Feature
     default: new_feature
     prompt: What is your feature name?

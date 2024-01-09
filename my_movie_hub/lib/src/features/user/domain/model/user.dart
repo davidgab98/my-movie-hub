@@ -32,9 +32,9 @@ class Avatar with _$Avatar {
 }
 
 String? _gravatarHashFromJson(Map<String, dynamic>? json) {
-  return json?['hash'] as String;
+  return json?['hash'] as String?;
 }
 
 String? _avatarImagePathFromJson(Map<String, dynamic>? json) {
-  return json?['avatar_path'] as String;
+  return json?['avatar_path'] as String?;
 }

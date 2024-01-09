@@ -92,6 +92,7 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
     result.when(
       (success) {
         _localStorageService.setSessionId(sessionId);
+        _localStorageService.setAccountId(success.id);
         _userCubit.updateUserWith(success);
         emit(
           state.copyWith(formStatus: FormzSubmissionStatus.success),

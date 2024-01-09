@@ -6,6 +6,7 @@ class SharedPreferencesService extends LocalStorageService {
   final SharedPreferences preferences;
 
   static const sessionIdKey = 'sessionIdKey';
+  static const accountIdKey = 'accountIdKey';
 
   @override
   String? getSessionId() {
@@ -20,5 +21,20 @@ class SharedPreferencesService extends LocalStorageService {
   @override
   void removeSessionId() {
     preferences.remove(sessionIdKey);
+  }
+
+  @override
+  int? getAccountId() {
+    return preferences.getInt(accountIdKey);
+  }
+
+  @override
+  void setAccountId(int accountId) {
+    preferences.setInt(accountIdKey, accountId);
+  }
+
+  @override
+  void removeAccountId() {
+    preferences.remove(accountIdKey);
   }
 }

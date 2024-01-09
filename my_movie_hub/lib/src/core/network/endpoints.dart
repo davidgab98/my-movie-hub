@@ -10,4 +10,7 @@ class Endpoints {
       '/authentication/token/validate_with_login';
   static const String createSession = '/authentication/session/new';
   static const String getAccount = '/account';
+
+  /// account
+  static const String favoriteMovies = '/account/favorite/movies';
 }
