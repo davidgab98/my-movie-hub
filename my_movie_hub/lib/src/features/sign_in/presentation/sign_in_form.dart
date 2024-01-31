@@ -28,7 +28,7 @@ class SignInForm extends StatelessWidget {
           );
         }
         if (state.formStatus.isSuccess) {
-          context.goNamed(AppRoute.a.name);
+          context.goNamed(AppRoute.watchlist.name);
         }
       },
       child: SingleChildScrollView(

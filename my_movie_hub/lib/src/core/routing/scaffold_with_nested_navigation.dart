@@ -33,6 +33,10 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
         showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
+            label: 'Watchlist',
+            icon: Icon(Icons.visibility_rounded),
+          ),
+          BottomNavigationBarItem(
             label: 'Favoritos',
             icon: Icon(Icons.favorite),
           ),

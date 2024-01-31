@@ -74,9 +74,6 @@ class ApiSignInRepository extends SignInRepository {
     try {
       final response = await networkService.get(
         Endpoints.getAccount,
-        queryParameters: {
-          'session_id': sessionId,
-        },
       );
 
       final User user = User.fromJson(response.data as Map<String, dynamic>);

@@ -17,8 +17,8 @@ class DioClient extends NetworkService {
       ..options.responseType = _apiConfig.responseType
       ..options.headers.addAll(_apiConfig.defaultContentType)
       ..interceptors.add(ApiKeyInterceptor(apiKey: _apiConfig.apiKey))
-      ..interceptors.add(SessionIdInterceptor(sessionId: _apiConfig.sessionId))
       ..interceptors.add(AccountIdInterceptor(accountId: _apiConfig.accountId))
+      ..interceptors.add(SessionIdInterceptor(sessionId: _apiConfig.sessionId))
       ..interceptors.add(LanguageInterceptor(language: _apiConfig.language));
   }
 
