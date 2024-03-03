@@ -31,16 +31,14 @@ class SignInForm extends StatelessWidget {
           context.goNamed(AppRoute.watchlist.name);
         }
       },
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            _UsernameInput(),
-            AppSpaces.gapH16,
-            _PasswordInput(),
-            AppSpaces.gapH32,
-            _SignInButton(),
-          ],
-        ),
+      child: Column(
+        children: [
+          _UsernameInput(),
+          AppSpaces.gapH16,
+          _PasswordInput(),
+          AppSpaces.gapH32,
+          _SignInButton(),
+        ],
       ),
     );
   }
@@ -101,9 +99,17 @@ class _SignInButton extends StatelessWidget {
         return SizedBox(
           width: double.infinity,
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF2D2F41),
+            ),
             onPressed:
                 state.isFormValid ? context.read<SignInCubit>().signIn : null,
-            child: const Text('Login'),
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                color: AppColors.white,
+              ),
+            ),
           ),
           // child: ZatacaButton(
           //   model: ZatacaButtonModel(

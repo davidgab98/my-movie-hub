@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:my_movie_hub/src/core/events/event_bus.dart';
 import 'package:my_movie_hub/src/core/network/dio_client.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
@@ -10,6 +11,9 @@ import 'package:my_movie_hub/src/features/favorites/domain/repositories/favorite
 import 'package:my_movie_hub/src/features/movie/data/repositories/api_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/data/repositories/mock_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:my_movie_hub/src/features/ratings/data/repositories/api_watchlist_repository.dart';
+import 'package:my_movie_hub/src/features/ratings/data/repositories/mock_watchlist_repository.dart';
+import 'package:my_movie_hub/src/features/ratings/domain/repositories/ratings_repository.dart';
 import 'package:my_movie_hub/src/features/sign_in/data/repositories/api_sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
@@ -31,6 +35,10 @@ Future<void> serviceLocatorSetUp() async {
     ),
   );
 
+  locator.registerLazySingleton<IEventBus>(
+    EventBusFacade.new,
+  );
+
   locator.registerLazySingleton(Dio.new);
   locator.registerLazySingleton<NetworkService>(
     () => DioClient(locator<Dio>()),
@@ -50,6 +58,14 @@ Future<void> serviceLocatorSetUp() async {
           ),
   );
 
+  locator.registerLazySingleton<WatchlistRepository>(
+    () => useMocks
+        ? MockWatchlistRepository()
+        : ApiWatchlistRepository(
+            networkService: locator<NetworkService>(),
+          ),
+  );
+
   locator.registerLazySingleton<FavoritesRepository>(
     () => useMocks
         ? MockFavoritesRepository()
@@ -58,10 +74,10 @@ Future<void> serviceLocatorSetUp() async {
           ),
   );
 
-  locator.registerLazySingleton<WatchlistRepository>(
+  locator.registerLazySingleton<RatingsRepository>(
     () => useMocks
-        ? MockWatchlistRepository()
-        : ApiWatchlistRepository(
+        ? MockRatingsRepository()
+        : ApiRatingsRepository(
             networkService: locator<NetworkService>(),
           ),
   );

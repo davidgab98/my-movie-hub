@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'watchlist.dart';
+part of 'movie_list_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Watchlist _$WatchlistFromJson(Map<String, dynamic> json) {
-  return _Watchlist.fromJson(json);
+MovieListResponse _$MovieListResponseFromJson(Map<String, dynamic> json) {
+  return _MovieListResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Watchlist {
+mixin _$MovieListResponse {
   @JsonKey(name: 'results')
   List<Movie> get movies => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pages')
@@ -29,14 +29,15 @@ mixin _$Watchlist {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WatchlistCopyWith<Watchlist> get copyWith =>
+  $MovieListResponseCopyWith<MovieListResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WatchlistCopyWith<$Res> {
-  factory $WatchlistCopyWith(Watchlist value, $Res Function(Watchlist) then) =
-      _$WatchlistCopyWithImpl<$Res, Watchlist>;
+abstract class $MovieListResponseCopyWith<$Res> {
+  factory $MovieListResponseCopyWith(
+          MovieListResponse value, $Res Function(MovieListResponse) then) =
+      _$MovieListResponseCopyWithImpl<$Res, MovieListResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: 'results') List<Movie> movies,
@@ -45,9 +46,9 @@ abstract class $WatchlistCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WatchlistCopyWithImpl<$Res, $Val extends Watchlist>
-    implements $WatchlistCopyWith<$Res> {
-  _$WatchlistCopyWithImpl(this._value, this._then);
+class _$MovieListResponseCopyWithImpl<$Res, $Val extends MovieListResponse>
+    implements $MovieListResponseCopyWith<$Res> {
+  _$MovieListResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -79,11 +80,11 @@ class _$WatchlistCopyWithImpl<$Res, $Val extends Watchlist>
 }
 
 /// @nodoc
-abstract class _$$WatchlistImplCopyWith<$Res>
-    implements $WatchlistCopyWith<$Res> {
-  factory _$$WatchlistImplCopyWith(
-          _$WatchlistImpl value, $Res Function(_$WatchlistImpl) then) =
-      __$$WatchlistImplCopyWithImpl<$Res>;
+abstract class _$$MovieListResponseImplCopyWith<$Res>
+    implements $MovieListResponseCopyWith<$Res> {
+  factory _$$MovieListResponseImplCopyWith(_$MovieListResponseImpl value,
+          $Res Function(_$MovieListResponseImpl) then) =
+      __$$MovieListResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +94,11 @@ abstract class _$$WatchlistImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WatchlistImplCopyWithImpl<$Res>
-    extends _$WatchlistCopyWithImpl<$Res, _$WatchlistImpl>
-    implements _$$WatchlistImplCopyWith<$Res> {
-  __$$WatchlistImplCopyWithImpl(
-      _$WatchlistImpl _value, $Res Function(_$WatchlistImpl) _then)
+class __$$MovieListResponseImplCopyWithImpl<$Res>
+    extends _$MovieListResponseCopyWithImpl<$Res, _$MovieListResponseImpl>
+    implements _$$MovieListResponseImplCopyWith<$Res> {
+  __$$MovieListResponseImplCopyWithImpl(_$MovieListResponseImpl _value,
+      $Res Function(_$MovieListResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +108,7 @@ class __$$WatchlistImplCopyWithImpl<$Res>
     Object? totalPages = null,
     Object? totalResults = null,
   }) {
-    return _then(_$WatchlistImpl(
+    return _then(_$MovieListResponseImpl(
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -126,15 +127,15 @@ class __$$WatchlistImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$WatchlistImpl implements _Watchlist {
-  const _$WatchlistImpl(
+class _$MovieListResponseImpl implements _MovieListResponse {
+  const _$MovieListResponseImpl(
       {@JsonKey(name: 'results') final List<Movie> movies = const [],
       @JsonKey(name: 'total_pages') this.totalPages = 1,
       @JsonKey(name: 'total_results') this.totalResults = 0})
       : _movies = movies;
 
-  factory _$WatchlistImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WatchlistImplFromJson(json);
+  factory _$MovieListResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MovieListResponseImplFromJson(json);
 
   final List<Movie> _movies;
   @override
@@ -154,14 +155,14 @@ class _$WatchlistImpl implements _Watchlist {
 
   @override
   String toString() {
-    return 'Watchlist(movies: $movies, totalPages: $totalPages, totalResults: $totalResults)';
+    return 'MovieListResponse(movies: $movies, totalPages: $totalPages, totalResults: $totalResults)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WatchlistImpl &&
+            other is _$MovieListResponseImpl &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalPages, totalPages) ||
                 other.totalPages == totalPages) &&
@@ -177,26 +178,27 @@ class _$WatchlistImpl implements _Watchlist {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WatchlistImplCopyWith<_$WatchlistImpl> get copyWith =>
-      __$$WatchlistImplCopyWithImpl<_$WatchlistImpl>(this, _$identity);
+  _$$MovieListResponseImplCopyWith<_$MovieListResponseImpl> get copyWith =>
+      __$$MovieListResponseImplCopyWithImpl<_$MovieListResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WatchlistImplToJson(
+    return _$$MovieListResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _Watchlist implements Watchlist {
-  const factory _Watchlist(
+abstract class _MovieListResponse implements MovieListResponse {
+  const factory _MovieListResponse(
           {@JsonKey(name: 'results') final List<Movie> movies,
           @JsonKey(name: 'total_pages') final int totalPages,
           @JsonKey(name: 'total_results') final int totalResults}) =
-      _$WatchlistImpl;
+      _$MovieListResponseImpl;
 
-  factory _Watchlist.fromJson(Map<String, dynamic> json) =
-      _$WatchlistImpl.fromJson;
+  factory _MovieListResponse.fromJson(Map<String, dynamic> json) =
+      _$MovieListResponseImpl.fromJson;
 
   @override
   @JsonKey(name: 'results')
@@ -209,6 +211,6 @@ abstract class _Watchlist implements Watchlist {
   int get totalResults;
   @override
   @JsonKey(ignore: true)
-  _$$WatchlistImplCopyWith<_$WatchlistImpl> get copyWith =>
+  _$$MovieListResponseImplCopyWith<_$MovieListResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

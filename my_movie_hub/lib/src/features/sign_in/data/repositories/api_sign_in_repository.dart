@@ -23,7 +23,7 @@ class ApiSignInRepository extends SignInRepository {
 
       final validateTokenResponse = await networkService.post(
         Endpoints.validateRequestToken,
-        queryParameters: {
+        data: {
           'username': username,
           'password': password,
           'request_token': requestToken,

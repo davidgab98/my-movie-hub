@@ -10,18 +10,19 @@ class Movie with _$Movie {
   const factory Movie({
     required int id,
     @Default(false) bool adult,
-    @Default('') String backdropPath,
+    @JsonKey(name: 'backdrop_path') @Default('') String backdropPath,
     @Default([]) List<int> genreIds,
-    @Default('') String originalLanguage,
-    @Default('') String originalTitle,
+    @JsonKey(name: 'original_language') @Default('') String originalLanguage,
+    @JsonKey(name: 'original_title') @Default('') String originalTitle,
     @Default('') String overview,
     @Default(0.0) double popularity,
-    @Default('') String posterPath,
-    @Default('') String releaseDate,
+    @JsonKey(name: 'poster_path') @Default('') String posterPath,
+    @JsonKey(name: 'release_date') @Default('') String releaseDate,
     @Default('') String title,
     @Default(false) bool video,
-    @Default(0.0) double voteAverage,
-    @Default(0) int voteCount,
+    @JsonKey(name: 'vote_average') @Default(0.0) double voteAverage,
+    @JsonKey(name: 'vote_count') @Default(0) int voteCount,
+    @JsonKey(name: 'account_states') AccountStates? accountStates,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
@@ -32,27 +33,30 @@ class DetailedMovie with _$DetailedMovie {
   const factory DetailedMovie({
     required int id,
     @Default(false) bool adult,
-    @Default('') String backdropPath,
+    @JsonKey(name: 'backdrop_path') @Default('') String backdropPath,
     @Default([]) List<int> genreIds,
-    @Default('') String originalLanguage,
-    @Default('') String originalTitle,
+    @JsonKey(name: 'original_language') @Default('') String originalLanguage,
+    @JsonKey(name: 'original_title') @Default('') String originalTitle,
     @Default('') String overview,
     @Default(0.0) double popularity,
-    @Default('') String posterPath,
-    @Default('') String releaseDate,
+    @JsonKey(name: 'poster_path') @Default('') String posterPath,
+    @JsonKey(name: 'release_date') @Default('') String releaseDate,
     @Default('') String title,
     @Default(false) bool video,
-    @Default(0.0) double voteAverage,
-    @Default(0) int voteCount,
+    @JsonKey(name: 'vote_average') @Default(0.0) double voteAverage,
+    @JsonKey(name: 'vote_count') @Default(0) int voteCount,
+    @JsonKey(name: 'account_states') AccountStates? accountStates,
     int? budget,
     List<Genre>? genres,
     String? homepage,
-    String? imdbId,
+    @JsonKey(name: 'imdb_id') String? imdbId,
+    @JsonKey(name: 'production_companies')
     List<ProductionCompany>? productionCompanies,
+    @JsonKey(name: 'production_countries')
     List<ProductionCountry>? productionCountries,
     int? revenue,
     int? runtime,
-    List<SpokenLanguage>? spokenLanguages,
+    @JsonKey(name: 'spoken_languages') List<SpokenLanguage>? spokenLanguages,
     String? status,
     String? tagline,
   }) = _DetailedMovie;
@@ -111,4 +115,26 @@ class SpokenLanguage with _$SpokenLanguage {
 
   factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>
       _$SpokenLanguageFromJson(json);
+}
+
+@freezed
+class AccountStates with _$AccountStates {
+  const factory AccountStates({
+    @Default(false) bool favorite,
+    @Default(false) bool watchlist,
+    @JsonKey(fromJson: _ratedFromJson) int? rating,
+  }) = _AccountStates;
+
+  factory AccountStates.fromJson(Map<String, dynamic> json) =>
+      _$AccountStatesFromJson(json);
+}
+
+int? _ratedFromJson(dynamic json) {
+  if (json is bool) {
+    return null;
+  } else if (json is Map<String, dynamic>) {
+    return json['value'] as int?;
+  } else {
+    return null;
+  }
 }

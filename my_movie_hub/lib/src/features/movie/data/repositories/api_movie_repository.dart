@@ -14,7 +14,12 @@ class ApiMovieRepository extends MovieRepository {
     required int movieId,
   }) async {
     try {
-      final response = await networkService.get('/movie/$movieId');
+      final response = await networkService.get(
+        '/movie/$movieId',
+        // queryParameters: {
+        //   'append_to_response': 'account_states',
+        // },
+      );
 
       final result =
           DetailedMovie.fromJson(response.data as Map<String, Object?>);
@@ -26,14 +31,78 @@ class ApiMovieRepository extends MovieRepository {
   }
 
   @override
-  Future<Result<Unit, Exception>> getMovieAccountStates({
+  Future<Result<AccountStates, Exception>> getMovieAccountStates({
     required int movieId,
   }) async {
     try {
-      await networkService.get(
-        'movie/${Endpoints.accountStates}',
-        queryParameters: {
+      final response = await networkService.get(
+        '/movie/$movieId${Endpoints.accountStates}',
+      );
+
+      await Future<void>.delayed(const Duration(seconds: 2));
+
+      final result =
+          AccountStates.fromJson(response.data as Map<String, Object?>);
+
+      return Success(result);
+    } catch (e) {
+      return Error(NetworkException.fromError(e));
+    }
+  }
+
+  @override
+  Future<Result<Unit, Exception>> toggleMovieWatchlistStatus({
+    required int movieId,
+    required bool addToWatchlist,
+  }) async {
+    try {
+      await networkService.post(
+        Endpoints.movieToWatchlist,
+        data: {
+          'media_type': 'movie',
+          'media_id': movieId,
+          'watchlist': addToWatchlist,
+        },
+      );
+
+      return const Success(unit);
+    } catch (e) {
+      return Error(NetworkException.fromError(e));
+    }
+  }
+
+  @override
+  Future<Result<Unit, Exception>> toggleMovieFavoriteStatus({
+    required int movieId,
+    required bool addToFavorites,
+  }) async {
+    try {
+      await networkService.post(
+        Endpoints.movieToFavorites,
+        data: {
+          'media_type': 'movie',
+          'media_id': movieId,
+          'favorite': addToFavorites,
+        },
+      );
+
+      return const Success(unit);
+    } catch (e) {
+      return Error(NetworkException.fromError(e));
+    }
+  }
+
+  @override
+  Future<Result<Unit, Exception>> addMovieRating({
+    required int movieId,
+    required double rating,
+  }) async {
+    try {
+      await networkService.post(
+        Endpoints.movieRating,
+        data: {
           'movie_id': movieId,
+          'value': rating,
         },
       );
 
@@ -44,36 +113,14 @@ class ApiMovieRepository extends MovieRepository {
   }
 
   @override
-  Future<Result<Unit, Exception>> addMovieToWatchlist({
+  Future<Result<Unit, Exception>> removeMovieRating({
     required int movieId,
   }) async {
     try {
-      await networkService.post(
-        Endpoints.addRemoveMovieFromWatchlist,
+      await networkService.delete(
+        Endpoints.movieRating,
         data: {
-          'media_type': 'movie',
-          'media_id': movieId,
-          'watchlist': true,
-        },
-      );
-
-      return const Success(unit);
-    } catch (e) {
-      return Error(NetworkException.fromError(e));
-    }
-  }
-
-  @override
-  Future<Result<Unit, Exception>> removeMovieFromWatchlist({
-    required int movieId,
-  }) async {
-    try {
-      await networkService.post(
-        Endpoints.addRemoveMovieFromWatchlist,
-        data: {
-          'media_type': 'movie',
-          'media_id': movieId,
-          'watchlist': false,
+          'movie_id': movieId,
         },
       );
 

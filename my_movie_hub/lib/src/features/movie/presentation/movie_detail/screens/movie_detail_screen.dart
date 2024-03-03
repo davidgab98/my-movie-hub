@@ -5,6 +5,7 @@ import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_d
 import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_detail_state.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_account_states/widgets/movie_account_states_row.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   const MovieDetailScreen({required this.movie, super.key});
@@ -47,6 +48,9 @@ class _Body extends StatelessWidget {
               Text(state.movie.status ?? ''),
               Text(state.movie.revenue?.toString() ?? ''),
               Text(state.movie.tagline ?? ''),
+              MovieAccountStatesRow(
+                movie: Movie.fromJson(state.movie.toJson()),
+              ),
             ],
           ),
         );

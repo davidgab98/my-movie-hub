@@ -2,17 +2,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 
-part 'watchlist.freezed.dart';
-part 'watchlist.g.dart';
+part 'movie_list_response.freezed.dart';
+part 'movie_list_response.g.dart';
 
 @freezed
-class Watchlist with _$Watchlist {
-  const factory Watchlist({
+class MovieListResponse with _$MovieListResponse {
+  const factory MovieListResponse({
     @JsonKey(name: 'results') @Default([]) List<Movie> movies,
     @JsonKey(name: 'total_pages') @Default(1) int totalPages,
     @JsonKey(name: 'total_results') @Default(0) int totalResults,
-  }) = _Watchlist;
+  }) = _MovieListResponse;
 
-  factory Watchlist.fromJson(Map<String, Object?> json) =>
-      _$WatchlistFromJson(json);
+  factory MovieListResponse.fromJson(Map<String, Object?> json) =>
+      _$MovieListResponseFromJson(json);
 }

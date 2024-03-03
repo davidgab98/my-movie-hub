@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'watchlist_state.dart';
+part of 'simple_movie_list_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WatchlistState {
+mixin _$SimpleMovieListState {
   List<Movie> get movies => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
   OrderType get orderType => throw _privateConstructorUsedError;
@@ -24,15 +24,15 @@ mixin _$WatchlistState {
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WatchlistStateCopyWith<WatchlistState> get copyWith =>
+  $SimpleMovieListStateCopyWith<SimpleMovieListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WatchlistStateCopyWith<$Res> {
-  factory $WatchlistStateCopyWith(
-          WatchlistState value, $Res Function(WatchlistState) then) =
-      _$WatchlistStateCopyWithImpl<$Res, WatchlistState>;
+abstract class $SimpleMovieListStateCopyWith<$Res> {
+  factory $SimpleMovieListStateCopyWith(SimpleMovieListState value,
+          $Res Function(SimpleMovieListState) then) =
+      _$SimpleMovieListStateCopyWithImpl<$Res, SimpleMovieListState>;
   @useResult
   $Res call(
       {List<Movie> movies,
@@ -44,9 +44,10 @@ abstract class $WatchlistStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WatchlistStateCopyWithImpl<$Res, $Val extends WatchlistState>
-    implements $WatchlistStateCopyWith<$Res> {
-  _$WatchlistStateCopyWithImpl(this._value, this._then);
+class _$SimpleMovieListStateCopyWithImpl<$Res,
+        $Val extends SimpleMovieListState>
+    implements $SimpleMovieListStateCopyWith<$Res> {
+  _$SimpleMovieListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -93,11 +94,11 @@ class _$WatchlistStateCopyWithImpl<$Res, $Val extends WatchlistState>
 }
 
 /// @nodoc
-abstract class _$$WatchlistStateImplCopyWith<$Res>
-    implements $WatchlistStateCopyWith<$Res> {
-  factory _$$WatchlistStateImplCopyWith(_$WatchlistStateImpl value,
-          $Res Function(_$WatchlistStateImpl) then) =
-      __$$WatchlistStateImplCopyWithImpl<$Res>;
+abstract class _$$SimpleMovieListStateImplCopyWith<$Res>
+    implements $SimpleMovieListStateCopyWith<$Res> {
+  factory _$$SimpleMovieListStateImplCopyWith(_$SimpleMovieListStateImpl value,
+          $Res Function(_$SimpleMovieListStateImpl) then) =
+      __$$SimpleMovieListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +111,11 @@ abstract class _$$WatchlistStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WatchlistStateImplCopyWithImpl<$Res>
-    extends _$WatchlistStateCopyWithImpl<$Res, _$WatchlistStateImpl>
-    implements _$$WatchlistStateImplCopyWith<$Res> {
-  __$$WatchlistStateImplCopyWithImpl(
-      _$WatchlistStateImpl _value, $Res Function(_$WatchlistStateImpl) _then)
+class __$$SimpleMovieListStateImplCopyWithImpl<$Res>
+    extends _$SimpleMovieListStateCopyWithImpl<$Res, _$SimpleMovieListStateImpl>
+    implements _$$SimpleMovieListStateImplCopyWith<$Res> {
+  __$$SimpleMovieListStateImplCopyWithImpl(_$SimpleMovieListStateImpl _value,
+      $Res Function(_$SimpleMovieListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +128,7 @@ class __$$WatchlistStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$WatchlistStateImpl(
+    return _then(_$SimpleMovieListStateImpl(
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -158,11 +159,11 @@ class __$$WatchlistStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WatchlistStateImpl implements _WatchlistState {
-  const _$WatchlistStateImpl(
+class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
+  const _$SimpleMovieListStateImpl(
       {final List<Movie> movies = const [],
       this.totalMovies,
-      this.orderType = OrderType.asc,
+      this.orderType = OrderType.desc,
       this.hasReachedMax = false,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
@@ -194,14 +195,14 @@ class _$WatchlistStateImpl implements _WatchlistState {
 
   @override
   String toString() {
-    return 'WatchlistState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
+    return 'SimpleMovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WatchlistStateImpl &&
+            other is _$SimpleMovieListStateImpl &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
@@ -227,19 +228,20 @@ class _$WatchlistStateImpl implements _WatchlistState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WatchlistStateImplCopyWith<_$WatchlistStateImpl> get copyWith =>
-      __$$WatchlistStateImplCopyWithImpl<_$WatchlistStateImpl>(
-          this, _$identity);
+  _$$SimpleMovieListStateImplCopyWith<_$SimpleMovieListStateImpl>
+      get copyWith =>
+          __$$SimpleMovieListStateImplCopyWithImpl<_$SimpleMovieListStateImpl>(
+              this, _$identity);
 }
 
-abstract class _WatchlistState implements WatchlistState {
-  const factory _WatchlistState(
+abstract class _SimpleMovieListState implements SimpleMovieListState {
+  const factory _SimpleMovieListState(
       {final List<Movie> movies,
       final int? totalMovies,
       final OrderType orderType,
       final bool hasReachedMax,
       final StateStatus status,
-      final String errorMessage}) = _$WatchlistStateImpl;
+      final String errorMessage}) = _$SimpleMovieListStateImpl;
 
   @override
   List<Movie> get movies;
@@ -255,6 +257,6 @@ abstract class _WatchlistState implements WatchlistState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$WatchlistStateImplCopyWith<_$WatchlistStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SimpleMovieListStateImplCopyWith<_$SimpleMovieListStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

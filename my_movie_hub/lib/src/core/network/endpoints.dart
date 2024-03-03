@@ -14,6 +14,9 @@ class Endpoints {
   /// account
   static const String favoriteMovies = '/account/favorite/movies';
   static const String watchlistMovies = '/account/watchlist/movies';
-  static const String addRemoveMovieFromWatchlist = '/account/watchlist';
+  static const String ratedMovies = '/account/rated/movies';
+  static const String movieToWatchlist = '/account/watchlist';
+  static const String movieToFavorites = '/account/favorite';
+  static const String movieRating = '/account/rating';
   static const String accountStates = '/account_states';
 }

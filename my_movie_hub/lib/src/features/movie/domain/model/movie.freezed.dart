@@ -22,18 +22,27 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 mixin _$Movie {
   int get id => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
+  @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
   List<int> get genreIds => throw _privateConstructorUsedError;
+  @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'original_title')
   String get originalTitle => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   double get popularity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get video => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vote_count')
   int get voteCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'account_states')
+  AccountStates? get accountStates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,18 +57,21 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {int id,
       bool adult,
-      String backdropPath,
+      @JsonKey(name: 'backdrop_path') String backdropPath,
       List<int> genreIds,
-      String originalLanguage,
-      String originalTitle,
+      @JsonKey(name: 'original_language') String originalLanguage,
+      @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
-      String posterPath,
-      String releaseDate,
+      @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'release_date') String releaseDate,
       String title,
       bool video,
-      double voteAverage,
-      int voteCount});
+      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_count') int voteCount,
+      @JsonKey(name: 'account_states') AccountStates? accountStates});
+
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -89,6 +101,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? accountStates = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -147,7 +160,23 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountStatesCopyWith<$Res>? get accountStates {
+    if (_value.accountStates == null) {
+      return null;
+    }
+
+    return $AccountStatesCopyWith<$Res>(_value.accountStates!, (value) {
+      return _then(_value.copyWith(accountStates: value) as $Val);
+    });
   }
 }
 
@@ -161,18 +190,22 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {int id,
       bool adult,
-      String backdropPath,
+      @JsonKey(name: 'backdrop_path') String backdropPath,
       List<int> genreIds,
-      String originalLanguage,
-      String originalTitle,
+      @JsonKey(name: 'original_language') String originalLanguage,
+      @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
-      String posterPath,
-      String releaseDate,
+      @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'release_date') String releaseDate,
       String title,
       bool video,
-      double voteAverage,
-      int voteCount});
+      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_count') int voteCount,
+      @JsonKey(name: 'account_states') AccountStates? accountStates});
+
+  @override
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -200,6 +233,7 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? accountStates = freezed,
   }) {
     return _then(_$MovieImpl(
       id: null == id
@@ -258,6 +292,10 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
     ));
   }
 }
@@ -268,18 +306,19 @@ class _$MovieImpl implements _Movie {
   const _$MovieImpl(
       {required this.id,
       this.adult = false,
-      this.backdropPath = '',
+      @JsonKey(name: 'backdrop_path') this.backdropPath = '',
       final List<int> genreIds = const [],
-      this.originalLanguage = '',
-      this.originalTitle = '',
+      @JsonKey(name: 'original_language') this.originalLanguage = '',
+      @JsonKey(name: 'original_title') this.originalTitle = '',
       this.overview = '',
       this.popularity = 0.0,
-      this.posterPath = '',
-      this.releaseDate = '',
+      @JsonKey(name: 'poster_path') this.posterPath = '',
+      @JsonKey(name: 'release_date') this.releaseDate = '',
       this.title = '',
       this.video = false,
-      this.voteAverage = 0.0,
-      this.voteCount = 0})
+      @JsonKey(name: 'vote_average') this.voteAverage = 0.0,
+      @JsonKey(name: 'vote_count') this.voteCount = 0,
+      @JsonKey(name: 'account_states') this.accountStates})
       : _genreIds = genreIds;
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
@@ -291,7 +330,7 @@ class _$MovieImpl implements _Movie {
   @JsonKey()
   final bool adult;
   @override
-  @JsonKey()
+  @JsonKey(name: 'backdrop_path')
   final String backdropPath;
   final List<int> _genreIds;
   @override
@@ -303,10 +342,10 @@ class _$MovieImpl implements _Movie {
   }
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'original_language')
   final String originalLanguage;
   @override
-  @JsonKey()
+  @JsonKey(name: 'original_title')
   final String originalTitle;
   @override
   @JsonKey()
@@ -315,10 +354,10 @@ class _$MovieImpl implements _Movie {
   @JsonKey()
   final double popularity;
   @override
-  @JsonKey()
+  @JsonKey(name: 'poster_path')
   final String posterPath;
   @override
-  @JsonKey()
+  @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
   @JsonKey()
@@ -327,15 +366,18 @@ class _$MovieImpl implements _Movie {
   @JsonKey()
   final bool video;
   @override
-  @JsonKey()
+  @JsonKey(name: 'vote_average')
   final double voteAverage;
   @override
-  @JsonKey()
+  @JsonKey(name: 'vote_count')
   final int voteCount;
+  @override
+  @JsonKey(name: 'account_states')
+  final AccountStates? accountStates;
 
   @override
   String toString() {
-    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates)';
   }
 
   @override
@@ -365,7 +407,9 @@ class _$MovieImpl implements _Movie {
             (identical(other.voteAverage, voteAverage) ||
                 other.voteAverage == voteAverage) &&
             (identical(other.voteCount, voteCount) ||
-                other.voteCount == voteCount));
+                other.voteCount == voteCount) &&
+            (identical(other.accountStates, accountStates) ||
+                other.accountStates == accountStates));
   }
 
   @JsonKey(ignore: true)
@@ -385,7 +429,8 @@ class _$MovieImpl implements _Movie {
       title,
       video,
       voteAverage,
-      voteCount);
+      voteCount,
+      accountStates);
 
   @JsonKey(ignore: true)
   @override
@@ -405,18 +450,20 @@ abstract class _Movie implements Movie {
   const factory _Movie(
       {required final int id,
       final bool adult,
-      final String backdropPath,
+      @JsonKey(name: 'backdrop_path') final String backdropPath,
       final List<int> genreIds,
-      final String originalLanguage,
-      final String originalTitle,
+      @JsonKey(name: 'original_language') final String originalLanguage,
+      @JsonKey(name: 'original_title') final String originalTitle,
       final String overview,
       final double popularity,
-      final String posterPath,
-      final String releaseDate,
+      @JsonKey(name: 'poster_path') final String posterPath,
+      @JsonKey(name: 'release_date') final String releaseDate,
       final String title,
       final bool video,
-      final double voteAverage,
-      final int voteCount}) = _$MovieImpl;
+      @JsonKey(name: 'vote_average') final double voteAverage,
+      @JsonKey(name: 'vote_count') final int voteCount,
+      @JsonKey(name: 'account_states')
+      final AccountStates? accountStates}) = _$MovieImpl;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
@@ -425,29 +472,39 @@ abstract class _Movie implements Movie {
   @override
   bool get adult;
   @override
+  @JsonKey(name: 'backdrop_path')
   String get backdropPath;
   @override
   List<int> get genreIds;
   @override
+  @JsonKey(name: 'original_language')
   String get originalLanguage;
   @override
+  @JsonKey(name: 'original_title')
   String get originalTitle;
   @override
   String get overview;
   @override
   double get popularity;
   @override
+  @JsonKey(name: 'poster_path')
   String get posterPath;
   @override
+  @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
   String get title;
   @override
   bool get video;
   @override
+  @JsonKey(name: 'vote_average')
   double get voteAverage;
   @override
+  @JsonKey(name: 'vote_count')
   int get voteCount;
+  @override
+  @JsonKey(name: 'account_states')
+  AccountStates? get accountStates;
   @override
   @JsonKey(ignore: true)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
@@ -462,28 +519,41 @@ DetailedMovie _$DetailedMovieFromJson(Map<String, dynamic> json) {
 mixin _$DetailedMovie {
   int get id => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
+  @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
   List<int> get genreIds => throw _privateConstructorUsedError;
+  @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'original_title')
   String get originalTitle => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   double get popularity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get video => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vote_count')
   int get voteCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'account_states')
+  AccountStates? get accountStates => throw _privateConstructorUsedError;
   int? get budget => throw _privateConstructorUsedError;
   List<Genre>? get genres => throw _privateConstructorUsedError;
   String? get homepage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'imdb_id')
   String? get imdbId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'production_companies')
   List<ProductionCompany>? get productionCompanies =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'production_countries')
   List<ProductionCountry>? get productionCountries =>
       throw _privateConstructorUsedError;
   int? get revenue => throw _privateConstructorUsedError;
   int? get runtime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'spoken_languages')
   List<SpokenLanguage>? get spokenLanguages =>
       throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
@@ -504,29 +574,34 @@ abstract class $DetailedMovieCopyWith<$Res> {
   $Res call(
       {int id,
       bool adult,
-      String backdropPath,
+      @JsonKey(name: 'backdrop_path') String backdropPath,
       List<int> genreIds,
-      String originalLanguage,
-      String originalTitle,
+      @JsonKey(name: 'original_language') String originalLanguage,
+      @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
-      String posterPath,
-      String releaseDate,
+      @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'release_date') String releaseDate,
       String title,
       bool video,
-      double voteAverage,
-      int voteCount,
+      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_count') int voteCount,
+      @JsonKey(name: 'account_states') AccountStates? accountStates,
       int? budget,
       List<Genre>? genres,
       String? homepage,
-      String? imdbId,
+      @JsonKey(name: 'imdb_id') String? imdbId,
+      @JsonKey(name: 'production_companies')
       List<ProductionCompany>? productionCompanies,
+      @JsonKey(name: 'production_countries')
       List<ProductionCountry>? productionCountries,
       int? revenue,
       int? runtime,
-      List<SpokenLanguage>? spokenLanguages,
+      @JsonKey(name: 'spoken_languages') List<SpokenLanguage>? spokenLanguages,
       String? status,
       String? tagline});
+
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -556,6 +631,7 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? accountStates = freezed,
     Object? budget = freezed,
     Object? genres = freezed,
     Object? homepage = freezed,
@@ -625,6 +701,10 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
@@ -671,6 +751,18 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
               as String?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountStatesCopyWith<$Res>? get accountStates {
+    if (_value.accountStates == null) {
+      return null;
+    }
+
+    return $AccountStatesCopyWith<$Res>(_value.accountStates!, (value) {
+      return _then(_value.copyWith(accountStates: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -684,29 +776,35 @@ abstract class _$$DetailedMovieImplCopyWith<$Res>
   $Res call(
       {int id,
       bool adult,
-      String backdropPath,
+      @JsonKey(name: 'backdrop_path') String backdropPath,
       List<int> genreIds,
-      String originalLanguage,
-      String originalTitle,
+      @JsonKey(name: 'original_language') String originalLanguage,
+      @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
-      String posterPath,
-      String releaseDate,
+      @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'release_date') String releaseDate,
       String title,
       bool video,
-      double voteAverage,
-      int voteCount,
+      @JsonKey(name: 'vote_average') double voteAverage,
+      @JsonKey(name: 'vote_count') int voteCount,
+      @JsonKey(name: 'account_states') AccountStates? accountStates,
       int? budget,
       List<Genre>? genres,
       String? homepage,
-      String? imdbId,
+      @JsonKey(name: 'imdb_id') String? imdbId,
+      @JsonKey(name: 'production_companies')
       List<ProductionCompany>? productionCompanies,
+      @JsonKey(name: 'production_countries')
       List<ProductionCountry>? productionCountries,
       int? revenue,
       int? runtime,
-      List<SpokenLanguage>? spokenLanguages,
+      @JsonKey(name: 'spoken_languages') List<SpokenLanguage>? spokenLanguages,
       String? status,
       String? tagline});
+
+  @override
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -734,6 +832,7 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
+    Object? accountStates = freezed,
     Object? budget = freezed,
     Object? genres = freezed,
     Object? homepage = freezed,
@@ -803,6 +902,10 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
@@ -857,26 +960,30 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   const _$DetailedMovieImpl(
       {required this.id,
       this.adult = false,
-      this.backdropPath = '',
+      @JsonKey(name: 'backdrop_path') this.backdropPath = '',
       final List<int> genreIds = const [],
-      this.originalLanguage = '',
-      this.originalTitle = '',
+      @JsonKey(name: 'original_language') this.originalLanguage = '',
+      @JsonKey(name: 'original_title') this.originalTitle = '',
       this.overview = '',
       this.popularity = 0.0,
-      this.posterPath = '',
-      this.releaseDate = '',
+      @JsonKey(name: 'poster_path') this.posterPath = '',
+      @JsonKey(name: 'release_date') this.releaseDate = '',
       this.title = '',
       this.video = false,
-      this.voteAverage = 0.0,
-      this.voteCount = 0,
+      @JsonKey(name: 'vote_average') this.voteAverage = 0.0,
+      @JsonKey(name: 'vote_count') this.voteCount = 0,
+      @JsonKey(name: 'account_states') this.accountStates,
       this.budget,
       final List<Genre>? genres,
       this.homepage,
-      this.imdbId,
+      @JsonKey(name: 'imdb_id') this.imdbId,
+      @JsonKey(name: 'production_companies')
       final List<ProductionCompany>? productionCompanies,
+      @JsonKey(name: 'production_countries')
       final List<ProductionCountry>? productionCountries,
       this.revenue,
       this.runtime,
+      @JsonKey(name: 'spoken_languages')
       final List<SpokenLanguage>? spokenLanguages,
       this.status,
       this.tagline})
@@ -895,7 +1002,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @JsonKey()
   final bool adult;
   @override
-  @JsonKey()
+  @JsonKey(name: 'backdrop_path')
   final String backdropPath;
   final List<int> _genreIds;
   @override
@@ -907,10 +1014,10 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   }
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'original_language')
   final String originalLanguage;
   @override
-  @JsonKey()
+  @JsonKey(name: 'original_title')
   final String originalTitle;
   @override
   @JsonKey()
@@ -919,10 +1026,10 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @JsonKey()
   final double popularity;
   @override
-  @JsonKey()
+  @JsonKey(name: 'poster_path')
   final String posterPath;
   @override
-  @JsonKey()
+  @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
   @JsonKey()
@@ -931,11 +1038,14 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @JsonKey()
   final bool video;
   @override
-  @JsonKey()
+  @JsonKey(name: 'vote_average')
   final double voteAverage;
   @override
-  @JsonKey()
+  @JsonKey(name: 'vote_count')
   final int voteCount;
+  @override
+  @JsonKey(name: 'account_states')
+  final AccountStates? accountStates;
   @override
   final int? budget;
   final List<Genre>? _genres;
@@ -951,9 +1061,11 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @override
   final String? homepage;
   @override
+  @JsonKey(name: 'imdb_id')
   final String? imdbId;
   final List<ProductionCompany>? _productionCompanies;
   @override
+  @JsonKey(name: 'production_companies')
   List<ProductionCompany>? get productionCompanies {
     final value = _productionCompanies;
     if (value == null) return null;
@@ -965,6 +1077,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
 
   final List<ProductionCountry>? _productionCountries;
   @override
+  @JsonKey(name: 'production_countries')
   List<ProductionCountry>? get productionCountries {
     final value = _productionCountries;
     if (value == null) return null;
@@ -980,6 +1093,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   final int? runtime;
   final List<SpokenLanguage>? _spokenLanguages;
   @override
+  @JsonKey(name: 'spoken_languages')
   List<SpokenLanguage>? get spokenLanguages {
     final value = _spokenLanguages;
     if (value == null) return null;
@@ -995,7 +1109,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
 
   @override
   String toString() {
-    return 'DetailedMovie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, budget: $budget, genres: $genres, homepage: $homepage, imdbId: $imdbId, productionCompanies: $productionCompanies, productionCountries: $productionCountries, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline)';
+    return 'DetailedMovie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates, budget: $budget, genres: $genres, homepage: $homepage, imdbId: $imdbId, productionCompanies: $productionCompanies, productionCountries: $productionCountries, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline)';
   }
 
   @override
@@ -1026,6 +1140,8 @@ class _$DetailedMovieImpl implements _DetailedMovie {
                 other.voteAverage == voteAverage) &&
             (identical(other.voteCount, voteCount) ||
                 other.voteCount == voteCount) &&
+            (identical(other.accountStates, accountStates) ||
+                other.accountStates == accountStates) &&
             (identical(other.budget, budget) || other.budget == budget) &&
             const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.homepage, homepage) ||
@@ -1061,6 +1177,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
         video,
         voteAverage,
         voteCount,
+        accountStates,
         budget,
         const DeepCollectionEquality().hash(_genres),
         homepage,
@@ -1092,26 +1209,30 @@ abstract class _DetailedMovie implements DetailedMovie {
   const factory _DetailedMovie(
       {required final int id,
       final bool adult,
-      final String backdropPath,
+      @JsonKey(name: 'backdrop_path') final String backdropPath,
       final List<int> genreIds,
-      final String originalLanguage,
-      final String originalTitle,
+      @JsonKey(name: 'original_language') final String originalLanguage,
+      @JsonKey(name: 'original_title') final String originalTitle,
       final String overview,
       final double popularity,
-      final String posterPath,
-      final String releaseDate,
+      @JsonKey(name: 'poster_path') final String posterPath,
+      @JsonKey(name: 'release_date') final String releaseDate,
       final String title,
       final bool video,
-      final double voteAverage,
-      final int voteCount,
+      @JsonKey(name: 'vote_average') final double voteAverage,
+      @JsonKey(name: 'vote_count') final int voteCount,
+      @JsonKey(name: 'account_states') final AccountStates? accountStates,
       final int? budget,
       final List<Genre>? genres,
       final String? homepage,
-      final String? imdbId,
+      @JsonKey(name: 'imdb_id') final String? imdbId,
+      @JsonKey(name: 'production_companies')
       final List<ProductionCompany>? productionCompanies,
+      @JsonKey(name: 'production_countries')
       final List<ProductionCountry>? productionCountries,
       final int? revenue,
       final int? runtime,
+      @JsonKey(name: 'spoken_languages')
       final List<SpokenLanguage>? spokenLanguages,
       final String? status,
       final String? tagline}) = _$DetailedMovieImpl;
@@ -1124,29 +1245,39 @@ abstract class _DetailedMovie implements DetailedMovie {
   @override
   bool get adult;
   @override
+  @JsonKey(name: 'backdrop_path')
   String get backdropPath;
   @override
   List<int> get genreIds;
   @override
+  @JsonKey(name: 'original_language')
   String get originalLanguage;
   @override
+  @JsonKey(name: 'original_title')
   String get originalTitle;
   @override
   String get overview;
   @override
   double get popularity;
   @override
+  @JsonKey(name: 'poster_path')
   String get posterPath;
   @override
+  @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
   String get title;
   @override
   bool get video;
   @override
+  @JsonKey(name: 'vote_average')
   double get voteAverage;
   @override
+  @JsonKey(name: 'vote_count')
   int get voteCount;
+  @override
+  @JsonKey(name: 'account_states')
+  AccountStates? get accountStates;
   @override
   int? get budget;
   @override
@@ -1154,16 +1285,20 @@ abstract class _DetailedMovie implements DetailedMovie {
   @override
   String? get homepage;
   @override
+  @JsonKey(name: 'imdb_id')
   String? get imdbId;
   @override
+  @JsonKey(name: 'production_companies')
   List<ProductionCompany>? get productionCompanies;
   @override
+  @JsonKey(name: 'production_countries')
   List<ProductionCountry>? get productionCountries;
   @override
   int? get revenue;
   @override
   int? get runtime;
   @override
+  @JsonKey(name: 'spoken_languages')
   List<SpokenLanguage>? get spokenLanguages;
   @override
   String? get status;
@@ -1862,5 +1997,193 @@ abstract class _SpokenLanguage implements SpokenLanguage {
   @override
   @JsonKey(ignore: true)
   _$$SpokenLanguageImplCopyWith<_$SpokenLanguageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AccountStates _$AccountStatesFromJson(Map<String, dynamic> json) {
+  return _AccountStates.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AccountStates {
+  bool get favorite => throw _privateConstructorUsedError;
+  bool get watchlist => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _ratedFromJson)
+  int? get rating => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AccountStatesCopyWith<AccountStates> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AccountStatesCopyWith<$Res> {
+  factory $AccountStatesCopyWith(
+          AccountStates value, $Res Function(AccountStates) then) =
+      _$AccountStatesCopyWithImpl<$Res, AccountStates>;
+  @useResult
+  $Res call(
+      {bool favorite,
+      bool watchlist,
+      @JsonKey(fromJson: _ratedFromJson) int? rating});
+}
+
+/// @nodoc
+class _$AccountStatesCopyWithImpl<$Res, $Val extends AccountStates>
+    implements $AccountStatesCopyWith<$Res> {
+  _$AccountStatesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favorite = null,
+    Object? watchlist = null,
+    Object? rating = freezed,
+  }) {
+    return _then(_value.copyWith(
+      favorite: null == favorite
+          ? _value.favorite
+          : favorite // ignore: cast_nullable_to_non_nullable
+              as bool,
+      watchlist: null == watchlist
+          ? _value.watchlist
+          : watchlist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AccountStatesImplCopyWith<$Res>
+    implements $AccountStatesCopyWith<$Res> {
+  factory _$$AccountStatesImplCopyWith(
+          _$AccountStatesImpl value, $Res Function(_$AccountStatesImpl) then) =
+      __$$AccountStatesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool favorite,
+      bool watchlist,
+      @JsonKey(fromJson: _ratedFromJson) int? rating});
+}
+
+/// @nodoc
+class __$$AccountStatesImplCopyWithImpl<$Res>
+    extends _$AccountStatesCopyWithImpl<$Res, _$AccountStatesImpl>
+    implements _$$AccountStatesImplCopyWith<$Res> {
+  __$$AccountStatesImplCopyWithImpl(
+      _$AccountStatesImpl _value, $Res Function(_$AccountStatesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favorite = null,
+    Object? watchlist = null,
+    Object? rating = freezed,
+  }) {
+    return _then(_$AccountStatesImpl(
+      favorite: null == favorite
+          ? _value.favorite
+          : favorite // ignore: cast_nullable_to_non_nullable
+              as bool,
+      watchlist: null == watchlist
+          ? _value.watchlist
+          : watchlist // ignore: cast_nullable_to_non_nullable
+              as bool,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AccountStatesImpl implements _AccountStates {
+  const _$AccountStatesImpl(
+      {this.favorite = false,
+      this.watchlist = false,
+      @JsonKey(fromJson: _ratedFromJson) this.rating});
+
+  factory _$AccountStatesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccountStatesImplFromJson(json);
+
+  @override
+  @JsonKey()
+  final bool favorite;
+  @override
+  @JsonKey()
+  final bool watchlist;
+  @override
+  @JsonKey(fromJson: _ratedFromJson)
+  final int? rating;
+
+  @override
+  String toString() {
+    return 'AccountStates(favorite: $favorite, watchlist: $watchlist, rating: $rating)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AccountStatesImpl &&
+            (identical(other.favorite, favorite) ||
+                other.favorite == favorite) &&
+            (identical(other.watchlist, watchlist) ||
+                other.watchlist == watchlist) &&
+            (identical(other.rating, rating) || other.rating == rating));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, favorite, watchlist, rating);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AccountStatesImplCopyWith<_$AccountStatesImpl> get copyWith =>
+      __$$AccountStatesImplCopyWithImpl<_$AccountStatesImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AccountStatesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AccountStates implements AccountStates {
+  const factory _AccountStates(
+          {final bool favorite,
+          final bool watchlist,
+          @JsonKey(fromJson: _ratedFromJson) final int? rating}) =
+      _$AccountStatesImpl;
+
+  factory _AccountStates.fromJson(Map<String, dynamic> json) =
+      _$AccountStatesImpl.fromJson;
+
+  @override
+  bool get favorite;
+  @override
+  bool get watchlist;
+  @override
+  @JsonKey(fromJson: _ratedFromJson)
+  int? get rating;
+  @override
+  @JsonKey(ignore: true)
+  _$$AccountStatesImplCopyWith<_$AccountStatesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
