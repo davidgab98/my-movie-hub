@@ -23,7 +23,7 @@ class ApiSignInRepository extends SignInRepository {
 
       final validateTokenResponse = await networkService.post(
         Endpoints.validateRequestToken,
-        queryParameters: {
+        data: {
           'username': username,
           'password': password,
           'request_token': requestToken,
@@ -74,9 +74,6 @@ class ApiSignInRepository extends SignInRepository {
     try {
       final response = await networkService.get(
         Endpoints.getAccount,
-        queryParameters: {
-          'session_id': sessionId,
-        },
       );
 
       final User user = User.fromJson(response.data as Map<String, dynamic>);

@@ -73,6 +73,7 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
     result.when(
       (success) async {
+        _localStorageService.setSessionId(success);
         await _getUserAccount(sessionId: success);
       },
       (error) => emit(
@@ -91,7 +92,6 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
     result.when(
       (success) {
-        _localStorageService.setSessionId(sessionId);
         _localStorageService.setAccountId(success.id);
         _userCubit.updateUserWith(success);
         emit(

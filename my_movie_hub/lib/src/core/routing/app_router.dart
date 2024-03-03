@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/routing/intermediate_loading_screen.dart';
 import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
 import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
+import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
+import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
 import 'package:my_movie_hub/src/features/sign_in/presentation/sign_in_screen.dart';
 import 'package:my_movie_hub/src/features/start_app/presentation/start_app_screen.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
+import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
 
 enum AppRoute {
   startApp('/'),
   signIn('/signIn'),
   home('/home'),
   favorites('/favorites'),
+  watchlist('/watchlist'),
+  ratings('/ratings'),
+  movieDetail('/movieDetail'),
   a('/a'),
   b('/b');
 
@@ -24,6 +32,10 @@ enum AppRoute {
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorFavoritesKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Favorites');
+final _shellNavigatorWatchlistKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
+final _shellNavigatorRatingsKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Ratings');
 final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shell A');
 final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shell B');
 
@@ -42,6 +54,32 @@ final goRouter = GoRouter(
       },
       branches: [
         StatefulShellBranch(
+          navigatorKey: _shellNavigatorAKey,
+          routes: [
+            GoRoute(
+              name: AppRoute.home.name,
+              path: AppRoute.home.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: HomeScreen(),
+              ),
+              routes: [],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorWatchlistKey,
+          routes: [
+            GoRoute(
+              name: AppRoute.watchlist.name,
+              path: AppRoute.watchlist.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: WatchlistScreen(),
+              ),
+              routes: [],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
           navigatorKey: _shellNavigatorFavoritesKey,
           routes: [
             GoRoute(
@@ -55,26 +93,13 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorAKey,
+          navigatorKey: _shellNavigatorRatingsKey,
           routes: [
             GoRoute(
-              name: AppRoute.a.name,
-              path: AppRoute.a.path,
+              name: AppRoute.ratings.name,
+              path: AppRoute.ratings.path,
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: ScreenA(),
-              ),
-              routes: [],
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          navigatorKey: _shellNavigatorBKey,
-          routes: [
-            GoRoute(
-              name: AppRoute.b.name,
-              path: AppRoute.b.path,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: ScreenB(),
+                child: RatingsScreen(),
               ),
               routes: [],
             ),
@@ -84,9 +109,18 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.home.path,
-      name: AppRoute.home.name,
-      builder: (context, state) => const HomeScreen(),
+      path: AppRoute.movieDetail.path,
+      name: AppRoute.movieDetail.name,
+      builder: (context, state) {
+        if (state.extra == null || state.extra is! Movie) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.pop();
+          });
+          return const IntermediateLoadingScreen();
+        }
+
+        return MovieDetailScreen(movie: state.extra! as Movie);
+      },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
