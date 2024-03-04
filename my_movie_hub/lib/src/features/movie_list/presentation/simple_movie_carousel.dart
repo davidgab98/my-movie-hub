@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_cubit.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_state.dart';
 import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_response.dart';
@@ -120,7 +121,7 @@ class _MovieListState extends State<_MovieList> {
                 );
               }
             } else {
-              return MovieCard(movie: widget.state.movies[index]);
+              return MovieListTileImage(movie: widget.state.movies[index]);
             }
           },
           itemCount: 10,

@@ -21,7 +21,7 @@ class PublicListSection extends StatelessWidget {
           child: Text(
             title,
             style:
-                AppTextStyle.headlineXXL.copyWith(color: AppColors.overlayDark),
+                AppTextStyle.headlineXL.copyWith(color: AppColors.overlayDark),
           ),
         ),
         SizedBox(
