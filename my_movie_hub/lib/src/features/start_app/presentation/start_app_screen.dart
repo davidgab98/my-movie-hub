@@ -37,7 +37,7 @@ class _Body extends StatelessWidget {
             state.status == StartAppStatus.sessionIdExpired) {
           context.goNamed(AppRoute.signIn.name);
         } else if (state.status == StartAppStatus.sessionIdSaved) {
-          context.goNamed(AppRoute.watchlist.name);
+          context.goNamed(AppRoute.home.name);
         }
       },
       child: const Center(

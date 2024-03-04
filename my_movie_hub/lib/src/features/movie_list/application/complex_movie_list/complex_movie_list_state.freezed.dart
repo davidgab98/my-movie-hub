@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'movie_list_state.dart';
+part of 'complex_movie_list_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,38 +15,41 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MovieListState {
+mixin _$ComplexMovieListState {
   List<Movie> get movies => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
   OrderType get orderType => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
+  bool get gridMode => throw _privateConstructorUsedError;
   StateStatus get status => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MovieListStateCopyWith<MovieListState> get copyWith =>
+  $ComplexMovieListStateCopyWith<ComplexMovieListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MovieListStateCopyWith<$Res> {
-  factory $MovieListStateCopyWith(
-          MovieListState value, $Res Function(MovieListState) then) =
-      _$MovieListStateCopyWithImpl<$Res, MovieListState>;
+abstract class $ComplexMovieListStateCopyWith<$Res> {
+  factory $ComplexMovieListStateCopyWith(ComplexMovieListState value,
+          $Res Function(ComplexMovieListState) then) =
+      _$ComplexMovieListStateCopyWithImpl<$Res, ComplexMovieListState>;
   @useResult
   $Res call(
       {List<Movie> movies,
       int? totalMovies,
       OrderType orderType,
       bool hasReachedMax,
+      bool gridMode,
       StateStatus status,
       String errorMessage});
 }
 
 /// @nodoc
-class _$MovieListStateCopyWithImpl<$Res, $Val extends MovieListState>
-    implements $MovieListStateCopyWith<$Res> {
-  _$MovieListStateCopyWithImpl(this._value, this._then);
+class _$ComplexMovieListStateCopyWithImpl<$Res,
+        $Val extends ComplexMovieListState>
+    implements $ComplexMovieListStateCopyWith<$Res> {
+  _$ComplexMovieListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -60,6 +63,7 @@ class _$MovieListStateCopyWithImpl<$Res, $Val extends MovieListState>
     Object? totalMovies = freezed,
     Object? orderType = null,
     Object? hasReachedMax = null,
+    Object? gridMode = null,
     Object? status = null,
     Object? errorMessage = null,
   }) {
@@ -80,6 +84,10 @@ class _$MovieListStateCopyWithImpl<$Res, $Val extends MovieListState>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      gridMode: null == gridMode
+          ? _value.gridMode
+          : gridMode // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -93,11 +101,12 @@ class _$MovieListStateCopyWithImpl<$Res, $Val extends MovieListState>
 }
 
 /// @nodoc
-abstract class _$$MovieListStateImplCopyWith<$Res>
-    implements $MovieListStateCopyWith<$Res> {
-  factory _$$MovieListStateImplCopyWith(_$MovieListStateImpl value,
-          $Res Function(_$MovieListStateImpl) then) =
-      __$$MovieListStateImplCopyWithImpl<$Res>;
+abstract class _$$ComplexMovieListStateImplCopyWith<$Res>
+    implements $ComplexMovieListStateCopyWith<$Res> {
+  factory _$$ComplexMovieListStateImplCopyWith(
+          _$ComplexMovieListStateImpl value,
+          $Res Function(_$ComplexMovieListStateImpl) then) =
+      __$$ComplexMovieListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,16 +114,18 @@ abstract class _$$MovieListStateImplCopyWith<$Res>
       int? totalMovies,
       OrderType orderType,
       bool hasReachedMax,
+      bool gridMode,
       StateStatus status,
       String errorMessage});
 }
 
 /// @nodoc
-class __$$MovieListStateImplCopyWithImpl<$Res>
-    extends _$MovieListStateCopyWithImpl<$Res, _$MovieListStateImpl>
-    implements _$$MovieListStateImplCopyWith<$Res> {
-  __$$MovieListStateImplCopyWithImpl(
-      _$MovieListStateImpl _value, $Res Function(_$MovieListStateImpl) _then)
+class __$$ComplexMovieListStateImplCopyWithImpl<$Res>
+    extends _$ComplexMovieListStateCopyWithImpl<$Res,
+        _$ComplexMovieListStateImpl>
+    implements _$$ComplexMovieListStateImplCopyWith<$Res> {
+  __$$ComplexMovieListStateImplCopyWithImpl(_$ComplexMovieListStateImpl _value,
+      $Res Function(_$ComplexMovieListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,10 +135,11 @@ class __$$MovieListStateImplCopyWithImpl<$Res>
     Object? totalMovies = freezed,
     Object? orderType = null,
     Object? hasReachedMax = null,
+    Object? gridMode = null,
     Object? status = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$MovieListStateImpl(
+    return _then(_$ComplexMovieListStateImpl(
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -144,6 +156,10 @@ class __$$MovieListStateImplCopyWithImpl<$Res>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      gridMode: null == gridMode
+          ? _value.gridMode
+          : gridMode // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -158,12 +174,13 @@ class __$$MovieListStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MovieListStateImpl implements _MovieListState {
-  const _$MovieListStateImpl(
+class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
+  const _$ComplexMovieListStateImpl(
       {final List<Movie> movies = const [],
       this.totalMovies,
       this.orderType = OrderType.desc,
       this.hasReachedMax = false,
+      this.gridMode = false,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
       : _movies = movies;
@@ -187,6 +204,9 @@ class _$MovieListStateImpl implements _MovieListState {
   final bool hasReachedMax;
   @override
   @JsonKey()
+  final bool gridMode;
+  @override
+  @JsonKey()
   final StateStatus status;
   @override
   @JsonKey()
@@ -194,14 +214,14 @@ class _$MovieListStateImpl implements _MovieListState {
 
   @override
   String toString() {
-    return 'MovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
+    return 'ComplexMovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, gridMode: $gridMode, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MovieListStateImpl &&
+            other is _$ComplexMovieListStateImpl &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
@@ -209,6 +229,8 @@ class _$MovieListStateImpl implements _MovieListState {
                 other.orderType == orderType) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
+            (identical(other.gridMode, gridMode) ||
+                other.gridMode == gridMode) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
@@ -221,25 +243,27 @@ class _$MovieListStateImpl implements _MovieListState {
       totalMovies,
       orderType,
       hasReachedMax,
+      gridMode,
       status,
       errorMessage);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MovieListStateImplCopyWith<_$MovieListStateImpl> get copyWith =>
-      __$$MovieListStateImplCopyWithImpl<_$MovieListStateImpl>(
-          this, _$identity);
+  _$$ComplexMovieListStateImplCopyWith<_$ComplexMovieListStateImpl>
+      get copyWith => __$$ComplexMovieListStateImplCopyWithImpl<
+          _$ComplexMovieListStateImpl>(this, _$identity);
 }
 
-abstract class _MovieListState implements MovieListState {
-  const factory _MovieListState(
+abstract class _ComplexMovieListState implements ComplexMovieListState {
+  const factory _ComplexMovieListState(
       {final List<Movie> movies,
       final int? totalMovies,
       final OrderType orderType,
       final bool hasReachedMax,
+      final bool gridMode,
       final StateStatus status,
-      final String errorMessage}) = _$MovieListStateImpl;
+      final String errorMessage}) = _$ComplexMovieListStateImpl;
 
   @override
   List<Movie> get movies;
@@ -250,11 +274,13 @@ abstract class _MovieListState implements MovieListState {
   @override
   bool get hasReachedMax;
   @override
+  bool get gridMode;
+  @override
   StateStatus get status;
   @override
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$MovieListStateImplCopyWith<_$MovieListStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ComplexMovieListStateImplCopyWith<_$ComplexMovieListStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

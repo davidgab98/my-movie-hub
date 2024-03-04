@@ -1,9 +1,9 @@
 import 'package:my_movie_hub/src/core/events/event_bus.dart';
 import 'package:my_movie_hub/src/core/events/events.dart';
 import 'package:my_movie_hub/src/features/favorites/domain/repositories/favorites_repository.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/movie_list_cubit.dart';
+import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_cubit.dart';
 
-class FavoriteListCubit extends MovieListCubit {
+class FavoriteListCubit extends ComplexMovieListCubit {
   FavoriteListCubit({
     required FavoritesRepository favoritesRepository,
     required IEventBus eventBus,

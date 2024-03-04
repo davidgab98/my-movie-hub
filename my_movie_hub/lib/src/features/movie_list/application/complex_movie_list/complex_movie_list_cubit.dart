@@ -5,17 +5,17 @@ import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/movie_list_state.dart';
+import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_state.dart';
 import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_response.dart';
 
-abstract class MovieListCubit extends Cubit<MovieListState>
+abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     with ExceptionsHelper {
-  MovieListCubit({
+  ComplexMovieListCubit({
     required Future<Result<MovieListResponse, Exception>> Function(
             {required int page, OrderType orderType})
         fetchMovies,
   })  : _fetchMovies = fetchMovies,
-        super(const MovieListState());
+        super(const ComplexMovieListState());
 
   final Future<Result<MovieListResponse, Exception>> Function(
       {required int page, OrderType orderType}) _fetchMovies;
@@ -87,5 +87,9 @@ abstract class MovieListCubit extends Cubit<MovieListState>
   Future<void> updateOrderTypeAndReload(OrderType orderType) async {
     emit(state.copyWith(orderType: orderType));
     await loadMovies(isRefreshing: true);
+  }
+
+  void toggleGridMode() {
+    emit(state.copyWith(gridMode: !state.gridMode));
   }
 }

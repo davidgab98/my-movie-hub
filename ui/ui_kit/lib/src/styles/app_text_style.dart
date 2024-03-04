@@ -92,4 +92,8 @@ class AppTextStyle {
     fontWeight: FontWeight.w800,
     fontSize: 18,
   );
+  static final TextStyle headlineLargeExtra = GoogleFonts.nunito(
+    fontWeight: FontWeight.w600,
+    fontSize: 22,
+  );
 }

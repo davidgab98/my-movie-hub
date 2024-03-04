@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SimpleMovieListState {
   List<Movie> get movies => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
-  OrderType get orderType => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   StateStatus get status => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
@@ -37,7 +36,6 @@ abstract class $SimpleMovieListStateCopyWith<$Res> {
   $Res call(
       {List<Movie> movies,
       int? totalMovies,
-      OrderType orderType,
       bool hasReachedMax,
       StateStatus status,
       String errorMessage});
@@ -59,7 +57,6 @@ class _$SimpleMovieListStateCopyWithImpl<$Res,
   $Res call({
     Object? movies = null,
     Object? totalMovies = freezed,
-    Object? orderType = null,
     Object? hasReachedMax = null,
     Object? status = null,
     Object? errorMessage = null,
@@ -73,10 +70,6 @@ class _$SimpleMovieListStateCopyWithImpl<$Res,
           ? _value.totalMovies
           : totalMovies // ignore: cast_nullable_to_non_nullable
               as int?,
-      orderType: null == orderType
-          ? _value.orderType
-          : orderType // ignore: cast_nullable_to_non_nullable
-              as OrderType,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -104,7 +97,6 @@ abstract class _$$SimpleMovieListStateImplCopyWith<$Res>
   $Res call(
       {List<Movie> movies,
       int? totalMovies,
-      OrderType orderType,
       bool hasReachedMax,
       StateStatus status,
       String errorMessage});
@@ -123,7 +115,6 @@ class __$$SimpleMovieListStateImplCopyWithImpl<$Res>
   $Res call({
     Object? movies = null,
     Object? totalMovies = freezed,
-    Object? orderType = null,
     Object? hasReachedMax = null,
     Object? status = null,
     Object? errorMessage = null,
@@ -137,10 +128,6 @@ class __$$SimpleMovieListStateImplCopyWithImpl<$Res>
           ? _value.totalMovies
           : totalMovies // ignore: cast_nullable_to_non_nullable
               as int?,
-      orderType: null == orderType
-          ? _value.orderType
-          : orderType // ignore: cast_nullable_to_non_nullable
-              as OrderType,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -163,7 +150,6 @@ class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
   const _$SimpleMovieListStateImpl(
       {final List<Movie> movies = const [],
       this.totalMovies,
-      this.orderType = OrderType.desc,
       this.hasReachedMax = false,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
@@ -182,9 +168,6 @@ class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
   final int? totalMovies;
   @override
   @JsonKey()
-  final OrderType orderType;
-  @override
-  @JsonKey()
   final bool hasReachedMax;
   @override
   @JsonKey()
@@ -195,7 +178,7 @@ class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
 
   @override
   String toString() {
-    return 'SimpleMovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
+    return 'SimpleMovieListState(movies: $movies, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
@@ -206,8 +189,6 @@ class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
-            (identical(other.orderType, orderType) ||
-                other.orderType == orderType) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.status, status) || other.status == status) &&
@@ -220,7 +201,6 @@ class _$SimpleMovieListStateImpl implements _SimpleMovieListState {
       runtimeType,
       const DeepCollectionEquality().hash(_movies),
       totalMovies,
-      orderType,
       hasReachedMax,
       status,
       errorMessage);
@@ -238,7 +218,6 @@ abstract class _SimpleMovieListState implements SimpleMovieListState {
   const factory _SimpleMovieListState(
       {final List<Movie> movies,
       final int? totalMovies,
-      final OrderType orderType,
       final bool hasReachedMax,
       final StateStatus status,
       final String errorMessage}) = _$SimpleMovieListStateImpl;
@@ -247,8 +226,6 @@ abstract class _SimpleMovieListState implements SimpleMovieListState {
   List<Movie> get movies;
   @override
   int? get totalMovies;
-  @override
-  OrderType get orderType;
   @override
   bool get hasReachedMax;
   @override

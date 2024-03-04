@@ -13,6 +13,7 @@ class AppSpaces {
   static const s32 = 32.0;
   static const s40 = 40.0;
   static const s48 = 48.0;
+  static const s52 = 52.0;
   static const s64 = 64.0;
 
   static const gapW2 = SizedBox(width: s2);
@@ -27,6 +28,7 @@ class AppSpaces {
   static const gapW32 = SizedBox(width: s32);
   static const gapW40 = SizedBox(width: s40);
   static const gapW48 = SizedBox(width: s48);
+  static const gapW52 = SizedBox(width: s52);
   static const gapW64 = SizedBox(width: s64);
 
   static const gapH2 = SizedBox(height: s2);
@@ -41,5 +43,6 @@ class AppSpaces {
   static const gapH32 = SizedBox(height: s32);
   static const gapH40 = SizedBox(height: s40);
   static const gapH48 = SizedBox(height: s48);
+  static const gapH52 = SizedBox(height: s52);
   static const gapH64 = SizedBox(height: s64);
 }

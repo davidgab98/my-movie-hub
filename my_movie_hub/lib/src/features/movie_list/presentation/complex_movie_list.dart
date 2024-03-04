@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/movie_list_cubit.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/movie_list_state.dart';
+import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_cubit.dart';
+import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_state.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/refresco.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class MovieList extends StatefulWidget {
-  const MovieList({super.key});
+class ComplexMovieList extends StatefulWidget {
+  const ComplexMovieList({super.key});
 
   @override
-  State<MovieList> createState() => _MovieListState();
+  State<ComplexMovieList> createState() => _ComplexMovieListState();
 }
 
-class _MovieListState extends State<MovieList> {
+class _ComplexMovieListState extends State<ComplexMovieList> {
   final _scrollController = ScrollController();
   final double _scrollThreshold = 200;
 
@@ -36,8 +36,9 @@ class _MovieListState extends State<MovieList> {
           const _MovieListHeader(),
           Refresco(
             refreshTriggerPullDistance: 120,
-            onRefresh: () async =>
-                context.read<MovieListCubit>().loadMovies(isRefreshing: true),
+            onRefresh: () async => context
+                .read<ComplexMovieListCubit>()
+                .loadMovies(isRefreshing: true),
           ),
           const _MovieListBody(),
         ],
@@ -55,7 +56,7 @@ class _MovieListState extends State<MovieList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-      await context.read<MovieListCubit>().loadMovies();
+      await context.read<ComplexMovieListCubit>().loadMovies();
     }
   }
 }
@@ -67,12 +68,12 @@ class _MovieListHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieListCubit, MovieListState>(
+    return BlocBuilder<ComplexMovieListCubit, ComplexMovieListState>(
       builder: (context, state) {
         return SliverAppBar(
           title: state.totalMovies != null
               ? Text(
-                  '${state.totalMovies} Películas',
+                  '${state.totalMovies} Movies',
                   style: AppTextStyle.headlineMedium.copyWith(
                     color: AppColors.overlayLight,
                   ),
@@ -86,10 +87,20 @@ class _MovieListHeader extends StatelessWidget {
             color: AppColors.primary,
           ),
           actions: [
+            IconButton(
+              onPressed: context.read<ComplexMovieListCubit>().toggleGridMode,
+              icon: Icon(
+                !state.gridMode
+                    ? Icons.grid_view_rounded
+                    : Icons.view_list_rounded,
+                size: 28,
+                color: AppColors.black2,
+              ),
+            ),
             TextButton(
               onPressed: state.orderType == OrderType.asc
                   ? () => context
-                      .read<MovieListCubit>()
+                      .read<ComplexMovieListCubit>()
                       .updateOrderTypeAndReload(OrderType.desc)
                   : null,
               child: Text(
@@ -104,7 +115,7 @@ class _MovieListHeader extends StatelessWidget {
             TextButton(
               onPressed: state.orderType == OrderType.desc
                   ? () => context
-                      .read<MovieListCubit>()
+                      .read<ComplexMovieListCubit>()
                       .updateOrderTypeAndReload(OrderType.asc)
                   : null,
               child: Text(
@@ -130,7 +141,7 @@ class _MovieListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieListCubit, MovieListState>(
+    return BlocBuilder<ComplexMovieListCubit, ComplexMovieListState>(
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
@@ -142,13 +153,17 @@ class _MovieListBody extends StatelessWidget {
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
-              onReload: context.read<MovieListCubit>().loadMovies,
+              onReload: context.read<ComplexMovieListCubit>().loadMovies,
             ),
           );
         } else if (state.movies.isNotEmpty) {
-          return _MovieList(
-            state: state,
-          );
+          return !state.gridMode
+              ? _MovieList(
+                  state: state,
+                )
+              : _MovieGrid(
+                  state: state,
+                );
         } else {
           return const SliverToBoxAdapter(
             child: Center(
@@ -167,7 +182,7 @@ class _MovieList extends StatelessWidget {
     super.key,
   });
 
-  final MovieListState state;
+  final ComplexMovieListState state;
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +215,7 @@ class _MovieGrid extends StatelessWidget {
     super.key,
   });
 
-  final MovieListState state;
+  final ComplexMovieListState state;
 
   @override
   Widget build(BuildContext context) {
