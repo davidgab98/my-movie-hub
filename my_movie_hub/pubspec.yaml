@@ -28,6 +28,7 @@ dependencies:
   multiple_result: ^5.1.0
   formz: ^0.6.1
   event_bus: ^2.0.0
+  card_swiper: ^3.0.1
 
 dev_dependencies:
   bloc_test: ^9.1.4

@@ -15,7 +15,10 @@ class RatingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ratings'),
+        title: Text(
+          'Ratings',
+          style: AppTextStyle.headlineXXL,
+        ),
         leading: IconButton(
           padding: const EdgeInsets.only(left: AppSpaces.s12),
           icon: const Icon(

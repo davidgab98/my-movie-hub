@@ -6,6 +6,8 @@ import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 
 part 'complex_movie_list_state.freezed.dart';
 
+enum ListDisplayMode { listWithImages, grid, list }
+
 @freezed
 class ComplexMovieListState with _$ComplexMovieListState {
   const factory ComplexMovieListState({
@@ -13,7 +15,7 @@ class ComplexMovieListState with _$ComplexMovieListState {
     int? totalMovies,
     @Default(OrderType.desc) OrderType orderType,
     @Default(false) bool hasReachedMax,
-    @Default(false) bool gridMode,
+    @Default(ListDisplayMode.listWithImages) ListDisplayMode listDisplayMode,
     @Default(StateStatus.initial) StateStatus status,
     @Default('') String errorMessage,
   }) = _ComplexMovieListState;

@@ -32,7 +32,7 @@ class _MaterialApp extends StatelessWidget {
         routerConfig: goRouter,
         darkTheme: darkTheme,
         theme: lightTheme,
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
       ),
     );
   }

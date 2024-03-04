@@ -11,10 +11,19 @@ class Endpoints {
   static const String createSession = '/authentication/session/new';
   static const String getAccount = '/account';
 
-  /// account
+  /// user_lists
   static const String favoriteMovies = '/account/favorite/movies';
   static const String watchlistMovies = '/account/watchlist/movies';
   static const String ratedMovies = '/account/rated/movies';
+
+  /// public_lists
+  static const String popularMovies = '/movie/popular';
+  static const String nowPlayingMovies = '/movie/now_playing';
+  static const String topRatedMovies = '/movie/top_rated';
+  static const String upcomingMovies = '/movie/upcoming';
+  static const String trendingMovies = '/trending/movie';
+
+  /// movie_states
   static const String movieToWatchlist = '/account/watchlist';
   static const String movieToFavorites = '/account/favorite';
   static const String movieRating = '/account/rating';

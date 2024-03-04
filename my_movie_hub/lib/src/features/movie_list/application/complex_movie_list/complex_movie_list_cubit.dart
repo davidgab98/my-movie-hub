@@ -89,7 +89,12 @@ abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     await loadMovies(isRefreshing: true);
   }
 
-  void toggleGridMode() {
-    emit(state.copyWith(gridMode: !state.gridMode));
+  void toggleListDisplayMode() {
+    final ListDisplayMode newListDisplayMode =
+        state.listDisplayMode.index + 1 >= ListDisplayMode.values.length
+            ? ListDisplayMode.values[0]
+            : ListDisplayMode.values[state.listDisplayMode.index + 1];
+
+    emit(state.copyWith(listDisplayMode: newListDisplayMode));
   }
 }

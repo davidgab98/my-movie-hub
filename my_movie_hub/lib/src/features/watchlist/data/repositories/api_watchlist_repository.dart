@@ -16,8 +16,6 @@ class ApiWatchlistRepository extends WatchlistRepository {
     OrderType orderType = OrderType.desc,
   }) async {
     try {
-      await Future<void>.delayed(const Duration(seconds: 2));
-
       final response = await networkService.get(
         Endpoints.watchlistMovies,
         queryParameters: {

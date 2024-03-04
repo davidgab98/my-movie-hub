@@ -11,6 +11,9 @@ import 'package:my_movie_hub/src/features/favorites/domain/repositories/favorite
 import 'package:my_movie_hub/src/features/movie/data/repositories/api_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/data/repositories/mock_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:my_movie_hub/src/features/public_lists/data/repositories/api_public_lists_repository.dart';
+import 'package:my_movie_hub/src/features/public_lists/data/repositories/mock_public_lists_repository.dart';
+import 'package:my_movie_hub/src/features/public_lists/domain/repositories/public_lists_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/data/repositories/api_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/data/repositories/mock_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/domain/repositories/ratings_repository.dart';
@@ -78,6 +81,14 @@ Future<void> serviceLocatorSetUp() async {
     () => useMocks
         ? MockRatingsRepository()
         : ApiRatingsRepository(
+            networkService: locator<NetworkService>(),
+          ),
+  );
+
+  locator.registerLazySingleton<PublicListsRepository>(
+    () => useMocks
+        ? MockPublicListsRepository()
+        : ApiPublicListsRepository(
             networkService: locator<NetworkService>(),
           ),
   );

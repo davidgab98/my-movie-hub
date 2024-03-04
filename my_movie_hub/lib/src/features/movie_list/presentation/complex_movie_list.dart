@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_cubit.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_state.dart';
-import 'package:my_movie_hub/src/features/watchlist/presentation/screens/refresco.dart';
+import 'package:my_movie_hub/src/features/movie_list/presentation/widgets/refresco.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class ComplexMovieList extends StatefulWidget {
@@ -75,7 +77,7 @@ class _MovieListHeader extends StatelessWidget {
               ? Text(
                   '${state.totalMovies} Movies',
                   style: AppTextStyle.headlineMedium.copyWith(
-                    color: AppColors.overlayLight,
+                    color: AppColors.overlayDark,
                   ),
                 )
               : null,
@@ -88,13 +90,16 @@ class _MovieListHeader extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              onPressed: context.read<ComplexMovieListCubit>().toggleGridMode,
+              onPressed:
+                  context.read<ComplexMovieListCubit>().toggleListDisplayMode,
               icon: Icon(
-                !state.gridMode
+                state.listDisplayMode == ListDisplayMode.listWithImages
                     ? Icons.grid_view_rounded
-                    : Icons.view_list_rounded,
+                    : state.listDisplayMode == ListDisplayMode.grid
+                        ? Icons.view_list_rounded
+                        : Icons.featured_play_list_rounded,
                 size: 28,
-                color: AppColors.black2,
+                color: AppColors.overlayDark,
               ),
             ),
             TextButton(
@@ -107,7 +112,7 @@ class _MovieListHeader extends StatelessWidget {
                 'Latest',
                 style: AppTextStyle.titleMedium.copyWith(
                   color: state.orderType == OrderType.asc
-                      ? AppColors.overlayLight
+                      ? AppColors.overlayDark
                       : AppColors.black2,
                 ),
               ),
@@ -122,7 +127,7 @@ class _MovieListHeader extends StatelessWidget {
                 'Oldest',
                 style: AppTextStyle.titleMedium.copyWith(
                   color: state.orderType == OrderType.desc
-                      ? AppColors.overlayLight
+                      ? AppColors.overlayDark
                       : AppColors.black2,
                 ),
               ),
@@ -157,13 +162,20 @@ class _MovieListBody extends StatelessWidget {
             ),
           );
         } else if (state.movies.isNotEmpty) {
-          return !state.gridMode
-              ? _MovieList(
-                  state: state,
-                )
-              : _MovieGrid(
-                  state: state,
-                );
+          if (state.listDisplayMode == ListDisplayMode.listWithImages) {
+            return _MovieListWithImages(
+              state: state,
+            );
+          }
+          if (state.listDisplayMode == ListDisplayMode.grid) {
+            return _MovieGrid(
+              state: state,
+            );
+          }
+          // state.listDisplayMode == ListDisplayMode.list
+          return _MovieList(
+            state: state,
+          );
         } else {
           return const SliverToBoxAdapter(
             child: Center(
@@ -176,8 +188,8 @@ class _MovieListBody extends StatelessWidget {
   }
 }
 
-class _MovieList extends StatelessWidget {
-  const _MovieList({
+class _MovieListWithImages extends StatelessWidget {
+  const _MovieListWithImages({
     required this.state,
     super.key,
   });
@@ -202,7 +214,7 @@ class _MovieList extends StatelessWidget {
             );
           }
         } else {
-          return MovieListTile(movie: state.movies[index]);
+          return MovieListTileImage(movie: state.movies[index]);
         }
       },
     );
@@ -239,12 +251,49 @@ class _MovieGrid extends StatelessWidget {
               );
             }
           } else {
-            return MovieListTile(movie: state.movies[index]);
+            return MovieCard(movie: state.movies[index]);
           }
         },
         childCount:
             state.hasReachedMax ? state.movies.length : state.movies.length + 1,
       ),
+    );
+  }
+}
+
+class _MovieList extends StatelessWidget {
+  const _MovieList({
+    required this.state,
+    super.key,
+  });
+
+  final ComplexMovieListState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList.separated(
+      separatorBuilder: (context, index) => const Divider(
+        color: Colors.blueGrey,
+        height: 5,
+        thickness: 0.15,
+      ),
+      itemCount:
+          state.hasReachedMax ? state.movies.length : state.movies.length + 1,
+      itemBuilder: (context, index) {
+        if (index >= state.movies.length) {
+          if (state.status.isError) {
+            return const Center(
+              child: Text('Error cargando datos nuevos'),
+            );
+          } else {
+            return const Center(
+              child: MMHCircularProgressIndicator(),
+            );
+          }
+        } else {
+          return MovieListTile(movie: state.movies[index]);
+        }
+      },
     );
   }
 }

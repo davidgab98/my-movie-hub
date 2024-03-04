@@ -14,7 +14,7 @@ class MMHRefreshIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      color: AppColors.primary,
+      color: AppColors.overlayDark,
       strokeWidth: 1,
       onRefresh: onRefresh,
       child: child,

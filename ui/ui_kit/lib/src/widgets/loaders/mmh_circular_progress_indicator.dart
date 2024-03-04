@@ -19,7 +19,7 @@ class MMHCircularProgressIndicator extends StatelessWidget {
       height: size,
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth ?? 1,
-        color: color ?? AppColors.primary,
+        color: color ?? AppColors.overlayDark,
       ),
     );
   }

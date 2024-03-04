@@ -34,7 +34,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_outline),
-            label: 'Favoritos',
+            label: 'Favorites',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),

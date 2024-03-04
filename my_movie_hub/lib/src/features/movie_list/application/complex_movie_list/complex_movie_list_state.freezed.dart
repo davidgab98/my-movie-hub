@@ -20,7 +20,7 @@ mixin _$ComplexMovieListState {
   int? get totalMovies => throw _privateConstructorUsedError;
   OrderType get orderType => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
-  bool get gridMode => throw _privateConstructorUsedError;
+  ListDisplayMode get listDisplayMode => throw _privateConstructorUsedError;
   StateStatus get status => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
@@ -40,7 +40,7 @@ abstract class $ComplexMovieListStateCopyWith<$Res> {
       int? totalMovies,
       OrderType orderType,
       bool hasReachedMax,
-      bool gridMode,
+      ListDisplayMode listDisplayMode,
       StateStatus status,
       String errorMessage});
 }
@@ -63,7 +63,7 @@ class _$ComplexMovieListStateCopyWithImpl<$Res,
     Object? totalMovies = freezed,
     Object? orderType = null,
     Object? hasReachedMax = null,
-    Object? gridMode = null,
+    Object? listDisplayMode = null,
     Object? status = null,
     Object? errorMessage = null,
   }) {
@@ -84,10 +84,10 @@ class _$ComplexMovieListStateCopyWithImpl<$Res,
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      gridMode: null == gridMode
-          ? _value.gridMode
-          : gridMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      listDisplayMode: null == listDisplayMode
+          ? _value.listDisplayMode
+          : listDisplayMode // ignore: cast_nullable_to_non_nullable
+              as ListDisplayMode,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ abstract class _$$ComplexMovieListStateImplCopyWith<$Res>
       int? totalMovies,
       OrderType orderType,
       bool hasReachedMax,
-      bool gridMode,
+      ListDisplayMode listDisplayMode,
       StateStatus status,
       String errorMessage});
 }
@@ -135,7 +135,7 @@ class __$$ComplexMovieListStateImplCopyWithImpl<$Res>
     Object? totalMovies = freezed,
     Object? orderType = null,
     Object? hasReachedMax = null,
-    Object? gridMode = null,
+    Object? listDisplayMode = null,
     Object? status = null,
     Object? errorMessage = null,
   }) {
@@ -156,10 +156,10 @@ class __$$ComplexMovieListStateImplCopyWithImpl<$Res>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      gridMode: null == gridMode
-          ? _value.gridMode
-          : gridMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      listDisplayMode: null == listDisplayMode
+          ? _value.listDisplayMode
+          : listDisplayMode // ignore: cast_nullable_to_non_nullable
+              as ListDisplayMode,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
       this.totalMovies,
       this.orderType = OrderType.desc,
       this.hasReachedMax = false,
-      this.gridMode = false,
+      this.listDisplayMode = ListDisplayMode.listWithImages,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
       : _movies = movies;
@@ -204,7 +204,7 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
   final bool hasReachedMax;
   @override
   @JsonKey()
-  final bool gridMode;
+  final ListDisplayMode listDisplayMode;
   @override
   @JsonKey()
   final StateStatus status;
@@ -214,7 +214,7 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
 
   @override
   String toString() {
-    return 'ComplexMovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, gridMode: $gridMode, status: $status, errorMessage: $errorMessage)';
+    return 'ComplexMovieListState(movies: $movies, totalMovies: $totalMovies, orderType: $orderType, hasReachedMax: $hasReachedMax, listDisplayMode: $listDisplayMode, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
@@ -229,8 +229,8 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
                 other.orderType == orderType) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
-            (identical(other.gridMode, gridMode) ||
-                other.gridMode == gridMode) &&
+            (identical(other.listDisplayMode, listDisplayMode) ||
+                other.listDisplayMode == listDisplayMode) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
@@ -243,7 +243,7 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
       totalMovies,
       orderType,
       hasReachedMax,
-      gridMode,
+      listDisplayMode,
       status,
       errorMessage);
 
@@ -261,7 +261,7 @@ abstract class _ComplexMovieListState implements ComplexMovieListState {
       final int? totalMovies,
       final OrderType orderType,
       final bool hasReachedMax,
-      final bool gridMode,
+      final ListDisplayMode listDisplayMode,
       final StateStatus status,
       final String errorMessage}) = _$ComplexMovieListStateImpl;
 
@@ -274,7 +274,7 @@ abstract class _ComplexMovieListState implements ComplexMovieListState {
   @override
   bool get hasReachedMax;
   @override
-  bool get gridMode;
+  ListDisplayMode get listDisplayMode;
   @override
   StateStatus get status;
   @override

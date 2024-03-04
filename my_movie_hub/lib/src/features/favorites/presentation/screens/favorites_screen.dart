@@ -15,7 +15,10 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favoritas'),
+        title: Text(
+          'Favorites',
+          style: AppTextStyle.headlineXXL,
+        ),
         leading: IconButton(
           padding: const EdgeInsets.only(left: AppSpaces.s12),
           icon: const Icon(

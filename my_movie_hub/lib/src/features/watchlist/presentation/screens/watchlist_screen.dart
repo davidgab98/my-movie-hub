@@ -15,7 +15,10 @@ class WatchlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Watchlist'),
+        title: Text(
+          'Watchlist',
+          style: AppTextStyle.headlineXXL,
+        ),
         leading: IconButton(
           padding: const EdgeInsets.only(left: AppSpaces.s12),
           icon: const Icon(

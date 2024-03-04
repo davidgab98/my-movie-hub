@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
@@ -8,8 +9,8 @@ import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_li
 import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_response.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class SimpleMovieList extends StatelessWidget {
-  const SimpleMovieList({required this.fetchMovies, super.key});
+class SimpleMovieCarousel extends StatelessWidget {
+  const SimpleMovieCarousel({required this.fetchMovies, super.key});
 
   final Future<Result<MovieListResponse, Exception>> Function({
     required int page,
@@ -106,48 +107,25 @@ class _MovieListState extends State<_MovieList> {
     return SliverToBoxAdapter(
       child: SizedBox(
         width: screenWidth,
-        child: ListView.separated(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          separatorBuilder: (context, index) => AppSpaces.gapW12,
-          padding: const EdgeInsets.only(left: AppSpaces.s12),
-          itemCount: widget.state.hasReachedMax
-              ? widget.state.movies.length
-              : widget.state.movies.length + 1,
+        child: Swiper(
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
               if (widget.state.status.isError) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpaces.s16,
-                    0,
-                    AppSpaces.s32,
-                    0,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Error',
-                      style: AppTextStyle.titleMedium
-                          .copyWith(color: AppColors.overlayDark),
-                    ),
-                  ),
+                return const Center(
+                  child: Text('Error cargando datos nuevos'),
                 );
               } else {
                 return const Center(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.fromLTRB(AppSpaces.s16, 0, AppSpaces.s32, 0),
-                    child: MMHCircularProgressIndicator(),
-                  ),
+                  child: MMHCircularProgressIndicator(),
                 );
               }
             } else {
-              return AspectRatio(
-                aspectRatio: 1 / 1.5,
-                child: MovieCard(movie: widget.state.movies[index]),
-              );
+              return MovieCard(movie: widget.state.movies[index]);
             }
           },
+          itemCount: 10,
+          viewportFraction: 0.8,
+          scale: 0.9,
         ),
       ),
     );
