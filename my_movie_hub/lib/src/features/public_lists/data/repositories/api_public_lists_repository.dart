@@ -33,8 +33,6 @@ class ApiPublicListsRepository extends PublicListsRepository {
     required int page,
   }) async {
     try {
-      await Future<void>.delayed(const Duration(seconds: 1));
-
       final response = await networkService.get(
         Endpoints.nowPlayingMovies,
         queryParameters: {'page': page},
@@ -43,7 +41,6 @@ class ApiPublicListsRepository extends PublicListsRepository {
       final MovieListResponse result =
           MovieListResponse.fromJson(response.data as Map<String, Object?>);
 
-      //return Error(NetworkException.badCertificate());
       return Success(result);
     } catch (e) {
       return Error(NetworkException.fromError(e));
