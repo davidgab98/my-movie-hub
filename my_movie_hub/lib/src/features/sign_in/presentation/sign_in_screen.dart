@@ -85,10 +85,10 @@ class _CreateNewAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '¿No estás registrado?',
-          style: AppTextStyle.bodySmall,
-        ),
+        Text('¿No estás registrado?',
+            style: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.overlayDark,
+            )),
         TextButton(
           onPressed: () {},
           child: Text(

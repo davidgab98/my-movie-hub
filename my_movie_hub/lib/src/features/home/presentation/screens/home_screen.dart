@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/now_playing_movies_horizontal_list.dart';
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/popular_movies__horizontal_list.dart';
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/top_rated_movies_horizontal_list.dart';
@@ -13,19 +15,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'appTitle'.tr(),
-          style: AppTextStyle.headlineXXL,
-        ),
-        leading: IconButton(
-          padding: const EdgeInsets.only(left: AppSpaces.s12),
-          icon: const Icon(
-            Icons.person,
-            size: 28,
-          ),
-          onPressed: () {},
-        ),
+      appBar: MainAppBar(
+        title: 'appTitle'.tr(),
+        leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
       body: const SafeArea(
         child: SingleChildScrollView(

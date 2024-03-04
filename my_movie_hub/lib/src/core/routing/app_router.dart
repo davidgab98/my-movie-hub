@@ -8,6 +8,7 @@ import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorit
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
+import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
 import 'package:my_movie_hub/src/features/sign_in/presentation/sign_in_screen.dart';
 import 'package:my_movie_hub/src/features/start_app/presentation/start_app_screen.dart';
@@ -18,6 +19,7 @@ enum AppRoute {
   startApp('/'),
   signIn('/signIn'),
   home('/home'),
+  profile('/profile'),
   favorites('/favorites'),
   watchlist('/watchlist'),
   ratings('/ratings'),
@@ -121,6 +123,12 @@ final goRouter = GoRouter(
 
         return MovieDetailScreen(movie: state.extra! as Movie);
       },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: AppRoute.profile.path,
+      name: AppRoute.profile.name,
+      builder: (context, state) => const ProfileScreen(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

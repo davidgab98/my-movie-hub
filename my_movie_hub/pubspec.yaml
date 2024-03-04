@@ -29,6 +29,7 @@ dependencies:
   formz: ^0.6.1
   event_bus: ^2.0.0
   card_swiper: ^3.0.1
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   bloc_test: ^9.1.4
@@ -44,3 +45,4 @@ flutter:
   generate: true
   assets:
     - assets/l10n/
+    - assets/pngs/
