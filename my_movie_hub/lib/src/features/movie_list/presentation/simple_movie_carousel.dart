@@ -2,8 +2,8 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
-import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_cubit.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_state.dart';
@@ -52,11 +52,7 @@ class _MovieListBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: MMHCircularProgressIndicator(),
-            ),
-          );
+          return _buildShimmerCarousel(context);
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
@@ -109,6 +105,8 @@ class _MovieListState extends State<_MovieList> {
       child: SizedBox(
         width: screenWidth,
         child: Swiper(
+          autoplay: false, //TODO: change to true
+          autoplayDelay: 4000,
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
               if (widget.state.status.isError) {
@@ -146,4 +144,26 @@ class _MovieListState extends State<_MovieList> {
       context.read<SimpleMovieListCubit>().loadMovies();
     }
   }
+}
+
+Widget _buildShimmerCarousel(BuildContext context) {
+  final screenWidth = MediaQuery.of(context).size.width;
+
+  return SliverToBoxAdapter(
+    child: SizedBox(
+      width: screenWidth,
+      child: Swiper(
+        itemBuilder: (BuildContext context, int index) {
+          return ShimmerPlaceholder(
+            shapeBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+            ),
+          );
+        },
+        itemCount: 10,
+        viewportFraction: 0.8,
+        scale: 0.9,
+      ),
+    ),
+  );
 }

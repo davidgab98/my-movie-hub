@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 
 class SessionIdInterceptor extends Interceptor {
-  final String? sessionId;
-
-  SessionIdInterceptor({required this.sessionId});
+  SessionIdInterceptor();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -14,6 +14,8 @@ class SessionIdInterceptor extends Interceptor {
     // if (endpointsRequiringSessionId.contains(options.path)) {
     //   options.queryParameters['session_id'] = sessionId;
     // }
+
+    final sessionId = locator<LocalStorageService>().getSessionId();
 
     options.queryParameters['session_id'] = sessionId;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
@@ -30,7 +31,12 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpaces.s16,
+        0,
+        AppSpaces.s16,
+        0,
+      ),
       child: CustomScrollView(
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
@@ -76,7 +82,7 @@ class _MovieListHeader extends StatelessWidget {
           title: state.totalMovies != null
               ? Text(
                   '${state.totalMovies} Movies',
-                  style: AppTextStyle.headlineMedium.copyWith(
+                  style: AppTextStyle.titleMedium.copyWith(
                     color: AppColors.overlayDark,
                   ),
                 )
@@ -150,11 +156,14 @@ class _MovieListBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: MMHCircularProgressIndicator(),
-            ),
-          );
+          switch (state.listDisplayMode) {
+            case ListDisplayMode.listWithImages:
+              return _buildShimmerListWithImages(context);
+            case ListDisplayMode.grid:
+              return _buildShimmerGrid(context);
+            case ListDisplayMode.list:
+              return _buildShimmerList(context);
+          }
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
@@ -199,7 +208,7 @@ class _MovieListWithImages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-      separatorBuilder: (context, index) => AppSpaces.gapH10,
+      separatorBuilder: (context, index) => AppSpaces.gapH20,
       itemCount:
           state.hasReachedMax ? state.movies.length : state.movies.length + 1,
       itemBuilder: (context, index) {
@@ -233,7 +242,7 @@ class _MovieGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
         childAspectRatio: 0.7,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
@@ -251,7 +260,10 @@ class _MovieGrid extends StatelessWidget {
               );
             }
           } else {
-            return MovieCard(movie: state.movies[index]);
+            return Padding(
+              padding: const EdgeInsets.only(bottom: AppSpaces.s10),
+              child: MovieCard(movie: state.movies[index]),
+            );
           }
         },
         childCount:
@@ -296,4 +308,70 @@ class _MovieList extends StatelessWidget {
       },
     );
   }
+}
+
+Widget _buildShimmerListWithImages(BuildContext context) {
+  return SliverList(
+    delegate: SliverChildBuilderDelegate(
+      (context, index) => Padding(
+        padding: const EdgeInsets.only(bottom: AppSpaces.s20),
+        child: AspectRatio(
+          aspectRatio: 16 / 7,
+          child: ShimmerPlaceholder(
+            width: double.infinity,
+            shapeBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+            ),
+          ),
+        ),
+      ),
+      childCount: 10,
+    ),
+  );
+}
+
+Widget _buildShimmerGrid(BuildContext context) {
+  return SliverGrid(
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 2,
+      childAspectRatio: 0.7,
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+    ),
+    delegate: SliverChildBuilderDelegate(
+      (BuildContext context, int index) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: AppSpaces.s10),
+          child: ShimmerPlaceholder(
+            width: double.infinity,
+            shapeBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+            ),
+          ),
+        );
+      },
+      childCount: 6,
+    ),
+  );
+}
+
+Widget _buildShimmerList(BuildContext context) {
+  return SliverList(
+    delegate: SliverChildBuilderDelegate(
+      (context, index) => Padding(
+        padding: const EdgeInsets.only(bottom: AppSpaces.s12),
+        child: AspectRatio(
+          aspectRatio: 6 / 1,
+          child: ShimmerPlaceholder(
+            width: double.infinity,
+            height: 60,
+            shapeBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppBorderRadius.br10),
+            ),
+          ),
+        ),
+      ),
+      childCount: 10,
+    ),
+  );
 }

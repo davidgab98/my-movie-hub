@@ -19,7 +19,7 @@ class MovieListTile extends StatelessWidget {
         title: Text(
           movie.title,
           style:
-              AppTextStyle.headlineSmall.copyWith(color: AppColors.overlayDark),
+              AppTextStyle.titleMedium.copyWith(color: AppColors.overlayDark),
         ),
         trailing: const Icon(
           Icons.arrow_forward_ios_rounded,

@@ -5,4 +5,7 @@ abstract class LocalStorageService {
   void setAccountId(int accountId);
   int? getAccountId();
   void removeAccountId();
+  void setLanguage(String language);
+  String? getLanguage();
+  void removeLanguage();
 }

@@ -54,7 +54,7 @@ class MMHTextFormField extends StatelessWidget {
       children: [
         Text(
           model.labelText ?? '',
-          style: AppTextStyle.titleLarge.copyWith(color: AppColors.primary),
+          style: AppTextStyle.titleLarge.copyWith(color: AppColors.overlayDark),
         ),
         Stack(
           alignment: Alignment.centerRight,
@@ -68,7 +68,8 @@ class MMHTextFormField extends StatelessWidget {
               controller: model.value != null
                   ? TextEditingController(text: model.value)
                   : model.controller,
-              style: AppTextStyle.titleSmall,
+              style: AppTextStyle.titleSmall
+                  .copyWith(color: AppColors.overlayDark),
               onChanged: onChanged,
               keyboardType: _getKeyboardTypeByType(),
               enabled: onChanged != null,

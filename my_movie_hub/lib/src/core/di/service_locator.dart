@@ -5,6 +5,8 @@ import 'package:my_movie_hub/src/core/network/dio_client.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 import 'package:my_movie_hub/src/core/storage/shared_preferences.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/data/repositories/api_sign_in_repository.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/favorites/data/repositories/api_favorites_repository.dart';
 import 'package:my_movie_hub/src/features/favorites/data/repositories/mock_api_repository.dart';
 import 'package:my_movie_hub/src/features/favorites/domain/repositories/favorites_repository.dart';
@@ -17,8 +19,6 @@ import 'package:my_movie_hub/src/features/public_lists/domain/repositories/publi
 import 'package:my_movie_hub/src/features/ratings/data/repositories/api_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/data/repositories/mock_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/domain/repositories/ratings_repository.dart';
-import 'package:my_movie_hub/src/features/sign_in/data/repositories/api_sign_in_repository.dart';
-import 'package:my_movie_hub/src/features/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 import 'package:my_movie_hub/src/features/watchlist/data/repositories/api_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/watchlist/data/repositories/mock_watchlist_repository.dart';

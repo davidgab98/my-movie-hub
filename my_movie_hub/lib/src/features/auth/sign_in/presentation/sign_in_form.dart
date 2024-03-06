@@ -5,8 +5,8 @@ import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core-ui/snackbars/snackbars.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
-import 'package:my_movie_hub/src/features/sign_in/application/sign_in_cubit.dart';
-import 'package:my_movie_hub/src/features/sign_in/application/sign_in_state.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_cubit.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_state.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class SignInForm extends StatelessWidget {
@@ -28,7 +28,7 @@ class SignInForm extends StatelessWidget {
           );
         }
         if (state.formStatus.isSuccess) {
-          context.goNamed(AppRoute.watchlist.name);
+          context.goNamed(AppRoute.home.name);
         }
       },
       child: Column(
@@ -111,17 +111,6 @@ class _SignInButton extends StatelessWidget {
               ),
             ),
           ),
-          // child: ZatacaButton(
-          //   model: ZatacaButtonModel(
-          //     text: 'Entrar',
-          //     type: ZatacaButtonType.primary,
-          //     rightIcon: Icons.arrow_right_alt_rounded,
-          //     isLoading: state.status.isSubmissionInProgress,
-          //   ),
-          //   onPressed: state.status.isValidated
-          //       ? context.read<SignInCubit>().signIn
-          //       : null,
-          // ),
         );
       },
     );

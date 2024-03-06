@@ -26,6 +26,7 @@ class WatchlistScreen extends StatelessWidget {
           eventBus: locator<IEventBus>(),
         )..loadMovies(),
         child: const SafeArea(
+          bottom: false,
           child: ComplexMovieList(),
         ),
       ),

@@ -4,22 +4,24 @@ import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/routing/intermediate_loading_screen.dart';
 import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
+import 'package:my_movie_hub/src/features/auth/session_manager/presentation/session_manager_screen.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/presentation/sign_in_screen.dart';
 import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
+import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
-import 'package:my_movie_hub/src/features/sign_in/presentation/sign_in_screen.dart';
-import 'package:my_movie_hub/src/features/start_app/presentation/start_app_screen.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
 
 enum AppRoute {
-  startApp('/'),
+  sessionManager('/'),
   signIn('/signIn'),
   home('/home'),
   profile('/profile'),
+  changeLanguage('changeLanguage'),
   favorites('/favorites'),
   watchlist('/watchlist'),
   ratings('/ratings'),
@@ -129,6 +131,14 @@ final goRouter = GoRouter(
       path: AppRoute.profile.path,
       name: AppRoute.profile.name,
       builder: (context, state) => const ProfileScreen(),
+      routes: [
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoute.changeLanguage.path,
+          name: AppRoute.changeLanguage.name,
+          builder: (context, state) => const ChangeLanguageScreen(),
+        ),
+      ],
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
@@ -138,9 +148,9 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.startApp.path,
-      name: AppRoute.startApp.name,
-      builder: (context, state) => const StartAppScreen(),
+      path: AppRoute.sessionManager.path,
+      name: AppRoute.sessionManager.name,
+      builder: (context, state) => const SessionManagerScreen(),
     ),
   ],
   errorBuilder: (context, state) => const NotFoundScreen(),

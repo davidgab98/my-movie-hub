@@ -25,9 +25,7 @@ class RatingsScreen extends StatelessWidget {
           ratingsRepository: locator<RatingsRepository>(),
           eventBus: locator<IEventBus>(),
         )..loadMovies(),
-        child: const SafeArea(
-          child: ComplexMovieList(),
-        ),
+        child: const ComplexMovieList(),
       ),
     );
   }

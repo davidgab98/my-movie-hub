@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_cubit.dart';
@@ -50,10 +51,8 @@ class _MovieListBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: MMHCircularProgressIndicator(),
-            ),
+          return SliverToBoxAdapter(
+            child: buildShimmerHorizontalList(context),
           );
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
@@ -167,4 +166,29 @@ class _MovieListState extends State<_MovieList> {
       context.read<SimpleMovieListCubit>().loadMovies();
     }
   }
+}
+
+Widget buildShimmerHorizontalList(BuildContext context) {
+  final screenWidth = MediaQuery.of(context).size.width;
+
+  return SizedBox(
+    width: screenWidth,
+    child: ListView.separated(
+      scrollDirection: Axis.horizontal,
+      separatorBuilder: (context, index) => AppSpaces.gapW12,
+      padding: const EdgeInsets.only(left: AppSpaces.s12),
+      itemCount: 6,
+      itemBuilder: (context, index) {
+        return AspectRatio(
+          aspectRatio: 1 / 1.5,
+          child: ShimmerPlaceholder(
+            width: screenWidth,
+            shapeBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+            ),
+          ),
+        );
+      },
+    ),
+  );
 }

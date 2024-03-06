@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
-import 'package:my_movie_hub/src/features/sign_in/application/sign_in_cubit.dart';
-import 'package:my_movie_hub/src/features/sign_in/domain/repositories/sign_in_repository.dart';
-import 'package:my_movie_hub/src/features/sign_in/presentation/sign_in_form.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_cubit.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/domain/repositories/sign_in_repository.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/presentation/sign_in_form.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -90,7 +91,11 @@ class _CreateNewAccount extends StatelessWidget {
               color: AppColors.overlayDark,
             )),
         TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            //TODO: Save url in const
+            final uri = Uri.parse('https://www.themoviedb.org/signup');
+            await launchUrl(uri);
+          },
           child: Text(
             'Crea un usuario',
             style: AppTextStyle.button.copyWith(

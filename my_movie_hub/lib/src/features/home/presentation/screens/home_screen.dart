@@ -20,6 +20,8 @@ class HomeScreen extends StatelessWidget {
         leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
       body: const SafeArea(
+        top: false,
+        bottom: false,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -29,7 +31,7 @@ class HomeScreen extends StatelessWidget {
               TrendingMoviesCarousel(),
               AppSpaces.gapH16,
               NowPlayingMoviesHorizontalList(),
-              AppSpaces.gapH12,
+              AppSpaces.gapH24,
               TopRatedMoviesHorizontalList(),
               AppSpaces.gapH12,
               UpcomingMoviesHorizontalList(),
@@ -88,14 +90,14 @@ class _GenreDirectAccess extends StatelessWidget {
         visualDensity: VisualDensity.compact,
         backgroundColor: Colors.transparent,
         side: const BorderSide(
-          color: AppColors.black2,
+          color: AppColors.black4,
           width: 0.5,
         ),
       ),
       child: Text(
         genre,
         style: AppTextStyle.bodyLarge.copyWith(
-          color: AppColors.black2,
+          color: AppColors.black4,
         ),
       ),
       onPressed: () {},

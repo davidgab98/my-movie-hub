@@ -7,6 +7,12 @@ class IEvent {
   }
 }
 
+/// Auth Events
+class LogOutEvent extends IEvent {
+  LogOutEvent();
+}
+
+/// Movie-user States Events
 class AddMovieToWatchlistEvent extends IEvent {
   final Movie movie;
 

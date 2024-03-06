@@ -7,7 +7,9 @@ class SharedPreferencesService extends LocalStorageService {
 
   static const sessionIdKey = 'sessionIdKey';
   static const accountIdKey = 'accountIdKey';
+  static const languageKey = 'languageKey';
 
+  /// Auth
   @override
   String? getSessionId() {
     return preferences.getString(sessionIdKey);
@@ -36,5 +38,21 @@ class SharedPreferencesService extends LocalStorageService {
   @override
   void removeAccountId() {
     preferences.remove(accountIdKey);
+  }
+
+  /// App Config
+  @override
+  String? getLanguage() {
+    return preferences.getString(languageKey);
+  }
+
+  @override
+  void setLanguage(String language) {
+    preferences.setString(languageKey, language);
+  }
+
+  @override
+  void removeLanguage() {
+    preferences.remove(languageKey);
   }
 }

@@ -4,7 +4,7 @@ import 'package:my_movie_hub/src/core/exceptions/app_exception.dart';
 import 'package:my_movie_hub/src/core/exceptions/network_exception.dart';
 import 'package:my_movie_hub/src/core/network/endpoints.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
-import 'package:my_movie_hub/src/features/sign_in/domain/repositories/sign_in_repository.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/user/domain/model/user.dart';
 
 class ApiSignInRepository extends SignInRepository {
@@ -79,6 +79,17 @@ class ApiSignInRepository extends SignInRepository {
       final User user = User.fromJson(response.data as Map<String, dynamic>);
 
       return Success(user);
+    } catch (e) {
+      return Error(NetworkException.fromError(e));
+    }
+  }
+
+  @override
+  Future<Result<Unit, Exception>> logOut() async {
+    try {
+      await networkService.delete(Endpoints.logOut);
+
+      return const Success(unit);
     } catch (e) {
       return Error(NetworkException.fromError(e));
     }

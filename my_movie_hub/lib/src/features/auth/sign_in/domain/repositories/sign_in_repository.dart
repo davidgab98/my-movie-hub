@@ -15,4 +15,6 @@ abstract class SignInRepository {
   Future<Result<User, Exception>> getUserAccount({
     required String sessionId,
   });
+
+  Future<Result<Unit, Exception>> logOut();
 }

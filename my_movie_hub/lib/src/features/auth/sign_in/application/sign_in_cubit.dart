@@ -3,8 +3,8 @@ import 'package:formz/formz.dart';
 import 'package:my_movie_hub/src/core-ui/forms/sign_in_inputs.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
-import 'package:my_movie_hub/src/features/sign_in/application/sign_in_state.dart';
-import 'package:my_movie_hub/src/features/sign_in/domain/repositories/sign_in_repository.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_state.dart';
+import 'package:my_movie_hub/src/features/auth/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 
 class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
@@ -48,6 +48,8 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
 
+    print('1');
+
     final result = await _signInRepository.createAndValidateRequestToken(
       username: state.username.value,
       password: state.password.value,
@@ -55,6 +57,7 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
     result.when(
       (success) async {
+        print('2');
         await _createSession(requestToken: success);
       },
       (error) => emit(
@@ -71,8 +74,12 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
       requestToken: requestToken,
     );
 
+    print('3');
+
     result.when(
       (success) async {
+        print('4');
+        print(success);
         _localStorageService.setSessionId(success);
         await _getUserAccount(sessionId: success);
       },
@@ -90,8 +97,11 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
       sessionId: sessionId,
     );
 
+    print('5');
+
     result.when(
       (success) {
+        print('6');
         _localStorageService.setAccountId(success.id);
         _userCubit.updateUserWith(success);
         emit(

@@ -1,14 +1,19 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 
 class LanguageInterceptor extends Interceptor {
-  /// language = iso_639_1-iso_3166_1
-  final String language;
-
-  LanguageInterceptor({required this.language});
+  LanguageInterceptor();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.queryParameters['language'] = language;
+    final currentLanguage = locator<LocalStorageService>().getLanguage() ??
+        Platform.localeName.replaceAll('_', '-');
+
+    options.queryParameters['language'] = currentLanguage;
+
     super.onRequest(options, handler);
   }
 }

@@ -41,14 +41,14 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
       children: [
         Text(
           widget.model.labelText ?? '',
-          style: AppTextStyle.titleLarge.copyWith(color: AppColors.primary),
+          style: AppTextStyle.titleLarge.copyWith(color: AppColors.overlayDark),
         ),
         TextFormField(
           initialValue: widget.model.initialValue,
           onChanged: widget.onChanged,
           keyboardType: TextInputType.text,
           obscureText: passwordHidden,
-          style: AppTextStyle.titleSmall,
+          style: AppTextStyle.titleSmall.copyWith(color: AppColors.overlayDark),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(AppSpaces.s8),
             hintText: widget.model.hintText,

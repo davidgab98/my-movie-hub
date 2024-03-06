@@ -7,6 +7,7 @@ import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/features/movie/application/movie_item/movie_item_cubit.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class MovieCard extends StatelessWidget {
   MovieCard({
@@ -27,68 +28,65 @@ class MovieCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () => context.pushNamed(AppRoute.movieDetail.name, extra: movie),
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 10),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Stack(
-              children: [
-                Flow(
-                  delegate: _ParallaxFlowDelegate(
-                    scrollable: Scrollable.of(context),
-                    listItemContext: context,
-                    backgroundImageKey: backgroundImageKey,
-                  ),
-                  children: [
-                    Image.network(
-                      'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                      key: backgroundImageKey,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+          child: Stack(
+            children: [
+              Flow(
+                delegate: _ParallaxFlowDelegate(
+                  scrollable: Scrollable.of(context),
+                  listItemContext: context,
+                  backgroundImageKey: backgroundImageKey,
                 ),
-                Positioned.fill(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.7),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: const [0.6, 0.95],
-                      ),
+                children: [
+                  Image.network(
+                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                    key: backgroundImageKey,
+                    fit: BoxFit.cover,
+                  ),
+                ],
+              ),
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withOpacity(0.7),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [0.6, 0.95],
                     ),
                   ),
                 ),
-                // Positioned(
-                //   left: 20,
-                //   bottom: 20,
-                //   child: Column(
-                //     mainAxisSize: MainAxisSize.min,
-                //     crossAxisAlignment: CrossAxisAlignment.start,
-                //     children: [
-                //       Text(
-                //         movie.title,
-                //         style:
-                //             Theme.of(context).textTheme.headline6!.copyWith(
-                //                   color: Colors.white,
-                //                   fontWeight: FontWeight.bold,
-                //                 ),
-                //       ),
-                //       Text(
-                //         movie.overview,
-                //         style: Theme.of(context)
-                //             .textTheme
-                //             .bodySmall!
-                //             .copyWith(color: Colors.white),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-              ],
-            ),
+              ),
+              // Positioned(
+              //   left: 20,
+              //   bottom: 20,
+              //   child: Column(
+              //     mainAxisSize: MainAxisSize.min,
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         movie.title,
+              //         style:
+              //             Theme.of(context).textTheme.headline6!.copyWith(
+              //                   color: Colors.white,
+              //                   fontWeight: FontWeight.bold,
+              //                 ),
+              //       ),
+              //       Text(
+              //         movie.overview,
+              //         style: Theme.of(context)
+              //             .textTheme
+              //             .bodySmall!
+              //             .copyWith(color: Colors.white),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),

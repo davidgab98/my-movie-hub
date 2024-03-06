@@ -10,6 +10,7 @@ class Endpoints {
       '/authentication/token/validate_with_login';
   static const String createSession = '/authentication/session/new';
   static const String getAccount = '/account';
+  static const String logOut = '/authentication/session';
 
   /// user_lists
   static const String favoriteMovies = '/account/favorite/movies';

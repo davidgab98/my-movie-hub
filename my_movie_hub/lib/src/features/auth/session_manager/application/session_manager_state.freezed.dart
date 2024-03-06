@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'start_app_state.dart';
+part of 'session_manager_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,27 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StartAppState {
-  StartAppStatus get status => throw _privateConstructorUsedError;
+mixin _$SessionManagerState {
+  SessionManagerStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StartAppStateCopyWith<StartAppState> get copyWith =>
+  $SessionManagerStateCopyWith<SessionManagerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StartAppStateCopyWith<$Res> {
-  factory $StartAppStateCopyWith(
-          StartAppState value, $Res Function(StartAppState) then) =
-      _$StartAppStateCopyWithImpl<$Res, StartAppState>;
+abstract class $SessionManagerStateCopyWith<$Res> {
+  factory $SessionManagerStateCopyWith(
+          SessionManagerState value, $Res Function(SessionManagerState) then) =
+      _$SessionManagerStateCopyWithImpl<$Res, SessionManagerState>;
   @useResult
-  $Res call({StartAppStatus status});
+  $Res call({SessionManagerStatus status});
 }
 
 /// @nodoc
-class _$StartAppStateCopyWithImpl<$Res, $Val extends StartAppState>
-    implements $StartAppStateCopyWith<$Res> {
-  _$StartAppStateCopyWithImpl(this._value, this._then);
+class _$SessionManagerStateCopyWithImpl<$Res, $Val extends SessionManagerState>
+    implements $SessionManagerStateCopyWith<$Res> {
+  _$SessionManagerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -51,28 +51,28 @@ class _$StartAppStateCopyWithImpl<$Res, $Val extends StartAppState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as StartAppStatus,
+              as SessionManagerStatus,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$StartAppImplCopyWith<$Res>
-    implements $StartAppStateCopyWith<$Res> {
-  factory _$$StartAppImplCopyWith(
-          _$StartAppImpl value, $Res Function(_$StartAppImpl) then) =
-      __$$StartAppImplCopyWithImpl<$Res>;
+abstract class _$$SessionManagerImplCopyWith<$Res>
+    implements $SessionManagerStateCopyWith<$Res> {
+  factory _$$SessionManagerImplCopyWith(_$SessionManagerImpl value,
+          $Res Function(_$SessionManagerImpl) then) =
+      __$$SessionManagerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({StartAppStatus status});
+  $Res call({SessionManagerStatus status});
 }
 
 /// @nodoc
-class __$$StartAppImplCopyWithImpl<$Res>
-    extends _$StartAppStateCopyWithImpl<$Res, _$StartAppImpl>
-    implements _$$StartAppImplCopyWith<$Res> {
-  __$$StartAppImplCopyWithImpl(
-      _$StartAppImpl _value, $Res Function(_$StartAppImpl) _then)
+class __$$SessionManagerImplCopyWithImpl<$Res>
+    extends _$SessionManagerStateCopyWithImpl<$Res, _$SessionManagerImpl>
+    implements _$$SessionManagerImplCopyWith<$Res> {
+  __$$SessionManagerImplCopyWithImpl(
+      _$SessionManagerImpl _value, $Res Function(_$SessionManagerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,34 +80,34 @@ class __$$StartAppImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$StartAppImpl(
+    return _then(_$SessionManagerImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as StartAppStatus,
+              as SessionManagerStatus,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StartAppImpl implements _StartApp {
-  const _$StartAppImpl({this.status = StartAppStatus.initial});
+class _$SessionManagerImpl implements _SessionManager {
+  const _$SessionManagerImpl({this.status = SessionManagerStatus.initial});
 
   @override
   @JsonKey()
-  final StartAppStatus status;
+  final SessionManagerStatus status;
 
   @override
   String toString() {
-    return 'StartAppState(status: $status)';
+    return 'SessionManagerState(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartAppImpl &&
+            other is _$SessionManagerImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -117,17 +117,19 @@ class _$StartAppImpl implements _StartApp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StartAppImplCopyWith<_$StartAppImpl> get copyWith =>
-      __$$StartAppImplCopyWithImpl<_$StartAppImpl>(this, _$identity);
+  _$$SessionManagerImplCopyWith<_$SessionManagerImpl> get copyWith =>
+      __$$SessionManagerImplCopyWithImpl<_$SessionManagerImpl>(
+          this, _$identity);
 }
 
-abstract class _StartApp implements StartAppState {
-  const factory _StartApp({final StartAppStatus status}) = _$StartAppImpl;
+abstract class _SessionManager implements SessionManagerState {
+  const factory _SessionManager({final SessionManagerStatus status}) =
+      _$SessionManagerImpl;
 
   @override
-  StartAppStatus get status;
+  SessionManagerStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$StartAppImplCopyWith<_$StartAppImpl> get copyWith =>
+  _$$SessionManagerImplCopyWith<_$SessionManagerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

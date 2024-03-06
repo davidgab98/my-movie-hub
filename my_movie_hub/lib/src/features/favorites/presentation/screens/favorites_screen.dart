@@ -25,9 +25,7 @@ class FavoritesScreen extends StatelessWidget {
           favoritesRepository: locator<FavoritesRepository>(),
           eventBus: locator<IEventBus>(),
         )..loadMovies(),
-        child: const SafeArea(
-          child: ComplexMovieList(),
-        ),
+        child: const ComplexMovieList(),
       ),
     );
   }

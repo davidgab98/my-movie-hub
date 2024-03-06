@@ -1,6 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/routing/app_router.dart';
+import 'package:my_movie_hub/src/core/utils/locale_utils.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/widgets/logout_menu_option.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/widgets/open_profile_web_button.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/widgets/profile_header.dart';
@@ -15,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(title: 'Mi perfil'),
+      appBar: const MainAppBar(title: 'Mi perfil'),
       body: BlocBuilder<UserCubit, UserState>(
         bloc: locator<UserCubit>(),
         builder: (context, state) {
@@ -46,9 +50,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   AppSpaces.gapH32,
                   ProfileMenuOption(
-                    title: 'Idioma: Español',
+                    title: 'Idioma: ${context.locale.getTranslatedString()}',
                     icon: Icons.language_rounded,
-                    onPress: () {},
+                    onPress: () =>
+                        context.pushNamed(AppRoute.changeLanguage.name),
                   ),
                   AppSpaces.gapH32,
                   const LogOutMenuOption(),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -18,14 +20,22 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 3,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(
-            AppBorderRadius.br20,
+      backgroundColor: Colors.transparent,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColors.primary,
+              AppColors.secondary.withOpacity(0.6),
+              AppColors.tertiary.withOpacity(0.6),
+            ],
+            stops: const [0.0, 0.75, 1.0],
           ),
-          bottomRight: Radius.circular(
-            AppBorderRadius.br20,
-          ),
+        ),
+        child: Container(
+          color: AppColors.black.withOpacity(0.2),
         ),
       ),
       title: Text(
@@ -38,6 +48,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: const Icon(
                 Icons.person,
                 size: 28,
+                color: AppColors.overlayDark,
               ),
               onPressed: leadingIconAction,
             )

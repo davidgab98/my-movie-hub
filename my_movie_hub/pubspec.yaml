@@ -25,11 +25,12 @@ dependencies:
   shared_preferences: 2.2.2
   device_preview: 1.1.0
   easy_localization: ^3.0.3
-  multiple_result: ^5.1.0
-  formz: ^0.6.1
-  event_bus: ^2.0.0
-  card_swiper: ^3.0.1
-  url_launcher: ^6.2.5
+  multiple_result: 5.1.0
+  formz: 0.6.1
+  event_bus: 2.0.0
+  card_swiper: 3.0.1
+  url_launcher: 6.2.5
+  shimmer: ^3.0.0
 
 dev_dependencies:
   bloc_test: ^9.1.4
@@ -42,7 +43,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: true
+  generate: false
   assets:
     - assets/l10n/
     - assets/pngs/
