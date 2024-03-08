@@ -31,11 +31,11 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
+      padding: EdgeInsets.fromLTRB(
         AppSpaces.s16,
         0,
         AppSpaces.s16,
-        0,
+        MediaQuery.of(context).padding.bottom,
       ),
       child: CustomScrollView(
         controller: _scrollController,

@@ -27,7 +27,8 @@ class MovieListTileImage extends StatelessWidget {
         movieRepository: locator<MovieRepository>(),
       ),
       child: GestureDetector(
-        onTap: () => context.pushNamed(AppRoute.movieDetail.name, extra: movie),
+        onTap: () =>
+            context.pushNamed(getMovieDetailRouteName(context), extra: movie),
         child: AspectRatio(
           aspectRatio: 16 / 7,
           child: ClipRRect(

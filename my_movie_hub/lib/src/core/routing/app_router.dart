@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/routing/intermediate_loading_screen.dart';
 import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
@@ -13,7 +12,6 @@ import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screen
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
-import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
 
 enum AppRoute {
@@ -25,9 +23,7 @@ enum AppRoute {
   favorites('/favorites'),
   watchlist('/watchlist'),
   ratings('/ratings'),
-  movieDetail('/movieDetail'),
-  a('/a'),
-  b('/b');
+  movieDetail('movieDetail');
 
   final String path;
   const AppRoute(this.path);
@@ -40,13 +36,10 @@ final _shellNavigatorWatchlistKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
 final _shellNavigatorRatingsKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Ratings');
-final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shell A');
-final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shell B');
+final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'shell A');
 
 final goRouter = GoRouter(
-  redirect: (context, state) {
-    //TODO: Implement navigation conditions
-  },
+  redirect: (context, state) {},
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
   routes: [
@@ -58,7 +51,7 @@ final goRouter = GoRouter(
       },
       branches: [
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorAKey,
+          navigatorKey: _shellNavigatorHomeKey,
           routes: [
             GoRoute(
               name: AppRoute.home.name,
@@ -66,6 +59,23 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: HomeScreen(),
               ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorHomeKey,
+                  name: '${AppRoute.home.name}${AppRoute.movieDetail.name}',
+                  path: '${AppRoute.home.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
+
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -78,6 +88,25 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: WatchlistScreen(),
               ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorWatchlistKey,
+                  name:
+                      '${AppRoute.watchlist.name}${AppRoute.movieDetail.name}',
+                  path:
+                      '${AppRoute.watchlist.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
+
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -90,6 +119,25 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: FavoritesScreen(),
               ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorFavoritesKey,
+                  name:
+                      '${AppRoute.favorites.name}${AppRoute.movieDetail.name}',
+                  path:
+                      '${AppRoute.favorites.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
+
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -102,6 +150,23 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RatingsScreen(),
               ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorRatingsKey,
+                  name: '${AppRoute.ratings.name}${AppRoute.movieDetail.name}',
+                  path: '${AppRoute.ratings.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
+
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -133,68 +198,13 @@ final goRouter = GoRouter(
         ),
       ],
     ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.movieDetail.path,
-      name: AppRoute.movieDetail.name,
-      builder: (context, state) {
-        if (state.extra == null || state.extra is! Movie) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.pop();
-          });
-          return const IntermediateLoadingScreen();
-        }
-
-        return MovieDetailScreen(movie: state.extra! as Movie);
-      },
-    ),
   ],
   errorBuilder: (context, state) => const NotFoundScreen(),
 );
 
-class ScreenA extends StatelessWidget {
-  const ScreenA({super.key});
+String getMovieDetailRouteName(BuildContext context) {
+  final String? baseRoute =
+      GoRouter.of(context).routerDelegate.currentConfiguration.last.route.name;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('A'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(locator<UserCubit>().state.user.name),
-          Text(locator<UserCubit>().state.user.id.toString()),
-          Text(locator<UserCubit>().state.user.username),
-          Text(locator<UserCubit>().state.user.iso31661 ?? ''),
-          Text(locator<UserCubit>().state.user.iso6391 ?? ''),
-          Text(locator<UserCubit>().state.user.includeAdult.toString()),
-          Text(locator<UserCubit>().state.user.avatar?.avatarImagePath ?? ''),
-          Text(locator<UserCubit>().state.user.avatar?.gravatarHash ?? ''),
-          if (locator<UserCubit>().state.user.avatar?.gravatarHash != null)
-            Image.network(
-              'https://www.gravatar.com/avatar/${locator<UserCubit>().state.user.avatar!.gravatarHash!}',
-            ),
-          if (locator<UserCubit>().state.user.avatar?.avatarImagePath != null)
-            Image.network(
-              'https://image.tmdb.org/t/p/original${locator<UserCubit>().state.user.avatar!.avatarImagePath!}',
-            ),
-        ],
-      ),
-    );
-  }
-}
-
-class ScreenB extends StatelessWidget {
-  const ScreenB({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('B'),
-      ),
-    );
-  }
+  return '$baseRoute${AppRoute.movieDetail.name}';
 }

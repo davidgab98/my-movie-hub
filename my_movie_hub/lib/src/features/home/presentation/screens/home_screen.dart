@@ -17,24 +17,25 @@ class HomeScreen extends StatelessWidget {
       appBar: MainAppBar(
         leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
-      body: const SafeArea(
+      body: SafeArea(
         top: false,
         bottom: false,
         child: SingleChildScrollView(
           child: Column(
             children: [
               AppSpaces.gapH12,
-              _GenresDirectAccessList(),
+              const _GenresDirectAccessList(),
               AppSpaces.gapH16,
-              TrendingMoviesCarousel(),
+              const TrendingMoviesCarousel(),
               AppSpaces.gapH16,
-              NowPlayingMoviesHorizontalList(),
+              const NowPlayingMoviesHorizontalList(),
               AppSpaces.gapH24,
-              TopRatedMoviesHorizontalList(),
+              const TopRatedMoviesHorizontalList(),
               AppSpaces.gapH12,
-              UpcomingMoviesHorizontalList(),
+              const UpcomingMoviesHorizontalList(),
               AppSpaces.gapH12,
-              PopularMoviesHorizontalList(),
+              const PopularMoviesHorizontalList(),
+              SizedBox(height: MediaQuery.of(context).padding.bottom),
             ],
           ),
         ),

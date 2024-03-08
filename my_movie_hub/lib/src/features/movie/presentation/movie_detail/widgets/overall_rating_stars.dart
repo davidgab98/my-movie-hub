@@ -19,11 +19,12 @@ class OverallRatingStars extends StatelessWidget {
       children: [
         Text(
           voteAverage.toStringAsFixed(1),
-          style: AppTextStyle.titleLarge.copyWith(
-            color: Colors.amber.withOpacity(0.8),
+          style: AppTextStyle.titleMedium.copyWith(
+            color: AppColors.overlayDark,
+            backgroundColor: Colors.amber.withOpacity(0.2),
           ),
         ),
-        AppSpaces.gapH2,
+        AppSpaces.gapH4,
         Row(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(5, (index) {

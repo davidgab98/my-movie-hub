@@ -12,7 +12,8 @@ class MovieListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushNamed(AppRoute.movieDetail.name, extra: movie),
+      onTap: () =>
+          context.pushNamed(getMovieDetailRouteName(context), extra: movie),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         minVerticalPadding: 0,

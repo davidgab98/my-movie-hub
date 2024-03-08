@@ -7,7 +7,7 @@ class AppColors {
 
   static const backgroundAPPLight = Color(0xFFFFFFFF);
   static const backgroundAPPDarkOld = Color(0xFF15202B);
-  static const backgroundAPPDark = Color(0xFF090909);
+  static const backgroundAPPDark = Color(0xFF090909); //0xFF121212
   static const backgroundGrey = Color(0xFFE7E7E7);
   static const backgroundInput = Color(0xFFFAFBFD);
   static const overlayLight = Color.fromRGBO(50, 50, 50, 0.9);

@@ -60,17 +60,20 @@ class _DetailsHeader extends StatelessWidget {
       elevation: 0,
       expandedHeight: MediaQuery.of(context).size.height * 0.33,
       pinned: true,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.share),
+        )
+      ],
       flexibleSpace: LayoutBuilder(
         builder: (BuildContext context, _) {
           return Stack(
             fit: StackFit.expand,
             children: [
-              Hero(
-                tag: 'movie-hero-${movie.id}',
-                child: Image.network(
-                  'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
-                  fit: BoxFit.cover,
-                ),
+              Image.network(
+                'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                fit: BoxFit.cover,
               ),
               const DecoratedBox(
                 decoration: BoxDecoration(
@@ -91,7 +94,7 @@ class _DetailsHeader extends StatelessWidget {
                   child: FittedBox(
                     child: Text(
                       movie.title,
-                      style: AppTextStyle.mainTitleMedium.copyWith(
+                      style: AppTextStyle.mainTitleSmall.copyWith(
                         color: AppColors.overlayDark,
                       ),
                     ),
@@ -134,18 +137,26 @@ class _DetailsBody extends StatelessWidget {
               ),
               AppSpaces.gapH20,
               MovieAccountStatesRow(movie: movie),
-              AppSpaces.gapH32,
+              AppSpaces.gapH16,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
+                child: Divider(
+                  height: 0,
+                  color: AppColors.overlayDark.withOpacity(1),
+                  thickness: 0.1,
+                ),
+              ),
+              AppSpaces.gapH16,
               _MainMovieInfo(movie: movie),
               AppSpaces.gapH20,
               MovieRecommendationsList(
                 movieId: movie.id,
               ),
 
-              /// Titulo original
+              //TODO: Funcionalidad de compartir
               /// Credits (Fotos solo del reparto, similar a filmaffinity)
               /// Reviews
-              /// País
-              AppSpaces.gapH32,
+              SizedBox(height: MediaQuery.of(context).padding.bottom),
             ],
           ),
         );
@@ -171,13 +182,17 @@ class _MainMovieInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                state.movie.tagline ?? '',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+              if (state.movie.tagline != null &&
+                  state.movie.tagline!.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpaces.s16),
+                  child: Text(
+                    state.movie.tagline!,
+                    style: AppTextStyle.bodyMedium.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
-              ),
-              AppSpaces.gapH20,
               Text(
                 movie.overview,
                 style: AppTextStyle.bodyMedium.copyWith(
@@ -204,16 +219,37 @@ class _MainMovieInfo extends StatelessWidget {
                 ),
               AppSpaces.gapH20,
               Text(
-                state.movie.runtime != null
-                    ? 'Duration: ${state.movie.runtime?.formatDuration()}'
-                    : 'Duration: 0h 0m',
+                'Titulo original: ${movie.originalTitle}',
                 style: AppTextStyle.bodyMedium.copyWith(
                   color: AppColors.white,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
-                'Release date: ${movie.releaseDate}',
+                'Fecha de estreno: ${movie.releaseDate}',
+                style: AppTextStyle.bodyMedium.copyWith(
+                  color: AppColors.white,
+                ),
+              ),
+              AppSpaces.gapH16,
+              Text(
+                state.movie.runtime != null
+                    ? 'Duracion: ${state.movie.runtime?.formatDuration()}'
+                    : 'Duracion: 0h 0m',
+                style: AppTextStyle.bodyMedium.copyWith(
+                  color: AppColors.white,
+                ),
+              ),
+              AppSpaces.gapH16,
+              Text(
+                'País: ${state.movie.productionCountries != null ? state.movie.productionCountries!.map((country) => country.name ?? '').join(', ') : ''}',
+                style: AppTextStyle.bodyMedium.copyWith(
+                  color: AppColors.white,
+                ),
+              ),
+              AppSpaces.gapH16,
+              Text(
+                'Companies: ${state.movie.productionCompanies != null ? state.movie.productionCompanies!.map((company) => company.name ?? '').join(', ') : ''}',
                 style: AppTextStyle.bodyMedium.copyWith(
                   color: AppColors.white,
                 ),

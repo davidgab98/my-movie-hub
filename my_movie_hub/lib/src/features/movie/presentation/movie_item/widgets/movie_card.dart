@@ -26,17 +26,15 @@ class MovieCard extends StatelessWidget {
         movieRepository: locator<MovieRepository>(),
       ),
       child: GestureDetector(
-        onTap: () {
-          context.pushNamed(AppRoute.movieDetail.name, extra: movie);
-        },
+        onTap: () => context.pushNamed(
+          getMovieDetailRouteName(context),
+          extra: movie,
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(AppBorderRadius.br16),
-          child: Hero(
-            tag: 'movie-hero-${movie.id}',
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-              fit: BoxFit.cover,
-            ),
+          child: Image.network(
+            'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+            fit: BoxFit.cover,
           ),
         ),
       ),
