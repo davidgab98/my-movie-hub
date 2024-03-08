@@ -66,7 +66,6 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: HomeScreen(),
               ),
-              routes: [],
             ),
           ],
         ),
@@ -79,7 +78,6 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: WatchlistScreen(),
               ),
-              routes: [],
             ),
           ],
         ),
@@ -92,7 +90,6 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: FavoritesScreen(),
               ),
-              routes: [],
             ),
           ],
         ),
@@ -105,7 +102,6 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RatingsScreen(),
               ),
-              routes: [],
             ),
           ],
         ),
@@ -113,18 +109,15 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.movieDetail.path,
-      name: AppRoute.movieDetail.name,
-      builder: (context, state) {
-        if (state.extra == null || state.extra is! Movie) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.pop();
-          });
-          return const IntermediateLoadingScreen();
-        }
-
-        return MovieDetailScreen(movie: state.extra! as Movie);
-      },
+      path: AppRoute.sessionManager.path,
+      name: AppRoute.sessionManager.name,
+      builder: (context, state) => const SessionManagerScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: AppRoute.signIn.path,
+      name: AppRoute.signIn.name,
+      builder: (context, state) => const SignInScreen(),
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
@@ -142,15 +135,18 @@ final goRouter = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.signIn.path,
-      name: AppRoute.signIn.name,
-      builder: (context, state) => const SignInScreen(),
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: AppRoute.sessionManager.path,
-      name: AppRoute.sessionManager.name,
-      builder: (context, state) => const SessionManagerScreen(),
+      path: AppRoute.movieDetail.path,
+      name: AppRoute.movieDetail.name,
+      builder: (context, state) {
+        if (state.extra == null || state.extra is! Movie) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.pop();
+          });
+          return const IntermediateLoadingScreen();
+        }
+
+        return MovieDetailScreen(movie: state.extra! as Movie);
+      },
     ),
   ],
   errorBuilder: (context, state) => const NotFoundScreen(),

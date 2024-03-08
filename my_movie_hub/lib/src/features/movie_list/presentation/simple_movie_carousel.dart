@@ -52,7 +52,7 @@ class _MovieListBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          return _buildShimmerCarousel(context);
+          return const ShimmerCarousel();
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
@@ -105,7 +105,7 @@ class _MovieListState extends State<_MovieList> {
       child: SizedBox(
         width: screenWidth,
         child: Swiper(
-          autoplay: false, //TODO: change to true
+          autoplay: true, //TODO: change to true
           autoplayDelay: 4000,
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
@@ -146,24 +146,29 @@ class _MovieListState extends State<_MovieList> {
   }
 }
 
-Widget _buildShimmerCarousel(BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
+class ShimmerCarousel extends StatelessWidget {
+  const ShimmerCarousel({super.key});
 
-  return SliverToBoxAdapter(
-    child: SizedBox(
-      width: screenWidth,
-      child: Swiper(
-        itemBuilder: (BuildContext context, int index) {
-          return ShimmerPlaceholder(
-            shapeBorder: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
-            ),
-          );
-        },
-        itemCount: 10,
-        viewportFraction: 0.8,
-        scale: 0.9,
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        width: screenWidth,
+        child: Swiper(
+          itemBuilder: (BuildContext context, int index) {
+            return ShimmerPlaceholder(
+              shapeBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+              ),
+            );
+          },
+          itemCount: 10,
+          viewportFraction: 0.8,
+          scale: 0.9,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

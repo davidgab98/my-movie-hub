@@ -100,10 +100,12 @@ class _MovieListHeader extends StatelessWidget {
                   context.read<ComplexMovieListCubit>().toggleListDisplayMode,
               icon: Icon(
                 state.listDisplayMode == ListDisplayMode.listWithImages
-                    ? Icons.grid_view_rounded
-                    : state.listDisplayMode == ListDisplayMode.grid
-                        ? Icons.view_list_rounded
-                        : Icons.featured_play_list_rounded,
+                    ? Icons.calendar_view_day_outlined
+                    : state.listDisplayMode == ListDisplayMode.grid2
+                        ? Icons.grid_3x3_rounded
+                        : state.listDisplayMode == ListDisplayMode.grid3
+                            ? Icons.grid_4x4_rounded
+                            : Icons.view_list_outlined,
                 size: 28,
                 color: AppColors.overlayDark,
               ),
@@ -159,8 +161,10 @@ class _MovieListBody extends StatelessWidget {
           switch (state.listDisplayMode) {
             case ListDisplayMode.listWithImages:
               return _buildShimmerListWithImages(context);
-            case ListDisplayMode.grid:
-              return _buildShimmerGrid(context);
+            case ListDisplayMode.grid2:
+              return _buildShimmerGrid(context, 2);
+            case ListDisplayMode.grid3:
+              return _buildShimmerGrid(context, 3);
             case ListDisplayMode.list:
               return _buildShimmerList(context);
           }
@@ -176,12 +180,19 @@ class _MovieListBody extends StatelessWidget {
               state: state,
             );
           }
-          if (state.listDisplayMode == ListDisplayMode.grid) {
+          if (state.listDisplayMode == ListDisplayMode.grid2) {
             return _MovieGrid(
               state: state,
+              crossAxisCount: 2,
             );
           }
-          // state.listDisplayMode == ListDisplayMode.list
+          if (state.listDisplayMode == ListDisplayMode.grid3) {
+            return _MovieGrid(
+              state: state,
+              crossAxisCount: 3,
+            );
+          }
+          // if (state.listDisplayMode == ListDisplayMode.list)
           return _MovieList(
             state: state,
           );
@@ -234,15 +245,17 @@ class _MovieGrid extends StatelessWidget {
   const _MovieGrid({
     required this.state,
     super.key,
+    required this.crossAxisCount,
   });
 
   final ComplexMovieListState state;
+  final int crossAxisCount;
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
         childAspectRatio: 0.7,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
@@ -330,10 +343,10 @@ Widget _buildShimmerListWithImages(BuildContext context) {
   );
 }
 
-Widget _buildShimmerGrid(BuildContext context) {
+Widget _buildShimmerGrid(BuildContext context, int crossAxisCount) {
   return SliverGrid(
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: crossAxisCount,
       childAspectRatio: 0.7,
       crossAxisSpacing: 10,
       mainAxisSpacing: 10,

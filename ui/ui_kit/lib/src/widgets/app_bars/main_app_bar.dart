@@ -1,16 +1,14 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
     super.key,
-    required this.title,
+    this.title,
     this.leadingIconAction,
   });
 
-  final String title;
+  final String? title;
   final VoidCallback? leadingIconAction;
 
   @override
@@ -20,28 +18,23 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 3,
-      backgroundColor: Colors.transparent,
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              AppColors.primary,
-              AppColors.secondary.withOpacity(0.6),
-              AppColors.tertiary.withOpacity(0.6),
-            ],
-            stops: const [0.0, 0.75, 1.0],
-          ),
-        ),
-        child: Container(
-          color: AppColors.black.withOpacity(0.2),
-        ),
-      ),
-      title: Text(
-        title,
-        style: AppTextStyle.headlineXXL,
-      ),
+      backgroundColor: AppColors.backgroundAPPDark,
+      flexibleSpace: Container(color: AppColors.black.withOpacity(0.6)),
+      centerTitle: true,
+      title: title != null
+          ? Text(
+              title!,
+              style: AppTextStyle.headlineXXL.copyWith(
+                color: AppColors.white,
+              ),
+            )
+          : const Image(
+              alignment: Alignment.center,
+              height: kToolbarHeight - 18,
+              image: AssetImage(
+                'assets/pngs/mmh_logo.png',
+              ),
+            ),
       leading: leadingIconAction != null
           ? IconButton(
               padding: const EdgeInsets.only(left: AppSpaces.s12),
@@ -53,6 +46,19 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: leadingIconAction,
             )
           : null,
+      actions: [
+        if (title != null)
+          const Padding(
+            padding: EdgeInsets.only(right: AppSpaces.s16),
+            child: Image(
+              alignment: Alignment.center,
+              height: kToolbarHeight - 28,
+              image: AssetImage(
+                'assets/pngs/mmh_logo.png',
+              ),
+            ),
+          )
+      ],
     );
   }
 }

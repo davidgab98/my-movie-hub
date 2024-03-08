@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
@@ -16,7 +15,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
-        title: 'appTitle'.tr(),
         leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
       body: const SafeArea(
@@ -90,14 +88,14 @@ class _GenreDirectAccess extends StatelessWidget {
         visualDensity: VisualDensity.compact,
         backgroundColor: Colors.transparent,
         side: const BorderSide(
-          color: AppColors.black4,
+          color: AppColors.black3,
           width: 0.5,
         ),
       ),
       child: Text(
         genre,
-        style: AppTextStyle.bodyLarge.copyWith(
-          color: AppColors.black4,
+        style: AppTextStyle.bodySmall.copyWith(
+          color: AppColors.black3,
         ),
       ),
       onPressed: () {},

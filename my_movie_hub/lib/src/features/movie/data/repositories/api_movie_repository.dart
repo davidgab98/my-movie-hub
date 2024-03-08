@@ -4,6 +4,7 @@ import 'package:my_movie_hub/src/core/network/endpoints.dart';
 import 'package:my_movie_hub/src/core/network/network_service.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_response.dart';
 
 class ApiMovieRepository extends MovieRepository {
   ApiMovieRepository({required this.networkService});
@@ -17,7 +18,7 @@ class ApiMovieRepository extends MovieRepository {
       final response = await networkService.get(
         '/movie/$movieId',
         // queryParameters: {
-        //   'append_to_response': 'account_states',
+        //   'append_to_response': 'credits',
         // },
       );
 
@@ -43,6 +44,28 @@ class ApiMovieRepository extends MovieRepository {
 
       final result =
           AccountStates.fromJson(response.data as Map<String, Object?>);
+
+      return Success(result);
+    } catch (e) {
+      return Error(NetworkException.fromError(e));
+    }
+  }
+
+  @override
+  Future<Result<MovieListResponse, Exception>> getRecommendations({
+    required int movieId,
+    required int page,
+  }) async {
+    try {
+      final response = await networkService.get(
+        '/movie/$movieId/${Endpoints.recommendations}',
+        queryParameters: {
+          'page': page,
+        },
+      );
+
+      final MovieListResponse result =
+          MovieListResponse.fromJson(response.data as Map<String, Object?>);
 
       return Success(result);
     } catch (e) {

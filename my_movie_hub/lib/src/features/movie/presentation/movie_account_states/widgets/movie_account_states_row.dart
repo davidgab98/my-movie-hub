@@ -29,6 +29,7 @@ class MovieAccountStatesRow extends StatelessWidget {
         eventBus: locator<IEventBus>(),
       )..getAccountStates(movie.id),
       child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           MovieFavoriteIcon(),
           MovieWatchlistIcon(),

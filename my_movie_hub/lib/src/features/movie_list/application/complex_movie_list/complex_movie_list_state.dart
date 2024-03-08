@@ -6,7 +6,7 @@ import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 
 part 'complex_movie_list_state.freezed.dart';
 
-enum ListDisplayMode { listWithImages, grid, list }
+enum ListDisplayMode { listWithImages, grid2, grid3, list }
 
 @freezed
 class ComplexMovieListState with _$ComplexMovieListState {

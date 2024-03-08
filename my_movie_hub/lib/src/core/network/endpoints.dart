@@ -24,6 +24,9 @@ class Endpoints {
   static const String upcomingMovies = '/movie/upcoming';
   static const String trendingMovies = '/trending/movie';
 
+  /// movie
+  static const String recommendations = '/recommendations';
+
   /// movie_states
   static const String movieToWatchlist = '/account/watchlist';
   static const String movieToFavorites = '/account/favorite';

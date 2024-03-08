@@ -22,6 +22,7 @@ class MovieWatchlistIcon extends StatelessWidget {
           icon: Icon(
             isInWatchlist ? Icons.visibility : Icons.visibility_off,
             color: AppColors.blue,
+            size: 28,
           ),
           onPressed: () =>
               context.read<MovieAccountStatesCubit>().toggleWatchlistStatus(),

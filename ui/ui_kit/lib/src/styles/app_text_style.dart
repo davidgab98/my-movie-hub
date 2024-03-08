@@ -101,4 +101,19 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
     fontSize: 22,
   );
+
+  static final TextStyle mainTitleSmall = GoogleFonts.nunito(
+    fontWeight: FontWeight.w600,
+    fontSize: 30,
+  );
+
+  static final TextStyle mainTitleMedium = GoogleFonts.nunito(
+    fontWeight: FontWeight.w700,
+    fontSize: 30,
+  );
+
+  static final TextStyle mainTitleLarge = GoogleFonts.nunito(
+    fontWeight: FontWeight.w800,
+    fontSize: 30,
+  );
 }

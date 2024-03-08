@@ -15,7 +15,7 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "appTitle": "My Movie Hub EN",
+  "appTitle": "MMH (EN)",
   "homeTitle": "Inicio EN",
   "error": {
     "notImplemented": "Not Implemented",
@@ -43,7 +43,7 @@ class CodegenLoader extends AssetLoader{
   }
 };
 static const Map<String,dynamic> es = {
-  "appTitle": "My Movie Hub ES",
+  "appTitle": "MMH (ES)",
   "homeTitle": "Inicio ES",
   "error": {
     "notImplemented": "Not Implemented",

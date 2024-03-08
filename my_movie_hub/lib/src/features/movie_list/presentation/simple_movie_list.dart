@@ -10,17 +10,37 @@ import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_re
 import 'package:ui_kit/ui_kit.dart';
 
 class SimpleMovieList extends StatelessWidget {
-  const SimpleMovieList({required this.fetchMovies, super.key});
+  const SimpleMovieList({
+    this.fetchMovies,
+    this.fetchMoviesByMovieId,
+    this.movieId,
+    super.key,
+  }) : assert(
+          fetchMovies != null && fetchMoviesByMovieId == null ||
+              fetchMovies == null &&
+                  fetchMoviesByMovieId != null &&
+                  movieId != null,
+          'You must provide a fetchMovies or a fetchMoviesByIdMovie but not both. If provide fetchMoviesByMovieId, you must provide a movieId',
+        );
 
   final Future<Result<MovieListResponse, Exception>> Function({
     required int page,
-  }) fetchMovies;
+  })? fetchMovies;
+
+  final Future<Result<MovieListResponse, Exception>> Function({
+    required int page,
+    required int movieId,
+  })? fetchMoviesByMovieId;
+
+  final int? movieId;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SimpleMovieListCubit(
         fetchMovies: fetchMovies,
+        fetchMoviesByMovieId: fetchMoviesByMovieId,
+        movieId: movieId,
       )..loadMovies(),
       child: const _Body(),
     );

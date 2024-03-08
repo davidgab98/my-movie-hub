@@ -50,7 +50,6 @@ final ThemeData lightTheme = ThemeData(
     unselectedLabelStyle: AppTextStyle.bodySmall,
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: AppColors.primary,
     foregroundColor: AppColors.white,
   ),
   colorScheme: ColorScheme.fromSwatch(
@@ -69,7 +68,6 @@ final ThemeData darkTheme = ThemeData(
     unselectedLabelStyle: AppTextStyle.bodySmall,
   ),
   appBarTheme: const AppBarTheme(
-    //backgroundColor: Color(0xFF1A1B2F),
     foregroundColor: AppColors.overlayDark,
   ),
   colorScheme: ColorScheme.fromSwatch(
