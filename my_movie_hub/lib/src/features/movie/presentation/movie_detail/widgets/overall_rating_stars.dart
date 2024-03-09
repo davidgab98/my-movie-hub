@@ -17,14 +17,23 @@ class OverallRatingStars extends StatelessWidget {
     final double valueIn5 = (voteAverage / 2).clamp(0, 5);
     return Column(
       children: [
-        Text(
-          voteAverage.toStringAsFixed(1),
-          style: AppTextStyle.titleMedium.copyWith(
-            color: AppColors.overlayDark,
-            backgroundColor: Colors.amber.withOpacity(0.2),
+        Container(
+          padding: const EdgeInsets.all(AppSpaces.s6),
+          decoration: BoxDecoration(
+            color: Colors.amber.withOpacity(0.2),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppBorderRadius.brMax),
+            ),
+          ),
+          child: Text(
+            voteAverage.toStringAsFixed(1),
+            style: AppTextStyle.titleMedium.copyWith(
+              color: AppColors.overlayDark,
+              //backgroundColor: Colors.amber.withOpacity(0.2),
+            ),
           ),
         ),
-        AppSpaces.gapH4,
+        AppSpaces.gapH8,
         Row(
           mainAxisSize: MainAxisSize.min,
           children: List.generate(5, (index) {

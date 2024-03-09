@@ -10,9 +10,9 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       id: json['id'] as int,
       adult: json['adult'] as bool? ?? false,
       backdropPath: json['backdrop_path'] as String? ?? '',
-      genreIds:
-          (json['genreIds'] as List<dynamic>?)?.map((e) => e as int).toList() ??
-              const [],
+      genres: json['genre_ids'] == null
+          ? const []
+          : _convertGenreIdsToGenres(json['genre_ids'] as List),
       originalLanguage: json['original_language'] as String? ?? '',
       originalTitle: json['original_title'] as String? ?? '',
       overview: json['overview'] as String? ?? '',
@@ -34,7 +34,7 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
       'id': instance.id,
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
-      'genreIds': instance.genreIds,
+      'genre_ids': instance.genres.map((e) => _$MovieGenreEnumMap[e]!).toList(),
       'original_language': instance.originalLanguage,
       'original_title': instance.originalTitle,
       'overview': instance.overview,
@@ -48,14 +48,33 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
       'account_states': instance.accountStates,
     };
 
+const _$MovieGenreEnumMap = {
+  MovieGenre.action: 'action',
+  MovieGenre.adventure: 'adventure',
+  MovieGenre.animation: 'animation',
+  MovieGenre.comedy: 'comedy',
+  MovieGenre.crime: 'crime',
+  MovieGenre.documentary: 'documentary',
+  MovieGenre.drama: 'drama',
+  MovieGenre.family: 'family',
+  MovieGenre.fantasy: 'fantasy',
+  MovieGenre.history: 'history',
+  MovieGenre.horror: 'horror',
+  MovieGenre.music: 'music',
+  MovieGenre.mystery: 'mystery',
+  MovieGenre.romance: 'romance',
+  MovieGenre.scienceFiction: 'scienceFiction',
+  MovieGenre.tvMovie: 'tvMovie',
+  MovieGenre.thriller: 'thriller',
+  MovieGenre.war: 'war',
+  MovieGenre.western: 'western',
+};
+
 _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
     _$DetailedMovieImpl(
       id: json['id'] as int,
       adult: json['adult'] as bool? ?? false,
       backdropPath: json['backdrop_path'] as String? ?? '',
-      genreIds:
-          (json['genreIds'] as List<dynamic>?)?.map((e) => e as int).toList() ??
-              const [],
       originalLanguage: json['original_language'] as String? ?? '',
       originalTitle: json['original_title'] as String? ?? '',
       overview: json['overview'] as String? ?? '',
@@ -70,10 +89,10 @@ _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
           ? null
           : AccountStates.fromJson(
               json['account_states'] as Map<String, dynamic>),
+      credits: json['credits'] == null
+          ? const Credits()
+          : Credits.fromLimitedJson(json['credits'] as Map<String, dynamic>),
       budget: json['budget'] as int?,
-      genres: (json['genres'] as List<dynamic>?)
-          ?.map((e) => Genre.fromJson(e as Map<String, dynamic>))
-          .toList(),
       homepage: json['homepage'] as String?,
       imdbId: json['imdb_id'] as String?,
       productionCompanies: (json['production_companies'] as List<dynamic>?)
@@ -96,7 +115,6 @@ Map<String, dynamic> _$$DetailedMovieImplToJson(_$DetailedMovieImpl instance) =>
       'id': instance.id,
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
-      'genreIds': instance.genreIds,
       'original_language': instance.originalLanguage,
       'original_title': instance.originalTitle,
       'overview': instance.overview,
@@ -108,8 +126,8 @@ Map<String, dynamic> _$$DetailedMovieImplToJson(_$DetailedMovieImpl instance) =>
       'vote_average': instance.voteAverage,
       'vote_count': instance.voteCount,
       'account_states': instance.accountStates,
+      'credits': instance.credits,
       'budget': instance.budget,
-      'genres': instance.genres,
       'homepage': instance.homepage,
       'imdb_id': instance.imdbId,
       'production_companies': instance.productionCompanies,
@@ -121,33 +139,74 @@ Map<String, dynamic> _$$DetailedMovieImplToJson(_$DetailedMovieImpl instance) =>
       'tagline': instance.tagline,
     };
 
-_$GenreImpl _$$GenreImplFromJson(Map<String, dynamic> json) => _$GenreImpl(
-      id: json['id'] as int,
-      name: json['name'] as String?,
+_$CreditsImpl _$$CreditsImplFromJson(Map<String, dynamic> json) =>
+    _$CreditsImpl(
+      crew: (json['crew'] as List<dynamic>?)
+              ?.map((e) => CrewMember.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      cast: (json['cast'] as List<dynamic>?)
+              ?.map((e) => CastMember.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$$GenreImplToJson(_$GenreImpl instance) =>
+Map<String, dynamic> _$$CreditsImplToJson(_$CreditsImpl instance) =>
+    <String, dynamic>{
+      'crew': instance.crew,
+      'cast': instance.cast,
+    };
+
+_$CrewMemberImpl _$$CrewMemberImplFromJson(Map<String, dynamic> json) =>
+    _$CrewMemberImpl(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      department: json['department'] as String,
+      job: json['job'] as String,
+      profilePath: json['profilePath'] as String?,
+    );
+
+Map<String, dynamic> _$$CrewMemberImplToJson(_$CrewMemberImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'department': instance.department,
+      'job': instance.job,
+      'profilePath': instance.profilePath,
+    };
+
+_$CastMemberImpl _$$CastMemberImplFromJson(Map<String, dynamic> json) =>
+    _$CastMemberImpl(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      character: json['character'] as String?,
+      profilePath: json['profile_path'] as String?,
+    );
+
+Map<String, dynamic> _$$CastMemberImplToJson(_$CastMemberImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'character': instance.character,
+      'profile_path': instance.profilePath,
     };
 
 _$ProductionCompanyImpl _$$ProductionCompanyImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductionCompanyImpl(
       id: json['id'] as int,
-      logoPath: json['logoPath'] as String?,
+      logoPath: json['logo_path'] as String?,
       name: json['name'] as String?,
-      originCountry: json['originCountry'] as String?,
+      originCountry: json['origin_country'] as String?,
     );
 
 Map<String, dynamic> _$$ProductionCompanyImplToJson(
         _$ProductionCompanyImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'logoPath': instance.logoPath,
+      'logo_path': instance.logoPath,
       'name': instance.name,
-      'originCountry': instance.originCountry,
+      'origin_country': instance.originCountry,
     };
 
 _$ProductionCountryImpl _$$ProductionCountryImplFromJson(

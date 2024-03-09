@@ -24,7 +24,8 @@ mixin _$Movie {
   bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
-  List<int> get genreIds => throw _privateConstructorUsedError;
+  @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+  List<MovieGenre> get genres => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_title')
@@ -58,7 +59,8 @@ abstract class $MovieCopyWith<$Res> {
       {int id,
       bool adult,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<int> genreIds,
+      @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+      List<MovieGenre> genres,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -90,7 +92,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? id = null,
     Object? adult = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
+    Object? genres = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -116,10 +118,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value.genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      genres: null == genres
+          ? _value.genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<MovieGenre>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -191,7 +193,8 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       {int id,
       bool adult,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<int> genreIds,
+      @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+      List<MovieGenre> genres,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -222,7 +225,7 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? id = null,
     Object? adult = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
+    Object? genres = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -248,10 +251,10 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value._genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      genres: null == genres
+          ? _value._genres
+          : genres // ignore: cast_nullable_to_non_nullable
+              as List<MovieGenre>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -307,7 +310,8 @@ class _$MovieImpl implements _Movie {
       {required this.id,
       this.adult = false,
       @JsonKey(name: 'backdrop_path') this.backdropPath = '',
-      final List<int> genreIds = const [],
+      @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+      final List<MovieGenre> genres = const [],
       @JsonKey(name: 'original_language') this.originalLanguage = '',
       @JsonKey(name: 'original_title') this.originalTitle = '',
       this.overview = '',
@@ -319,7 +323,7 @@ class _$MovieImpl implements _Movie {
       @JsonKey(name: 'vote_average') this.voteAverage = 0.0,
       @JsonKey(name: 'vote_count') this.voteCount = 0,
       @JsonKey(name: 'account_states') this.accountStates})
-      : _genreIds = genreIds;
+      : _genres = genres;
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieImplFromJson(json);
@@ -332,13 +336,13 @@ class _$MovieImpl implements _Movie {
   @override
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
-  final List<int> _genreIds;
+  final List<MovieGenre> _genres;
   @override
-  @JsonKey()
-  List<int> get genreIds {
-    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
+  @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+  List<MovieGenre> get genres {
+    if (_genres is EqualUnmodifiableListView) return _genres;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genreIds);
+    return EqualUnmodifiableListView(_genres);
   }
 
   @override
@@ -377,7 +381,7 @@ class _$MovieImpl implements _Movie {
 
   @override
   String toString() {
-    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates)';
+    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genres: $genres, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates)';
   }
 
   @override
@@ -389,7 +393,7 @@ class _$MovieImpl implements _Movie {
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
+            const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.originalLanguage, originalLanguage) ||
                 other.originalLanguage == originalLanguage) &&
             (identical(other.originalTitle, originalTitle) ||
@@ -419,7 +423,7 @@ class _$MovieImpl implements _Movie {
       id,
       adult,
       backdropPath,
-      const DeepCollectionEquality().hash(_genreIds),
+      const DeepCollectionEquality().hash(_genres),
       originalLanguage,
       originalTitle,
       overview,
@@ -451,7 +455,8 @@ abstract class _Movie implements Movie {
       {required final int id,
       final bool adult,
       @JsonKey(name: 'backdrop_path') final String backdropPath,
-      final List<int> genreIds,
+      @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+      final List<MovieGenre> genres,
       @JsonKey(name: 'original_language') final String originalLanguage,
       @JsonKey(name: 'original_title') final String originalTitle,
       final String overview,
@@ -475,7 +480,8 @@ abstract class _Movie implements Movie {
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
   @override
-  List<int> get genreIds;
+  @JsonKey(name: 'genre_ids', fromJson: _convertGenreIdsToGenres)
+  List<MovieGenre> get genres;
   @override
   @JsonKey(name: 'original_language')
   String get originalLanguage;
@@ -521,7 +527,6 @@ mixin _$DetailedMovie {
   bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String get backdropPath => throw _privateConstructorUsedError;
-  List<int> get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_title')
@@ -540,8 +545,9 @@ mixin _$DetailedMovie {
   int get voteCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'account_states')
   AccountStates? get accountStates => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: Credits.fromLimitedJson)
+  Credits get credits => throw _privateConstructorUsedError;
   int? get budget => throw _privateConstructorUsedError;
-  List<Genre>? get genres => throw _privateConstructorUsedError;
   String? get homepage => throw _privateConstructorUsedError;
   @JsonKey(name: 'imdb_id')
   String? get imdbId => throw _privateConstructorUsedError;
@@ -575,7 +581,6 @@ abstract class $DetailedMovieCopyWith<$Res> {
       {int id,
       bool adult,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<int> genreIds,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -587,8 +592,8 @@ abstract class $DetailedMovieCopyWith<$Res> {
       @JsonKey(name: 'vote_average') double voteAverage,
       @JsonKey(name: 'vote_count') int voteCount,
       @JsonKey(name: 'account_states') AccountStates? accountStates,
+      @JsonKey(fromJson: Credits.fromLimitedJson) Credits credits,
       int? budget,
-      List<Genre>? genres,
       String? homepage,
       @JsonKey(name: 'imdb_id') String? imdbId,
       @JsonKey(name: 'production_companies')
@@ -602,6 +607,7 @@ abstract class $DetailedMovieCopyWith<$Res> {
       String? tagline});
 
   $AccountStatesCopyWith<$Res>? get accountStates;
+  $CreditsCopyWith<$Res> get credits;
 }
 
 /// @nodoc
@@ -620,7 +626,6 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
     Object? id = null,
     Object? adult = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -632,8 +637,8 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
     Object? voteAverage = null,
     Object? voteCount = null,
     Object? accountStates = freezed,
+    Object? credits = null,
     Object? budget = freezed,
-    Object? genres = freezed,
     Object? homepage = freezed,
     Object? imdbId = freezed,
     Object? productionCompanies = freezed,
@@ -657,10 +662,6 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value.genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -705,14 +706,14 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
           ? _value.accountStates
           : accountStates // ignore: cast_nullable_to_non_nullable
               as AccountStates?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credits,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
               as int?,
-      genres: freezed == genres
-          ? _value.genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as List<Genre>?,
       homepage: freezed == homepage
           ? _value.homepage
           : homepage // ignore: cast_nullable_to_non_nullable
@@ -763,6 +764,14 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
       return _then(_value.copyWith(accountStates: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreditsCopyWith<$Res> get credits {
+    return $CreditsCopyWith<$Res>(_value.credits, (value) {
+      return _then(_value.copyWith(credits: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -777,7 +786,6 @@ abstract class _$$DetailedMovieImplCopyWith<$Res>
       {int id,
       bool adult,
       @JsonKey(name: 'backdrop_path') String backdropPath,
-      List<int> genreIds,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
@@ -789,8 +797,8 @@ abstract class _$$DetailedMovieImplCopyWith<$Res>
       @JsonKey(name: 'vote_average') double voteAverage,
       @JsonKey(name: 'vote_count') int voteCount,
       @JsonKey(name: 'account_states') AccountStates? accountStates,
+      @JsonKey(fromJson: Credits.fromLimitedJson) Credits credits,
       int? budget,
-      List<Genre>? genres,
       String? homepage,
       @JsonKey(name: 'imdb_id') String? imdbId,
       @JsonKey(name: 'production_companies')
@@ -805,6 +813,8 @@ abstract class _$$DetailedMovieImplCopyWith<$Res>
 
   @override
   $AccountStatesCopyWith<$Res>? get accountStates;
+  @override
+  $CreditsCopyWith<$Res> get credits;
 }
 
 /// @nodoc
@@ -821,7 +831,6 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
     Object? id = null,
     Object? adult = null,
     Object? backdropPath = null,
-    Object? genreIds = null,
     Object? originalLanguage = null,
     Object? originalTitle = null,
     Object? overview = null,
@@ -833,8 +842,8 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
     Object? voteAverage = null,
     Object? voteCount = null,
     Object? accountStates = freezed,
+    Object? credits = null,
     Object? budget = freezed,
-    Object? genres = freezed,
     Object? homepage = freezed,
     Object? imdbId = freezed,
     Object? productionCompanies = freezed,
@@ -858,10 +867,6 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String,
-      genreIds: null == genreIds
-          ? _value._genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
       originalLanguage: null == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -906,14 +911,14 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
           ? _value.accountStates
           : accountStates // ignore: cast_nullable_to_non_nullable
               as AccountStates?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as Credits,
       budget: freezed == budget
           ? _value.budget
           : budget // ignore: cast_nullable_to_non_nullable
               as int?,
-      genres: freezed == genres
-          ? _value._genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as List<Genre>?,
       homepage: freezed == homepage
           ? _value.homepage
           : homepage // ignore: cast_nullable_to_non_nullable
@@ -961,7 +966,6 @@ class _$DetailedMovieImpl implements _DetailedMovie {
       {required this.id,
       this.adult = false,
       @JsonKey(name: 'backdrop_path') this.backdropPath = '',
-      final List<int> genreIds = const [],
       @JsonKey(name: 'original_language') this.originalLanguage = '',
       @JsonKey(name: 'original_title') this.originalTitle = '',
       this.overview = '',
@@ -973,8 +977,9 @@ class _$DetailedMovieImpl implements _DetailedMovie {
       @JsonKey(name: 'vote_average') this.voteAverage = 0.0,
       @JsonKey(name: 'vote_count') this.voteCount = 0,
       @JsonKey(name: 'account_states') this.accountStates,
+      @JsonKey(fromJson: Credits.fromLimitedJson)
+      this.credits = const Credits(),
       this.budget,
-      final List<Genre>? genres,
       this.homepage,
       @JsonKey(name: 'imdb_id') this.imdbId,
       @JsonKey(name: 'production_companies')
@@ -987,9 +992,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
       final List<SpokenLanguage>? spokenLanguages,
       this.status,
       this.tagline})
-      : _genreIds = genreIds,
-        _genres = genres,
-        _productionCompanies = productionCompanies,
+      : _productionCompanies = productionCompanies,
         _productionCountries = productionCountries,
         _spokenLanguages = spokenLanguages;
 
@@ -1004,15 +1007,6 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @override
   @JsonKey(name: 'backdrop_path')
   final String backdropPath;
-  final List<int> _genreIds;
-  @override
-  @JsonKey()
-  List<int> get genreIds {
-    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genreIds);
-  }
-
   @override
   @JsonKey(name: 'original_language')
   final String originalLanguage;
@@ -1047,17 +1041,10 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   @JsonKey(name: 'account_states')
   final AccountStates? accountStates;
   @override
-  final int? budget;
-  final List<Genre>? _genres;
+  @JsonKey(fromJson: Credits.fromLimitedJson)
+  final Credits credits;
   @override
-  List<Genre>? get genres {
-    final value = _genres;
-    if (value == null) return null;
-    if (_genres is EqualUnmodifiableListView) return _genres;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final int? budget;
   @override
   final String? homepage;
   @override
@@ -1109,7 +1096,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
 
   @override
   String toString() {
-    return 'DetailedMovie(id: $id, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates, budget: $budget, genres: $genres, homepage: $homepage, imdbId: $imdbId, productionCompanies: $productionCompanies, productionCountries: $productionCountries, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline)';
+    return 'DetailedMovie(id: $id, adult: $adult, backdropPath: $backdropPath, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates, credits: $credits, budget: $budget, homepage: $homepage, imdbId: $imdbId, productionCompanies: $productionCompanies, productionCountries: $productionCountries, revenue: $revenue, runtime: $runtime, spokenLanguages: $spokenLanguages, status: $status, tagline: $tagline)';
   }
 
   @override
@@ -1121,7 +1108,6 @@ class _$DetailedMovieImpl implements _DetailedMovie {
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
             (identical(other.originalLanguage, originalLanguage) ||
                 other.originalLanguage == originalLanguage) &&
             (identical(other.originalTitle, originalTitle) ||
@@ -1142,8 +1128,8 @@ class _$DetailedMovieImpl implements _DetailedMovie {
                 other.voteCount == voteCount) &&
             (identical(other.accountStates, accountStates) ||
                 other.accountStates == accountStates) &&
+            (identical(other.credits, credits) || other.credits == credits) &&
             (identical(other.budget, budget) || other.budget == budget) &&
-            const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.homepage, homepage) ||
                 other.homepage == homepage) &&
             (identical(other.imdbId, imdbId) || other.imdbId == imdbId) &&
@@ -1166,7 +1152,6 @@ class _$DetailedMovieImpl implements _DetailedMovie {
         id,
         adult,
         backdropPath,
-        const DeepCollectionEquality().hash(_genreIds),
         originalLanguage,
         originalTitle,
         overview,
@@ -1178,8 +1163,8 @@ class _$DetailedMovieImpl implements _DetailedMovie {
         voteAverage,
         voteCount,
         accountStates,
+        credits,
         budget,
-        const DeepCollectionEquality().hash(_genres),
         homepage,
         imdbId,
         const DeepCollectionEquality().hash(_productionCompanies),
@@ -1210,7 +1195,6 @@ abstract class _DetailedMovie implements DetailedMovie {
       {required final int id,
       final bool adult,
       @JsonKey(name: 'backdrop_path') final String backdropPath,
-      final List<int> genreIds,
       @JsonKey(name: 'original_language') final String originalLanguage,
       @JsonKey(name: 'original_title') final String originalTitle,
       final String overview,
@@ -1222,8 +1206,8 @@ abstract class _DetailedMovie implements DetailedMovie {
       @JsonKey(name: 'vote_average') final double voteAverage,
       @JsonKey(name: 'vote_count') final int voteCount,
       @JsonKey(name: 'account_states') final AccountStates? accountStates,
+      @JsonKey(fromJson: Credits.fromLimitedJson) final Credits credits,
       final int? budget,
-      final List<Genre>? genres,
       final String? homepage,
       @JsonKey(name: 'imdb_id') final String? imdbId,
       @JsonKey(name: 'production_companies')
@@ -1247,8 +1231,6 @@ abstract class _DetailedMovie implements DetailedMovie {
   @override
   @JsonKey(name: 'backdrop_path')
   String get backdropPath;
-  @override
-  List<int> get genreIds;
   @override
   @JsonKey(name: 'original_language')
   String get originalLanguage;
@@ -1279,9 +1261,10 @@ abstract class _DetailedMovie implements DetailedMovie {
   @JsonKey(name: 'account_states')
   AccountStates? get accountStates;
   @override
-  int? get budget;
+  @JsonKey(fromJson: Credits.fromLimitedJson)
+  Credits get credits;
   @override
-  List<Genre>? get genres;
+  int? get budget;
   @override
   String? get homepage;
   @override
@@ -1310,32 +1293,214 @@ abstract class _DetailedMovie implements DetailedMovie {
       throw _privateConstructorUsedError;
 }
 
-Genre _$GenreFromJson(Map<String, dynamic> json) {
-  return _Genre.fromJson(json);
+Credits _$CreditsFromJson(Map<String, dynamic> json) {
+  return _Credits.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Genre {
-  int get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+mixin _$Credits {
+  List<CrewMember> get crew => throw _privateConstructorUsedError;
+  List<CastMember> get cast => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GenreCopyWith<Genre> get copyWith => throw _privateConstructorUsedError;
+  $CreditsCopyWith<Credits> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GenreCopyWith<$Res> {
-  factory $GenreCopyWith(Genre value, $Res Function(Genre) then) =
-      _$GenreCopyWithImpl<$Res, Genre>;
+abstract class $CreditsCopyWith<$Res> {
+  factory $CreditsCopyWith(Credits value, $Res Function(Credits) then) =
+      _$CreditsCopyWithImpl<$Res, Credits>;
   @useResult
-  $Res call({int id, String? name});
+  $Res call({List<CrewMember> crew, List<CastMember> cast});
 }
 
 /// @nodoc
-class _$GenreCopyWithImpl<$Res, $Val extends Genre>
-    implements $GenreCopyWith<$Res> {
-  _$GenreCopyWithImpl(this._value, this._then);
+class _$CreditsCopyWithImpl<$Res, $Val extends Credits>
+    implements $CreditsCopyWith<$Res> {
+  _$CreditsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? crew = null,
+    Object? cast = null,
+  }) {
+    return _then(_value.copyWith(
+      crew: null == crew
+          ? _value.crew
+          : crew // ignore: cast_nullable_to_non_nullable
+              as List<CrewMember>,
+      cast: null == cast
+          ? _value.cast
+          : cast // ignore: cast_nullable_to_non_nullable
+              as List<CastMember>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CreditsImplCopyWith<$Res> implements $CreditsCopyWith<$Res> {
+  factory _$$CreditsImplCopyWith(
+          _$CreditsImpl value, $Res Function(_$CreditsImpl) then) =
+      __$$CreditsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<CrewMember> crew, List<CastMember> cast});
+}
+
+/// @nodoc
+class __$$CreditsImplCopyWithImpl<$Res>
+    extends _$CreditsCopyWithImpl<$Res, _$CreditsImpl>
+    implements _$$CreditsImplCopyWith<$Res> {
+  __$$CreditsImplCopyWithImpl(
+      _$CreditsImpl _value, $Res Function(_$CreditsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? crew = null,
+    Object? cast = null,
+  }) {
+    return _then(_$CreditsImpl(
+      crew: null == crew
+          ? _value._crew
+          : crew // ignore: cast_nullable_to_non_nullable
+              as List<CrewMember>,
+      cast: null == cast
+          ? _value._cast
+          : cast // ignore: cast_nullable_to_non_nullable
+              as List<CastMember>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CreditsImpl extends _Credits {
+  const _$CreditsImpl(
+      {final List<CrewMember> crew = const [],
+      final List<CastMember> cast = const []})
+      : _crew = crew,
+        _cast = cast,
+        super._();
+
+  factory _$CreditsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreditsImplFromJson(json);
+
+  final List<CrewMember> _crew;
+  @override
+  @JsonKey()
+  List<CrewMember> get crew {
+    if (_crew is EqualUnmodifiableListView) return _crew;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_crew);
+  }
+
+  final List<CastMember> _cast;
+  @override
+  @JsonKey()
+  List<CastMember> get cast {
+    if (_cast is EqualUnmodifiableListView) return _cast;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cast);
+  }
+
+  @override
+  String toString() {
+    return 'Credits(crew: $crew, cast: $cast)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreditsImpl &&
+            const DeepCollectionEquality().equals(other._crew, _crew) &&
+            const DeepCollectionEquality().equals(other._cast, _cast));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_crew),
+      const DeepCollectionEquality().hash(_cast));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreditsImplCopyWith<_$CreditsImpl> get copyWith =>
+      __$$CreditsImplCopyWithImpl<_$CreditsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CreditsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Credits extends Credits {
+  const factory _Credits(
+      {final List<CrewMember> crew,
+      final List<CastMember> cast}) = _$CreditsImpl;
+  const _Credits._() : super._();
+
+  factory _Credits.fromJson(Map<String, dynamic> json) = _$CreditsImpl.fromJson;
+
+  @override
+  List<CrewMember> get crew;
+  @override
+  List<CastMember> get cast;
+  @override
+  @JsonKey(ignore: true)
+  _$$CreditsImplCopyWith<_$CreditsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CrewMember _$CrewMemberFromJson(Map<String, dynamic> json) {
+  return _CrewMember.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CrewMember {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get department => throw _privateConstructorUsedError;
+  String get job => throw _privateConstructorUsedError;
+  String? get profilePath => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CrewMemberCopyWith<CrewMember> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CrewMemberCopyWith<$Res> {
+  factory $CrewMemberCopyWith(
+          CrewMember value, $Res Function(CrewMember) then) =
+      _$CrewMemberCopyWithImpl<$Res, CrewMember>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String department,
+      String job,
+      String? profilePath});
+}
+
+/// @nodoc
+class _$CrewMemberCopyWithImpl<$Res, $Val extends CrewMember>
+    implements $CrewMemberCopyWith<$Res> {
+  _$CrewMemberCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1346,53 +1511,89 @@ class _$GenreCopyWithImpl<$Res, $Val extends Genre>
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
+    Object? name = null,
+    Object? department = null,
+    Object? job = null,
+    Object? profilePath = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as String,
+      job: null == job
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as String,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$GenreImplCopyWith<$Res> implements $GenreCopyWith<$Res> {
-  factory _$$GenreImplCopyWith(
-          _$GenreImpl value, $Res Function(_$GenreImpl) then) =
-      __$$GenreImplCopyWithImpl<$Res>;
+abstract class _$$CrewMemberImplCopyWith<$Res>
+    implements $CrewMemberCopyWith<$Res> {
+  factory _$$CrewMemberImplCopyWith(
+          _$CrewMemberImpl value, $Res Function(_$CrewMemberImpl) then) =
+      __$$CrewMemberImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String? name});
+  $Res call(
+      {int id,
+      String name,
+      String department,
+      String job,
+      String? profilePath});
 }
 
 /// @nodoc
-class __$$GenreImplCopyWithImpl<$Res>
-    extends _$GenreCopyWithImpl<$Res, _$GenreImpl>
-    implements _$$GenreImplCopyWith<$Res> {
-  __$$GenreImplCopyWithImpl(
-      _$GenreImpl _value, $Res Function(_$GenreImpl) _then)
+class __$$CrewMemberImplCopyWithImpl<$Res>
+    extends _$CrewMemberCopyWithImpl<$Res, _$CrewMemberImpl>
+    implements _$$CrewMemberImplCopyWith<$Res> {
+  __$$CrewMemberImplCopyWithImpl(
+      _$CrewMemberImpl _value, $Res Function(_$CrewMemberImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? name = freezed,
+    Object? name = null,
+    Object? department = null,
+    Object? job = null,
+    Object? profilePath = freezed,
   }) {
-    return _then(_$GenreImpl(
+    return _then(_$CrewMemberImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as String,
+      job: null == job
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as String,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -1400,62 +1601,297 @@ class __$$GenreImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GenreImpl implements _Genre {
-  const _$GenreImpl({required this.id, this.name});
+class _$CrewMemberImpl implements _CrewMember {
+  const _$CrewMemberImpl(
+      {required this.id,
+      required this.name,
+      required this.department,
+      required this.job,
+      this.profilePath});
 
-  factory _$GenreImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GenreImplFromJson(json);
+  factory _$CrewMemberImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CrewMemberImplFromJson(json);
 
   @override
   final int id;
   @override
-  final String? name;
+  final String name;
+  @override
+  final String department;
+  @override
+  final String job;
+  @override
+  final String? profilePath;
 
   @override
   String toString() {
-    return 'Genre(id: $id, name: $name)';
+    return 'CrewMember(id: $id, name: $name, department: $department, job: $job, profilePath: $profilePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GenreImpl &&
+            other is _$CrewMemberImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
+            (identical(other.job, job) || other.job == job) &&
+            (identical(other.profilePath, profilePath) ||
+                other.profilePath == profilePath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, department, job, profilePath);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GenreImplCopyWith<_$GenreImpl> get copyWith =>
-      __$$GenreImplCopyWithImpl<_$GenreImpl>(this, _$identity);
+  _$$CrewMemberImplCopyWith<_$CrewMemberImpl> get copyWith =>
+      __$$CrewMemberImplCopyWithImpl<_$CrewMemberImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GenreImplToJson(
+    return _$$CrewMemberImplToJson(
       this,
     );
   }
 }
 
-abstract class _Genre implements Genre {
-  const factory _Genre({required final int id, final String? name}) =
-      _$GenreImpl;
+abstract class _CrewMember implements CrewMember {
+  const factory _CrewMember(
+      {required final int id,
+      required final String name,
+      required final String department,
+      required final String job,
+      final String? profilePath}) = _$CrewMemberImpl;
 
-  factory _Genre.fromJson(Map<String, dynamic> json) = _$GenreImpl.fromJson;
+  factory _CrewMember.fromJson(Map<String, dynamic> json) =
+      _$CrewMemberImpl.fromJson;
 
   @override
   int get id;
   @override
-  String? get name;
+  String get name;
+  @override
+  String get department;
+  @override
+  String get job;
+  @override
+  String? get profilePath;
   @override
   @JsonKey(ignore: true)
-  _$$GenreImplCopyWith<_$GenreImpl> get copyWith =>
+  _$$CrewMemberImplCopyWith<_$CrewMemberImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+CastMember _$CastMemberFromJson(Map<String, dynamic> json) {
+  return _CastMember.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CastMember {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get character => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_path')
+  String? get profilePath => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CastMemberCopyWith<CastMember> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CastMemberCopyWith<$Res> {
+  factory $CastMemberCopyWith(
+          CastMember value, $Res Function(CastMember) then) =
+      _$CastMemberCopyWithImpl<$Res, CastMember>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String? character,
+      @JsonKey(name: 'profile_path') String? profilePath});
+}
+
+/// @nodoc
+class _$CastMemberCopyWithImpl<$Res, $Val extends CastMember>
+    implements $CastMemberCopyWith<$Res> {
+  _$CastMemberCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? character = freezed,
+    Object? profilePath = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CastMemberImplCopyWith<$Res>
+    implements $CastMemberCopyWith<$Res> {
+  factory _$$CastMemberImplCopyWith(
+          _$CastMemberImpl value, $Res Function(_$CastMemberImpl) then) =
+      __$$CastMemberImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String? character,
+      @JsonKey(name: 'profile_path') String? profilePath});
+}
+
+/// @nodoc
+class __$$CastMemberImplCopyWithImpl<$Res>
+    extends _$CastMemberCopyWithImpl<$Res, _$CastMemberImpl>
+    implements _$$CastMemberImplCopyWith<$Res> {
+  __$$CastMemberImplCopyWithImpl(
+      _$CastMemberImpl _value, $Res Function(_$CastMemberImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? character = freezed,
+    Object? profilePath = freezed,
+  }) {
+    return _then(_$CastMemberImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      character: freezed == character
+          ? _value.character
+          : character // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePath: freezed == profilePath
+          ? _value.profilePath
+          : profilePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CastMemberImpl implements _CastMember {
+  const _$CastMemberImpl(
+      {required this.id,
+      required this.name,
+      this.character,
+      @JsonKey(name: 'profile_path') this.profilePath});
+
+  factory _$CastMemberImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CastMemberImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final String? character;
+  @override
+  @JsonKey(name: 'profile_path')
+  final String? profilePath;
+
+  @override
+  String toString() {
+    return 'CastMember(id: $id, name: $name, character: $character, profilePath: $profilePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CastMemberImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.character, character) ||
+                other.character == character) &&
+            (identical(other.profilePath, profilePath) ||
+                other.profilePath == profilePath));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, character, profilePath);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CastMemberImplCopyWith<_$CastMemberImpl> get copyWith =>
+      __$$CastMemberImplCopyWithImpl<_$CastMemberImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CastMemberImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CastMember implements CastMember {
+  const factory _CastMember(
+          {required final int id,
+          required final String name,
+          final String? character,
+          @JsonKey(name: 'profile_path') final String? profilePath}) =
+      _$CastMemberImpl;
+
+  factory _CastMember.fromJson(Map<String, dynamic> json) =
+      _$CastMemberImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  String? get character;
+  @override
+  @JsonKey(name: 'profile_path')
+  String? get profilePath;
+  @override
+  @JsonKey(ignore: true)
+  _$$CastMemberImplCopyWith<_$CastMemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1466,8 +1902,10 @@ ProductionCompany _$ProductionCompanyFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductionCompany {
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'logo_path')
   String? get logoPath => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'origin_country')
   String? get originCountry => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1482,7 +1920,11 @@ abstract class $ProductionCompanyCopyWith<$Res> {
           ProductionCompany value, $Res Function(ProductionCompany) then) =
       _$ProductionCompanyCopyWithImpl<$Res, ProductionCompany>;
   @useResult
-  $Res call({int id, String? logoPath, String? name, String? originCountry});
+  $Res call(
+      {int id,
+      @JsonKey(name: 'logo_path') String? logoPath,
+      String? name,
+      @JsonKey(name: 'origin_country') String? originCountry});
 }
 
 /// @nodoc
@@ -1532,7 +1974,11 @@ abstract class _$$ProductionCompanyImplCopyWith<$Res>
       __$$ProductionCompanyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String? logoPath, String? name, String? originCountry});
+  $Res call(
+      {int id,
+      @JsonKey(name: 'logo_path') String? logoPath,
+      String? name,
+      @JsonKey(name: 'origin_country') String? originCountry});
 }
 
 /// @nodoc
@@ -1576,7 +2022,10 @@ class __$$ProductionCompanyImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductionCompanyImpl implements _ProductionCompany {
   const _$ProductionCompanyImpl(
-      {required this.id, this.logoPath, this.name, this.originCountry});
+      {required this.id,
+      @JsonKey(name: 'logo_path') this.logoPath,
+      this.name,
+      @JsonKey(name: 'origin_country') this.originCountry});
 
   factory _$ProductionCompanyImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductionCompanyImplFromJson(json);
@@ -1584,10 +2033,12 @@ class _$ProductionCompanyImpl implements _ProductionCompany {
   @override
   final int id;
   @override
+  @JsonKey(name: 'logo_path')
   final String? logoPath;
   @override
   final String? name;
   @override
+  @JsonKey(name: 'origin_country')
   final String? originCountry;
 
   @override
@@ -1630,10 +2081,11 @@ class _$ProductionCompanyImpl implements _ProductionCompany {
 
 abstract class _ProductionCompany implements ProductionCompany {
   const factory _ProductionCompany(
-      {required final int id,
-      final String? logoPath,
-      final String? name,
-      final String? originCountry}) = _$ProductionCompanyImpl;
+          {required final int id,
+          @JsonKey(name: 'logo_path') final String? logoPath,
+          final String? name,
+          @JsonKey(name: 'origin_country') final String? originCountry}) =
+      _$ProductionCompanyImpl;
 
   factory _ProductionCompany.fromJson(Map<String, dynamic> json) =
       _$ProductionCompanyImpl.fromJson;
@@ -1641,10 +2093,12 @@ abstract class _ProductionCompany implements ProductionCompany {
   @override
   int get id;
   @override
+  @JsonKey(name: 'logo_path')
   String? get logoPath;
   @override
   String? get name;
   @override
+  @JsonKey(name: 'origin_country')
   String? get originCountry;
   @override
   @JsonKey(ignore: true)

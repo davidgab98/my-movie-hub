@@ -93,8 +93,8 @@ class _DetailsHeader extends StatelessWidget {
                   padding: const EdgeInsets.all(AppSpaces.s16),
                   child: FittedBox(
                     child: Text(
-                      movie.title,
-                      style: AppTextStyle.mainTitleSmall.copyWith(
+                      movie.title.toUpperCase(),
+                      style: AppTextStyle.mainTitleMedium.copyWith(
                         color: AppColors.overlayDark,
                       ),
                     ),
@@ -125,37 +125,37 @@ class _DetailsBody extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                '${DateTime.parse(movie.releaseDate).year} | Accion, Drama, Comedy | ${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
+                '${DateTime.parse(movie.releaseDate).year} | ${movie.genres.map((genre) => genre.toTranslatedString()).join(', ')} | ${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
                 style: AppTextStyle.bodyMedium.copyWith(
                   color: AppColors.black2,
                 ),
               ),
-              AppSpaces.gapH20,
+              AppSpaces.gapH16,
               OverallRatingStars(
                 voteAverage: movie.voteAverage,
                 voteCount: movie.voteCount.toDouble(),
               ),
               AppSpaces.gapH20,
               MovieAccountStatesRow(movie: movie),
-              AppSpaces.gapH16,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
-                child: Divider(
-                  height: 0,
-                  color: AppColors.overlayDark.withOpacity(1),
-                  thickness: 0.1,
-                ),
+              AppSpaces.gapH24,
+              Divider(
+                indent: AppSpaces.s16,
+                endIndent: AppSpaces.s16,
+                height: 0,
+                color: AppColors.overlayDark.withOpacity(1),
+                thickness: 0.1,
               ),
               AppSpaces.gapH16,
               _MainMovieInfo(movie: movie),
               AppSpaces.gapH20,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: MovieCredits(),
+              ),
+              AppSpaces.gapH24,
               MovieRecommendationsList(
                 movieId: movie.id,
               ),
-
-              //TODO: Funcionalidad de compartir
-              /// Credits (Fotos solo del reparto, similar a filmaffinity)
-              /// Reviews
               SizedBox(height: MediaQuery.of(context).padding.bottom),
             ],
           ),
@@ -188,74 +188,277 @@ class _MainMovieInfo extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: AppSpaces.s16),
                   child: Text(
                     state.movie.tagline!,
-                    style: AppTextStyle.bodyMedium.copyWith(
+                    style: AppTextStyle.titleMedium.copyWith(
                       color: AppColors.white,
                     ),
                   ),
                 ),
               Text(
                 movie.overview,
-                style: AppTextStyle.bodyMedium.copyWith(
+                style: AppTextStyle.titleMedium.copyWith(
                   color: AppColors.white,
                 ),
                 textAlign: TextAlign.justify,
               ),
               AppSpaces.gapH20,
-              if (state.movie.genres != null)
-                Wrap(
-                  spacing: 20,
-                  children: state.movie.genres!
-                      .map(
-                        (genre) => Chip(
-                          label: Text(
-                            genre.name ?? '',
-                            style: AppTextStyle.bodyMedium.copyWith(
-                              color: AppColors.white,
-                            ),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
+              _GenresList(movie: movie),
               AppSpaces.gapH20,
               Text(
-                'Titulo original: ${movie.originalTitle}',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+                'Titulo original',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
+              Text(
+                movie.originalTitle,
+                style: AppTextStyle.titleMedium.copyWith(
+                  color: AppColors.black2,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
-                'Fecha de estreno: ${movie.releaseDate}',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+                'Año',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
+              Text(
+                '${DateTime.parse(movie.releaseDate).year}',
+                style: AppTextStyle.titleMedium.copyWith(
+                  color: AppColors.black2,
                 ),
               ),
               AppSpaces.gapH16,
+              Text(
+                'Duración',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
               Text(
                 state.movie.runtime != null
-                    ? 'Duracion: ${state.movie.runtime?.formatDuration()}'
-                    : 'Duracion: 0h 0m',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+                    ? state.movie.runtime!.formatDuration()
+                    : '0h 0m',
+                style: AppTextStyle.titleMedium.copyWith(
+                  color: AppColors.black2,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
-                'País: ${state.movie.productionCountries != null ? state.movie.productionCountries!.map((country) => country.name ?? '').join(', ') : ''}',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+                'País',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
+              Text(
+                state.movie.productionCountries != null
+                    ? state.movie.productionCountries!
+                        .map((country) => country.name ?? '')
+                        .join(', ')
+                    : '',
+                style: AppTextStyle.titleMedium.copyWith(
+                  color: AppColors.black2,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
-                'Companies: ${state.movie.productionCompanies != null ? state.movie.productionCompanies!.map((company) => company.name ?? '').join(', ') : ''}',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.white,
+                'Compañías',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
+              Text(
+                state.movie.productionCompanies != null
+                    ? state.movie.productionCompanies!
+                        .map((company) => company.name ?? '')
+                        .join(', ')
+                    : '',
+                style: AppTextStyle.titleMedium.copyWith(
+                  color: AppColors.black2,
                 ),
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+}
+
+class _GenresList extends StatelessWidget {
+  const _GenresList({
+    super.key,
+    required this.movie,
+  });
+
+  final Movie movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: AppSpaces.s8,
+      children: movie.genres
+          .map(
+            (genre) => Container(
+              decoration: BoxDecoration(
+                color: AppColors.white.withOpacity(0.15),
+                borderRadius: BorderRadius.circular(
+                  AppBorderRadius.br16,
+                ),
+              ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpaces.s10,
+                  vertical: AppSpaces.s6,
+                ),
+                color: AppColors.backgroundAPPDark.withOpacity(0.65),
+                child: Text(
+                  genre.toTranslatedString(),
+                  style: AppTextStyle.titleMedium.copyWith(
+                    color: AppColors.black3,
+                  ),
+                ),
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+}
+
+class MovieCredits extends StatelessWidget {
+  const MovieCredits({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      buildWhen: (previous, current) =>
+          previous.movie.credits != current.movie.credits,
+      builder: (context, state) {
+        final screenwriters = state.movie.credits.crew
+            .where((member) => member.job == 'Screenplay')
+            .toList();
+        final directors = state.movie.credits.crew
+            .where((member) => member.job == 'Director')
+            .toList();
+        final photographers = state.movie.credits.crew
+            .where((member) => member.job == 'Director of Photography')
+            .toList();
+        final composers = state.movie.credits.crew
+            .where((member) => member.job == 'Original Music Composer')
+            .toList();
+        final cast = state.movie.credits.cast;
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: AppSpaces.s16),
+              child: Text(
+                'Reparto',
+                style: AppTextStyle.titleLarge.copyWith(
+                  color: AppColors.overlayDark,
+                ),
+              ),
+            ),
+            AppSpaces.gapH6,
+            SizedBox(
+              height: 130,
+              child: ListView.separated(
+                separatorBuilder: (context, index) => AppSpaces.gapW10,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
+                itemCount: cast.length,
+                itemBuilder: (context, index) {
+                  final actor = cast[index];
+                  return Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: actor.profilePath != null
+                            ? NetworkImage(
+                                'https://image.tmdb.org/t/p/w500/${actor.profilePath}',
+                              )
+                            : const AssetImage('') as ImageProvider,
+                      ),
+                      AppSpaces.gapH6,
+                      Text(
+                        actor.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyle.bodyMedium.copyWith(
+                          color: AppColors.overlayDark,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+            AppSpaces.gapH16,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Dirección',
+                    style: AppTextStyle.titleLarge.copyWith(
+                      color: AppColors.overlayDark,
+                    ),
+                  ),
+                  if (directors.isNotEmpty)
+                    Text(
+                      directors.map((d) => d.name).join(', '),
+                      style: AppTextStyle.titleMedium.copyWith(
+                        color: AppColors.black2,
+                      ),
+                    ),
+                  AppSpaces.gapH16,
+                  Text(
+                    'Guión',
+                    style: AppTextStyle.titleLarge.copyWith(
+                      color: AppColors.overlayDark,
+                    ),
+                  ),
+                  if (screenwriters.isNotEmpty)
+                    Text(
+                      screenwriters.map((d) => d.name).join(', '),
+                      style: AppTextStyle.titleMedium.copyWith(
+                        color: AppColors.black2,
+                      ),
+                    ),
+                  AppSpaces.gapH16,
+                  Text(
+                    'Música',
+                    style: AppTextStyle.titleLarge.copyWith(
+                      color: AppColors.overlayDark,
+                    ),
+                  ),
+                  if (composers.isNotEmpty)
+                    Text(
+                      composers.map((d) => d.name).join(', '),
+                      style: AppTextStyle.titleMedium.copyWith(
+                        color: AppColors.black2,
+                      ),
+                    ),
+                  AppSpaces.gapH16,
+                  Text(
+                    'Fotografía',
+                    style: AppTextStyle.titleLarge.copyWith(
+                      color: AppColors.overlayDark,
+                    ),
+                  ),
+                  if (photographers.isNotEmpty)
+                    Text(
+                      photographers.map((d) => d.name).join(', '),
+                      style: AppTextStyle.titleMedium.copyWith(
+                        color: AppColors.black2,
+                      ),
+                    ),
+                ],
+              ),
+            )
+          ],
         );
       },
     );

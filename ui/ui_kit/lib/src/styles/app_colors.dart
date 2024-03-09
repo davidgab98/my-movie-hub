@@ -7,7 +7,7 @@ class AppColors {
 
   static const backgroundAPPLight = Color(0xFFFFFFFF);
   static const backgroundAPPDarkOld = Color(0xFF15202B);
-  static const backgroundAPPDark = Color(0xFF090909); //0xFF121212
+  static const backgroundAPPDark = Color(0xFF121212); //0xFF090909
   static const backgroundGrey = Color(0xFFE7E7E7);
   static const backgroundInput = Color(0xFFFAFBFD);
   static const overlayLight = Color.fromRGBO(50, 50, 50, 0.9);
@@ -18,13 +18,13 @@ class AppColors {
   static const black1 = Color.fromARGB(255, 7, 7, 7);
   static const black2 = Color(0xFF8D8D8D);
   static const black3 = Color(0xFFECF0F6);
-  static const black4 = Color.fromARGB(228, 245, 245, 245);
 
   static const red = Color(0xFFDE3636);
   static const green = Color(0xFF008000);
-  static const blue = Color(0xFF008000);
+  static const blue = Color(0xFF0000FF);
   static const orange = Color(0xFFFFA600);
   static const yellow = Color(0xFFFFFF00);
+  static const purple = Color(0xFF4B49CC);
 
   static const shimmerBaseColorDark = Color(0x1FC6C6C6);
 }
