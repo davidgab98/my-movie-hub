@@ -16,14 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MovieAccountStatesState {
-  bool get isFavorite => throw _privateConstructorUsedError;
-  bool get isInWatchlist => throw _privateConstructorUsedError;
-  int? get rating => throw _privateConstructorUsedError;
+  AccountStates? get accountStates => throw _privateConstructorUsedError;
   StateStatus get toggleFavoritesStatus => throw _privateConstructorUsedError;
   StateStatus get toggleWatchlistStatus => throw _privateConstructorUsedError;
   StateStatus get addRatingStatus => throw _privateConstructorUsedError;
   StateStatus get removeRatingStatus => throw _privateConstructorUsedError;
-  StateStatus get getAccountStatesStatus => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,15 +35,14 @@ abstract class $MovieAccountStatesStateCopyWith<$Res> {
       _$MovieAccountStatesStateCopyWithImpl<$Res, MovieAccountStatesState>;
   @useResult
   $Res call(
-      {bool isFavorite,
-      bool isInWatchlist,
-      int? rating,
+      {AccountStates? accountStates,
       StateStatus toggleFavoritesStatus,
       StateStatus toggleWatchlistStatus,
       StateStatus addRatingStatus,
       StateStatus removeRatingStatus,
-      StateStatus getAccountStatesStatus,
       String errorMessage});
+
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -63,29 +59,18 @@ class _$MovieAccountStatesStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isFavorite = null,
-    Object? isInWatchlist = null,
-    Object? rating = freezed,
+    Object? accountStates = freezed,
     Object? toggleFavoritesStatus = null,
     Object? toggleWatchlistStatus = null,
     Object? addRatingStatus = null,
     Object? removeRatingStatus = null,
-    Object? getAccountStatesStatus = null,
     Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isInWatchlist: null == isInWatchlist
-          ? _value.isInWatchlist
-          : isInWatchlist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as int?,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
       toggleFavoritesStatus: null == toggleFavoritesStatus
           ? _value.toggleFavoritesStatus
           : toggleFavoritesStatus // ignore: cast_nullable_to_non_nullable
@@ -102,15 +87,23 @@ class _$MovieAccountStatesStateCopyWithImpl<$Res,
           ? _value.removeRatingStatus
           : removeRatingStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      getAccountStatesStatus: null == getAccountStatesStatus
-          ? _value.getAccountStatesStatus
-          : getAccountStatesStatus // ignore: cast_nullable_to_non_nullable
-              as StateStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountStatesCopyWith<$Res>? get accountStates {
+    if (_value.accountStates == null) {
+      return null;
+    }
+
+    return $AccountStatesCopyWith<$Res>(_value.accountStates!, (value) {
+      return _then(_value.copyWith(accountStates: value) as $Val);
+    });
   }
 }
 
@@ -124,15 +117,15 @@ abstract class _$$MovieAccountStatesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isFavorite,
-      bool isInWatchlist,
-      int? rating,
+      {AccountStates? accountStates,
       StateStatus toggleFavoritesStatus,
       StateStatus toggleWatchlistStatus,
       StateStatus addRatingStatus,
       StateStatus removeRatingStatus,
-      StateStatus getAccountStatesStatus,
       String errorMessage});
+
+  @override
+  $AccountStatesCopyWith<$Res>? get accountStates;
 }
 
 /// @nodoc
@@ -148,29 +141,18 @@ class __$$MovieAccountStatesStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isFavorite = null,
-    Object? isInWatchlist = null,
-    Object? rating = freezed,
+    Object? accountStates = freezed,
     Object? toggleFavoritesStatus = null,
     Object? toggleWatchlistStatus = null,
     Object? addRatingStatus = null,
     Object? removeRatingStatus = null,
-    Object? getAccountStatesStatus = null,
     Object? errorMessage = null,
   }) {
     return _then(_$MovieAccountStatesStateImpl(
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isInWatchlist: null == isInWatchlist
-          ? _value.isInWatchlist
-          : isInWatchlist // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as int?,
+      accountStates: freezed == accountStates
+          ? _value.accountStates
+          : accountStates // ignore: cast_nullable_to_non_nullable
+              as AccountStates?,
       toggleFavoritesStatus: null == toggleFavoritesStatus
           ? _value.toggleFavoritesStatus
           : toggleFavoritesStatus // ignore: cast_nullable_to_non_nullable
@@ -187,10 +169,6 @@ class __$$MovieAccountStatesStateImplCopyWithImpl<$Res>
           ? _value.removeRatingStatus
           : removeRatingStatus // ignore: cast_nullable_to_non_nullable
               as StateStatus,
-      getAccountStatesStatus: null == getAccountStatesStatus
-          ? _value.getAccountStatesStatus
-          : getAccountStatesStatus // ignore: cast_nullable_to_non_nullable
-              as StateStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -203,24 +181,15 @@ class __$$MovieAccountStatesStateImplCopyWithImpl<$Res>
 
 class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
   const _$MovieAccountStatesStateImpl(
-      {this.isFavorite = false,
-      this.isInWatchlist = false,
-      this.rating,
+      {this.accountStates,
       this.toggleFavoritesStatus = StateStatus.initial,
       this.toggleWatchlistStatus = StateStatus.initial,
       this.addRatingStatus = StateStatus.initial,
       this.removeRatingStatus = StateStatus.initial,
-      this.getAccountStatesStatus = StateStatus.initial,
       this.errorMessage = ''});
 
   @override
-  @JsonKey()
-  final bool isFavorite;
-  @override
-  @JsonKey()
-  final bool isInWatchlist;
-  @override
-  final int? rating;
+  final AccountStates? accountStates;
   @override
   @JsonKey()
   final StateStatus toggleFavoritesStatus;
@@ -235,14 +204,11 @@ class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
   final StateStatus removeRatingStatus;
   @override
   @JsonKey()
-  final StateStatus getAccountStatesStatus;
-  @override
-  @JsonKey()
   final String errorMessage;
 
   @override
   String toString() {
-    return 'MovieAccountStatesState(isFavorite: $isFavorite, isInWatchlist: $isInWatchlist, rating: $rating, toggleFavoritesStatus: $toggleFavoritesStatus, toggleWatchlistStatus: $toggleWatchlistStatus, addRatingStatus: $addRatingStatus, removeRatingStatus: $removeRatingStatus, getAccountStatesStatus: $getAccountStatesStatus, errorMessage: $errorMessage)';
+    return 'MovieAccountStatesState(accountStates: $accountStates, toggleFavoritesStatus: $toggleFavoritesStatus, toggleWatchlistStatus: $toggleWatchlistStatus, addRatingStatus: $addRatingStatus, removeRatingStatus: $removeRatingStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -250,11 +216,8 @@ class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MovieAccountStatesStateImpl &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite) &&
-            (identical(other.isInWatchlist, isInWatchlist) ||
-                other.isInWatchlist == isInWatchlist) &&
-            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.accountStates, accountStates) ||
+                other.accountStates == accountStates) &&
             (identical(other.toggleFavoritesStatus, toggleFavoritesStatus) ||
                 other.toggleFavoritesStatus == toggleFavoritesStatus) &&
             (identical(other.toggleWatchlistStatus, toggleWatchlistStatus) ||
@@ -263,8 +226,6 @@ class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
                 other.addRatingStatus == addRatingStatus) &&
             (identical(other.removeRatingStatus, removeRatingStatus) ||
                 other.removeRatingStatus == removeRatingStatus) &&
-            (identical(other.getAccountStatesStatus, getAccountStatesStatus) ||
-                other.getAccountStatesStatus == getAccountStatesStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -272,14 +233,11 @@ class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      isFavorite,
-      isInWatchlist,
-      rating,
+      accountStates,
       toggleFavoritesStatus,
       toggleWatchlistStatus,
       addRatingStatus,
       removeRatingStatus,
-      getAccountStatesStatus,
       errorMessage);
 
   @JsonKey(ignore: true)
@@ -292,22 +250,15 @@ class _$MovieAccountStatesStateImpl implements _MovieAccountStatesState {
 
 abstract class _MovieAccountStatesState implements MovieAccountStatesState {
   const factory _MovieAccountStatesState(
-      {final bool isFavorite,
-      final bool isInWatchlist,
-      final int? rating,
+      {final AccountStates? accountStates,
       final StateStatus toggleFavoritesStatus,
       final StateStatus toggleWatchlistStatus,
       final StateStatus addRatingStatus,
       final StateStatus removeRatingStatus,
-      final StateStatus getAccountStatesStatus,
       final String errorMessage}) = _$MovieAccountStatesStateImpl;
 
   @override
-  bool get isFavorite;
-  @override
-  bool get isInWatchlist;
-  @override
-  int? get rating;
+  AccountStates? get accountStates;
   @override
   StateStatus get toggleFavoritesStatus;
   @override
@@ -316,8 +267,6 @@ abstract class _MovieAccountStatesState implements MovieAccountStatesState {
   StateStatus get addRatingStatus;
   @override
   StateStatus get removeRatingStatus;
-  @override
-  StateStatus get getAccountStatesStatus;
   @override
   String get errorMessage;
   @override

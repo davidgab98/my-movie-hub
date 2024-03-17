@@ -15,15 +15,32 @@ class MovieFavoriteIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<MovieAccountStatesCubit, MovieAccountStatesState, bool>(
-      selector: (state) => state.isFavorite,
-      builder: (context, isFavorite) {
-        return MetallicIconButton(
-          icon: isFavorite ? Icons.favorite : Icons.favorite_outline_rounded,
-          baseColor: AppColors.red,
-          onPressed: () =>
-              context.read<MovieAccountStatesCubit>().toggleFavoritesStatus(),
-        );
+    return BlocBuilder<MovieAccountStatesCubit, MovieAccountStatesState>(
+      builder: (context, state) {
+        if (state.accountStates != null) {
+          return MetallicIconButton(
+            icon: state.accountStates!.favorite
+                ? Icons.favorite
+                : Icons.favorite_outline_rounded,
+            baseColor: AppColors.red,
+            onPressed: () =>
+                context.read<MovieAccountStatesCubit>().toggleFavoritesStatus(),
+          );
+        } else {
+          return const IconButton(
+            onPressed: null,
+            icon: Center(
+              child: SizedBox(
+                width: 20,
+                child: LinearProgressIndicator(
+                  color: AppColors.red,
+                  minHeight: 4,
+                  backgroundColor: AppColors.backgroundAPPDark,
+                ),
+              ),
+            ),
+          );
+        }
       },
     );
   }

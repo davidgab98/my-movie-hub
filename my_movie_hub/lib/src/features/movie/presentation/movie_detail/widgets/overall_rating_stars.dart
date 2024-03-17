@@ -13,7 +13,6 @@ class OverallRatingStars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Convert value to 0-5 scale
     final double valueIn5 = (voteAverage / 2).clamp(0, 5);
     return Column(
       children: [
@@ -29,7 +28,6 @@ class OverallRatingStars extends StatelessWidget {
             voteAverage.toStringAsFixed(1),
             style: AppTextStyle.titleMedium.copyWith(
               color: AppColors.overlayDark,
-              //backgroundColor: Colors.amber.withOpacity(0.2),
             ),
           ),
         ),

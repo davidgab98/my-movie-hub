@@ -64,7 +64,7 @@ class _DetailsHeader extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.share),
-        )
+        ),
       ],
       flexibleSpace: LayoutBuilder(
         builder: (BuildContext context, _) {
@@ -136,7 +136,10 @@ class _DetailsBody extends StatelessWidget {
                 voteCount: movie.voteCount.toDouble(),
               ),
               AppSpaces.gapH20,
-              MovieAccountStatesRow(movie: movie),
+              MovieAccountStatesRow(
+                movie: movie,
+                accountStates: state.movie.accountStates,
+              ),
               AppSpaces.gapH24,
               Divider(
                 indent: AppSpaces.s16,
@@ -300,6 +303,7 @@ class _GenresList extends StatelessWidget {
       children: movie.genres
           .map(
             (genre) => Container(
+              margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
               decoration: BoxDecoration(
                 color: AppColors.white.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(

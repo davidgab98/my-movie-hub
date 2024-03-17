@@ -25,7 +25,6 @@ class Movie with _$Movie {
     @Default(false) bool video,
     @JsonKey(name: 'vote_average') @Default(0.0) double voteAverage,
     @JsonKey(name: 'vote_count') @Default(0) int voteCount,
-    @JsonKey(name: 'account_states') AccountStates? accountStates,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

@@ -15,15 +15,32 @@ class MovieWatchlistIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<MovieAccountStatesCubit, MovieAccountStatesState, bool>(
-      selector: (state) => state.isInWatchlist,
-      builder: (context, isInWatchlist) {
-        return MetallicIconButton(
-          icon: isInWatchlist ? Icons.visibility : Icons.visibility_outlined,
-          baseColor: AppColors.tertiary,
-          onPressed: () =>
-              context.read<MovieAccountStatesCubit>().toggleWatchlistStatus(),
-        );
+    return BlocBuilder<MovieAccountStatesCubit, MovieAccountStatesState>(
+      builder: (context, state) {
+        if (state.accountStates != null) {
+          return MetallicIconButton(
+            icon: state.accountStates!.watchlist
+                ? Icons.visibility
+                : Icons.visibility_outlined,
+            baseColor: AppColors.tertiary,
+            onPressed: () =>
+                context.read<MovieAccountStatesCubit>().toggleWatchlistStatus(),
+          );
+        } else {
+          return const IconButton(
+            onPressed: null,
+            icon: Center(
+              child: SizedBox(
+                width: 20,
+                child: LinearProgressIndicator(
+                  color: AppColors.tertiary,
+                  minHeight: 4,
+                  backgroundColor: AppColors.backgroundAPPDark,
+                ),
+              ),
+            ),
+          );
+        }
       },
     );
   }

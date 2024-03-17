@@ -14,15 +14,32 @@ class MovieRatingIcon extends StatelessWidget {
   final double? size;
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<MovieAccountStatesCubit, MovieAccountStatesState, int?>(
-      selector: (state) => state.rating,
-      builder: (context, rating) {
-        return MetallicIconButton(
-          icon: rating != null ? Icons.stars_rounded : Icons.star_outline,
-          baseColor: AppColors.orange,
-          onPressed: () =>
-              context.read<MovieAccountStatesCubit>().addRating(rating: 3),
-        );
+    return BlocBuilder<MovieAccountStatesCubit, MovieAccountStatesState>(
+      builder: (context, state) {
+        if (state.accountStates != null) {
+          return MetallicIconButton(
+            icon: state.accountStates!.rating != null
+                ? Icons.stars_rounded
+                : Icons.star_outline,
+            baseColor: Colors.amber,
+            onPressed: () =>
+                context.read<MovieAccountStatesCubit>().toggleFavoritesStatus(),
+          );
+        } else {
+          return const IconButton(
+            onPressed: null,
+            icon: Center(
+              child: SizedBox(
+                width: 20,
+                child: LinearProgressIndicator(
+                  color: Colors.amber,
+                  minHeight: 4,
+                  backgroundColor: AppColors.backgroundAPPDark,
+                ),
+              ),
+            ),
+          );
+        }
       },
     );
   }

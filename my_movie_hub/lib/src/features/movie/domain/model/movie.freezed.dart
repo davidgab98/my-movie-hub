@@ -42,8 +42,6 @@ mixin _$Movie {
   double get voteAverage => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_count')
   int get voteCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'account_states')
-  AccountStates? get accountStates => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,10 +68,7 @@ abstract class $MovieCopyWith<$Res> {
       String title,
       bool video,
       @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'vote_count') int voteCount,
-      @JsonKey(name: 'account_states') AccountStates? accountStates});
-
-  $AccountStatesCopyWith<$Res>? get accountStates;
+      @JsonKey(name: 'vote_count') int voteCount});
 }
 
 /// @nodoc
@@ -103,7 +98,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
-    Object? accountStates = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -162,23 +156,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
-      accountStates: freezed == accountStates
-          ? _value.accountStates
-          : accountStates // ignore: cast_nullable_to_non_nullable
-              as AccountStates?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AccountStatesCopyWith<$Res>? get accountStates {
-    if (_value.accountStates == null) {
-      return null;
-    }
-
-    return $AccountStatesCopyWith<$Res>(_value.accountStates!, (value) {
-      return _then(_value.copyWith(accountStates: value) as $Val);
-    });
   }
 }
 
@@ -204,11 +182,7 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       String title,
       bool video,
       @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'vote_count') int voteCount,
-      @JsonKey(name: 'account_states') AccountStates? accountStates});
-
-  @override
-  $AccountStatesCopyWith<$Res>? get accountStates;
+      @JsonKey(name: 'vote_count') int voteCount});
 }
 
 /// @nodoc
@@ -236,7 +210,6 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? video = null,
     Object? voteAverage = null,
     Object? voteCount = null,
-    Object? accountStates = freezed,
   }) {
     return _then(_$MovieImpl(
       id: null == id
@@ -295,10 +268,6 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int,
-      accountStates: freezed == accountStates
-          ? _value.accountStates
-          : accountStates // ignore: cast_nullable_to_non_nullable
-              as AccountStates?,
     ));
   }
 }
@@ -321,8 +290,7 @@ class _$MovieImpl implements _Movie {
       this.title = '',
       this.video = false,
       @JsonKey(name: 'vote_average') this.voteAverage = 0.0,
-      @JsonKey(name: 'vote_count') this.voteCount = 0,
-      @JsonKey(name: 'account_states') this.accountStates})
+      @JsonKey(name: 'vote_count') this.voteCount = 0})
       : _genres = genres;
 
   factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
@@ -375,13 +343,10 @@ class _$MovieImpl implements _Movie {
   @override
   @JsonKey(name: 'vote_count')
   final int voteCount;
-  @override
-  @JsonKey(name: 'account_states')
-  final AccountStates? accountStates;
 
   @override
   String toString() {
-    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genres: $genres, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount, accountStates: $accountStates)';
+    return 'Movie(id: $id, adult: $adult, backdropPath: $backdropPath, genres: $genres, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   @override
@@ -411,9 +376,7 @@ class _$MovieImpl implements _Movie {
             (identical(other.voteAverage, voteAverage) ||
                 other.voteAverage == voteAverage) &&
             (identical(other.voteCount, voteCount) ||
-                other.voteCount == voteCount) &&
-            (identical(other.accountStates, accountStates) ||
-                other.accountStates == accountStates));
+                other.voteCount == voteCount));
   }
 
   @JsonKey(ignore: true)
@@ -433,8 +396,7 @@ class _$MovieImpl implements _Movie {
       title,
       video,
       voteAverage,
-      voteCount,
-      accountStates);
+      voteCount);
 
   @JsonKey(ignore: true)
   @override
@@ -466,9 +428,7 @@ abstract class _Movie implements Movie {
       final String title,
       final bool video,
       @JsonKey(name: 'vote_average') final double voteAverage,
-      @JsonKey(name: 'vote_count') final int voteCount,
-      @JsonKey(name: 'account_states')
-      final AccountStates? accountStates}) = _$MovieImpl;
+      @JsonKey(name: 'vote_count') final int voteCount}) = _$MovieImpl;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
@@ -508,9 +468,6 @@ abstract class _Movie implements Movie {
   @override
   @JsonKey(name: 'vote_count')
   int get voteCount;
-  @override
-  @JsonKey(name: 'account_states')
-  AccountStates? get accountStates;
   @override
   @JsonKey(ignore: true)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>

@@ -27,7 +27,7 @@ class MovieAccountStatesRow extends StatelessWidget {
         accountStates: accountStates,
         movieRepository: locator<MovieRepository>(),
         eventBus: locator<IEventBus>(),
-      )..getAccountStates(movie.id),
+      ),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

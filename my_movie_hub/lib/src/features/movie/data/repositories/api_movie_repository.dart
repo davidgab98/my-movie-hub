@@ -18,7 +18,7 @@ class ApiMovieRepository extends MovieRepository {
       final response = await networkService.get(
         '/movie/$movieId',
         queryParameters: {
-          'append_to_response': 'credits',
+          'append_to_response': 'account_states,credits',
         },
       );
 

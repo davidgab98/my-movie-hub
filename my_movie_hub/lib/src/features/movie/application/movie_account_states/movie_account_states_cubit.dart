@@ -18,71 +18,37 @@ class MovieAccountStatesCubit extends SafeCubit<MovieAccountStatesState>
         _eventBus = eventBus,
         _movie = movie,
         super(const MovieAccountStatesState()) {
-    if (accountStates != null) {
-      emit(
-        state.copyWith(
-          getAccountStatesStatus: StateStatus.loaded,
-          isFavorite: accountStates.favorite,
-          isInWatchlist: accountStates.watchlist,
-          rating: null, //accountStates.rated,
-        ),
-      );
-    }
+    emit(state.copyWith(accountStates: accountStates));
   }
 
   final Movie _movie;
   final MovieRepository _movieRepository;
   final IEventBus _eventBus;
 
-  Future<void> getAccountStates(int movieId) async {
-    if (state.getAccountStatesStatus.isLoading) return;
-
-    emit(state.copyWith(getAccountStatesStatus: StateStatus.loading));
-
-    final result = await _movieRepository.getMovieAccountStates(
-      movieId: movieId,
-    );
-
-    result.when(
-      (success) {
-        emit(
-          state.copyWith(
-            isFavorite: success.favorite,
-            isInWatchlist: success.watchlist,
-            rating: null, // success.rated,
-            getAccountStatesStatus: StateStatus.loaded,
-          ),
-        );
-      },
-      (error) => emit(
-        state.copyWith(
-          errorMessage: getExceptionMessage(error),
-          getAccountStatesStatus: StateStatus.error,
-        ),
-      ),
-    );
-  }
-
   Future<void> toggleFavoritesStatus() async {
-    if (state.toggleFavoritesStatus.isLoading) return;
+    if (state.toggleFavoritesStatus.isLoading || state.accountStates == null) {
+      return;
+    }
 
     emit(state.copyWith(toggleFavoritesStatus: StateStatus.loading));
 
     final result = await _movieRepository.toggleMovieFavoriteStatus(
       movieId: _movie.id,
-      addToFavorites: !state.isFavorite,
+      addToFavorites: !state.accountStates!.favorite,
     );
 
     result.when(
       (success) {
         _eventBus.emitEvent(
-          !state.isFavorite
+          !state.accountStates!.favorite
               ? AddMovieToFavoritesEvent(movie: _movie)
               : RemoveMovieFromFavoritesEvent(movie: _movie),
         );
         emit(
           state.copyWith(
-            isFavorite: !state.isFavorite,
+            accountStates: state.accountStates!.copyWith(
+              favorite: !state.accountStates!.favorite,
+            ),
             toggleFavoritesStatus: StateStatus.loaded,
           ),
         );
@@ -97,25 +63,29 @@ class MovieAccountStatesCubit extends SafeCubit<MovieAccountStatesState>
   }
 
   Future<void> toggleWatchlistStatus() async {
-    if (state.toggleWatchlistStatus.isLoading) return;
+    if (state.toggleWatchlistStatus.isLoading || state.accountStates == null) {
+      return;
+    }
 
     emit(state.copyWith(toggleWatchlistStatus: StateStatus.loading));
 
     final result = await _movieRepository.toggleMovieWatchlistStatus(
       movieId: _movie.id,
-      addToWatchlist: !state.isInWatchlist,
+      addToWatchlist: !state.accountStates!.watchlist,
     );
 
     result.when(
       (success) {
         _eventBus.emitEvent(
-          !state.isInWatchlist
+          !state.accountStates!.watchlist
               ? AddMovieToWatchlistEvent(movie: _movie)
               : RemoveMovieFromWatchlistEvent(movie: _movie),
         );
         emit(
           state.copyWith(
-            isInWatchlist: !state.isInWatchlist,
+            accountStates: state.accountStates!.copyWith(
+              watchlist: !state.accountStates!.watchlist,
+            ),
             toggleWatchlistStatus: StateStatus.loaded,
           ),
         );
@@ -130,7 +100,9 @@ class MovieAccountStatesCubit extends SafeCubit<MovieAccountStatesState>
   }
 
   Future<void> addRating({required double rating}) async {
-    if (state.addRatingStatus.isLoading) return;
+    if (state.addRatingStatus.isLoading || state.accountStates == null) {
+      return;
+    }
 
     emit(state.copyWith(addRatingStatus: StateStatus.loading));
 
