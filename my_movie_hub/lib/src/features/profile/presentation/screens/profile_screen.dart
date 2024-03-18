@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core-ui/styles/theme/theme_cubit.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/core/utils/locale_utils.dart';
@@ -31,22 +32,23 @@ class ProfileScreen extends StatelessWidget {
                   Text(
                     state.user.username,
                     style: AppTextStyle.headlineXXL.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   Text(
                     'user id: ${state.user.id}',
                     style: AppTextStyle.labelSmall.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   AppSpaces.gapH24,
                   const OpenProfileWebButton(),
                   AppSpaces.gapH40,
                   ProfileMenuOption(
-                    title: 'Tema: Oscuro',
+                    title:
+                        'Tema: ${context.read<ThemeCubit>().state == ThemeMode.dark ? 'Dark' : 'Light'}',
                     icon: Icons.brush_rounded,
-                    onPress: () {},
+                    onPress: () => context.pushNamed(AppRoute.changeTheme.name),
                   ),
                   AppSpaces.gapH32,
                   ProfileMenuOption(

@@ -54,7 +54,9 @@ class MMHTextFormField extends StatelessWidget {
       children: [
         Text(
           model.labelText ?? '',
-          style: AppTextStyle.titleLarge.copyWith(color: AppColors.overlayDark),
+          style: AppTextStyle.titleLarge.copyWith(
+            color: context.colors.onBackground,
+          ),
         ),
         Stack(
           alignment: Alignment.centerRight,
@@ -69,10 +71,11 @@ class MMHTextFormField extends StatelessWidget {
                   ? TextEditingController(text: model.value)
                   : model.controller,
               style: AppTextStyle.titleSmall
-                  .copyWith(color: AppColors.overlayDark),
+                  .copyWith(color: context.colors.onBackground),
               onChanged: onChanged,
               keyboardType: _getKeyboardTypeByType(),
               enabled: onChanged != null,
+              cursorColor: context.colors.outline,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(AppSpaces.s8),
                 hintText: model.hintText,
@@ -80,26 +83,32 @@ class MMHTextFormField extends StatelessWidget {
                 errorText: model.errorText,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-                  borderSide: const BorderSide(color: AppColors.primary),
+                  borderSide: BorderSide(color: context.colors.onBackground),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-                  borderSide: const BorderSide(color: AppColors.black2),
+                  borderSide: BorderSide(
+                    color: context.colors.outline,
+                  ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-                  borderSide: const BorderSide(color: AppColors.black2),
+                  borderSide: BorderSide(
+                    color: context.colors.outline,
+                  ),
                 ),
                 disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-                  borderSide: const BorderSide(color: AppColors.black2),
+                  borderSide: BorderSide(
+                    color: context.colors.outline,
+                  ),
                 ),
-                fillColor: AppColors.backgroundInput,
+                fillColor: context.colors.surface,
                 filled: onChanged == null,
                 suffixIcon: model.showIsValidated
-                    ? const Icon(
+                    ? Icon(
                         Icons.check_rounded,
-                        color: AppColors.secondary,
+                        color: context.colors.secondary,
                       )
                     : null,
               ),

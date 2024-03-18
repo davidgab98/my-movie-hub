@@ -62,7 +62,7 @@ class MovieListTileImage extends StatelessWidget {
                   children: [
                     Text(
                       movie.title,
-                      style: AppTextStyle.headlineXL.copyWith(
+                      style: AppTextStyle.headlineXLSmall.copyWith(
                         color: Colors.white,
                       ),
                     ),

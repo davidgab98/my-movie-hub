@@ -10,7 +10,7 @@ void showStandardModalBottomSheet({
   showModalBottomSheet<void>(
     isScrollControlled: isScrollControlled,
     elevation: 0,
-    backgroundColor: AppColors.backgroundAPPDark,
+    backgroundColor: context.colors.background,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppBorderRadius.br16),
@@ -29,13 +29,13 @@ void showStandardModalBottomSheet({
                   child: Container(
                     height: 5,
                     width: MediaQuery.of(context).size.width * 0.15,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(
                           AppBorderRadius.br32,
                         ),
                       ),
-                      color: AppColors.black2,
+                      color: context.colors.outline,
                     ),
                   ),
                 ),
@@ -49,8 +49,8 @@ void showStandardModalBottomSheet({
                   ),
                   child: Text(
                     title,
-                    style: AppTextStyle.headlineSmall.copyWith(
-                      color: AppColors.overlayDark,
+                    style: AppTextStyle.headlineMedium.copyWith(
+                      color: context.colors.onBackground,
                     ),
                   ),
                 ),

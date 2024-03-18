@@ -24,6 +24,7 @@ class SignInForm extends StatelessWidget {
       listener: (_, state) {
         if (state.formStatus.isFailure) {
           context.showErrorSnackBar(
+            context: context,
             message: state.errorMessage ?? 'error.default.signIn'.tr(),
           );
         }
@@ -104,7 +105,7 @@ class _SignInButton extends StatelessWidget {
             ),
             onPressed:
                 state.isFormValid ? context.read<SignInCubit>().signIn : null,
-            child: const Text(
+            child: Text(
               'Login',
               style: TextStyle(
                 color: AppColors.white,

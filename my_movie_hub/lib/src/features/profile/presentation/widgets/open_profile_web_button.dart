@@ -31,15 +31,15 @@ class OpenProfileWebButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Go to Web',
-            style: AppTextStyle.titleMedium.copyWith(
-              color: AppColors.overlayDark,
+            'GO TO WEB',
+            style: AppTextStyle.bodyLarge.copyWith(
+              color: context.colors.onBackground,
             ),
           ),
           AppSpaces.gapW8,
-          const Icon(
+          Icon(
             Icons.open_in_new_rounded,
-            color: AppColors.overlayDark,
+            color: context.colors.onBackground,
             size: 18,
           )
         ],

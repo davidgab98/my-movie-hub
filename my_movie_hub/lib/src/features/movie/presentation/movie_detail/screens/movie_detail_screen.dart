@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/events/event_bus.dart';
 import 'package:my_movie_hub/src/core/utils/time_utils.dart';
 import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_detail_cubit.dart';
 import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_detail_state.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
-import 'package:my_movie_hub/src/features/movie/presentation/movie_account_states/widgets/movie_account_states_row.dart';
+import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/account_states_icons/movie_account_states_row.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/movie_recommendations_list.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/overall_rating_stars.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -23,6 +24,7 @@ class MovieDetailScreen extends StatelessWidget {
         create: (context) => MovieDetailCubit(
           movie: movie,
           movieRepository: locator<MovieRepository>(),
+          eventBus: locator<IEventBus>(),
         )..getMovieDetails(),
         child: _Body(movie: movie),
       ),
@@ -75,13 +77,13 @@ class _DetailsHeader extends StatelessWidget {
                 'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
                 fit: BoxFit.cover,
               ),
-              const DecoratedBox(
+              DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      AppColors.backgroundAPPDark,
+                      context.colors.background,
                       Colors.transparent,
                     ],
                   ),
@@ -95,7 +97,7 @@ class _DetailsHeader extends StatelessWidget {
                     child: Text(
                       movie.title.toUpperCase(),
                       style: AppTextStyle.mainTitleMedium.copyWith(
-                        color: AppColors.overlayDark,
+                        color: context.colors.onBackground,
                       ),
                     ),
                   ),
@@ -124,10 +126,14 @@ class _DetailsBody extends StatelessWidget {
         return SliverToBoxAdapter(
           child: Column(
             children: <Widget>[
-              Text(
-                '${DateTime.parse(movie.releaseDate).year} | ${movie.genres.map((genre) => genre.toTranslatedString()).join(', ')} | ${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
-                style: AppTextStyle.bodyMedium.copyWith(
-                  color: AppColors.black2,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
+                child: Text(
+                  '${DateTime.parse(movie.releaseDate).year} | ${movie.genres.map((genre) => genre.toTranslatedString()).join(', ')} | ${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
+                  style: AppTextStyle.bodyMedium.copyWith(
+                    color: context.colors.outline,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               AppSpaces.gapH16,
@@ -136,16 +142,13 @@ class _DetailsBody extends StatelessWidget {
                 voteCount: movie.voteCount.toDouble(),
               ),
               AppSpaces.gapH20,
-              MovieAccountStatesRow(
-                movie: movie,
-                accountStates: state.movie.accountStates,
-              ),
+              const MovieAccountStatesRow(),
               AppSpaces.gapH24,
               Divider(
                 indent: AppSpaces.s16,
                 endIndent: AppSpaces.s16,
                 height: 0,
-                color: AppColors.overlayDark.withOpacity(1),
+                color: context.colors.onBackground.withOpacity(1),
                 thickness: 0.1,
               ),
               AppSpaces.gapH16,
@@ -191,15 +194,15 @@ class _MainMovieInfo extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: AppSpaces.s16),
                   child: Text(
                     state.movie.tagline!,
-                    style: AppTextStyle.titleMedium.copyWith(
-                      color: AppColors.white,
+                    style: AppTextStyle.titleLarge.copyWith(
+                      color: context.colors.onBackground,
                     ),
                   ),
                 ),
               Text(
                 movie.overview,
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.white,
+                  color: context.colors.onBackground,
                 ),
                 textAlign: TextAlign.justify,
               ),
@@ -209,33 +212,33 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'Titulo original',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
               Text(
                 movie.originalTitle,
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.black2,
+                  color: context.colors.outline,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
                 'Año',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
               Text(
                 '${DateTime.parse(movie.releaseDate).year}',
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.black2,
+                  color: context.colors.outline,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
                 'Duración',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
               Text(
@@ -243,14 +246,14 @@ class _MainMovieInfo extends StatelessWidget {
                     ? state.movie.runtime!.formatDuration()
                     : '0h 0m',
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.black2,
+                  color: context.colors.outline,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
                 'País',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
               Text(
@@ -260,14 +263,14 @@ class _MainMovieInfo extends StatelessWidget {
                         .join(', ')
                     : '',
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.black2,
+                  color: context.colors.outline,
                 ),
               ),
               AppSpaces.gapH16,
               Text(
                 'Compañías',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
               Text(
@@ -277,7 +280,7 @@ class _MainMovieInfo extends StatelessWidget {
                         .join(', ')
                     : '',
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: AppColors.black2,
+                  color: context.colors.outline,
                 ),
               ),
             ],
@@ -305,7 +308,7 @@ class _GenresList extends StatelessWidget {
             (genre) => Container(
               margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
               decoration: BoxDecoration(
-                color: AppColors.white.withOpacity(0.15),
+                color: context.colors.onBackground.withOpacity(0.15),
                 borderRadius: BorderRadius.circular(
                   AppBorderRadius.br16,
                 ),
@@ -315,11 +318,11 @@ class _GenresList extends StatelessWidget {
                   horizontal: AppSpaces.s10,
                   vertical: AppSpaces.s6,
                 ),
-                color: AppColors.backgroundAPPDark.withOpacity(0.65),
+                color: context.colors.background.withOpacity(0.65),
                 child: Text(
                   genre.toTranslatedString(),
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: AppColors.black3,
+                    color: context.colors.onBackground,
                   ),
                 ),
               ),
@@ -361,11 +364,11 @@ class MovieCredits extends StatelessWidget {
               child: Text(
                 'Reparto',
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: AppColors.overlayDark,
+                  color: context.colors.onBackground,
                 ),
               ),
             ),
-            AppSpaces.gapH6,
+            AppSpaces.gapH8,
             SizedBox(
               height: 130,
               child: ListView.separated(
@@ -390,7 +393,7 @@ class MovieCredits extends StatelessWidget {
                         actor.name,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.bodyMedium.copyWith(
-                          color: AppColors.overlayDark,
+                          color: context.colors.onBackground,
                         ),
                       ),
                     ],
@@ -407,56 +410,56 @@ class MovieCredits extends StatelessWidget {
                   Text(
                     'Dirección',
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   if (directors.isNotEmpty)
                     Text(
                       directors.map((d) => d.name).join(', '),
                       style: AppTextStyle.titleMedium.copyWith(
-                        color: AppColors.black2,
+                        color: context.colors.outline,
                       ),
                     ),
                   AppSpaces.gapH16,
                   Text(
                     'Guión',
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   if (screenwriters.isNotEmpty)
                     Text(
                       screenwriters.map((d) => d.name).join(', '),
                       style: AppTextStyle.titleMedium.copyWith(
-                        color: AppColors.black2,
+                        color: context.colors.outline,
                       ),
                     ),
                   AppSpaces.gapH16,
                   Text(
                     'Música',
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   if (composers.isNotEmpty)
                     Text(
                       composers.map((d) => d.name).join(', '),
                       style: AppTextStyle.titleMedium.copyWith(
-                        color: AppColors.black2,
+                        color: context.colors.outline,
                       ),
                     ),
                   AppSpaces.gapH16,
                   Text(
                     'Fotografía',
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   if (photographers.isNotEmpty)
                     Text(
                       photographers.map((d) => d.name).join(', '),
                       style: AppTextStyle.titleMedium.copyWith(
-                        color: AppColors.black2,
+                        color: context.colors.outline,
                       ),
                     ),
                 ],

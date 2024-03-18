@@ -8,4 +8,7 @@ abstract class LocalStorageService {
   void setLanguage(String language);
   String? getLanguage();
   void removeLanguage();
+  void setIsDarkTheme({required bool isDark});
+  bool? getIsDarkTheme();
+  void removeIsDarkTheme();
 }

@@ -31,12 +31,7 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-        AppSpaces.s16,
-        0,
-        AppSpaces.s16,
-        MediaQuery.of(context).padding.bottom,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
       child: CustomScrollView(
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
@@ -83,7 +78,7 @@ class _MovieListHeader extends StatelessWidget {
               ? Text(
                   '${state.totalMovies} Movies',
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: AppColors.overlayDark,
+                    color: context.colors.onBackground,
                   ),
                 )
               : null,
@@ -92,10 +87,13 @@ class _MovieListHeader extends StatelessWidget {
           titleSpacing: 0,
           backgroundColor: Colors.transparent,
           titleTextStyle: AppTextStyle.titleMedium.copyWith(
-            color: AppColors.primary,
+            color: context.colors.primary,
           ),
           actions: [
             IconButton(
+              style: IconButton.styleFrom(
+                backgroundColor: context.colors.onBackground.withOpacity(0.1),
+              ),
               onPressed:
                   context.read<ComplexMovieListCubit>().toggleListDisplayMode,
               icon: Icon(
@@ -107,7 +105,7 @@ class _MovieListHeader extends StatelessWidget {
                             ? Icons.grid_4x4_rounded
                             : Icons.view_list_outlined,
                 size: 28,
-                color: AppColors.overlayDark,
+                color: context.colors.onBackground,
               ),
             ),
             TextButton(
@@ -120,8 +118,8 @@ class _MovieListHeader extends StatelessWidget {
                 'Latest',
                 style: AppTextStyle.titleMedium.copyWith(
                   color: state.orderType == OrderType.asc
-                      ? AppColors.overlayDark
-                      : AppColors.black2,
+                      ? context.colors.onBackground
+                      : context.colors.outline,
                 ),
               ),
             ),
@@ -135,8 +133,8 @@ class _MovieListHeader extends StatelessWidget {
                 'Oldest',
                 style: AppTextStyle.titleMedium.copyWith(
                   color: state.orderType == OrderType.desc
-                      ? AppColors.overlayDark
-                      : AppColors.black2,
+                      ? context.colors.onBackground
+                      : context.colors.outline,
                 ),
               ),
             ),

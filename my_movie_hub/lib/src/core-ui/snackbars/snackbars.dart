@@ -3,9 +3,11 @@ import 'package:ui_kit/ui_kit.dart';
 
 extension ShowSnackBar on BuildContext {
   void showSuccessSnackBar({
+    required BuildContext context,
     required String message,
   }) {
     _showStatusSnackBar(
+      context: context,
       message: message,
       icon: const Icon(
         Icons.check_circle,
@@ -15,18 +17,21 @@ extension ShowSnackBar on BuildContext {
   }
 
   void showErrorSnackBar({
+    required BuildContext context,
     required String message,
   }) {
     _showStatusSnackBar(
+      context: context,
       message: message,
-      icon: const Icon(
+      icon: Icon(
         Icons.error_rounded,
-        color: AppColors.red,
+        color: colors.onError,
       ),
     );
   }
 
   void _showStatusSnackBar({
+    required BuildContext context,
     required String message,
     required Icon icon,
   }) {
@@ -36,7 +41,7 @@ extension ShowSnackBar on BuildContext {
         SnackBar(
           behavior: SnackBarBehavior.floating,
           elevation: 1,
-          backgroundColor: AppColors.primary,
+          backgroundColor: context.colors.primary,
           padding: const EdgeInsets.all(AppSpaces.s16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppBorderRadius.br8),

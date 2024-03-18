@@ -20,8 +20,8 @@ class PublicListSection extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
           child: Text(
             title,
-            style:
-                AppTextStyle.headlineXL.copyWith(color: AppColors.overlayDark),
+            style: AppTextStyle.headlineXLLarge
+                .copyWith(color: context.colors.onBackground),
           ),
         ),
         SizedBox(

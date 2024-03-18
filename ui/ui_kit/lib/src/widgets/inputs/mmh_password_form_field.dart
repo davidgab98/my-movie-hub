@@ -41,14 +41,19 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
       children: [
         Text(
           widget.model.labelText ?? '',
-          style: AppTextStyle.titleLarge.copyWith(color: AppColors.overlayDark),
+          style: AppTextStyle.titleLarge.copyWith(
+            color: context.colors.onBackground,
+          ),
         ),
         TextFormField(
           initialValue: widget.model.initialValue,
           onChanged: widget.onChanged,
           keyboardType: TextInputType.text,
           obscureText: passwordHidden,
-          style: AppTextStyle.titleSmall.copyWith(color: AppColors.overlayDark),
+          style: AppTextStyle.titleSmall.copyWith(
+            color: context.colors.onBackground,
+          ),
+          cursorColor: context.colors.outline,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(AppSpaces.s8),
             hintText: widget.model.hintText,
@@ -59,7 +64,7 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
                 passwordHidden
                     ? Icons.visibility_rounded
                     : Icons.visibility_off_rounded,
-                color: AppColors.primary,
+                color: context.colors.outline,
                 size: 20,
               ),
               onPressed: () => setState(() {
@@ -68,19 +73,25 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-              borderSide: const BorderSide(color: AppColors.primary),
+              borderSide: BorderSide(color: context.colors.onBackground),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-              borderSide: const BorderSide(color: AppColors.black2),
+              borderSide: BorderSide(
+                color: context.colors.outline,
+              ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-              borderSide: const BorderSide(color: AppColors.black2),
+              borderSide: BorderSide(
+                color: context.colors.outline,
+              ),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-              borderSide: const BorderSide(color: AppColors.black2),
+              borderSide: BorderSide(
+                color: context.colors.outline,
+              ),
             ),
           ),
         ),

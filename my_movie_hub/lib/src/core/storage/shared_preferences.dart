@@ -8,6 +8,7 @@ class SharedPreferencesService extends LocalStorageService {
   static const sessionIdKey = 'sessionIdKey';
   static const accountIdKey = 'accountIdKey';
   static const languageKey = 'languageKey';
+  static const isDarkThemeKey = 'isDarkThemeKey';
 
   /// Auth
   @override
@@ -54,5 +55,20 @@ class SharedPreferencesService extends LocalStorageService {
   @override
   void removeLanguage() {
     preferences.remove(languageKey);
+  }
+
+  @override
+  bool? getIsDarkTheme() {
+    return preferences.getBool(isDarkThemeKey);
+  }
+
+  @override
+  void setIsDarkTheme({required bool isDark}) {
+    preferences.setBool(isDarkThemeKey, isDark);
+  }
+
+  @override
+  void removeIsDarkTheme() {
+    preferences.remove(isDarkThemeKey);
   }
 }

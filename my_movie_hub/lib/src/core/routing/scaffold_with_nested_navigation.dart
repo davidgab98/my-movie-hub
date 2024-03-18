@@ -31,7 +31,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
             child: ColoredBox(
               color: AppColors.white.withOpacity(0.25),
               child: BottomNavigationBar(
-                backgroundColor: AppColors.black.withOpacity(0.8),
+                backgroundColor: AppColors.black.withOpacity(0.55),
                 currentIndex: navigationShell.currentIndex,
                 onTap: (index) => navigationShell.goBranch(
                   index,

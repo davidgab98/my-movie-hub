@@ -58,7 +58,7 @@ class SignInScreen extends StatelessWidget {
                     'MY MOVIE HUB',
                     style: AppTextStyle.headlineLarge.copyWith(
                       fontSize: 22,
-                      color: AppColors.overlayDark,
+                      color: context.colors.onBackground,
                     ),
                   ),
                   AppSpaces.gapH24,
@@ -88,7 +88,7 @@ class _CreateNewAccount extends StatelessWidget {
       children: [
         Text('¿No estás registrado?',
             style: AppTextStyle.bodySmall.copyWith(
-              color: AppColors.overlayDark,
+              color: context.colors.onBackground,
             )),
         TextButton(
           onPressed: () async {
@@ -99,8 +99,7 @@ class _CreateNewAccount extends StatelessWidget {
           child: Text(
             'Crea un usuario',
             style: AppTextStyle.button.copyWith(
-              decoration: TextDecoration.underline,
-              color: AppColors.secondary,
+              color: context.colors.secondary,
             ),
           ),
         ),

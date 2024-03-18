@@ -20,6 +20,8 @@ class OverallRatingStars extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpaces.s6),
           decoration: BoxDecoration(
             color: Colors.amber.withOpacity(0.2),
+            border:
+                Border.all(color: Colors.amber.withOpacity(0.25), width: 0.5),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppBorderRadius.brMax),
             ),
@@ -27,7 +29,7 @@ class OverallRatingStars extends StatelessWidget {
           child: Text(
             voteAverage.toStringAsFixed(1),
             style: AppTextStyle.titleMedium.copyWith(
-              color: AppColors.overlayDark,
+              color: context.colors.onBackground,
             ),
           ),
         ),

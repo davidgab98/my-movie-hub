@@ -9,6 +9,10 @@ class MovieDetailState with _$MovieDetailState {
   const factory MovieDetailState({
     @Default(DetailedMovie(id: -1)) DetailedMovie movie,
     @Default(StateStatus.initial) StateStatus status,
+    @Default(StateStatus.initial) StateStatus toggleFavoritesStatus,
+    @Default(StateStatus.initial) StateStatus toggleWatchlistStatus,
+    @Default(StateStatus.initial) StateStatus addRatingStatus,
+    @Default(StateStatus.initial) StateStatus removeRatingStatus,
     @Default('') String errorMessage,
   }) = _MovieDetailState;
 }

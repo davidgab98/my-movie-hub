@@ -147,7 +147,7 @@ class _MovieListState extends State<_MovieList> {
                     child: Text(
                       'Error',
                       style: AppTextStyle.titleMedium
-                          .copyWith(color: AppColors.overlayDark),
+                          .copyWith(color: context.colors.onBackground),
                     ),
                   ),
                 );

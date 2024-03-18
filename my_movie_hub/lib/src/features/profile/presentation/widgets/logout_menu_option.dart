@@ -36,9 +36,12 @@ class LogOutMenuOption extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: AppColors.tertiary.withOpacity(0.1),
+          color: context.colors.secondary.withOpacity(0.1),
         ),
-        child: const Icon(Icons.logout_rounded, color: AppColors.tertiary),
+        child: Icon(
+          Icons.logout_rounded,
+          color: context.colors.tertiary,
+        ),
       ),
       title: Text(
         'Cerrar sesión',

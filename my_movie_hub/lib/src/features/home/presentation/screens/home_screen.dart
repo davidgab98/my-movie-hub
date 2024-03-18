@@ -8,11 +8,10 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Ordenar MovieDetails.
-//TODO: Ver fallo repintar iconos de favs, watchlist, rating.
-//TODO: Ver casos de error.
-//TODO: Temas.
-//TODO: Buscador / Estrenos.
+//TODO: Buscador / Estrenos
+//TODO: Ordenar MovieDetails
+//TODO: Ordenar/Revisar toda la app y ordenar codigo
+//TODO: Ver casos de error
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -87,25 +86,27 @@ class _GenreDirectAccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
+      decoration: BoxDecoration(
+        color: context.colors.onBackground.withOpacity(0.25),
+        borderRadius: BorderRadius.circular(
+          AppBorderRadius.br16,
+        ),
+      ),
+      child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpaces.s16,
+          vertical: AppSpaces.s8,
         ),
-        visualDensity: VisualDensity.compact,
-        backgroundColor: Colors.transparent,
-        side: const BorderSide(
-          color: AppColors.black3,
-          width: 0.5,
-        ),
-      ),
-      child: Text(
-        genre,
-        style: AppTextStyle.bodySmall.copyWith(
-          color: AppColors.black3,
+        color: context.colors.background.withOpacity(0.65),
+        child: Text(
+          genre,
+          style: AppTextStyle.bodyMedium.copyWith(
+            color: context.colors.onBackground,
+          ),
         ),
       ),
-      onPressed: () {},
     );
   }
 }

@@ -1,46 +1,41 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:my_movie_hub/l10n/locales.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_hub/src/core-ui/styles/theme/theme_cubit.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 import 'package:my_movie_hub/src/core/utils/hot_restart_controller.dart';
-import 'package:my_movie_hub/src/core/utils/locale_utils.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class ChangeLanguageScreen extends StatelessWidget {
-  const ChangeLanguageScreen({super.key});
+class ChangeThemeScreen extends StatelessWidget {
+  const ChangeThemeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: 'Idioma'),
+      appBar: const MainAppBar(title: 'Tema'),
       body: Padding(
         padding: const EdgeInsets.all(AppSpaces.s16),
         child: ListView(
           shrinkWrap: true,
           children: [
-            for (int i = 0; i < L10n.all.length; i++)
+            for (int i = 1; i < ThemeMode.values.length; i++)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: AppSpaces.s10),
                 child: ListTile(
                   title: Text(
-                    L10n.all[i].getTranslatedString(),
+                    ThemeMode.values[i] == ThemeMode.dark ? 'Dark' : 'Light',
                     style: AppTextStyle.headlineMedium.copyWith(
                       color: context.colors.onBackground,
                     ),
                   ),
-                  leading: Radio<Locale>(
+                  leading: Radio<ThemeMode>(
                     activeColor: context.colors.tertiary,
-                    value: L10n.all[i],
-                    groupValue: context.locale,
-                    onChanged: (Locale? value) {
-                      locator<LocalStorageService>().setLanguage(
-                        value!.languageCode,
-                      );
-
-                      /// change language
-                      context.setLocale(value);
-                      HotRestartController.performHotRestart(context);
+                    value: ThemeMode.values[i],
+                    groupValue: context.read<ThemeCubit>().state,
+                    onChanged: (ThemeMode? value) {
+                      context
+                          .read<ThemeCubit>()
+                          .toggleTheme(isDarkMode: value == ThemeMode.dark);
                     },
                   ),
                 ),

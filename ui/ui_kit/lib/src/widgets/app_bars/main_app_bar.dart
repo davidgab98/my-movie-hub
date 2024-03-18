@@ -18,9 +18,23 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 3,
-      backgroundColor: AppColors.backgroundAPPDark,
-      flexibleSpace: Container(color: AppColors.black.withOpacity(0.6)),
       centerTitle: true,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColors.primary.withOpacity(
+                  0.3), // Más transparencia para suavizar el inicio
+              AppColors.secondary.withOpacity(0.2), // Transparencia intermedia
+              AppColors.tertiary.withOpacity(
+                  0.1), // Alta transparencia para un final muy suave
+            ],
+            stops: const [0.0, 0.5, 1.0], // Distribución uniforme del gradiente
+          ),
+        ),
+      ),
       title: title != null
           ? Text(
               title!,
@@ -41,7 +55,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: const Icon(
                 Icons.person,
                 size: 28,
-                color: AppColors.overlayDark,
+                color: AppColors.white,
               ),
               onPressed: leadingIconAction,
             )

@@ -28,11 +28,14 @@ void showActionsModalBottomSheet({
         for (var i = 0; i < modalActions.length; i++)
           ListTile(
             contentPadding: const EdgeInsets.symmetric(
-                horizontal: AppSpaces.s24, vertical: AppSpaces.s8),
+              horizontal: AppSpaces.s24,
+              vertical: AppSpaces.s8,
+            ),
             title: Text(
               modalActions[i].title,
               style: AppTextStyle.titleLarge.copyWith(
-                color: modalActions[i].titleColor ?? AppColors.overlayDark,
+                color:
+                    modalActions[i].titleColor ?? context.colors.onBackground,
               ),
             ),
             onTap: () {

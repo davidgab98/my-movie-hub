@@ -10,6 +10,7 @@ import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
+import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
@@ -20,6 +21,7 @@ enum AppRoute {
   home('/home'),
   profile('/profile'),
   changeLanguage('changeLanguage'),
+  changeTheme('changeTheme'),
   favorites('/favorites'),
   watchlist('/watchlist'),
   ratings('/ratings'),
@@ -190,6 +192,12 @@ final goRouter = GoRouter(
       name: AppRoute.profile.name,
       builder: (context, state) => const ProfileScreen(),
       routes: [
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoute.changeTheme.path,
+          name: AppRoute.changeTheme.name,
+          builder: (context, state) => const ChangeThemeScreen(),
+        ),
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: AppRoute.changeLanguage.path,
