@@ -8,7 +8,8 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Buscador / Estrenos
+//TODO: Buscador
+//TODO: Ordenar Widgets de Generos y Listas de Generos
 //TODO: Movie y DetailedMovie DTOS con Freezed y Clases de dominio sin freezed (y así MovieDetailed puede extender de Movie)
 //TODO: Ordenar/Revisar toda la app y ordenar codigo
 //TODO: Ver casos de error
@@ -29,7 +30,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               AppSpaces.gapH12,
-              const _GenresDirectAccessList(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: AppSpaces.s16),
+                child: GenresDirectAccessList(),
+              ),
               AppSpaces.gapH16,
               const TrendingMoviesCarousel(),
               AppSpaces.gapH16,
@@ -49,8 +53,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _GenresDirectAccessList extends StatelessWidget {
-  const _GenresDirectAccessList({
+class GenresDirectAccessList extends StatelessWidget {
+  const GenresDirectAccessList({
     super.key,
   });
 
@@ -60,7 +64,6 @@ class _GenresDirectAccessList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          AppSpaces.gapW16,
           _GenreDirectAccess(genre: 'Comedy'),
           AppSpaces.gapW10,
           _GenreDirectAccess(genre: 'Drama'),
@@ -72,7 +75,6 @@ class _GenresDirectAccessList extends StatelessWidget {
           _GenreDirectAccess(genre: 'Romantic'),
           AppSpaces.gapW10,
           _GenreDirectAccess(genre: 'Indie'),
-          AppSpaces.gapW16,
         ],
       ),
     );

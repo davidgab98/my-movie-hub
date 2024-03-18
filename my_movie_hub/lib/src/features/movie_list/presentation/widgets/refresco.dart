@@ -392,7 +392,11 @@ class Refresco extends StatefulWidget {
             left: 0.0,
             right: 0.0,
             child: _buildIndicatorForRefreshState(
-                refreshState, _kActivityIndicatorRadius, percentageComplete),
+              context,
+              refreshState,
+              _kActivityIndicatorRadius,
+              percentageComplete,
+            ),
           ),
         ],
       ),
@@ -400,6 +404,7 @@ class Refresco extends StatefulWidget {
   }
 
   static Widget _buildIndicatorForRefreshState(
+      BuildContext context,
       RefreshIndicatorMode refreshState,
       double radius,
       double percentageComplete) {
@@ -414,7 +419,7 @@ class Refresco extends StatefulWidget {
           child: CupertinoActivityIndicator.partiallyRevealed(
             radius: radius,
             progress: percentageComplete,
-            color: AppColors.overlayDark,
+            color: context.colors.onBackground,
           ),
         );
       case RefreshIndicatorMode.armed:
@@ -422,13 +427,13 @@ class Refresco extends StatefulWidget {
         // Once we're armed or performing the refresh, we just show the normal spinner.
         return CupertinoActivityIndicator(
           radius: radius,
-          color: AppColors.overlayDark,
+          color: context.colors.onBackground,
         );
       case RefreshIndicatorMode.done:
         // When the user lets go, the standard transition is to shrink the spinner.
         return CupertinoActivityIndicator(
           radius: radius * percentageComplete,
-          color: AppColors.overlayDark,
+          color: context.colors.onBackground,
         );
       case RefreshIndicatorMode.inactive:
         // Anything else doesn't show anything.

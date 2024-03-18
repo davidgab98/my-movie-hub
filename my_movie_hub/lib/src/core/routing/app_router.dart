@@ -13,32 +13,38 @@ import 'package:my_movie_hub/src/features/profile/presentation/screens/change_la
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
+import 'package:my_movie_hub/src/features/search/presentation/screens/search_screen.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
 
 enum AppRoute {
   sessionManager('/'),
   signIn('/signIn'),
   home('/home'),
+  search('/search'),
+  watchlist('/watchlist'),
+  favorites('/favorites'),
+  ratings('/ratings'),
+  movieDetail('movieDetail'),
   profile('/profile'),
   changeLanguage('changeLanguage'),
-  changeTheme('changeTheme'),
-  favorites('/favorites'),
-  watchlist('/watchlist'),
-  ratings('/ratings'),
-  movieDetail('movieDetail');
+  changeTheme('changeTheme');
 
   final String path;
   const AppRoute(this.path);
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorFavoritesKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell Favorites');
+final _shellNavigatorHomeKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Home');
+final _shellNavigatorSearchKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Search');
 final _shellNavigatorWatchlistKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
+final _shellNavigatorFavoritesKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Favorites');
+
 final _shellNavigatorRatingsKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Ratings');
-final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'shell A');
 
 final goRouter = GoRouter(
   redirect: (context, state) {},
@@ -79,6 +85,34 @@ final goRouter = GoRouter(
                 ),
               ],
             ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorSearchKey,
+          routes: [
+            GoRoute(
+                name: AppRoute.search.name,
+                path: AppRoute.search.path,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                      child: SearchScreen(),
+                    ),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _shellNavigatorSearchKey,
+                    name: '${AppRoute.search.name}${AppRoute.movieDetail.name}',
+                    path: '${AppRoute.search.name}${AppRoute.movieDetail.path}',
+                    builder: (context, state) {
+                      if (state.extra == null || state.extra is! Movie) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          context.pop();
+                        });
+                        return const IntermediateLoadingScreen();
+                      }
+
+                      return MovieDetailScreen(movie: state.extra! as Movie);
+                    },
+                  ),
+                ]),
           ],
         ),
         StatefulShellBranch(

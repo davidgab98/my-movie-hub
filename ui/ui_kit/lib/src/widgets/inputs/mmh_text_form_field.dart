@@ -103,7 +103,7 @@ class MMHTextFormField extends StatelessWidget {
                     color: context.colors.outline,
                   ),
                 ),
-                fillColor: context.colors.surface,
+                fillColor: context.colors.error,
                 filled: onChanged == null,
                 suffixIcon: model.showIsValidated
                     ? Icon(

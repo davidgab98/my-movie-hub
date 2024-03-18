@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:my_movie_hub/src/core/enums/list_display_modes.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';

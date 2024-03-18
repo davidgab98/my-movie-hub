@@ -19,6 +19,9 @@ import 'package:my_movie_hub/src/features/public_lists/domain/repositories/publi
 import 'package:my_movie_hub/src/features/ratings/data/repositories/api_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/data/repositories/mock_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/ratings/domain/repositories/ratings_repository.dart';
+import 'package:my_movie_hub/src/features/search/data/repositories/api_search_repository.dart';
+import 'package:my_movie_hub/src/features/search/data/repositories/mock_search_repository.dart';
+import 'package:my_movie_hub/src/features/search/domain/repositories/search_repository.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
 import 'package:my_movie_hub/src/features/watchlist/data/repositories/api_watchlist_repository.dart';
 import 'package:my_movie_hub/src/features/watchlist/data/repositories/mock_watchlist_repository.dart';
@@ -89,6 +92,14 @@ Future<void> serviceLocatorSetUp() async {
     () => useMocks
         ? MockPublicListsRepository()
         : ApiPublicListsRepository(
+            networkService: locator<NetworkService>(),
+          ),
+  );
+
+  locator.registerLazySingleton<SearchRepository>(
+    () => useMocks
+        ? MockSearchRepository()
+        : ApiSearchRepository(
             networkService: locator<NetworkService>(),
           ),
   );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
+import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
 import 'package:my_movie_hub/src/core/events/event_bus.dart';
 import 'package:my_movie_hub/src/core/utils/time_utils.dart';
 import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_detail_cubit.dart';
@@ -207,7 +208,7 @@ class _MainMovieInfo extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               AppSpaces.gapH20,
-              _GenresList(movie: movie),
+              _GenresWrapList(genres: movie.genres),
               AppSpaces.gapH20,
               Text(
                 'Titulo original',
@@ -291,19 +292,19 @@ class _MainMovieInfo extends StatelessWidget {
   }
 }
 
-class _GenresList extends StatelessWidget {
-  const _GenresList({
+class _GenresWrapList extends StatelessWidget {
+  const _GenresWrapList({
     super.key,
-    required this.movie,
+    required this.genres,
   });
 
-  final Movie movie;
+  final List<MovieGenre> genres;
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
       spacing: AppSpaces.s8,
-      children: movie.genres
+      children: genres
           .map(
             (genre) => Container(
               margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),

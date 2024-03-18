@@ -55,6 +55,15 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                   BottomNavigationBarItem(
                     icon: Icon(
                       navigationShell.currentIndex == 1
+                          ? Icons.saved_search_rounded
+                          : Icons.search_outlined,
+                      color: Colors.white,
+                    ),
+                    label: 'Search',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      navigationShell.currentIndex == 2
                           ? Icons.visibility
                           : Icons.visibility_outlined,
                       color: Colors.white,
@@ -63,7 +72,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      navigationShell.currentIndex == 2
+                      navigationShell.currentIndex == 3
                           ? Icons.favorite
                           : Icons.favorite_outline,
                       color: Colors.white,
@@ -72,7 +81,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      navigationShell.currentIndex == 3
+                      navigationShell.currentIndex == 4
                           ? Icons.star
                           : Icons.star_outline,
                       color: Colors.white,

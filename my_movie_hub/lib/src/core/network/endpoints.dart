@@ -32,4 +32,7 @@ class Endpoints {
   static const String movieToFavorites = '/account/favorite';
   static const String movieRate = 'rating';
   static const String accountStates = '/account_states';
+
+  /// searches
+  static const String searchMovie = '/search/movie';
 }

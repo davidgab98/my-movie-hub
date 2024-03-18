@@ -3,23 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/list_display_modes.dart';
-import 'package:my_movie_hub/src/core/enums/order_type.dart';
+import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_cubit.dart';
-import 'package:my_movie_hub/src/features/movie_list/application/complex_movie_list/complex_movie_list_state.dart';
 import 'package:my_movie_hub/src/features/movie_list/presentation/widgets/refresco.dart';
+import 'package:my_movie_hub/src/features/search/application/search_cubit.dart';
+import 'package:my_movie_hub/src/features/search/application/search_state.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class ComplexMovieList extends StatefulWidget {
-  const ComplexMovieList({super.key});
+class ComplexMovieSearchList extends StatefulWidget {
+  const ComplexMovieSearchList({super.key});
 
   @override
-  State<ComplexMovieList> createState() => _ComplexMovieListState();
+  State<ComplexMovieSearchList> createState() => _ComplexMovieSearchListState();
 }
 
-class _ComplexMovieListState extends State<ComplexMovieList> {
+class _ComplexMovieSearchListState extends State<ComplexMovieSearchList> {
   final _scrollController = ScrollController();
   final double _scrollThreshold = 200;
 
@@ -37,12 +37,13 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
+          const _SearchInputHeader(),
+          const _GenresFilterHeader(),
           const _MovieListHeader(),
           Refresco(
             refreshTriggerPullDistance: 120,
-            onRefresh: () async => context
-                .read<ComplexMovieListCubit>()
-                .loadMovies(isRefreshing: true),
+            onRefresh: () async =>
+                context.read<SearchCubit>().searchMovies(isRefreshing: true),
           ),
           const _MovieListBody(),
         ],
@@ -60,24 +61,140 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     if (maxScroll - currentScroll <= _scrollThreshold) {
-      await context.read<ComplexMovieListCubit>().loadMovies();
+      await context.read<SearchCubit>().searchMovies();
     }
   }
 }
 
-class _MovieListHeader extends StatelessWidget {
-  const _MovieListHeader({
+class _SearchInputHeader extends StatelessWidget {
+  const _SearchInputHeader({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ComplexMovieListCubit, ComplexMovieListState>(
+    return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         return SliverAppBar(
+          floating: true,
+          snap: true,
+          toolbarHeight: 72,
+          backgroundColor: context.colors.background,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.symmetric(vertical: AppSpaces.s12),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: MMHSearchField(
+                    onChanged: (query) {},
+                  ),
+                ),
+                AppSpaces.gapW8,
+                Expanded(
+                  flex: 3,
+                  child: MMHDropdownButton<String>(
+                    label: 'Año',
+                    values: const [
+                      'Año',
+                      '2000',
+                      '2001',
+                      '2002',
+                      '2003',
+                      '2004',
+                      '2005',
+                      '2006',
+                      '2007',
+                      '2008',
+                      '2009',
+                      '2010',
+                      '2011',
+                      '2012',
+                      '2013',
+                      '2014',
+                    ],
+                    currentValue: '2000',
+                    onChange: (value) {},
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _GenresFilterHeader extends StatelessWidget {
+  const _GenresFilterHeader({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        return SliverAppBar(
+          toolbarHeight: 50,
+          backgroundColor: context.colors.background,
+          flexibleSpace: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s12),
+              child: Row(
+                children: MovieGenre.values
+                    .map(
+                      (genre) => Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpaces.s4,
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpaces.s16,
+                              vertical: AppSpaces.s8,
+                            ),
+                            backgroundColor: context.colors.surface,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(AppBorderRadius.br20),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            genre.toTranslatedString(),
+                            style: AppTextStyle.titleSmall.copyWith(
+                              color: context.colors.onBackground,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _MovieListHeader extends StatelessWidget {
+  const _MovieListHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        return SliverAppBar(
+          elevation: 0,
           title: state.totalMovies != null
               ? Text(
-                  '${state.totalMovies} Movies',
+                  '${state.totalMovies} Results',
                   style: AppTextStyle.titleMedium.copyWith(
                     color: context.colors.onBackground,
                   ),
@@ -86,7 +203,7 @@ class _MovieListHeader extends StatelessWidget {
           primary: false,
           centerTitle: false,
           titleSpacing: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: context.colors.background,
           titleTextStyle: AppTextStyle.titleMedium.copyWith(
             color: context.colors.primary,
           ),
@@ -95,8 +212,7 @@ class _MovieListHeader extends StatelessWidget {
               style: IconButton.styleFrom(
                 backgroundColor: context.colors.surface,
               ),
-              onPressed:
-                  context.read<ComplexMovieListCubit>().toggleListDisplayMode,
+              onPressed: context.read<SearchCubit>().toggleListDisplayMode,
               icon: Icon(
                 state.listDisplayMode == ListDisplayMode.listWithImages
                     ? Icons.calendar_view_day_outlined
@@ -109,35 +225,6 @@ class _MovieListHeader extends StatelessWidget {
                 color: context.colors.onBackground,
               ),
             ),
-            AppSpaces.gapW6,
-            for (final orderType in OrderType.values)
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpaces.s10,
-                  ),
-                  disabledBackgroundColor: context.colors.background,
-                  backgroundColor:
-                      context.colors.onBackground.withOpacity(0.125),
-                ),
-                onPressed: state.orderType == orderType
-                    ? () => context
-                        .read<ComplexMovieListCubit>()
-                        .updateOrderTypeAndReload(
-                          state.orderType == OrderType.asc
-                              ? OrderType.desc
-                              : OrderType.asc,
-                        )
-                    : null,
-                child: Text(
-                  orderType == OrderType.asc ? 'Latest' : 'Oldest',
-                  style: AppTextStyle.titleMedium.copyWith(
-                    color: state.orderType == orderType
-                        ? context.colors.onBackground
-                        : context.colors.onBackground,
-                  ),
-                ),
-              ),
           ],
         );
       },
@@ -152,7 +239,7 @@ class _MovieListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ComplexMovieListCubit, ComplexMovieListState>(
+    return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
@@ -169,7 +256,7 @@ class _MovieListBody extends StatelessWidget {
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
-              onReload: context.read<ComplexMovieListCubit>().loadMovies,
+              onReload: context.read<SearchCubit>().searchMovies,
             ),
           );
         } else if (state.movies.isNotEmpty) {
@@ -212,7 +299,7 @@ class _MovieListWithImages extends StatelessWidget {
     super.key,
   });
 
-  final ComplexMovieListState state;
+  final SearchState state;
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +333,7 @@ class _MovieGrid extends StatelessWidget {
     required this.crossAxisCount,
   });
 
-  final ComplexMovieListState state;
+  final SearchState state;
   final int crossAxisCount;
 
   @override
@@ -290,7 +377,7 @@ class _MovieList extends StatelessWidget {
     super.key,
   });
 
-  final ComplexMovieListState state;
+  final SearchState state;
 
   @override
   Widget build(BuildContext context) {
