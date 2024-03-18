@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
@@ -60,6 +61,7 @@ abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     );
   }
 
+  @protected
   void removeMovie({required int movieId}) {
     final newMovieList = state.movies.toList();
     newMovieList.removeWhere((e) => e.id == movieId);
@@ -72,16 +74,20 @@ abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     emit(state.copyWith(movies: newMovieList, totalMovies: newTotalMovies));
   }
 
+  @protected
   void addMovie({required Movie movie}) {
-    final insertionIndex =
-        state.orderType == OrderType.desc ? 0 : state.movies.length;
-    final newMovieList = List<Movie>.from(state.movies)
-      ..insert(insertionIndex, movie);
+    if (!state.movies.contains(movie)) {
+      final insertionIndex =
+          state.orderType == OrderType.desc ? 0 : state.movies.length;
+      final newMovieList = List<Movie>.from(state.movies)
+        ..insert(insertionIndex, movie);
 
-    final newTotalMovies =
-        state.totalMovies != null ? state.totalMovies! + 1 : state.totalMovies;
+      final newTotalMovies = state.totalMovies != null
+          ? state.totalMovies! + 1
+          : state.totalMovies;
 
-    emit(state.copyWith(movies: newMovieList, totalMovies: newTotalMovies));
+      emit(state.copyWith(movies: newMovieList, totalMovies: newTotalMovies));
+    }
   }
 
   Future<void> updateOrderTypeAndReload(OrderType orderType) async {

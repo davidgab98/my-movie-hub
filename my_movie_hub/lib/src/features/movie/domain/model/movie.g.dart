@@ -23,6 +23,10 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       video: json['video'] as bool? ?? false,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0.0,
       voteCount: json['vote_count'] as int? ?? 0,
+      accountStates: json['account_states'] == null
+          ? null
+          : AccountStates.fromJson(
+              json['account_states'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
@@ -41,6 +45,7 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
       'video': instance.video,
       'vote_average': instance.voteAverage,
       'vote_count': instance.voteCount,
+      'account_states': instance.accountStates,
     };
 
 const _$MovieGenreEnumMap = {
@@ -237,12 +242,12 @@ _$AccountStatesImpl _$$AccountStatesImplFromJson(Map<String, dynamic> json) =>
     _$AccountStatesImpl(
       favorite: json['favorite'] as bool? ?? false,
       watchlist: json['watchlist'] as bool? ?? false,
-      rating: _ratedFromJson(json['rating']),
+      rated: _ratedFromJson(json['rated']),
     );
 
 Map<String, dynamic> _$$AccountStatesImplToJson(_$AccountStatesImpl instance) =>
     <String, dynamic>{
       'favorite': instance.favorite,
       'watchlist': instance.watchlist,
-      'rating': instance.rating,
+      'rated': instance.rated,
     };

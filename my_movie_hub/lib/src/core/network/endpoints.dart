@@ -30,6 +30,6 @@ class Endpoints {
   /// movie_states
   static const String movieToWatchlist = '/account/watchlist';
   static const String movieToFavorites = '/account/favorite';
-  static const String movieRating = '/account/rating';
+  static const String movieRate = 'rating';
   static const String accountStates = '/account_states';
 }

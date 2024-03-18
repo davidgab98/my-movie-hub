@@ -25,6 +25,7 @@ class Movie with _$Movie {
     @Default(false) bool video,
     @JsonKey(name: 'vote_average') @Default(0.0) double voteAverage,
     @JsonKey(name: 'vote_count') @Default(0) int voteCount,
+    @JsonKey(name: 'account_states') AccountStates? accountStates,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
@@ -191,18 +192,18 @@ class AccountStates with _$AccountStates {
   const factory AccountStates({
     @Default(false) bool favorite,
     @Default(false) bool watchlist,
-    @JsonKey(fromJson: _ratedFromJson) int? rating,
+    @JsonKey(fromJson: _ratedFromJson) double? rated,
   }) = _AccountStates;
 
   factory AccountStates.fromJson(Map<String, dynamic> json) =>
       _$AccountStatesFromJson(json);
 }
 
-int? _ratedFromJson(dynamic json) {
+double? _ratedFromJson(dynamic json) {
   if (json is bool) {
     return null;
   } else if (json is Map<String, dynamic>) {
-    return json['value'] as int?;
+    return json['value'] as double?;
   } else {
     return null;
   }

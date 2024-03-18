@@ -8,11 +8,12 @@ class RatingsCubit extends ComplexMovieListCubit {
     required RatingsRepository ratingsRepository,
     required IEventBus eventBus,
   }) : super(fetchMovies: ratingsRepository.getRatedMovies) {
-    eventBus.on<RemoveMovieFromWatchlistEvent>().listen((event) {
-      return removeMovie(movieId: event.movie.id);
-    });
-    eventBus.on<AddMovieToWatchlistEvent>().listen((event) {
-      return addMovie(movie: event.movie);
+    eventBus.on<RateMovieEvent>().listen((event) {
+      if (event.rate != null) {
+        return addMovie(movie: event.movie);
+      } else {
+        return removeMovie(movieId: event.movie.id);
+      }
     });
   }
 }

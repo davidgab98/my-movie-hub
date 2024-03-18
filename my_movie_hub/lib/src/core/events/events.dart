@@ -39,7 +39,7 @@ class RemoveMovieFromFavoritesEvent extends IEvent {
 
 class RateMovieEvent extends IEvent {
   final Movie movie;
-  final double rate;
+  final double? rate;
 
-  RateMovieEvent({required this.movie, required this.rate});
+  RateMovieEvent({required this.movie, this.rate});
 }

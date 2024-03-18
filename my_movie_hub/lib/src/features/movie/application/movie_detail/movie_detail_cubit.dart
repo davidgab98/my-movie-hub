@@ -18,6 +18,32 @@ class MovieDetailCubit extends SafeCubit<MovieDetailState>
         _movie = movie,
         super(const MovieDetailState()) {
     emit(state.copyWith(movie: DetailedMovie.fromMovie(movie)));
+
+    eventBus.on<RemoveMovieFromWatchlistEvent>().listen((event) {
+      return _updateMovieAccountStates(
+        accountStates: state.movie.accountStates?.copyWith(watchlist: false),
+      );
+    });
+    eventBus.on<AddMovieToWatchlistEvent>().listen((event) {
+      return _updateMovieAccountStates(
+        accountStates: state.movie.accountStates?.copyWith(watchlist: true),
+      );
+    });
+    eventBus.on<RemoveMovieFromFavoritesEvent>().listen((event) {
+      return _updateMovieAccountStates(
+        accountStates: state.movie.accountStates?.copyWith(favorite: false),
+      );
+    });
+    eventBus.on<AddMovieToFavoritesEvent>().listen((event) {
+      return _updateMovieAccountStates(
+        accountStates: state.movie.accountStates?.copyWith(favorite: true),
+      );
+    });
+    eventBus.on<RateMovieEvent>().listen((event) {
+      return _updateMovieAccountStates(
+        accountStates: state.movie.accountStates?.copyWith(rated: event.rate),
+      );
+    });
   }
 
   final Movie _movie;
@@ -48,6 +74,14 @@ class MovieDetailCubit extends SafeCubit<MovieDetailState>
           errorMessage: getExceptionMessage(error),
           status: StateStatus.error,
         ),
+      ),
+    );
+  }
+
+  void _updateMovieAccountStates({AccountStates? accountStates}) {
+    emit(
+      state.copyWith(
+        movie: state.movie.copyWith(accountStates: accountStates),
       ),
     );
   }
@@ -151,6 +185,9 @@ class MovieDetailCubit extends SafeCubit<MovieDetailState>
         );
         emit(
           state.copyWith(
+            movie: state.movie.copyWith(
+              accountStates: state.movie.accountStates!.copyWith(rated: rating),
+            ),
             addRatingStatus: StateStatus.loaded,
           ),
         );
@@ -159,6 +196,41 @@ class MovieDetailCubit extends SafeCubit<MovieDetailState>
         state.copyWith(
           errorMessage: getExceptionMessage(error),
           addRatingStatus: StateStatus.error,
+        ),
+      ),
+    );
+  }
+
+  Future<void> removeRating() async {
+    if (state.removeRatingStatus.isLoading ||
+        state.movie.accountStates == null) {
+      return;
+    }
+
+    emit(state.copyWith(removeRatingStatus: StateStatus.loading));
+
+    final result = await _movieRepository.removeMovieRating(
+      movieId: _movie.id,
+    );
+
+    result.when(
+      (success) {
+        _eventBus.emitEvent(
+          RateMovieEvent(movie: _movie),
+        );
+        emit(
+          state.copyWith(
+            movie: state.movie.copyWith(
+              accountStates: state.movie.accountStates!.copyWith(rated: null),
+            ),
+            removeRatingStatus: StateStatus.loaded,
+          ),
+        );
+      },
+      (error) => emit(
+        state.copyWith(
+          errorMessage: getExceptionMessage(error),
+          removeRatingStatus: StateStatus.error,
         ),
       ),
     );

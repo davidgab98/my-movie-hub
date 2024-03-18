@@ -11,6 +11,7 @@ class WatchlistCubit extends ComplexMovieListCubit {
     eventBus.on<RemoveMovieFromWatchlistEvent>().listen((event) {
       return removeMovie(movieId: event.movie.id);
     });
+
     eventBus.on<AddMovieToWatchlistEvent>().listen((event) {
       return addMovie(movie: event.movie);
     });

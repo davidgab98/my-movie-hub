@@ -122,9 +122,8 @@ class ApiMovieRepository extends MovieRepository {
   }) async {
     try {
       await networkService.post(
-        Endpoints.movieRating,
-        data: {
-          'movie_id': movieId,
+        '/movie/$movieId/${Endpoints.movieRate}',
+        queryParameters: {
           'value': rating,
         },
       );
@@ -141,10 +140,7 @@ class ApiMovieRepository extends MovieRepository {
   }) async {
     try {
       await networkService.delete(
-        Endpoints.movieRating,
-        data: {
-          'movie_id': movieId,
-        },
+        '/movie/$movieId/${Endpoints.movieRate}',
       );
 
       return const Success(unit);
