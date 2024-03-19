@@ -35,4 +35,7 @@ class Endpoints {
 
   /// searches
   static const String searchMovie = '/search/movie';
+
+  /// premieres
+  static const String premieres = '/premieres';
 }

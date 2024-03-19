@@ -5,14 +5,14 @@ import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
 import 'package:my_movie_hub/src/features/auth/session_manager/presentation/session_manager_screen.dart';
 import 'package:my_movie_hub/src/features/auth/sign_in/presentation/sign_in_screen.dart';
-import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorites_screen.dart';
+import 'package:my_movie_hub/src/features/highlights/presentation/highlights_screen.dart';
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
+import 'package:my_movie_hub/src/features/premire_calendar/presentation/premiere_calendar_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
-import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';
 import 'package:my_movie_hub/src/features/search/presentation/screens/search_screen.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
 
@@ -21,9 +21,9 @@ enum AppRoute {
   signIn('/signIn'),
   home('/home'),
   search('/search'),
+  premiereCalendar('/premiereCalendar'),
   watchlist('/watchlist'),
-  favorites('/favorites'),
-  ratings('/ratings'),
+  highlights('/highlights'),
   movieDetail('movieDetail'),
   profile('/profile'),
   changeLanguage('changeLanguage'),
@@ -38,13 +38,12 @@ final _shellNavigatorHomeKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Home');
 final _shellNavigatorSearchKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Search');
+final _shellNavigatorPremireCalendarKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Premire Calendar');
 final _shellNavigatorWatchlistKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
-final _shellNavigatorFavoritesKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell Favorites');
-
-final _shellNavigatorRatingsKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell Ratings');
+final _shellNavigatorHighlightsKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Highlights');
 
 final goRouter = GoRouter(
   redirect: (context, state) {},
@@ -91,28 +90,60 @@ final goRouter = GoRouter(
           navigatorKey: _shellNavigatorSearchKey,
           routes: [
             GoRoute(
-                name: AppRoute.search.name,
-                path: AppRoute.search.path,
-                pageBuilder: (context, state) => const NoTransitionPage(
-                      child: SearchScreen(),
-                    ),
-                routes: [
-                  GoRoute(
-                    parentNavigatorKey: _shellNavigatorSearchKey,
-                    name: '${AppRoute.search.name}${AppRoute.movieDetail.name}',
-                    path: '${AppRoute.search.name}${AppRoute.movieDetail.path}',
-                    builder: (context, state) {
-                      if (state.extra == null || state.extra is! Movie) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          context.pop();
-                        });
-                        return const IntermediateLoadingScreen();
-                      }
+              name: AppRoute.search.name,
+              path: AppRoute.search.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: SearchScreen(),
+              ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorSearchKey,
+                  name: '${AppRoute.search.name}${AppRoute.movieDetail.name}',
+                  path: '${AppRoute.search.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
 
-                      return MovieDetailScreen(movie: state.extra! as Movie);
-                    },
-                  ),
-                ]),
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorPremireCalendarKey,
+          routes: [
+            GoRoute(
+              name: AppRoute.premiereCalendar.name,
+              path: AppRoute.premiereCalendar.path,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: PremiereCalendarScreen(),
+              ),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _shellNavigatorPremireCalendarKey,
+                  name:
+                      '${AppRoute.premiereCalendar.name}${AppRoute.movieDetail.name}',
+                  path:
+                      '${AppRoute.premiereCalendar.name}${AppRoute.movieDetail.path}',
+                  builder: (context, state) {
+                    if (state.extra == null || state.extra is! Movie) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        context.pop();
+                      });
+                      return const IntermediateLoadingScreen();
+                    }
+
+                    return MovieDetailScreen(movie: state.extra! as Movie);
+                  },
+                ),
+              ],
+            ),
           ],
         ),
         StatefulShellBranch(
@@ -147,50 +178,21 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorFavoritesKey,
+          navigatorKey: _shellNavigatorHighlightsKey,
           routes: [
             GoRoute(
-              name: AppRoute.favorites.name,
-              path: AppRoute.favorites.path,
+              name: AppRoute.highlights.name,
+              path: AppRoute.highlights.path,
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: FavoritesScreen(),
+                child: HighlightsScreen(),
               ),
               routes: [
                 GoRoute(
-                  parentNavigatorKey: _shellNavigatorFavoritesKey,
+                  parentNavigatorKey: _shellNavigatorHighlightsKey,
                   name:
-                      '${AppRoute.favorites.name}${AppRoute.movieDetail.name}',
+                      '${AppRoute.highlights.name}${AppRoute.movieDetail.name}',
                   path:
-                      '${AppRoute.favorites.name}${AppRoute.movieDetail.path}',
-                  builder: (context, state) {
-                    if (state.extra == null || state.extra is! Movie) {
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        context.pop();
-                      });
-                      return const IntermediateLoadingScreen();
-                    }
-
-                    return MovieDetailScreen(movie: state.extra! as Movie);
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          navigatorKey: _shellNavigatorRatingsKey,
-          routes: [
-            GoRoute(
-              name: AppRoute.ratings.name,
-              path: AppRoute.ratings.path,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: RatingsScreen(),
-              ),
-              routes: [
-                GoRoute(
-                  parentNavigatorKey: _shellNavigatorRatingsKey,
-                  name: '${AppRoute.ratings.name}${AppRoute.movieDetail.name}',
-                  path: '${AppRoute.ratings.name}${AppRoute.movieDetail.path}',
+                      '${AppRoute.highlights.name}${AppRoute.movieDetail.path}',
                   builder: (context, state) {
                     if (state.extra == null || state.extra is! Movie) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {

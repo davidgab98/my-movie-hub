@@ -19,63 +19,57 @@ class MovieCard extends StatelessWidget {
         getMovieDetailRouteName(context),
         extra: movie,
       ),
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppBorderRadius.br16),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppBorderRadius.br16),
-          child: movie.posterPath.isNotEmpty
-              ? Image.network(
-                  'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                  fit: BoxFit.cover,
-                )
-              : Container(
-                  padding: const EdgeInsets.all(AppSpaces.s16),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        AppColors.primary.withOpacity(0.3),
-                        AppColors.secondary.withOpacity(0.2),
-                        AppColors.tertiary.withOpacity(0.1),
-                      ],
-                      stops: const [0.0, 0.5, 1.0],
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                        height: kToolbarHeight / 3,
-                        image: AssetImage(
-                          'assets/pngs/mmh_logo.png',
-                        ),
-                      ),
-                      Text(
-                        'Poster not found',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.outline.withOpacity(0.75),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        movie.title.toUpperCase(),
-                        style: AppTextStyle.bodyLarge.copyWith(
-                          color: context.colors.onBackground.withOpacity(0.75),
-                        ),
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+        child: movie.posterPath.isNotEmpty
+            ? Image.network(
+                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                fit: BoxFit.cover,
+              )
+            : Container(
+                padding: const EdgeInsets.all(AppSpaces.s16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppColors.primary.withOpacity(0.3),
+                      AppColors.secondary.withOpacity(0.2),
+                      AppColors.tertiary.withOpacity(0.1),
                     ],
+                    stops: const [0.0, 0.5, 1.0],
                   ),
                 ),
-        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Image(
+                      height: kToolbarHeight / 3,
+                      image: AssetImage(
+                        'assets/pngs/mmh_logo.png',
+                      ),
+                    ),
+                    Text(
+                      'Poster not found',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: context.colors.outline.withOpacity(0.75),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      movie.title.toUpperCase(),
+                      style: AppTextStyle.bodyLarge.copyWith(
+                        color: context.colors.onBackground.withOpacity(0.75),
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
       ),
     );
   }

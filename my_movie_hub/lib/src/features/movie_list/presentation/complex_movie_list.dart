@@ -257,8 +257,8 @@ class _MovieGrid extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         childAspectRatio: 1 / 1.5,
-        crossAxisSpacing: 2.5,
-        mainAxisSpacing: 5,
+        crossAxisSpacing: 7.5,
+        mainAxisSpacing: 15,
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -345,8 +345,8 @@ Widget _buildShimmerGrid(BuildContext context, int crossAxisCount) {
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: crossAxisCount,
       childAspectRatio: 0.7,
-      crossAxisSpacing: 2.5,
-      mainAxisSpacing: 5,
+      crossAxisSpacing: 7.5,
+      mainAxisSpacing: 15,
     ),
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, int index) {

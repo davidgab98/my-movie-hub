@@ -16,8 +16,11 @@ abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     required Future<Result<MovieListResponse, Exception>> Function(
             {required int page, OrderType orderType})
         fetchMovies,
+    ListDisplayMode initialListDisplayMode = ListDisplayMode.listWithImages,
   })  : _fetchMovies = fetchMovies,
-        super(const ComplexMovieListState());
+        super(
+          ComplexMovieListState(listDisplayMode: initialListDisplayMode),
+        );
 
   final Future<Result<MovieListResponse, Exception>> Function(
       {required int page, OrderType orderType}) _fetchMovies;
