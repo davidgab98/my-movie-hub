@@ -13,8 +13,8 @@ class ApiSearchRepository extends SearchRepository {
   @override
   Future<Result<MovieListResponse, Exception>> searchMovie({
     required int page,
-    String? query,
-    String? year,
+    String query = '',
+    String year = '',
     List<MovieGenre> genres = const [],
   }) async {
     try {
@@ -22,7 +22,8 @@ class ApiSearchRepository extends SearchRepository {
         Endpoints.searchMovie,
         queryParameters: {
           'page': page,
-          'query': 'AS',
+          'query': query.isEmpty && year.isNotEmpty ? 'a' : query,
+          'year': year,
         },
       );
 

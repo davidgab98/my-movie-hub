@@ -10,8 +10,8 @@ class MockSearchRepository extends SearchRepository {
   @override
   Future<Result<MovieListResponse, Exception>> searchMovie({
     required int page,
-    String? query,
-    String? year,
+    String query = '',
+    String year = '',
     List<MovieGenre> genres = const [],
   }) async {
     try {

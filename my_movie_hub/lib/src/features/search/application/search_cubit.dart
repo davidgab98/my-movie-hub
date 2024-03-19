@@ -27,7 +27,10 @@ class SearchCubit extends Cubit<SearchState> with ExceptionsHelper {
     emit(state.copyWith(status: StateStatus.loading));
 
     final result = await _searchRepository.searchMovie(
-        page: _currentPage, year: state.year);
+      page: _currentPage,
+      year: state.year,
+      query: state.query,
+    );
 
     result.when(
       (success) {
@@ -50,6 +53,18 @@ class SearchCubit extends Cubit<SearchState> with ExceptionsHelper {
         ),
       ),
     );
+  }
+
+  void updateQueryAndSearch(String query) {
+    emit(state.copyWith(query: query));
+
+    searchMovies(isRefreshing: true);
+  }
+
+  void updateYearAndSearch({String? year}) {
+    emit(state.copyWith(year: year ?? ''));
+
+    searchMovies(isRefreshing: true);
   }
 
   void toggleListDisplayMode() {

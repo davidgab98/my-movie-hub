@@ -45,6 +45,9 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
                 .loadMovies(isRefreshing: true),
           ),
           const _MovieListBody(),
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom),
+          ),
         ],
       ),
     );
@@ -93,7 +96,7 @@ class _MovieListHeader extends StatelessWidget {
           actions: [
             IconButton(
               style: IconButton.styleFrom(
-                backgroundColor: context.colors.surface,
+                backgroundColor: context.colors.onBackground.withOpacity(0.125),
               ),
               onPressed:
                   context.read<ComplexMovieListCubit>().toggleListDisplayMode,
@@ -113,12 +116,13 @@ class _MovieListHeader extends StatelessWidget {
             for (final orderType in OrderType.values)
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  elevation: 0,
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppSpaces.s10,
                   ),
-                  disabledBackgroundColor: context.colors.background,
-                  backgroundColor:
+                  disabledBackgroundColor:
                       context.colors.onBackground.withOpacity(0.125),
+                  backgroundColor: context.colors.background,
                 ),
                 onPressed: state.orderType == orderType
                     ? () => context
@@ -132,9 +136,7 @@ class _MovieListHeader extends StatelessWidget {
                 child: Text(
                   orderType == OrderType.asc ? 'Latest' : 'Oldest',
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: state.orderType == orderType
-                        ? context.colors.onBackground
-                        : context.colors.onBackground,
+                    color: context.colors.onBackground,
                   ),
                 ),
               ),
@@ -254,9 +256,9 @@ class _MovieGrid extends StatelessWidget {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        childAspectRatio: 0.7,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        childAspectRatio: 1 / 1.5,
+        crossAxisSpacing: 2.5,
+        mainAxisSpacing: 5,
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -271,10 +273,7 @@ class _MovieGrid extends StatelessWidget {
               );
             }
           } else {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: AppSpaces.s10),
-              child: MovieCard(movie: state.movies[index]),
-            );
+            return MovieCard(movie: state.movies[index]);
           }
         },
         childCount:
@@ -346,8 +345,8 @@ Widget _buildShimmerGrid(BuildContext context, int crossAxisCount) {
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: crossAxisCount,
       childAspectRatio: 0.7,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
+      crossAxisSpacing: 2.5,
+      mainAxisSpacing: 5,
     ),
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, int index) {

@@ -6,8 +6,8 @@ import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_re
 abstract class SearchRepository {
   Future<Result<MovieListResponse, Exception>> searchMovie({
     required int page,
-    String? query,
-    String? year,
+    String query = '',
+    String year = '',
     List<MovieGenre> genres = const [],
   });
 }

@@ -21,64 +21,94 @@ class MovieListTileImage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 16 / 7,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppBorderRadius.br16),
-          child: Stack(
-            children: [
-              Flow(
-                delegate: _ParallaxFlowDelegate(
-                  scrollable: Scrollable.of(context),
-                  listItemContext: context,
-                  backgroundImageKey: backgroundImageKey,
-                ),
-                children: [
-                  Image.network(
-                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-                    key: backgroundImageKey,
-                    fit: BoxFit.cover,
-                  ),
-                ],
-              ),
-              Positioned.fill(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.transparent,
-                        Colors.black.withOpacity(0.7),
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: const [0.6, 0.95],
+            borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+            child: Stack(
+              children: [
+                if (movie.posterPath.isNotEmpty)
+                  Flow(
+                    delegate: _ParallaxFlowDelegate(
+                      scrollable: Scrollable.of(context),
+                      listItemContext: context,
+                      backgroundImageKey: backgroundImageKey,
                     ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 20,
-                bottom: 20,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title,
-                      style: AppTextStyle.headlineXLSmall.copyWith(
-                        color: Colors.white,
+                    children: [
+                      Image.network(
+                        'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                        key: backgroundImageKey,
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  )
+                else
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.only(bottom: AppSpaces.s20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.primary.withOpacity(0.3),
+                          AppColors.secondary.withOpacity(0.2),
+                          AppColors.tertiary.withOpacity(0.1),
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
                       ),
                     ),
-                    Text(
-                      movie.overview,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .copyWith(color: Colors.white),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Poster not found',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: context.colors.outline.withOpacity(0.75),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
+                Positioned.fill(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.7),
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: const [0.6, 0.95],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
+                Positioned(
+                  left: 20,
+                  bottom: 20,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        movie.title,
+                        style: AppTextStyle.headlineXLSmall.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        movie.overview,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )),
       ),
     );
   }

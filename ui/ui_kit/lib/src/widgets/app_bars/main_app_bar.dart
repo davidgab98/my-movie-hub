@@ -25,13 +25,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primary.withOpacity(
-                  0.3), // Más transparencia para suavizar el inicio
-              AppColors.secondary.withOpacity(0.2), // Transparencia intermedia
-              AppColors.tertiary.withOpacity(
-                  0.1), // Alta transparencia para un final muy suave
+              AppColors.primary.withOpacity(0.3),
+              AppColors.secondary.withOpacity(0.2),
+              AppColors.tertiary.withOpacity(0.1),
             ],
-            stops: const [0.0, 0.5, 1.0], // Distribución uniforme del gradiente
+            stops: const [0.0, 0.5, 1.0],
           ),
         ),
       ),

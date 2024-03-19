@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/list_display_modes.dart';
-import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
+import 'package:my_movie_hub/src/core/utils/debouncer.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
@@ -38,7 +38,6 @@ class _ComplexMovieSearchListState extends State<ComplexMovieSearchList> {
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
           const _SearchInputHeader(),
-          const _GenresFilterHeader(),
           const _MovieListHeader(),
           Refresco(
             refreshTriggerPullDistance: 120,
@@ -46,6 +45,9 @@ class _ComplexMovieSearchListState extends State<ComplexMovieSearchList> {
                 context.read<SearchCubit>().searchMovies(isRefreshing: true),
           ),
           const _MovieListBody(),
+          SliverToBoxAdapter(
+            child: SizedBox(height: MediaQuery.of(context).padding.bottom),
+          ),
         ],
       ),
     );
@@ -73,6 +75,8 @@ class _SearchInputHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final debouncer = Debouncer(milliseconds: 300);
+
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         return SliverAppBar(
@@ -88,35 +92,19 @@ class _SearchInputHeader extends StatelessWidget {
                 Expanded(
                   flex: 7,
                   child: MMHSearchField(
-                    onChanged: (query) {},
+                    onChanged: (query) {
+                      debouncer.run(
+                        () => context
+                            .read<SearchCubit>()
+                            .updateQueryAndSearch(query),
+                      );
+                    },
                   ),
                 ),
                 AppSpaces.gapW8,
-                Expanded(
+                const Expanded(
                   flex: 3,
-                  child: MMHDropdownButton<String>(
-                    label: 'Año',
-                    values: const [
-                      'Año',
-                      '2000',
-                      '2001',
-                      '2002',
-                      '2003',
-                      '2004',
-                      '2005',
-                      '2006',
-                      '2007',
-                      '2008',
-                      '2009',
-                      '2010',
-                      '2011',
-                      '2012',
-                      '2013',
-                      '2014',
-                    ],
-                    currentValue: '2000',
-                    onChange: (value) {},
-                  ),
+                  child: _YearFilterDropDown(),
                 ),
               ],
             ),
@@ -127,59 +115,31 @@ class _SearchInputHeader extends StatelessWidget {
   }
 }
 
-class _GenresFilterHeader extends StatelessWidget {
-  const _GenresFilterHeader({
+class _YearFilterDropDown extends StatelessWidget {
+  const _YearFilterDropDown({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchState>(
-      builder: (context, state) {
-        return SliverAppBar(
-          toolbarHeight: 50,
-          backgroundColor: context.colors.background,
-          flexibleSpace: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s12),
-              child: Row(
-                children: MovieGenre.values
-                    .map(
-                      (genre) => Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpaces.s4,
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppSpaces.s16,
-                              vertical: AppSpaces.s8,
-                            ),
-                            backgroundColor: context.colors.surface,
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppBorderRadius.br20),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            genre.toTranslatedString(),
-                            style: AppTextStyle.titleSmall.copyWith(
-                              color: context.colors.onBackground,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
+    return MMHDropdownButton<String>(
+      values: generateYearsList(1888),
+      currentValue: 'Año',
+      onChange: (value) => context.read<SearchCubit>().updateYearAndSearch(
+            year: value != 'Año' ? value : '',
           ),
-        );
-      },
     );
+  }
+
+  List<String> generateYearsList(int firstYear) {
+    final currentYear = DateTime.now().year;
+    final years = ['Año'];
+
+    for (int year = currentYear; year >= firstYear; year--) {
+      years.add(year.toString());
+    }
+
+    return years;
   }
 }
 
@@ -210,7 +170,7 @@ class _MovieListHeader extends StatelessWidget {
           actions: [
             IconButton(
               style: IconButton.styleFrom(
-                backgroundColor: context.colors.surface,
+                backgroundColor: context.colors.onBackground.withOpacity(0.125),
               ),
               onPressed: context.read<SearchCubit>().toggleListDisplayMode,
               icon: Icon(
@@ -282,9 +242,15 @@ class _MovieListBody extends StatelessWidget {
             state: state,
           );
         } else {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
             child: Center(
-              child: Text('No tienes películas en tu watchlist'),
+              child: Text(
+                state.query.isEmpty && state.year.isEmpty
+                    ? '¿Qué te apetece ver hoy?'
+                    : 'No hay resultados \n para esta búsqueda',
+                style: AppTextStyle.titleMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
           );
         }
@@ -341,9 +307,9 @@ class _MovieGrid extends StatelessWidget {
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
-        childAspectRatio: 0.7,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        childAspectRatio: 1 / 1.5,
+        crossAxisSpacing: 2.5,
+        mainAxisSpacing: 5,
       ),
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
@@ -358,10 +324,7 @@ class _MovieGrid extends StatelessWidget {
               );
             }
           } else {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: AppSpaces.s10),
-              child: MovieCard(movie: state.movies[index]),
-            );
+            return MovieCard(movie: state.movies[index]);
           }
         },
         childCount:
@@ -433,8 +396,8 @@ Widget _buildShimmerGrid(BuildContext context, int crossAxisCount) {
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: crossAxisCount,
       childAspectRatio: 0.7,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
+      crossAxisSpacing: 2.5,
+      mainAxisSpacing: 5,
     ),
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, int index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
 import 'package:my_movie_hub/src/core/events/event_bus.dart';
@@ -49,6 +50,86 @@ class _Body extends StatelessWidget {
   }
 }
 
+// class _DetailsHeader extends StatelessWidget {
+//   const _DetailsHeader({
+//     super.key,
+//     required this.movie,
+//   });
+
+//   final Movie movie;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SliverAppBar(
+//       elevation: 0,
+//       expandedHeight: MediaQuery.of(context).size.height * 0.33,
+//       pinned: true,
+//       actions: [
+//         IconButton(
+//           onPressed: () {},
+//           icon: const Icon(Icons.share),
+//         ),
+//       ],
+//       flexibleSpace: LayoutBuilder(
+//         builder: (BuildContext context, _) {
+//           return Stack(
+//             fit: StackFit.expand,
+//             children: [
+//               if (movie.posterPath.isNotEmpty)
+//                 Image.network(
+//                   'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+//                   fit: BoxFit.cover,
+//                 )
+//               else
+//                 Container(
+//                   padding: const EdgeInsets.all(AppSpaces.s16),
+//                   decoration: BoxDecoration(
+//                     gradient: LinearGradient(
+//                       begin: Alignment.topLeft,
+//                       end: Alignment.bottomRight,
+//                       colors: [
+//                         AppColors.primary.withOpacity(0.3),
+//                         AppColors.secondary.withOpacity(0.2),
+//                         AppColors.tertiary.withOpacity(0.1),
+//                       ],
+//                       stops: const [0.0, 0.5, 1.0],
+//                     ),
+//                   ),
+//                 ),
+//               DecoratedBox(
+//                 decoration: BoxDecoration(
+//                   gradient: LinearGradient(
+//                     begin: Alignment.bottomCenter,
+//                     end: Alignment.topCenter,
+//                     colors: [
+//                       context.colors.background,
+//                       Colors.transparent,
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               Align(
+//                 alignment: Alignment.bottomCenter,
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(AppSpaces.s16),
+//                   child: FittedBox(
+//                     child: Text(
+//                       movie.title.toUpperCase(),
+//                       style: AppTextStyle.mainTitleMedium.copyWith(
+//                         color: context.colors.onBackground,
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
 class _DetailsHeader extends StatelessWidget {
   const _DetailsHeader({
     super.key,
@@ -71,43 +152,82 @@ class _DetailsHeader extends StatelessWidget {
       ],
       flexibleSpace: LayoutBuilder(
         builder: (BuildContext context, _) {
-          return Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.network(
-                'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
-                fit: BoxFit.cover,
-              ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [
-                      context.colors.background,
-                      Colors.transparent,
-                    ],
+          return GestureDetector(
+            onTap: () => _showFullImage(context),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                if (movie.posterPath.isNotEmpty)
+                  Image.network(
+                    'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                    fit: BoxFit.cover,
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.all(AppSpaces.s16),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          AppColors.primary.withOpacity(0.3),
+                          AppColors.secondary.withOpacity(0.2),
+                          AppColors.tertiary.withOpacity(0.1),
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
+                      ),
+                    ),
+                  ),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        context.colors.background,
+                        Colors.transparent,
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.all(AppSpaces.s16),
-                  child: FittedBox(
-                    child: Text(
-                      movie.title.toUpperCase(),
-                      style: AppTextStyle.mainTitleMedium.copyWith(
-                        color: context.colors.onBackground,
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(AppSpaces.s16),
+                    child: FittedBox(
+                      child: Text(
+                        movie.title.toUpperCase(),
+                        style: AppTextStyle.mainTitleMedium.copyWith(
+                          color: context.colors.onBackground,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
+    );
+  }
+
+  void _showFullImage(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Dialog(
+            backgroundColor: Colors.transparent,
+            insetPadding: const EdgeInsets.all(AppSpaces.s16),
+            child: Image.network(
+              'https://image.tmdb.org/t/p/original/${movie.posterPath}',
+              fit: BoxFit.contain,
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -130,7 +250,7 @@ class _DetailsBody extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
                 child: Text(
-                  '${DateTime.parse(movie.releaseDate).year} | ${movie.genres.map((genre) => genre.toTranslatedString()).join(', ')} | ${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
+                  '${movie.releaseDate.isNotEmpty ? '${DateTime.parse(movie.releaseDate).year} | ' : ''} ${movie.genres.isNotEmpty ? '${movie.genres.map((genre) => genre.toTranslatedString()).join(', ')} | ' : ''}${state.movie.runtime?.formatDuration() ?? '0h 0m'}',
                   style: AppTextStyle.bodyMedium.copyWith(
                     color: context.colors.outline,
                   ),
@@ -184,7 +304,8 @@ class _MainMovieInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailCubit, MovieDetailState>(
       builder: (context, state) {
-        return Padding(
+        return Container(
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -230,7 +351,9 @@ class _MainMovieInfo extends StatelessWidget {
                 ),
               ),
               Text(
-                '${DateTime.parse(movie.releaseDate).year}',
+                movie.releaseDate.isNotEmpty
+                    ? '${DateTime.parse(movie.releaseDate).year}'
+                    : '',
                 style: AppTextStyle.titleMedium.copyWith(
                   color: context.colors.outline,
                 ),
@@ -371,7 +494,7 @@ class MovieCredits extends StatelessWidget {
             ),
             AppSpaces.gapH8,
             SizedBox(
-              height: 130,
+              height: 150,
               child: ListView.separated(
                 separatorBuilder: (context, index) => AppSpaces.gapW10,
                 scrollDirection: Axis.horizontal,
@@ -379,30 +502,55 @@ class MovieCredits extends StatelessWidget {
                 itemCount: cast.length,
                 itemBuilder: (context, index) {
                   final actor = cast[index];
-                  return Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage: actor.profilePath != null
-                            ? NetworkImage(
-                                'https://image.tmdb.org/t/p/w500/${actor.profilePath}',
-                              )
-                            : const AssetImage('') as ImageProvider,
-                      ),
-                      AppSpaces.gapH6,
-                      Text(
-                        actor.name,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyle.bodyMedium.copyWith(
-                          color: context.colors.onBackground,
+                  return AspectRatio(
+                    aspectRatio: 1 / 1.25,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: actor.profilePath != null
+                              ? NetworkImage(
+                                  'https://image.tmdb.org/t/p/w500/${actor.profilePath}',
+                                )
+                              : null,
+                          child: actor.profilePath == null
+                              ? Container(
+                                  padding: const EdgeInsets.all(AppSpaces.s16),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      AppBorderRadius.brMax,
+                                    ),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        AppColors.primary.withOpacity(0.3),
+                                        AppColors.secondary.withOpacity(0.2),
+                                        AppColors.tertiary.withOpacity(0.1),
+                                      ],
+                                      stops: const [0.0, 0.5, 1.0],
+                                    ),
+                                  ),
+                                )
+                              : null,
                         ),
-                      ),
-                    ],
+                        AppSpaces.gapH6,
+                        Text(
+                          actor.name,
+                          style: AppTextStyle.bodyMedium.copyWith(
+                            color: context.colors.onBackground,
+                          ),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
             ),
-            AppSpaces.gapH16,
+            AppSpaces.gapH12,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
               child: Column(

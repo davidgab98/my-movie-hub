@@ -8,8 +8,9 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Buscador
+//TODO: Estrenos
 //TODO: Ordenar Widgets de Generos y Listas de Generos
+//TODO: Hacer widget generico de degradado de colores (usado en appbar, reparto, y poster not found background)
 //TODO: Movie y DetailedMovie DTOS con Freezed y Clases de dominio sin freezed (y así MovieDetailed puede extender de Movie)
 //TODO: Ordenar/Revisar toda la app y ordenar codigo
 //TODO: Ver casos de error

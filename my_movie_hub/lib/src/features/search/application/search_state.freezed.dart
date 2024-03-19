@@ -19,7 +19,6 @@ mixin _$SearchState {
   List<Movie> get movies => throw _privateConstructorUsedError;
   String get query => throw _privateConstructorUsedError;
   String get year => throw _privateConstructorUsedError;
-  List<MovieGenre> get genres => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   ListDisplayMode get listDisplayMode => throw _privateConstructorUsedError;
@@ -41,7 +40,6 @@ abstract class $SearchStateCopyWith<$Res> {
       {List<Movie> movies,
       String query,
       String year,
-      List<MovieGenre> genres,
       int? totalMovies,
       bool hasReachedMax,
       ListDisplayMode listDisplayMode,
@@ -65,7 +63,6 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
     Object? movies = null,
     Object? query = null,
     Object? year = null,
-    Object? genres = null,
     Object? totalMovies = freezed,
     Object? hasReachedMax = null,
     Object? listDisplayMode = null,
@@ -85,10 +82,6 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as String,
-      genres: null == genres
-          ? _value.genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as List<MovieGenre>,
       totalMovies: freezed == totalMovies
           ? _value.totalMovies
           : totalMovies // ignore: cast_nullable_to_non_nullable
@@ -125,7 +118,6 @@ abstract class _$$SearchStateImplCopyWith<$Res>
       {List<Movie> movies,
       String query,
       String year,
-      List<MovieGenre> genres,
       int? totalMovies,
       bool hasReachedMax,
       ListDisplayMode listDisplayMode,
@@ -147,7 +139,6 @@ class __$$SearchStateImplCopyWithImpl<$Res>
     Object? movies = null,
     Object? query = null,
     Object? year = null,
-    Object? genres = null,
     Object? totalMovies = freezed,
     Object? hasReachedMax = null,
     Object? listDisplayMode = null,
@@ -167,10 +158,6 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as String,
-      genres: null == genres
-          ? _value._genres
-          : genres // ignore: cast_nullable_to_non_nullable
-              as List<MovieGenre>,
       totalMovies: freezed == totalMovies
           ? _value.totalMovies
           : totalMovies // ignore: cast_nullable_to_non_nullable
@@ -202,14 +189,12 @@ class _$SearchStateImpl implements _SearchState {
       {final List<Movie> movies = const [],
       this.query = '',
       this.year = '',
-      final List<MovieGenre> genres = const [],
       this.totalMovies,
       this.hasReachedMax = false,
       this.listDisplayMode = ListDisplayMode.grid3,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
-      : _movies = movies,
-        _genres = genres;
+      : _movies = movies;
 
   final List<Movie> _movies;
   @override
@@ -226,15 +211,6 @@ class _$SearchStateImpl implements _SearchState {
   @override
   @JsonKey()
   final String year;
-  final List<MovieGenre> _genres;
-  @override
-  @JsonKey()
-  List<MovieGenre> get genres {
-    if (_genres is EqualUnmodifiableListView) return _genres;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_genres);
-  }
-
   @override
   final int? totalMovies;
   @override
@@ -252,7 +228,7 @@ class _$SearchStateImpl implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(movies: $movies, query: $query, year: $year, genres: $genres, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, listDisplayMode: $listDisplayMode, status: $status, errorMessage: $errorMessage)';
+    return 'SearchState(movies: $movies, query: $query, year: $year, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, listDisplayMode: $listDisplayMode, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
@@ -263,7 +239,6 @@ class _$SearchStateImpl implements _SearchState {
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.year, year) || other.year == year) &&
-            const DeepCollectionEquality().equals(other._genres, _genres) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
@@ -281,7 +256,6 @@ class _$SearchStateImpl implements _SearchState {
       const DeepCollectionEquality().hash(_movies),
       query,
       year,
-      const DeepCollectionEquality().hash(_genres),
       totalMovies,
       hasReachedMax,
       listDisplayMode,
@@ -300,7 +274,6 @@ abstract class _SearchState implements SearchState {
       {final List<Movie> movies,
       final String query,
       final String year,
-      final List<MovieGenre> genres,
       final int? totalMovies,
       final bool hasReachedMax,
       final ListDisplayMode listDisplayMode,
@@ -313,8 +286,6 @@ abstract class _SearchState implements SearchState {
   String get query;
   @override
   String get year;
-  @override
-  List<MovieGenre> get genres;
   @override
   int? get totalMovies;
   @override

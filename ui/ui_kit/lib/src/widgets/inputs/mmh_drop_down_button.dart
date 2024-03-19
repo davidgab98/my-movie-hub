@@ -4,13 +4,11 @@ import 'package:ui_kit/src/styles/app_styles.dart';
 class MMHDropdownButton<T> extends StatelessWidget {
   const MMHDropdownButton({
     super.key,
-    required this.label,
     required this.values,
     required this.currentValue,
     required this.onChange,
   });
 
-  final String label;
   final List<T> values;
   final T currentValue;
   final Function(T?) onChange;
