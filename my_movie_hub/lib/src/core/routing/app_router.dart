@@ -5,11 +5,11 @@ import 'package:my_movie_hub/src/core/routing/not_found_screen.dart';
 import 'package:my_movie_hub/src/core/routing/scaffold_with_nested_navigation.dart';
 import 'package:my_movie_hub/src/features/auth/session_manager/presentation/session_manager_screen.dart';
 import 'package:my_movie_hub/src/features/auth/sign_in/presentation/sign_in_screen.dart';
-import 'package:my_movie_hub/src/features/highlights/presentation/highlights_screen.dart';
+import 'package:my_movie_hub/src/features/highlights/presentation/screens/highlights_screen.dart';
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
-import 'package:my_movie_hub/src/features/premire_calendar/presentation/premiere_calendar_screen.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/presentation/premieres_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
@@ -38,8 +38,8 @@ final _shellNavigatorHomeKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Home');
 final _shellNavigatorSearchKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Search');
-final _shellNavigatorPremireCalendarKey =
-    GlobalKey<NavigatorState>(debugLabel: 'shell Premire Calendar');
+final _shellNavigatorPremiereCalendarKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell Premiere Calendar');
 final _shellNavigatorWatchlistKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
 final _shellNavigatorHighlightsKey =
@@ -116,17 +116,17 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorPremireCalendarKey,
+          navigatorKey: _shellNavigatorPremiereCalendarKey,
           routes: [
             GoRoute(
               name: AppRoute.premiereCalendar.name,
               path: AppRoute.premiereCalendar.path,
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: PremiereCalendarScreen(),
+                child: PremieresScreen(),
               ),
               routes: [
                 GoRoute(
-                  parentNavigatorKey: _shellNavigatorPremireCalendarKey,
+                  parentNavigatorKey: _shellNavigatorPremiereCalendarKey,
                   name:
                       '${AppRoute.premiereCalendar.name}${AppRoute.movieDetail.name}',
                   path:

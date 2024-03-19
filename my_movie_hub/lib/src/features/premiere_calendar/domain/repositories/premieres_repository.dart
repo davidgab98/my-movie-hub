@@ -5,5 +5,6 @@ import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_re
 abstract class PremieresRepository {
   Future<Result<MovieListResponse, Exception>> getPremieres({
     required int page,
+    required DateTime initialDate,
   });
 }

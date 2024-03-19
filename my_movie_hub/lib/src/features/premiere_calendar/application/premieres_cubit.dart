@@ -2,15 +2,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
-import 'package:my_movie_hub/src/features/premire_calendar/application/premiere_calendar_state.dart';
-import 'package:my_movie_hub/src/features/premire_calendar/domain/repositories/premieres_repository.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/application/premieres_state.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/domain/repositories/premieres_repository.dart';
 
-class PremiereCalendarCubit extends Cubit<PremiereCalendarState>
-    with ExceptionsHelper {
-  PremiereCalendarCubit({
+class PremieresCubit extends Cubit<PremieresState> with ExceptionsHelper {
+  PremieresCubit({
     required PremieresRepository premieresRepository,
   })  : _premieresRepository = premieresRepository,
-        super(const PremiereCalendarState());
+        super(const PremieresState());
 
   final PremieresRepository _premieresRepository;
   int _currentPage = 1;
@@ -28,6 +27,7 @@ class PremiereCalendarCubit extends Cubit<PremiereCalendarState>
 
     final result = await _premieresRepository.getPremieres(
       page: _currentPage,
+      initialDate: DateTime.now(),
     );
 
     result.when(

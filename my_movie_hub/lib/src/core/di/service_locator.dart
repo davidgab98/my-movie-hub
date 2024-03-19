@@ -13,6 +13,9 @@ import 'package:my_movie_hub/src/features/favorites/domain/repositories/favorite
 import 'package:my_movie_hub/src/features/movie/data/repositories/api_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/data/repositories/mock_movie_repository.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/data/repositories/api_premieres_repository.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/data/repositories/mock_premieres_repository.dart';
+import 'package:my_movie_hub/src/features/premiere_calendar/domain/repositories/premieres_repository.dart';
 import 'package:my_movie_hub/src/features/public_lists/data/repositories/api_public_lists_repository.dart';
 import 'package:my_movie_hub/src/features/public_lists/data/repositories/mock_public_lists_repository.dart';
 import 'package:my_movie_hub/src/features/public_lists/domain/repositories/public_lists_repository.dart';
@@ -64,6 +67,22 @@ Future<void> serviceLocatorSetUp() async {
           ),
   );
 
+  locator.registerLazySingleton<SearchRepository>(
+    () => useMocks
+        ? MockSearchRepository()
+        : ApiSearchRepository(
+            networkService: locator<NetworkService>(),
+          ),
+  );
+
+  locator.registerLazySingleton<PremieresRepository>(
+    () => useMocks
+        ? MockPremieresRepository()
+        : ApiPremieresRepository(
+            networkService: locator<NetworkService>(),
+          ),
+  );
+
   locator.registerLazySingleton<WatchlistRepository>(
     () => useMocks
         ? MockWatchlistRepository()
@@ -92,14 +111,6 @@ Future<void> serviceLocatorSetUp() async {
     () => useMocks
         ? MockPublicListsRepository()
         : ApiPublicListsRepository(
-            networkService: locator<NetworkService>(),
-          ),
-  );
-
-  locator.registerLazySingleton<SearchRepository>(
-    () => useMocks
-        ? MockSearchRepository()
-        : ApiSearchRepository(
             networkService: locator<NetworkService>(),
           ),
   );

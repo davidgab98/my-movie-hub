@@ -10,7 +10,7 @@ class RatingsCubit extends ComplexMovieListCubit {
     required IEventBus eventBus,
   }) : super(
           fetchMovies: ratingsRepository.getRatedMovies,
-          initialListDisplayMode: ListDisplayMode.grid2,
+          initialListDisplayMode: ListDisplayMode.grid3,
         ) {
     eventBus.on<RateMovieEvent>().listen((event) {
       if (event.rate != null) {

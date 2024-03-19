@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'premiere_calendar_state.dart';
+part of 'premieres_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PremiereCalendarState {
+mixin _$PremieresState {
   List<Movie> get movies => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
@@ -23,15 +23,15 @@ mixin _$PremiereCalendarState {
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PremiereCalendarStateCopyWith<PremiereCalendarState> get copyWith =>
+  $PremieresStateCopyWith<PremieresState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PremiereCalendarStateCopyWith<$Res> {
-  factory $PremiereCalendarStateCopyWith(PremiereCalendarState value,
-          $Res Function(PremiereCalendarState) then) =
-      _$PremiereCalendarStateCopyWithImpl<$Res, PremiereCalendarState>;
+abstract class $PremieresStateCopyWith<$Res> {
+  factory $PremieresStateCopyWith(
+          PremieresState value, $Res Function(PremieresState) then) =
+      _$PremieresStateCopyWithImpl<$Res, PremieresState>;
   @useResult
   $Res call(
       {List<Movie> movies,
@@ -42,10 +42,9 @@ abstract class $PremiereCalendarStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PremiereCalendarStateCopyWithImpl<$Res,
-        $Val extends PremiereCalendarState>
-    implements $PremiereCalendarStateCopyWith<$Res> {
-  _$PremiereCalendarStateCopyWithImpl(this._value, this._then);
+class _$PremieresStateCopyWithImpl<$Res, $Val extends PremieresState>
+    implements $PremieresStateCopyWith<$Res> {
+  _$PremieresStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,12 +86,11 @@ class _$PremiereCalendarStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$PremiereCalendarStateImplCopyWith<$Res>
-    implements $PremiereCalendarStateCopyWith<$Res> {
-  factory _$$PremiereCalendarStateImplCopyWith(
-          _$PremiereCalendarStateImpl value,
-          $Res Function(_$PremiereCalendarStateImpl) then) =
-      __$$PremiereCalendarStateImplCopyWithImpl<$Res>;
+abstract class _$$PremiereStateImplCopyWith<$Res>
+    implements $PremieresStateCopyWith<$Res> {
+  factory _$$PremiereStateImplCopyWith(
+          _$PremiereStateImpl value, $Res Function(_$PremiereStateImpl) then) =
+      __$$PremiereStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,12 +102,11 @@ abstract class _$$PremiereCalendarStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PremiereCalendarStateImplCopyWithImpl<$Res>
-    extends _$PremiereCalendarStateCopyWithImpl<$Res,
-        _$PremiereCalendarStateImpl>
-    implements _$$PremiereCalendarStateImplCopyWith<$Res> {
-  __$$PremiereCalendarStateImplCopyWithImpl(_$PremiereCalendarStateImpl _value,
-      $Res Function(_$PremiereCalendarStateImpl) _then)
+class __$$PremiereStateImplCopyWithImpl<$Res>
+    extends _$PremieresStateCopyWithImpl<$Res, _$PremiereStateImpl>
+    implements _$$PremiereStateImplCopyWith<$Res> {
+  __$$PremiereStateImplCopyWithImpl(
+      _$PremiereStateImpl _value, $Res Function(_$PremiereStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +118,7 @@ class __$$PremiereCalendarStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$PremiereCalendarStateImpl(
+    return _then(_$PremiereStateImpl(
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -148,8 +145,8 @@ class __$$PremiereCalendarStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PremiereCalendarStateImpl implements _PremiereCalendarState {
-  const _$PremiereCalendarStateImpl(
+class _$PremiereStateImpl implements _PremiereState {
+  const _$PremiereStateImpl(
       {final List<Movie> movies = const [],
       this.totalMovies,
       this.hasReachedMax = false,
@@ -180,14 +177,14 @@ class _$PremiereCalendarStateImpl implements _PremiereCalendarState {
 
   @override
   String toString() {
-    return 'PremiereCalendarState(movies: $movies, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
+    return 'PremieresState(movies: $movies, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PremiereCalendarStateImpl &&
+            other is _$PremiereStateImpl &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
@@ -210,18 +207,17 @@ class _$PremiereCalendarStateImpl implements _PremiereCalendarState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PremiereCalendarStateImplCopyWith<_$PremiereCalendarStateImpl>
-      get copyWith => __$$PremiereCalendarStateImplCopyWithImpl<
-          _$PremiereCalendarStateImpl>(this, _$identity);
+  _$$PremiereStateImplCopyWith<_$PremiereStateImpl> get copyWith =>
+      __$$PremiereStateImplCopyWithImpl<_$PremiereStateImpl>(this, _$identity);
 }
 
-abstract class _PremiereCalendarState implements PremiereCalendarState {
-  const factory _PremiereCalendarState(
+abstract class _PremiereState implements PremieresState {
+  const factory _PremiereState(
       {final List<Movie> movies,
       final int? totalMovies,
       final bool hasReachedMax,
       final StateStatus status,
-      final String errorMessage}) = _$PremiereCalendarStateImpl;
+      final String errorMessage}) = _$PremiereStateImpl;
 
   @override
   List<Movie> get movies;
@@ -235,6 +231,6 @@ abstract class _PremiereCalendarState implements PremiereCalendarState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$PremiereCalendarStateImplCopyWith<_$PremiereCalendarStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$PremiereStateImplCopyWith<_$PremiereStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

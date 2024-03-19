@@ -10,7 +10,7 @@ class FavoriteListCubit extends ComplexMovieListCubit {
     required IEventBus eventBus,
   }) : super(
           fetchMovies: favoritesRepository.getFavoriteMovies,
-          initialListDisplayMode: ListDisplayMode.grid2,
+          initialListDisplayMode: ListDisplayMode.grid3,
         ) {
     eventBus.on<RemoveMovieFromFavoritesEvent>().listen((event) {
       return removeMovie(movieId: event.movie.id);

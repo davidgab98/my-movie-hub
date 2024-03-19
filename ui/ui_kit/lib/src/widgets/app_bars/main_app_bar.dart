@@ -51,8 +51,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(
               padding: const EdgeInsets.only(left: AppSpaces.s12),
               icon: const Icon(
-                Icons.person,
-                size: 28,
+                Icons.account_circle_rounded,
+                size: 30,
                 color: AppColors.white,
               ),
               onPressed: leadingIconAction,
