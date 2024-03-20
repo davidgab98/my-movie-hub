@@ -6,9 +6,9 @@ import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie_list/presentation/widgets/refresco.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/application/premieres_cubit.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/application/premieres_state.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/domain/repositories/premieres_repository.dart';
+import 'package:my_movie_hub/src/features/premieres/application/premieres_cubit.dart';
+import 'package:my_movie_hub/src/features/premieres/application/premieres_state.dart';
+import 'package:my_movie_hub/src/features/premieres/domain/repositories/premieres_repository.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class PremieresScreen extends StatelessWidget {
@@ -43,11 +43,8 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PremieresCubit, PremieresState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(left: AppSpaces.s12),
-          child: TimeLine(
-            movies: state.movies,
-          ),
+        return TimeLine(
+          movies: state.movies,
         );
       },
     );
@@ -141,7 +138,10 @@ class _TimeLineFiltersHeader extends StatelessWidget {
       toolbarHeight: 72,
       backgroundColor: context.colors.background,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.symmetric(vertical: AppSpaces.s12),
+        padding: const EdgeInsets.symmetric(
+          vertical: AppSpaces.s12,
+          horizontal: AppSpaces.s16,
+        ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -175,7 +175,6 @@ class _TimeLineItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     final dateParts = date.split('-');
@@ -186,17 +185,29 @@ class _TimeLineItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            width: screenWidth / 12,
-            child: FittedBox(
-              child: Text(
-                dateFormated,
-                style: AppTextStyle.bodyLarge,
-                textAlign: TextAlign.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: AppSpaces.s8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpaces.s6,
+                  vertical: AppSpaces.s4,
+                ),
+                decoration: BoxDecoration(
+                  color: context.colors.primary,
+                  borderRadius: BorderRadius.circular(AppBorderRadius.br8),
+                ),
+                child: Text(
+                  dateFormated,
+                  style: AppTextStyle.bodyLarge
+                      .copyWith(color: context.colors.onPrimary),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
+            ],
           ),
-          AppSpaces.gapW6,
+          AppSpaces.gapW2,
           Stack(
             alignment: Alignment.center,
             children: [
@@ -204,14 +215,14 @@ class _TimeLineItem extends StatelessWidget {
                 width: 6,
                 margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
                 decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade900,
+                  color: context.colors.primary,
                   borderRadius: BorderRadius.circular(AppBorderRadius.brMax),
                 ),
               ),
               Icon(
-                Icons.circle,
-                color: Colors.blueGrey.shade900,
-                size: 18,
+                Icons.linear_scale,
+                color: context.colors.primary,
+                size: 20,
               ),
             ],
           ),

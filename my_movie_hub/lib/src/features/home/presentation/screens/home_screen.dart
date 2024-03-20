@@ -8,7 +8,7 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Estrenos
+//TODO: Estrenos - filtros
 
 //TODO: Ver casos de error
 

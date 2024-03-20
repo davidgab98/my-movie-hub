@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/application/premieres_state.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/domain/repositories/premieres_repository.dart';
+import 'package:my_movie_hub/src/features/premieres/application/premieres_state.dart';
+import 'package:my_movie_hub/src/features/premieres/domain/repositories/premieres_repository.dart';
 
 class PremieresCubit extends Cubit<PremieresState> with ExceptionsHelper {
   PremieresCubit({

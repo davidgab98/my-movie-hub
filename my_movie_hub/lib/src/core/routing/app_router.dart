@@ -9,7 +9,7 @@ import 'package:my_movie_hub/src/features/highlights/presentation/screens/highli
 import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.dart';
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
-import 'package:my_movie_hub/src/features/premiere_calendar/presentation/premieres_screen.dart';
+import 'package:my_movie_hub/src/features/premieres/presentation/premieres_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
@@ -21,7 +21,7 @@ enum AppRoute {
   signIn('/signIn'),
   home('/home'),
   search('/search'),
-  premiereCalendar('/premiereCalendar'),
+  premieres('/premieres'),
   watchlist('/watchlist'),
   highlights('/highlights'),
   movieDetail('movieDetail'),
@@ -38,7 +38,7 @@ final _shellNavigatorHomeKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Home');
 final _shellNavigatorSearchKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Search');
-final _shellNavigatorPremiereCalendarKey =
+final _shellNavigatorPremieresKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Premiere Calendar');
 final _shellNavigatorWatchlistKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Watchlist');
@@ -116,21 +116,21 @@ final goRouter = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _shellNavigatorPremiereCalendarKey,
+          navigatorKey: _shellNavigatorPremieresKey,
           routes: [
             GoRoute(
-              name: AppRoute.premiereCalendar.name,
-              path: AppRoute.premiereCalendar.path,
+              name: AppRoute.premieres.name,
+              path: AppRoute.premieres.path,
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: PremieresScreen(),
               ),
               routes: [
                 GoRoute(
-                  parentNavigatorKey: _shellNavigatorPremiereCalendarKey,
+                  parentNavigatorKey: _shellNavigatorPremieresKey,
                   name:
-                      '${AppRoute.premiereCalendar.name}${AppRoute.movieDetail.name}',
+                      '${AppRoute.premieres.name}${AppRoute.movieDetail.name}',
                   path:
-                      '${AppRoute.premiereCalendar.name}${AppRoute.movieDetail.path}',
+                      '${AppRoute.premieres.name}${AppRoute.movieDetail.path}',
                   builder: (context, state) {
                     if (state.extra == null || state.extra is! Movie) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
