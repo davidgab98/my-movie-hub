@@ -2,7 +2,7 @@
 
 Aplicación móvil centrada en la gestión, búsqueda y descubrimiento de películas y estrenos en cartelera. 
 
-Desarrollada en Flutter bajo una arquitectura Hexagonal sólida basada en Bloc, empleando principios SOLID, Clean architecture y Atomic design. 
+Desarrollada en Flutter bajo una arquitectura Hexagonal sólida basada en Bloc, principios SOLID, Clean architecture y Atomic design. 
 
 _\*My Movie Hub works on iOS and Android._
 
