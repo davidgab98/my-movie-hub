@@ -1,7 +1,9 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_movie_hub/src/core-ui/styles/theme/theme_cubit.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/core/utils/hot_restart_controller.dart';
@@ -34,7 +36,12 @@ class _MaterialApp extends StatelessWidget {
             child: HotRestartController(
               child: MaterialApp.router(
                 debugShowCheckedModeBanner: false,
-                localizationsDelegates: context.localizationDelegates,
+                localizationsDelegates: const [
+                  CountryLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
                 routerConfig: goRouter,
@@ -65,7 +72,12 @@ class _MaterialAppWithDevicePreview extends StatelessWidget {
             child: DevicePreview(
               builder: (context) => MaterialApp.router(
                 debugShowCheckedModeBanner: false,
-                localizationsDelegates: context.localizationDelegates,
+                localizationsDelegates: const [
+                  CountryLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
                 supportedLocales: context.supportedLocales,
                 locale: DevicePreview.locale(context),
                 routerConfig: goRouter,

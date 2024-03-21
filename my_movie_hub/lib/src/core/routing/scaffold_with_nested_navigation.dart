@@ -23,8 +23,8 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(AppSpaces.s20),
             topRight: Radius.circular(AppSpaces.s20),
-            bottomLeft: Radius.circular(AppSpaces.s48),
-            bottomRight: Radius.circular(AppSpaces.s48),
+            bottomLeft: Radius.circular(AppSpaces.s40),
+            bottomRight: Radius.circular(AppSpaces.s40),
           ),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
@@ -80,11 +80,23 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                     label: 'Watchlist',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
-                      navigationShell.currentIndex == 4
-                          ? Icons.star
-                          : Icons.star_outline,
-                      color: Colors.white,
+                    icon: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Icon(
+                          navigationShell.currentIndex == 4
+                              ? Icons.favorite_outline
+                              : Icons.favorite_outline,
+                          color: Colors.white,
+                        ),
+                        Icon(
+                          navigationShell.currentIndex == 4
+                              ? Icons.star
+                              : Icons.star_outline,
+                          color: Colors.white,
+                          size: 12,
+                        ),
+                      ],
                     ),
                     label: 'F&R',
                   ),

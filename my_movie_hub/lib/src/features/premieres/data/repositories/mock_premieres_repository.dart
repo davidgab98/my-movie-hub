@@ -10,6 +10,7 @@ class MockPremieresRepository extends PremieresRepository {
   Future<Result<MovieListResponse, Exception>> getPremieres({
     required int page,
     required DateTime initialDate,
+    required String countryCode,
   }) async {
     try {
       await Future<void>.delayed(const Duration(seconds: 2));

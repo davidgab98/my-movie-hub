@@ -101,10 +101,9 @@ class _SignInButton extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF2D2F41),
+              backgroundColor: context.colors.secondary.withOpacity(0.5),
             ),
-            onPressed:
-                state.isFormValid ? context.read<SignInCubit>().signIn : null,
+            onPressed: context.read<SignInCubit>().signIn,
             child: Text(
               'Login',
               style: TextStyle(

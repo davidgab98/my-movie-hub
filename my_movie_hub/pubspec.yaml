@@ -32,7 +32,7 @@ dependencies:
   url_launcher: 6.2.5
   shimmer: 3.0.0
   meta: ^1.10.0
-  easy_date_timeline: 1.0.3
+  country_code_picker: 3.0.0
 
 dev_dependencies:
   bloc_test: ^9.1.4

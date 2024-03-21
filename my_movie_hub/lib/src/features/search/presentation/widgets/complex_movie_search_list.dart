@@ -406,7 +406,7 @@ Widget _buildShimmerGrid(BuildContext context, int crossAxisCount) {
           child: ShimmerPlaceholder(
             width: double.infinity,
             shapeBorder: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+              borderRadius: BorderRadius.circular(AppBorderRadius.br8),
             ),
           ),
         );

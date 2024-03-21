@@ -44,11 +44,18 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
   }
 
   Future<void> signIn() async {
-    if (!state.isFormValid) return;
+    if (!state.isFormValid) {
+      emit(
+        state.copyWith(
+          username: UsernameInput.dirty(state.username.value),
+          password: PasswordInput.dirty(state.password.value),
+        ),
+      );
+
+      return;
+    }
 
     emit(state.copyWith(formStatus: FormzSubmissionStatus.inProgress));
-
-    print('1');
 
     final result = await _signInRepository.createAndValidateRequestToken(
       username: state.username.value,
@@ -57,7 +64,6 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
     result.when(
       (success) async {
-        print('2');
         await _createSession(requestToken: success);
       },
       (error) => emit(
@@ -74,12 +80,8 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
       requestToken: requestToken,
     );
 
-    print('3');
-
     result.when(
       (success) async {
-        print('4');
-        print(success);
         _localStorageService.setSessionId(success);
         await _getUserAccount(sessionId: success);
       },
@@ -97,11 +99,8 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
       sessionId: sessionId,
     );
 
-    print('5');
-
     result.when(
       (success) {
-        print('6');
         _localStorageService.setAccountId(success.id);
         _userCubit.updateUserWith(success);
         emit(

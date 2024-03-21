@@ -43,6 +43,9 @@ class MovieRatingIcon extends StatelessWidget {
                 value: i,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    disabledBackgroundColor:
+                        context.colors.primary.withOpacity(0.5),
+                    backgroundColor: Colors.amber,
                     padding: EdgeInsets.zero,
                   ),
                   onPressed: i == state.movie.accountStates?.rated?.toInt()
@@ -52,12 +55,16 @@ class MovieRatingIcon extends StatelessWidget {
                     child: Text(
                       i == 0 ? 'Borrar' : '$i ✯',
                       style: AppTextStyle.titleMedium.copyWith(
-                        color: i == 0 ? context.colors.error : Colors.amber,
+                        color: i == 0
+                            ? context.colors.error
+                            : i == state.movie.accountStates?.rated?.toInt()
+                                ? context.colors.primary
+                                : Colors.amber,
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
           ],
           child: MetallicIconButton(
             icon: state.movie.accountStates != null

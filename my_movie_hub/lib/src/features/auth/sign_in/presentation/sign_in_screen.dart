@@ -22,51 +22,51 @@ class SignInScreen extends StatelessWidget {
           localStorageService: locator<LocalStorageService>(),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpaces.s32),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppSpaces.gapH64,
-                  Stack(
-                    children: [
-                      Icon(
-                        Icons.movie_filter,
-                        size: 132,
-                        color: Colors.blueGrey.shade200,
-                      ),
-                      Icon(
-                        Icons.movie_filter,
-                        size: 128,
-                        color: Colors.blueGrey.shade400,
-                      ),
-                      Icon(
-                        Icons.movie_filter,
-                        size: 124,
-                        color: Colors.blueGrey.shade600,
-                      ),
-                      Icon(
-                        Icons.movie_filter,
-                        size: 120,
-                        color: Colors.blueGrey.shade800,
-                      ),
-                    ],
-                  ),
-                  AppSpaces.gapH16,
-                  Text(
-                    'MY MOVIE HUB',
-                    style: AppTextStyle.headlineLarge.copyWith(
-                      fontSize: 22,
-                      color: context.colors.onBackground,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpaces.s32),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Icon(
+                          Icons.movie_filter,
+                          size: 132,
+                          color: Colors.blueGrey.shade200,
+                        ),
+                        Icon(
+                          Icons.movie_filter,
+                          size: 128,
+                          color: Colors.blueGrey.shade400,
+                        ),
+                        Icon(
+                          Icons.movie_filter,
+                          size: 124,
+                          color: Colors.blueGrey.shade600,
+                        ),
+                        Icon(
+                          Icons.movie_filter,
+                          size: 120,
+                          color: Colors.blueGrey.shade800,
+                        ),
+                      ],
                     ),
-                  ),
-                  AppSpaces.gapH24,
-                  const SignInForm(),
-                  AppSpaces.gapH32,
-                  const _CreateNewAccount(),
-                  AppSpaces.gapH16,
-                ],
+                    AppSpaces.gapH16,
+                    Text(
+                      'MY MOVIE HUB',
+                      style: AppTextStyle.headlineLarge.copyWith(
+                        fontSize: 22,
+                        color: context.colors.onBackground,
+                      ),
+                    ),
+                    AppSpaces.gapH24,
+                    const SignInForm(),
+                    AppSpaces.gapH32,
+                    const _CreateNewAccount(),
+                    AppSpaces.gapH16,
+                  ],
+                ),
               ),
             ),
           ),

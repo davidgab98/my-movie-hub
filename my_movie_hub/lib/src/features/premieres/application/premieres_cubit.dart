@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
 import 'package:my_movie_hub/src/features/premieres/application/premieres_state.dart';
@@ -9,7 +10,9 @@ class PremieresCubit extends Cubit<PremieresState> with ExceptionsHelper {
   PremieresCubit({
     required PremieresRepository premieresRepository,
   })  : _premieresRepository = premieresRepository,
-        super(const PremieresState());
+        super(const PremieresState()) {
+    emit(state.copyWith(initialDate: DateTime.now()));
+  }
 
   final PremieresRepository _premieresRepository;
   int _currentPage = 1;
@@ -27,7 +30,8 @@ class PremieresCubit extends Cubit<PremieresState> with ExceptionsHelper {
 
     final result = await _premieresRepository.getPremieres(
       page: _currentPage,
-      initialDate: DateTime.now(),
+      initialDate: state.initialDate ?? DateTime.now(),
+      countryCode: state.countryCode,
     );
 
     result.when(
@@ -51,5 +55,23 @@ class PremieresCubit extends Cubit<PremieresState> with ExceptionsHelper {
         ),
       ),
     );
+  }
+
+  Future<void> updateCountryAndRefreshData({String? countryCode}) async {
+    if (countryCode != null) {
+      emit(state.copyWith(countryCode: countryCode));
+
+      await getPremieres(isRefreshing: true);
+    }
+  }
+
+  Future<void> updateInitialDateAndRefreshData({
+    required DateTime initialDate,
+  }) async {
+    if (initialDate != state.initialDate) {
+      emit(state.copyWith(initialDate: initialDate));
+
+      await getPremieres(isRefreshing: true);
+    }
   }
 }

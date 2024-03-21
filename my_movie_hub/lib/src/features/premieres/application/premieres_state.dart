@@ -7,6 +7,8 @@ part 'premieres_state.freezed.dart';
 @freezed
 class PremieresState with _$PremieresState {
   const factory PremieresState({
+    DateTime? initialDate,
+    @Default('ES') String countryCode,
     @Default([]) List<Movie> movies,
     int? totalMovies,
     @Default(false) bool hasReachedMax,

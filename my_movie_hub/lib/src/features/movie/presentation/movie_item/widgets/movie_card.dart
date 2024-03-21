@@ -20,7 +20,7 @@ class MovieCard extends StatelessWidget {
         extra: movie,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+        borderRadius: BorderRadius.circular(AppBorderRadius.br8),
         child: movie.posterPath.isNotEmpty
             ? Image.network(
                 'https://image.tmdb.org/t/p/w500${movie.posterPath}',

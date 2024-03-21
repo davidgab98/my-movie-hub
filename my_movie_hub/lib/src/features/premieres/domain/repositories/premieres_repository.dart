@@ -6,5 +6,6 @@ abstract class PremieresRepository {
   Future<Result<MovieListResponse, Exception>> getPremieres({
     required int page,
     required DateTime initialDate,
+    required String countryCode,
   });
 }

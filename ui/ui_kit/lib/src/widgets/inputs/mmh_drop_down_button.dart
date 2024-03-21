@@ -38,7 +38,7 @@ class MMHDropdownButton<T> extends StatelessWidget {
         dropdownColor: context.colors.surface,
         menuMaxHeight: MediaQuery.of(context).size.height / 2,
         icon: Icon(
-          Icons.arrow_drop_down,
+          Icons.arrow_drop_down_rounded,
           color: context.colors.outline,
         ),
         value: currentValue,

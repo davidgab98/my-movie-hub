@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PremieresState {
+  DateTime? get initialDate => throw _privateConstructorUsedError;
+  String get countryCode => throw _privateConstructorUsedError;
   List<Movie> get movies => throw _privateConstructorUsedError;
   int? get totalMovies => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
@@ -34,7 +36,9 @@ abstract class $PremieresStateCopyWith<$Res> {
       _$PremieresStateCopyWithImpl<$Res, PremieresState>;
   @useResult
   $Res call(
-      {List<Movie> movies,
+      {DateTime? initialDate,
+      String countryCode,
+      List<Movie> movies,
       int? totalMovies,
       bool hasReachedMax,
       StateStatus status,
@@ -54,6 +58,8 @@ class _$PremieresStateCopyWithImpl<$Res, $Val extends PremieresState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? initialDate = freezed,
+    Object? countryCode = null,
     Object? movies = null,
     Object? totalMovies = freezed,
     Object? hasReachedMax = null,
@@ -61,6 +67,14 @@ class _$PremieresStateCopyWithImpl<$Res, $Val extends PremieresState>
     Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
+      initialDate: freezed == initialDate
+          ? _value.initialDate
+          : initialDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      countryCode: null == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
       movies: null == movies
           ? _value.movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -94,7 +108,9 @@ abstract class _$$PremiereStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Movie> movies,
+      {DateTime? initialDate,
+      String countryCode,
+      List<Movie> movies,
       int? totalMovies,
       bool hasReachedMax,
       StateStatus status,
@@ -112,6 +128,8 @@ class __$$PremiereStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? initialDate = freezed,
+    Object? countryCode = null,
     Object? movies = null,
     Object? totalMovies = freezed,
     Object? hasReachedMax = null,
@@ -119,6 +137,14 @@ class __$$PremiereStateImplCopyWithImpl<$Res>
     Object? errorMessage = null,
   }) {
     return _then(_$PremiereStateImpl(
+      initialDate: freezed == initialDate
+          ? _value.initialDate
+          : initialDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      countryCode: null == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
       movies: null == movies
           ? _value._movies
           : movies // ignore: cast_nullable_to_non_nullable
@@ -147,13 +173,20 @@ class __$$PremiereStateImplCopyWithImpl<$Res>
 
 class _$PremiereStateImpl implements _PremiereState {
   const _$PremiereStateImpl(
-      {final List<Movie> movies = const [],
+      {this.initialDate,
+      this.countryCode = 'ES',
+      final List<Movie> movies = const [],
       this.totalMovies,
       this.hasReachedMax = false,
       this.status = StateStatus.initial,
       this.errorMessage = ''})
       : _movies = movies;
 
+  @override
+  final DateTime? initialDate;
+  @override
+  @JsonKey()
+  final String countryCode;
   final List<Movie> _movies;
   @override
   @JsonKey()
@@ -177,7 +210,7 @@ class _$PremiereStateImpl implements _PremiereState {
 
   @override
   String toString() {
-    return 'PremieresState(movies: $movies, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
+    return 'PremieresState(initialDate: $initialDate, countryCode: $countryCode, movies: $movies, totalMovies: $totalMovies, hasReachedMax: $hasReachedMax, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
@@ -185,6 +218,10 @@ class _$PremiereStateImpl implements _PremiereState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PremiereStateImpl &&
+            (identical(other.initialDate, initialDate) ||
+                other.initialDate == initialDate) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
             const DeepCollectionEquality().equals(other._movies, _movies) &&
             (identical(other.totalMovies, totalMovies) ||
                 other.totalMovies == totalMovies) &&
@@ -198,6 +235,8 @@ class _$PremiereStateImpl implements _PremiereState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      initialDate,
+      countryCode,
       const DeepCollectionEquality().hash(_movies),
       totalMovies,
       hasReachedMax,
@@ -213,12 +252,18 @@ class _$PremiereStateImpl implements _PremiereState {
 
 abstract class _PremiereState implements PremieresState {
   const factory _PremiereState(
-      {final List<Movie> movies,
+      {final DateTime? initialDate,
+      final String countryCode,
+      final List<Movie> movies,
       final int? totalMovies,
       final bool hasReachedMax,
       final StateStatus status,
       final String errorMessage}) = _$PremiereStateImpl;
 
+  @override
+  DateTime? get initialDate;
+  @override
+  String get countryCode;
   @override
   List<Movie> get movies;
   @override
