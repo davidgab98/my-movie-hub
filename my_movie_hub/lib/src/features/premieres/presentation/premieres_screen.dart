@@ -23,7 +23,7 @@ class PremieresScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
-        title: 'Premieres',
+        title: 'premieres.mainTitle'.tr(),
         leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
       body: BlocProvider<PremieresCubit>(
@@ -101,7 +101,7 @@ class _TimeLineState extends State<TimeLine> {
         BlocBuilder<PremieresCubit, PremieresState>(
           builder: (context, state) {
             return SliverAppBar(
-              toolbarHeight: 45,
+              toolbarHeight: 35,
               backgroundColor: context.colors.background,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -111,8 +111,18 @@ class _TimeLineState extends State<TimeLine> {
                   AppSpaces.s2,
                 ),
                 child: Text(
-                  'En cines desde el ${state.initialDate?.toLongStylizedString(context) ?? ''} en ${CountryCode.fromCountryCode(state.countryCode).localize(context).name}',
-                  style: AppTextStyle.titleMedium.copyWith(
+                  'premieres.headline'.tr(
+                    namedArgs: {
+                      'date':
+                          state.initialDate?.toLongStylizedString(context) ??
+                              '',
+                      'country': CountryCode.fromCountryCode(state.countryCode)
+                              .localize(context)
+                              .name ??
+                          'ES',
+                    },
+                  ),
+                  style: AppTextStyle.bodyMedium.copyWith(
                     color: context.colors.onBackground,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -264,7 +274,7 @@ class _InitialDateInput extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.close, color: Colors.white),
+                icon: Icon(Icons.close, color: context.colors.onBackground),
                 onPressed: context.pop,
               ),
             ],

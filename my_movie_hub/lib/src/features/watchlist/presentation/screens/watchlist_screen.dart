@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +18,7 @@ class WatchlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
-        title: 'Watchlist',
+        title: 'watchlist.mainTitle'.tr(),
         leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
       ),
       body: BlocProvider<ComplexMovieListCubit>(

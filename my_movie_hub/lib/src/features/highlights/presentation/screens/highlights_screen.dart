@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
@@ -15,7 +16,7 @@ class HighlightsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           flexibleSpace: MainAppBar(
-            title: 'Favorites & Rated',
+            title: 'highlights.mainTitle'.tr(),
             leadingIconAction: () => context.pushNamed(AppRoute.profile.name),
           ),
           bottom: TabBar(
@@ -23,9 +24,9 @@ class HighlightsScreen extends StatelessWidget {
             labelColor: context.colors.onPrimary,
             unselectedLabelColor: Colors.blueGrey,
             indicatorColor: Colors.blueGrey,
-            tabs: const [
-              Tab(text: 'Favorites'),
-              Tab(text: 'Ratings'),
+            tabs: [
+              Tab(text: 'favorites.mainTitle'.tr()),
+              Tab(text: 'ratings.mainTitle'.tr()),
             ],
           ),
         ),

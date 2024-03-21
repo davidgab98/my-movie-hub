@@ -1,28 +1,138 @@
 {
     "appTitle": "MMH (EN)",
-    "homeTitle": "Inicio EN",
     "error": {
         "notImplemented": "Not Implemented",
         "requestCancelled": "Request Cancelled",
         "internalServerError": "Internal Server Error",
-        "serviceUnavailable": "Service unavailable",
+        "serviceUnavailable": "Service Unavailable",
         "methodNotAllowed": "Method Not Allowed",
         "badRequest": "Bad Request",
-        "unauthorizedRequest": "Unauthorized request",
-        "unexpectedError": "Unexpected error occurred",
-        "requestTimeout": "Connection request timeout",
-        "noInternetConnection": "No internet connection",
-        "conflict": "Error due to a conflict",
-        "sendTimeout": "Send timeout in connection with API server",
-        "unableToProcess": "Unable to process the data",
-        "formatException": "Oops something went wrong",
-        "notAcceptable": "Not acceptable",
+        "unauthorizedRequest": "Unauthorized Request",
+        "unexpectedError": "Unexpected Error Occurred",
+        "requestTimeout": "Request Timeout",
+        "noInternetConnection": "No Internet Connection",
+        "conflict": "Conflict Error",
+        "sendTimeout": "Send Timeout with API Server",
+        "unableToProcess": "Unable to Process the Data",
+        "formatException": "Oops, Something Went Wrong",
+        "notAcceptable": "Oops, Something Went Wrong",
         "custom": {
-            "invalidSignInCredentialsException": "Email o PIN incorrectos",
-            "exampleSpecificExceptionWithExtraParameter": "Example Specific Exception With Extra Parameter: {}"
+            "invalidCredentials": "Incorrect Username and/or Password"
         },
         "default": {
-            "signIn": "Ha habido un problema iniciando sesión"
+            "signIn": "There was a problem signing in"
+        },
+        "placeholder": {
+            "message": "Data could not be loaded, check the internet connection",
+            "realoadButtonText": "Reload"
         }
+    },
+    "signIn": {
+        "notHaveAccountMessage": "Not registered?",
+        "notHaveAccountButtonText": "Create a User",
+        "signInButtonText": "Log In",
+        "usernameLabel": "Username",
+        "passwordLabel": "Password",
+        "usernameInputEmptyMessage": "Enter a username",
+        "usernameInputInvalidMessage": "Enter a valid username",
+        "passwordInputEmptyMessage": "Enter a password"
+    },
+    "home": {
+        "mainTitle": "Home"
+    },
+    "highlights": {
+        "mainTitle": "Favorites and Rated",
+        "menuOption": "F&R"
+    },
+    "watchlist": {
+        "mainTitle": "Watchlist"
+    },
+    "favorites": {
+        "mainTitle": "Favorites"
+    },
+    "ratings": {
+        "mainTitle": "Rated",
+        "reviewsLabel": "ratings",
+        "clearRating": "Clear"
+    },
+    "publicLists": {
+        "nowPlayingTitle": "Now Playing",
+        "popularTitle": "Popular",
+        "upcomingTitle": "Upcoming",
+        "topRatedTitle": "Top Rated"
+    },
+    "search": {
+        "mainTitle": "Search",
+        "yearInputLabel": "Year",
+        "totalResultsLabel": "Results",
+        "textPlaceholder": "What do you feel like watching today?",
+        "emptyResultsText": "No results \n for this search"
+    },
+    "premieres": {
+        "mainTitle": "Premieres",
+        "headline": "In theaters from {date} in {country}"
+    },
+    "list": {
+        "errorLoadingNewDataText": "Error loading new data",
+        "emptyResultsText": "No movies",
+        "errorText": "Error",
+        "moviesResultsLabel": "Movies"
+    },
+    "movieItem": {
+        "posterNotFound": "Poster not found"
+    },
+    "movieDetails": {
+        "movieRecommendationsLabel": "You might be interested in",
+        "originalTitleLabel": "Original Title",
+        "yearLabel": "Year",
+        "durationLabel": "Duration",
+        "countryLabel": "Country",
+        "productionCompaniesLabel": "Companies",
+        "castLabel": "Cast",
+        "directionLabel": "Direction",
+        "screenplayLabel": "Screenplay",
+        "musicLabel": "Music",
+        "photographyLabel": "Photography"
+    },
+    "profile": {
+        "mainTitle": "My Profile",
+        "userIdLabel": "User ID",
+        "goToWebButtonText": "View in Web",
+        "logoutButtonText": "Log Out",
+        "cancelLogoutButtonText": "Cancel",
+        "logoutModalQuestion": "Are you sure you want to log out?"
+    },
+    "theme": {
+        "mainTitle": "Theme",
+        "darkThemeLabel": "Dark",
+        "lightThemeLabel": "Light"
+    },
+    "language": {
+        "mainTitle": "Language"
+    },
+    "orderType": {
+        "ascendent": "Latest",
+        "descendent": "Oldest"
+    },
+    "genres": {
+        "action": "Action",
+        "adventure": "Adventure",
+        "animation": "Animation",
+        "comedy": "Comedy",
+        "crime": "Crime",
+        "documentary": "Documentary",
+        "drama": "Drama",
+        "family": "Family",
+        "fantasy": "Fantasy",
+        "history": "History",
+        "horror": "Horror",
+        "music": "Music",
+        "mystery": "Mystery",
+        "romance": "Romance",
+        "scienceFiction": "Science Fiction",
+        "tvMovie": "TV Movie",
+        "thriller": "Thriller",
+        "war": "War",
+        "western": "Western"
     }
 }

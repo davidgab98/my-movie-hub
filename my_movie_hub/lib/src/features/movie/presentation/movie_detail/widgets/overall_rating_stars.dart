@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -63,7 +64,7 @@ class OverallRatingStars extends StatelessWidget {
         ),
         AppSpaces.gapH2,
         Text(
-          '${voteCount.ceil()} reviews',
+          '${voteCount.ceil()} ${'ratings.reviewsLabel'.tr()}',
           style: AppTextStyle.labelSmall.copyWith(
             color: Colors.amber.withOpacity(0.75),
           ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -15,15 +16,16 @@ class ErrorDataReloadPlaceholder extends StatelessWidget {
         children: [
           AppSpaces.gapH20,
           Text(
-            message ??
-                'No se han podido cargar los datos, comprueba la conexión a internet',
+            message ?? 'error.placeholder.message'.tr(),
             style: AppTextStyle.bodySmall,
             textAlign: TextAlign.center,
           ),
           AppSpaces.gapH20,
           ElevatedButton(
             onPressed: onReload,
-            child: const Text('Recargar'),
+            child: Text(
+              'error.placeholder.realoadButtonText'.tr(),
+            ),
           ),
         ],
       ),

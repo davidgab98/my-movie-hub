@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
@@ -35,7 +36,7 @@ class _ComplexMovieListState extends State<ComplexMovieList> {
       padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
       child: CustomScrollView(
         controller: _scrollController,
-        physics: const AlwaysScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           const _MovieListHeader(),
           Refresco(
@@ -80,7 +81,7 @@ class _MovieListHeader extends StatelessWidget {
         return SliverAppBar(
           title: state.totalMovies != null
               ? Text(
-                  '${state.totalMovies} Movies',
+                  '${state.totalMovies} ${'list.moviesResultsLabel'.tr()}',
                   style: AppTextStyle.titleMedium.copyWith(
                     color: context.colors.onBackground,
                   ),
@@ -134,7 +135,7 @@ class _MovieListHeader extends StatelessWidget {
                         )
                     : null,
                 child: Text(
-                  orderType == OrderType.asc ? 'Latest' : 'Oldest',
+                  orderType.toString(),
                   style: AppTextStyle.titleMedium.copyWith(
                     color: context.colors.onBackground,
                   ),
@@ -197,9 +198,9 @@ class _MovieListBody extends StatelessWidget {
             state: state,
           );
         } else {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
             child: Center(
-              child: Text('No tienes películas en tu watchlist'),
+              child: Text('list.emptyResultsText'.tr()),
             ),
           );
         }
@@ -225,8 +226,8 @@ class _MovieListWithImages extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return const Center(
-              child: Text('Error cargando datos nuevos'),
+            return Center(
+              child: Text('list.errorLoadingNewDataText'.tr()),
             );
           } else {
             return const Center(
@@ -264,8 +265,8 @@ class _MovieGrid extends StatelessWidget {
         (BuildContext context, int index) {
           if (index >= state.movies.length) {
             if (state.status.isError) {
-              return const Center(
-                child: Text('Error cargando datos nuevos'),
+              return Center(
+                child: Text('list.errorLoadingNewDataText'.tr()),
               );
             } else {
               return const Center(
@@ -304,8 +305,8 @@ class _MovieList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return const Center(
-              child: Text('Error cargando datos nuevos'),
+            return Center(
+              child: Text('list.errorLoadingNewDataText'.tr()),
             );
           } else {
             return const Center(

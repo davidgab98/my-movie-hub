@@ -1,9 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/styles/theme/theme_cubit.dart';
-import 'package:my_movie_hub/src/core/di/service_locator.dart';
-import 'package:my_movie_hub/src/core/storage/local_storage.dart';
-import 'package:my_movie_hub/src/core/utils/hot_restart_controller.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class ChangeThemeScreen extends StatelessWidget {
@@ -12,7 +10,7 @@ class ChangeThemeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: 'Tema'),
+      appBar: MainAppBar(title: 'theme.mainTitle'.tr()),
       body: Padding(
         padding: const EdgeInsets.all(AppSpaces.s16),
         child: ListView(
@@ -23,7 +21,9 @@ class ChangeThemeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: AppSpaces.s10),
                 child: ListTile(
                   title: Text(
-                    ThemeMode.values[i] == ThemeMode.dark ? 'Dark' : 'Light',
+                    ThemeMode.values[i] == ThemeMode.dark
+                        ? 'theme.darkThemeLabel'.tr()
+                        : 'theme.lightThemeLabel'.tr(),
                     style: AppTextStyle.headlineMedium.copyWith(
                       color: context.colors.onBackground,
                     ),

@@ -45,7 +45,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: false
+  #generate: false
   assets:
     - assets/l10n/
     - assets/pngs/

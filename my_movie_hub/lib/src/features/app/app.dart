@@ -36,11 +36,9 @@ class _MaterialApp extends StatelessWidget {
             child: HotRestartController(
               child: MaterialApp.router(
                 debugShowCheckedModeBanner: false,
-                localizationsDelegates: const [
+                localizationsDelegates: [
                   CountryLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
+                  ...context.localizationDelegates
                 ],
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,

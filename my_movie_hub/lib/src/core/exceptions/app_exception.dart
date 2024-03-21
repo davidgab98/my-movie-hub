@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:my_movie_hub/src/core/exceptions/error_logger.dart';
 import 'package:my_movie_hub/src/core/exceptions/exception_data.dart';
 
@@ -35,7 +36,7 @@ class InvalidSignInCredentialsException extends BaseAppException {
   }) : super(
           ExceptionData(
             'invalid-sign-in-credentials-exception',
-            message ?? 'Invalid username and/or password',
+            message ?? 'error.custom.invalidCredentials'.tr(),
           ),
         );
 

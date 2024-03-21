@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/features/movie_list/presentation/simple_movie_list.dart';
@@ -10,7 +11,7 @@ class TopRatedMoviesHorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PublicListSection(
-      title: 'Top Rated',
+      title: 'publicLists.topRatedTitle'.tr(),
       child: SimpleMovieList(
         fetchMovies: locator<PublicListsRepository>().getTopRatedMovies,
       ),

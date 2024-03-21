@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -50,7 +51,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                           : Icons.home_outlined,
                       color: Colors.white,
                     ),
-                    label: 'Home',
+                    label: 'home.mainTitle'.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
@@ -59,7 +60,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                           : Icons.search_outlined,
                       color: Colors.white,
                     ),
-                    label: 'Search',
+                    label: 'search.mainTitle'.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
@@ -68,7 +69,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                           : Icons.movie_filter_outlined,
                       color: Colors.white,
                     ),
-                    label: 'Premieres',
+                    label: 'premieres.mainTitle'.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
@@ -77,7 +78,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                           : Icons.visibility_outlined,
                       color: Colors.white,
                     ),
-                    label: 'Watchlist',
+                    label: 'watchlist.mainTitle'.tr(),
                   ),
                   BottomNavigationBarItem(
                     icon: Stack(
@@ -98,7 +99,7 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
                         ),
                       ],
                     ),
-                    label: 'F&R',
+                    label: 'highlights.menuOption'.tr(),
                   ),
                 ],
               ),

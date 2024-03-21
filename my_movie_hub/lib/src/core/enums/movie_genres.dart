@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 enum MovieGenre {
   action(28),
   adventure(12),
@@ -29,43 +31,43 @@ enum MovieGenre {
   String toTranslatedString() {
     switch (this) {
       case MovieGenre.action:
-        return 'Acción';
+        return 'genres.action'.tr();
       case MovieGenre.adventure:
-        return 'Aventura';
+        return 'genres.adventure'.tr();
       case MovieGenre.animation:
-        return 'Animación';
+        return 'genres.animation'.tr();
       case MovieGenre.comedy:
-        return 'Comedia';
+        return 'genres.comedy'.tr();
       case MovieGenre.crime:
-        return 'Crimen';
+        return 'genres.crime'.tr();
       case MovieGenre.documentary:
-        return 'Documental';
+        return 'genres.documentary'.tr();
       case MovieGenre.drama:
-        return 'Drama';
+        return 'genres.drama'.tr();
       case MovieGenre.family:
-        return 'Familiar';
+        return 'genres.family'.tr();
       case MovieGenre.fantasy:
-        return 'Fantasía';
+        return 'genres.fantasy'.tr();
       case MovieGenre.history:
-        return 'Historia';
+        return 'genres.history'.tr();
       case MovieGenre.horror:
-        return 'Horror';
+        return 'genres.horror'.tr();
       case MovieGenre.music:
-        return 'Musica';
+        return 'genres.music'.tr();
       case MovieGenre.mystery:
-        return 'Misterio';
+        return 'genres.mystery'.tr();
       case MovieGenre.romance:
-        return 'Romance';
+        return 'genres.romance'.tr();
       case MovieGenre.scienceFiction:
-        return 'Ciencia ficción';
+        return 'genres.scienceFiction'.tr();
       case MovieGenre.tvMovie:
-        return 'TV Movie';
+        return 'genres.tvMovie'.tr();
       case MovieGenre.thriller:
-        return 'Thriller';
+        return 'genres.thriller'.tr();
       case MovieGenre.war:
-        return 'Guerra';
+        return 'genres.war'.tr();
       case MovieGenre.western:
-        return 'Western';
+        return 'genres.western'.tr();
     }
   }
 }

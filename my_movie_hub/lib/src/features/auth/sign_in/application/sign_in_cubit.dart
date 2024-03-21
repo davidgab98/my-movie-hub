@@ -23,7 +23,6 @@ class SignInCubit extends Cubit<SignInState> with ExceptionsHelper {
 
   void usernameChanged(String value) {
     final username = UsernameInput.dirty(value);
-
     emit(
       state.copyWith(
         username: username,

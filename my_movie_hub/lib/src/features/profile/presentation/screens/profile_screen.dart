@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: 'Mi perfil'),
+      appBar: MainAppBar(title: 'profile.mainTitle'.tr()),
       body: BlocBuilder<UserCubit, UserState>(
         bloc: locator<UserCubit>(),
         builder: (context, state) {
@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'user id: ${state.user.id}',
+                    '${'profile.userIdLabel'.tr()}: ${state.user.id}',
                     style: AppTextStyle.labelSmall.copyWith(
                       color: context.colors.onBackground,
                     ),
@@ -46,13 +46,14 @@ class ProfileScreen extends StatelessWidget {
                   AppSpaces.gapH40,
                   ProfileMenuOption(
                     title:
-                        'Tema: ${context.read<ThemeCubit>().state == ThemeMode.dark ? 'Dark' : 'Light'}',
+                        '${'theme.mainTitle'.tr()}: ${context.read<ThemeCubit>().state == ThemeMode.dark ? 'theme.darkThemeLabel'.tr() : 'theme.lightThemeLabel'.tr()}',
                     icon: Icons.brush_rounded,
                     onPress: () => context.pushNamed(AppRoute.changeTheme.name),
                   ),
                   AppSpaces.gapH32,
                   ProfileMenuOption(
-                    title: 'Idioma: ${context.locale.getTranslatedString()}',
+                    title:
+                        '${'language.mainTitle'.tr()}: ${context.locale.getTranslatedString()}',
                     icon: Icons.language_rounded,
                     onPress: () =>
                         context.pushNamed(AppRoute.changeLanguage.name),

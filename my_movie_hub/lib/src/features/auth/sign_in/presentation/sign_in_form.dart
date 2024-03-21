@@ -55,8 +55,8 @@ class _UsernameInput extends StatelessWidget {
           onChanged: (username) =>
               context.read<SignInCubit>().usernameChanged(username),
           model: MMHTextFormFieldModel(
-            labelText: 'Username',
-            hintText: 'username',
+            labelText: 'signIn.usernameLabel'.tr(),
+            hintText: 'signIn.usernameLabel'.tr().toLowerCase(),
             errorText: state.username.isNotValid && !state.username.isPure
                 ? state.username.error?.message
                 : null,
@@ -78,7 +78,7 @@ class _PasswordInput extends StatelessWidget {
           onChanged: (password) =>
               context.read<SignInCubit>().passwordChanged(password),
           model: MMHPasswordFormFieldModel(
-            labelText: 'Password',
+            labelText: 'signIn.passwordLabel'.tr(),
             hintText: '********',
             errorText: state.password.isNotValid && !state.password.isPure
                 ? state.password.error?.message
@@ -105,8 +105,8 @@ class _SignInButton extends StatelessWidget {
             ),
             onPressed: context.read<SignInCubit>().signIn,
             child: Text(
-              'Login',
-              style: TextStyle(
+              'signIn.signInButtonText'.tr(),
+              style: const TextStyle(
                 color: AppColors.white,
               ),
             ),

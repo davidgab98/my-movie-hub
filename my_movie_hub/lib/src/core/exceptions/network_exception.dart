@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:my_movie_hub/src/core/exceptions/error_logger.dart';
@@ -75,7 +76,7 @@ class NetworkException with _$NetworkException implements Exception {
                 networkException = const NetworkException.unauthorizedRequest();
               case 404:
                 networkException = NetworkException.notFound(
-                  error.response?.statusMessage ?? 'Oops, something went wrong',
+                  error.response?.statusMessage ?? 'error.formatException'.tr(),
                 );
               case 409:
                 networkException = const NetworkException.conflict();
@@ -88,7 +89,7 @@ class NetworkException with _$NetworkException implements Exception {
               default:
                 final responseCode = error.response?.statusCode;
                 networkException = NetworkException.defaultError(
-                  'Received invalid status code: $responseCode',
+                  '${'error.unableToProcess'.tr()}: $responseCode',
                 );
             }
           case DioExceptionType.sendTimeout:

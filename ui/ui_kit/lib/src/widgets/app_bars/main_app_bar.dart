@@ -22,22 +22,24 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
             colors: [
-              AppColors.primary.withOpacity(0.3),
-              AppColors.secondary.withOpacity(0.2),
-              AppColors.tertiary.withOpacity(0.1),
+              AppColors.primary.withOpacity(0.1),
+              AppColors.secondary.withOpacity(0.35),
+              AppColors.primary.withOpacity(0.1),
             ],
             stops: const [0.0, 0.5, 1.0],
           ),
         ),
       ),
       title: title != null
-          ? Text(
-              title!,
-              style: AppTextStyle.headlineXXL.copyWith(
-                color: AppColors.white,
+          ? FittedBox(
+              child: Text(
+                title!,
+                style: AppTextStyle.headlineXXL.copyWith(
+                  color: AppColors.white,
+                ),
               ),
             )
           : const Image(

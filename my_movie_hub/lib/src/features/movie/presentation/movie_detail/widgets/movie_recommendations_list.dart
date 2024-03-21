@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_repository.dart';
@@ -12,7 +13,7 @@ class MovieRecommendationsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PublicListSection(
-      title: 'Te podría interesar',
+      title: 'movieDetails.movieRecommendationsLabel'.tr(),
       child: SimpleMovieList(
         fetchMoviesByMovieId: locator<MovieRepository>().getRecommendations,
         movieId: movieId,

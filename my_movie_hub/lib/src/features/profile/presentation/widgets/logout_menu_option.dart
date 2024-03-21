@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core-ui/modals/actions_modal_bottom_sheet.dart';
@@ -15,11 +16,12 @@ class LogOutMenuOption extends StatelessWidget {
     return ListTile(
       onTap: () => showActionsModalBottomSheet(
         context: context,
-        title: '¿Seguro que deseas salir?',
+        title: 'profile.logoutModalQuestion'.tr(),
         modalActions: [
-          ModalActionModel(title: 'Cancelar', action: () {}),
           ModalActionModel(
-            title: 'Cerrar sesión',
+              title: 'profile.cancelLogoutButtonText'.tr(), action: () {}),
+          ModalActionModel(
+            title: 'profile.logoutButtonText'.tr(),
             titleColor: AppColors.red,
             action: () {
               locator<IEventBus>().emitEvent(LogOutEvent());
@@ -44,7 +46,7 @@ class LogOutMenuOption extends StatelessWidget {
         ),
       ),
       title: Text(
-        'Cerrar sesión',
+        'profile.logoutButtonText'.tr(),
         style: AppTextStyle.headlineSmall.copyWith(
           color: AppColors.red,
         ),

@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
 import 'package:my_movie_hub/src/core/events/event_bus.dart';
@@ -49,86 +49,6 @@ class _Body extends StatelessWidget {
     );
   }
 }
-
-// class _DetailsHeader extends StatelessWidget {
-//   const _DetailsHeader({
-//     super.key,
-//     required this.movie,
-//   });
-
-//   final Movie movie;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SliverAppBar(
-//       elevation: 0,
-//       expandedHeight: MediaQuery.of(context).size.height * 0.33,
-//       pinned: true,
-//       actions: [
-//         IconButton(
-//           onPressed: () {},
-//           icon: const Icon(Icons.share),
-//         ),
-//       ],
-//       flexibleSpace: LayoutBuilder(
-//         builder: (BuildContext context, _) {
-//           return Stack(
-//             fit: StackFit.expand,
-//             children: [
-//               if (movie.posterPath.isNotEmpty)
-//                 Image.network(
-//                   'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
-//                   fit: BoxFit.cover,
-//                 )
-//               else
-//                 Container(
-//                   padding: const EdgeInsets.all(AppSpaces.s16),
-//                   decoration: BoxDecoration(
-//                     gradient: LinearGradient(
-//                       begin: Alignment.topLeft,
-//                       end: Alignment.bottomRight,
-//                       colors: [
-//                         AppColors.primary.withOpacity(0.3),
-//                         AppColors.secondary.withOpacity(0.2),
-//                         AppColors.tertiary.withOpacity(0.1),
-//                       ],
-//                       stops: const [0.0, 0.5, 1.0],
-//                     ),
-//                   ),
-//                 ),
-//               DecoratedBox(
-//                 decoration: BoxDecoration(
-//                   gradient: LinearGradient(
-//                     begin: Alignment.bottomCenter,
-//                     end: Alignment.topCenter,
-//                     colors: [
-//                       context.colors.background,
-//                       Colors.transparent,
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//               Align(
-//                 alignment: Alignment.bottomCenter,
-//                 child: Padding(
-//                   padding: const EdgeInsets.all(AppSpaces.s16),
-//                   child: FittedBox(
-//                     child: Text(
-//                       movie.title.toUpperCase(),
-//                       style: AppTextStyle.mainTitleMedium.copyWith(
-//                         color: context.colors.onBackground,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
 
 class _DetailsHeader extends StatelessWidget {
   const _DetailsHeader({
@@ -332,7 +252,7 @@ class _MainMovieInfo extends StatelessWidget {
               _GenresWrapList(genres: movie.genres),
               AppSpaces.gapH20,
               Text(
-                'Titulo original',
+                'movieDetails.originalTitleLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -345,7 +265,7 @@ class _MainMovieInfo extends StatelessWidget {
               ),
               AppSpaces.gapH16,
               Text(
-                'Año',
+                'movieDetails.yearLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -360,7 +280,7 @@ class _MainMovieInfo extends StatelessWidget {
               ),
               AppSpaces.gapH16,
               Text(
-                'Duración',
+                'movieDetails.durationLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -375,7 +295,7 @@ class _MainMovieInfo extends StatelessWidget {
               ),
               AppSpaces.gapH16,
               Text(
-                'País',
+                'movieDetails.countryLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -392,7 +312,7 @@ class _MainMovieInfo extends StatelessWidget {
               ),
               AppSpaces.gapH16,
               Text(
-                'Compañías',
+                'movieDetails.productionCompaniesLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -486,7 +406,7 @@ class MovieCredits extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: AppSpaces.s16),
               child: Text(
-                'Reparto',
+                'movieDetails.castLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
                   color: context.colors.onBackground,
                 ),
@@ -557,7 +477,7 @@ class MovieCredits extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Dirección',
+                    'movieDetails.directionLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
                       color: context.colors.onBackground,
                     ),
@@ -571,7 +491,7 @@ class MovieCredits extends StatelessWidget {
                     ),
                   AppSpaces.gapH16,
                   Text(
-                    'Guión',
+                    'movieDetails.screenplayLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
                       color: context.colors.onBackground,
                     ),
@@ -585,7 +505,7 @@ class MovieCredits extends StatelessWidget {
                     ),
                   AppSpaces.gapH16,
                   Text(
-                    'Música',
+                    'movieDetails.musicLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
                       color: context.colors.onBackground,
                     ),
@@ -599,7 +519,7 @@ class MovieCredits extends StatelessWidget {
                     ),
                   AppSpaces.gapH16,
                   Text(
-                    'Fotografía',
+                    'movieDetails.photographyLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
                       color: context.colors.onBackground,
                     ),

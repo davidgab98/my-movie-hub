@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:my_movie_hub/src/core/exceptions/app_exception.dart';
 import 'package:my_movie_hub/src/core/exceptions/network_exception.dart';
 
 mixin class ExceptionsHelper {
   String getExceptionMessage(Object exception) {
     if (exception is NetworkException) {
-      return exception.details.message;
+      return exception.details.message.tr();
     } else if (exception is BaseAppException) {
       return exception.details.message;
     } else {

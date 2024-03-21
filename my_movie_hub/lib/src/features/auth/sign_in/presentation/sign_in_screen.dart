@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
@@ -86,7 +87,7 @@ class _CreateNewAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('¿No estás registrado?',
+        Text('signIn.notHaveAccountMessage'.tr(),
             style: AppTextStyle.bodySmall.copyWith(
               color: context.colors.onBackground,
             )),
@@ -97,7 +98,7 @@ class _CreateNewAccount extends StatelessWidget {
             await launchUrl(uri);
           },
           child: Text(
-            'Crea un usuario',
+            'signIn.notHaveAccountButtonText'.tr(),
             style: AppTextStyle.button.copyWith(
               color: context.colors.secondary,
             ),

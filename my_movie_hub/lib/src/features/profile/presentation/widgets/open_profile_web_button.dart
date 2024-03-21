@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
@@ -31,7 +32,7 @@ class OpenProfileWebButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'GO TO WEB',
+            'profile.goToWebButtonText'.tr(),
             style: AppTextStyle.bodyLarge.copyWith(
               color: context.colors.onBackground,
             ),
@@ -41,7 +42,7 @@ class OpenProfileWebButton extends StatelessWidget {
             Icons.open_in_new_rounded,
             color: context.colors.onBackground,
             size: 18,
-          )
+          ),
         ],
       ),
     );

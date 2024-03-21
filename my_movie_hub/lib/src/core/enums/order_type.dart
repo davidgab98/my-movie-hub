@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 enum OrderType {
   asc,
   desc;
@@ -6,9 +8,9 @@ enum OrderType {
   String toString() {
     switch (this) {
       case asc:
-        return 'Ascendent';
+        return 'orderType.ascendent'.tr();
       case desc:
-        return 'Descendent';
+        return 'orderType.descendent'.tr();
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
@@ -35,7 +36,7 @@ class _ComplexMovieSearchListState extends State<ComplexMovieSearchList> {
       padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s16),
       child: CustomScrollView(
         controller: _scrollController,
-        physics: const AlwaysScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           const _SearchInputHeader(),
           const _MovieListHeader(),
@@ -92,6 +93,7 @@ class _SearchInputHeader extends StatelessWidget {
                 Expanded(
                   flex: 7,
                   child: MMHSearchField(
+                    hintText: 'search.mainTitle'.tr(),
                     onChanged: (query) {
                       debouncer.run(
                         () => context
@@ -124,16 +126,16 @@ class _YearFilterDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     return MMHDropdownButton<String>(
       values: generateYearsList(1888),
-      currentValue: 'Año',
+      currentValue: 'search.yearInputLabel'.tr(),
       onChange: (value) => context.read<SearchCubit>().updateYearAndSearch(
-            year: value != 'Año' ? value : '',
+            year: value != 'search.yearInputLabel'.tr() ? value : '',
           ),
     );
   }
 
   List<String> generateYearsList(int firstYear) {
     final currentYear = DateTime.now().year;
-    final years = ['Año'];
+    final years = ['search.yearInputLabel'.tr()];
 
     for (int year = currentYear; year >= firstYear; year--) {
       years.add(year.toString());
@@ -154,7 +156,7 @@ class _MovieListHeader extends StatelessWidget {
           elevation: 0,
           title: state.totalMovies != null
               ? Text(
-                  '${state.totalMovies} Results',
+                  '${state.totalMovies} ${'search.totalResultsLabel'.tr()}',
                   style: AppTextStyle.titleMedium.copyWith(
                     color: context.colors.onBackground,
                   ),
@@ -246,8 +248,8 @@ class _MovieListBody extends StatelessWidget {
             child: Center(
               child: Text(
                 state.query.isEmpty && state.year.isEmpty
-                    ? '¿Qué te apetece ver hoy?'
-                    : 'No hay resultados \n para esta búsqueda',
+                    ? 'search.textPlaceholder'.tr()
+                    : 'search.emptyResultsText'.tr(),
                 style: AppTextStyle.titleMedium,
                 textAlign: TextAlign.center,
               ),
@@ -276,8 +278,8 @@ class _MovieListWithImages extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return const Center(
-              child: Text('Error cargando datos nuevos'),
+            return Center(
+              child: Text('list.errorLoadingNewDataText'.tr()),
             );
           } else {
             return const Center(
@@ -315,8 +317,8 @@ class _MovieGrid extends StatelessWidget {
         (BuildContext context, int index) {
           if (index >= state.movies.length) {
             if (state.status.isError) {
-              return const Center(
-                child: Text('Error cargando datos nuevos'),
+              return Center(
+                child: Text('list.errorLoadingNewDataText'.tr()),
               );
             } else {
               return const Center(
@@ -355,8 +357,8 @@ class _MovieList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return const Center(
-              child: Text('Error cargando datos nuevos'),
+            return Center(
+              child: Text('list.errorLoadingNewDataText'.tr()),
             );
           } else {
             return const Center(

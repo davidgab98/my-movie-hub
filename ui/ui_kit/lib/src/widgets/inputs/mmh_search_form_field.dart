@@ -5,9 +5,11 @@ class MMHSearchField extends StatefulWidget {
   const MMHSearchField({
     super.key,
     required this.onChanged,
+    this.hintText,
   });
 
   final void Function(String value) onChanged;
+  final String? hintText;
 
   @override
   State<MMHSearchField> createState() => _MMHSearchFieldState();
@@ -48,7 +50,7 @@ class _MMHSearchFieldState extends State<MMHSearchField> {
               color: context.colors.onBackground,
             ),
           ),
-          hintText: 'Buscar...',
+          hintText: widget.hintText != null ? '${widget.hintText}...' : null,
           hintStyle: AppTextStyle.titleSmall.copyWith(
             color: context.colors.outline,
           ),

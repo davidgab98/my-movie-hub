@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/features/movie/application/movie_detail/movie_detail_cubit.dart';
@@ -53,7 +54,7 @@ class MovieRatingIcon extends StatelessWidget {
                       : null,
                   child: Center(
                     child: Text(
-                      i == 0 ? 'Borrar' : '$i ✯',
+                      i == 0 ? 'ratings.clearRating'.tr() : '$i ✯',
                       style: AppTextStyle.titleMedium.copyWith(
                         color: i == 0
                             ? context.colors.error

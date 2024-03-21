@@ -1,4 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
@@ -64,9 +65,9 @@ class _MovieListBody extends StatelessWidget {
             state: state,
           );
         } else {
-          return const SliverToBoxAdapter(
+          return SliverToBoxAdapter(
             child: Center(
-              child: Text('No tienes películas en tu watchlist'),
+              child: Text('list.emptyResultsText'.tr()),
             ),
           );
         }
@@ -110,8 +111,8 @@ class _MovieListState extends State<_MovieList> {
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
               if (widget.state.status.isError) {
-                return const Center(
-                  child: Text('Error cargando datos nuevos'),
+                return Center(
+                  child: Text('list.errorLoadingNewDataText'.tr()),
                 );
               } else {
                 return const Center(
