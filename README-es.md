@@ -2,7 +2,7 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[Español](README-es.md)
+[English](README.md)
 
 <!-- PROJECT LOGO -->
 <br />
