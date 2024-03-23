@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/reload_button_placeholder.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class ErrorDataReloadPlaceholder extends StatelessWidget {
-  const ErrorDataReloadPlaceholder({super.key, this.message, this.onReload});
+class EmptyDataReloadPlaceholder extends StatelessWidget {
+  const EmptyDataReloadPlaceholder({super.key, this.message, this.onReload});
 
   final String? message;
   final VoidCallback? onReload;
@@ -16,17 +17,12 @@ class ErrorDataReloadPlaceholder extends StatelessWidget {
         children: [
           AppSpaces.gapH20,
           Text(
-            message ?? 'error.placeholder.message'.tr(),
+            message ?? 'list.emptyResultsText'.tr(),
             style: AppTextStyle.bodySmall,
             textAlign: TextAlign.center,
           ),
           AppSpaces.gapH20,
-          ElevatedButton(
-            onPressed: onReload,
-            child: Text(
-              'error.placeholder.realoadButtonText'.tr(),
-            ),
-          ),
+          ReloadButtonPlaceholder(onReload: onReload),
         ],
       ),
     );

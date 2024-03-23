@@ -23,7 +23,7 @@
             "signIn": "There was a problem signing in"
         },
         "placeholder": {
-            "message": "Data could not be loaded, check the internet connection",
+            "message": "Data could not be loaded,\ncheck the internet connection",
             "realoadButtonText": "Reload"
         }
     },
@@ -74,7 +74,7 @@
     },
     "list": {
         "errorLoadingNewDataText": "Error loading new data",
-        "emptyResultsText": "No movies",
+        "emptyResultsText": "No movies saved",
         "errorText": "Error",
         "moviesResultsLabel": "Movies"
     },

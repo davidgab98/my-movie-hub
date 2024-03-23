@@ -33,6 +33,7 @@ dependencies:
   shimmer: 3.0.0
   meta: ^1.10.0
   country_code_picker: 3.0.0
+  dio_cache_interceptor: 3.5.0
 
 dev_dependencies:
   bloc_test: ^9.1.4

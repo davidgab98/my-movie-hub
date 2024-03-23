@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
-import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';
+import 'package:my_movie_hub/src/core/utils/hot_restart_controller.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_list_tile_image.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_cubit.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_state.dart';
@@ -55,9 +57,12 @@ class _MovieListBody extends StatelessWidget {
             (state.status.isLoading && state.movies.isEmpty)) {
           return const ShimmerCarousel();
         } else if (state.status.isError && state.movies.isEmpty) {
-          return SliverToBoxAdapter(
-            child: ErrorDataReloadPlaceholder(
-              onReload: context.read<SimpleMovieListCubit>().loadMovies,
+          return SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: ErrorDataReloadPlaceholder(
+                onReload: () => HotRestartController.performHotRestart(context),
+              ),
             ),
           );
         } else if (state.movies.isNotEmpty) {
@@ -65,10 +70,8 @@ class _MovieListBody extends StatelessWidget {
             state: state,
           );
         } else {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: Text('list.emptyResultsText'.tr()),
-            ),
+          return const SliverToBoxAdapter(
+            child: SizedBox.shrink(),
           );
         }
       },
@@ -111,9 +114,7 @@ class _MovieListState extends State<_MovieList> {
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
               if (widget.state.status.isError) {
-                return Center(
-                  child: Text('list.errorLoadingNewDataText'.tr()),
-                );
+                return const ErrorLoadingNewDataMessagePlaceholder();
               } else {
                 return const Center(
                   child: MMHCircularProgressIndicator(),

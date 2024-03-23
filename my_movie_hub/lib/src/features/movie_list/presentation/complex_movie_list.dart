@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
-import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';
 import 'package:my_movie_hub/src/core/enums/list_display_modes.dart';
 import 'package:my_movie_hub/src/core/enums/order_type.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
@@ -199,8 +201,8 @@ class _MovieListBody extends StatelessWidget {
           );
         } else {
           return SliverToBoxAdapter(
-            child: Center(
-              child: Text('list.emptyResultsText'.tr()),
+            child: EmptyDataReloadPlaceholder(
+              onReload: context.read<ComplexMovieListCubit>().loadMovies,
             ),
           );
         }
@@ -226,9 +228,7 @@ class _MovieListWithImages extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return Center(
-              child: Text('list.errorLoadingNewDataText'.tr()),
-            );
+            return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
             return const Center(
               child: MMHCircularProgressIndicator(),
@@ -265,9 +265,7 @@ class _MovieGrid extends StatelessWidget {
         (BuildContext context, int index) {
           if (index >= state.movies.length) {
             if (state.status.isError) {
-              return Center(
-                child: Text('list.errorLoadingNewDataText'.tr()),
-              );
+              return const ErrorLoadingNewDataMessagePlaceholder();
             } else {
               return const Center(
                 child: MMHCircularProgressIndicator(),
@@ -305,9 +303,7 @@ class _MovieList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index >= state.movies.length) {
           if (state.status.isError) {
-            return Center(
-              child: Text('list.errorLoadingNewDataText'.tr()),
-            );
+            return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
             return const Center(
               child: MMHCircularProgressIndicator(),

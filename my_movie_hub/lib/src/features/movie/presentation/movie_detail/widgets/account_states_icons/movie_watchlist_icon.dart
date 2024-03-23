@@ -18,14 +18,17 @@ class MovieWatchlistIcon extends StatelessWidget {
     return BlocBuilder<MovieDetailCubit, MovieDetailState>(
       builder: (context, state) {
         return MetallicIconButton(
-          icon: state.movie.accountStates != null
-              ? state.movie.accountStates!.watchlist
-                  ? Icons.visibility
-                  : Icons.visibility_outlined
-              : null,
+          icon: state.status.isError
+              ? Icons.close_rounded
+              : state.movie.accountStates != null
+                  ? state.movie.accountStates!.watchlist
+                      ? Icons.visibility
+                      : Icons.visibility_outlined
+                  : null,
           baseColor: context.colors.tertiary,
-          onPressed: () =>
-              context.read<MovieDetailCubit>().toggleWatchlistStatus(),
+          onPressed: !state.status.isError
+              ? () => context.read<MovieDetailCubit>().toggleWatchlistStatus()
+              : null,
         );
       },
     );

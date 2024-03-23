@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
-import 'package:my_movie_hub/src/core-ui/placeholders/error_data_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/reload_button_placeholder.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_item/widgets/movie_card.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_cubit.dart';
 import 'package:my_movie_hub/src/features/movie_list/application/simple_movie_list/simple_movie_list_state.dart';
@@ -62,9 +62,7 @@ class _Body extends StatelessWidget {
 }
 
 class _MovieListBody extends StatelessWidget {
-  const _MovieListBody({
-    super.key,
-  });
+  const _MovieListBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +75,11 @@ class _MovieListBody extends StatelessWidget {
           );
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
-            child: ErrorDataReloadPlaceholder(
-              onReload: context.read<SimpleMovieListCubit>().loadMovies,
+            child: Padding(
+              padding: const EdgeInsets.only(left: AppSpaces.s16),
+              child: ReloadButtonPlaceholder(
+                onReload: context.read<SimpleMovieListCubit>().loadMovies,
+              ),
             ),
           );
         } else if (state.movies.isNotEmpty) {
@@ -86,10 +87,8 @@ class _MovieListBody extends StatelessWidget {
             state: state,
           );
         } else {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: Text('list.emptyResultsText'.tr()),
-            ),
+          return const SliverToBoxAdapter(
+            child: SizedBox(),
           );
         }
       },

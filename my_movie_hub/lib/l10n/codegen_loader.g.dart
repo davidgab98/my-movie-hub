@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
 
 import 'dart:ui';
 
@@ -39,7 +39,7 @@ class CodegenLoader extends AssetLoader{
       "signIn": "There was a problem signing in"
     },
     "placeholder": {
-      "message": "Data could not be loaded, check the internet connection",
+      "message": "Data could not be loaded,\ncheck the internet connection",
       "realoadButtonText": "Reload"
     }
   },
@@ -90,7 +90,7 @@ class CodegenLoader extends AssetLoader{
   },
   "list": {
     "errorLoadingNewDataText": "Error loading new data",
-    "emptyResultsText": "No movies",
+    "emptyResultsText": "No movies saved",
     "errorText": "Error",
     "moviesResultsLabel": "Movies"
   },
@@ -177,7 +177,7 @@ static const Map<String,dynamic> es = {
       "signIn": "Ha habido un problema iniciando sesión"
     },
     "placeholder": {
-      "message": "No se han podido cargar los datos, comprueba la conexión a internet",
+      "message": "No se han podido cargar los datos,\ncomprueba la conexión a internet",
       "realoadButtonText": "Recargar"
     }
   },
@@ -228,7 +228,7 @@ static const Map<String,dynamic> es = {
   },
   "list": {
     "errorLoadingNewDataText": "Error cargando datos nuevos",
-    "emptyResultsText": "No hay peliculas",
+    "emptyResultsText": "No tienes películas guardadas",
     "errorText": "Error",
     "moviesResultsLabel": "Movies"
   },

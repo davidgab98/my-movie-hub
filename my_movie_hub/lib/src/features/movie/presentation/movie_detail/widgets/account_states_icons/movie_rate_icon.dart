@@ -29,50 +29,59 @@ class MovieRatingIcon extends StatelessWidget {
               width: 0.5,
             ),
           ),
-          onSelected: (rating) {
-            if (rating > 0) {
-              context
-                  .read<MovieDetailCubit>()
-                  .addRating(rating: rating.toDouble());
-            } else {
-              context.read<MovieDetailCubit>().removeRating();
-            }
-          },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-            for (int i = 0; i <= 10; i++)
-              PopupMenuItem<int>(
-                value: i,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    disabledBackgroundColor:
-                        context.colors.primary.withOpacity(0.5),
-                    backgroundColor: Colors.amber,
-                    padding: EdgeInsets.zero,
-                  ),
-                  onPressed: i == state.movie.accountStates?.rated?.toInt()
-                      ? () {}
-                      : null,
-                  child: Center(
-                    child: Text(
-                      i == 0 ? 'ratings.clearRating'.tr() : '$i ✯',
-                      style: AppTextStyle.titleMedium.copyWith(
-                        color: i == 0
-                            ? context.colors.error
-                            : i == state.movie.accountStates?.rated?.toInt()
-                                ? context.colors.primary
-                                : Colors.amber,
+          onSelected: !state.status.isError
+              ? (rating) {
+                  if (rating > 0) {
+                    context
+                        .read<MovieDetailCubit>()
+                        .addRating(rating: rating.toDouble());
+                  } else {
+                    context.read<MovieDetailCubit>().removeRating();
+                  }
+                }
+              : null,
+          itemBuilder: state.status.isError
+              ? (BuildContext context) => []
+              : (BuildContext context) => <PopupMenuEntry<int>>[
+                    for (int i = 0; i <= 10; i++)
+                      PopupMenuItem<int>(
+                        value: i,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            disabledBackgroundColor:
+                                context.colors.primary.withOpacity(0.5),
+                            backgroundColor: Colors.amber,
+                            padding: EdgeInsets.zero,
+                          ),
+                          onPressed:
+                              i == state.movie.accountStates?.rated?.toInt()
+                                  ? () {}
+                                  : null,
+                          child: Center(
+                            child: Text(
+                              i == 0 ? 'ratings.clearRating'.tr() : '$i ✯',
+                              style: AppTextStyle.titleMedium.copyWith(
+                                color: i == 0
+                                    ? context.colors.error
+                                    : i ==
+                                            state.movie.accountStates?.rated
+                                                ?.toInt()
+                                        ? context.colors.primary
+                                        : Colors.amber,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
-          ],
+                  ],
           child: MetallicIconButton(
-            icon: state.movie.accountStates != null
-                ? state.movie.accountStates!.rated != null
-                    ? Icons.star
-                    : Icons.star_outline
-                : null,
+            icon: state.status.isError
+                ? Icons.close_rounded
+                : state.movie.accountStates != null
+                    ? state.movie.accountStates!.rated != null
+                        ? Icons.star
+                        : Icons.star_outline
+                    : null,
             baseColor: Colors.amber,
           ),
         );

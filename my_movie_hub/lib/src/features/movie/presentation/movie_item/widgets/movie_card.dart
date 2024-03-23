@@ -28,7 +28,7 @@ class MovieCard extends StatelessWidget {
                 fit: BoxFit.cover,
               )
             : Container(
-                padding: const EdgeInsets.all(AppSpaces.s16),
+                padding: const EdgeInsets.all(AppSpaces.s12),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -61,7 +61,7 @@ class MovieCard extends StatelessWidget {
                     ),
                     Text(
                       movie.title.toUpperCase(),
-                      style: AppTextStyle.bodyLarge.copyWith(
+                      style: AppTextStyle.labelLarge.copyWith(
                         color: context.colors.onBackground.withOpacity(0.75),
                       ),
                       textAlign: TextAlign.center,

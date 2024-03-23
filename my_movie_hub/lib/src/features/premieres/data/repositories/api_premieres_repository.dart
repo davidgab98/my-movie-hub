@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:my_movie_hub/src/core/exceptions/network_exception.dart';
 import 'package:my_movie_hub/src/core/network/endpoints.dart';
@@ -30,10 +29,10 @@ class ApiPremieresRepository extends PremieresRepository {
           'release_date.gte': initialDateParam,
           'release_date.lte': finalDateParam,
           'region': countryCode,
-          'sort_by': 'release_date.asc'
+          'sort_by': 'release_date.asc',
         },
       );
-
+      await Future<void>.delayed(const Duration(seconds: 2));
       final MovieListResponse result =
           MovieListResponse.fromJson(response.data as Map<String, Object?>);
 

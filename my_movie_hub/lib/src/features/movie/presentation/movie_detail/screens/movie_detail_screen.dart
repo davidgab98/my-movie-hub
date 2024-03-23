@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/reload_button_placeholder.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/enums/movie_genres.dart';
 import 'package:my_movie_hub/src/core/events/event_bus.dart';
@@ -12,6 +13,8 @@ import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_reposi
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/account_states_icons/movie_account_states_row.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/movie_recommendations_list.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/overall_rating_stars.dart';
+import 'package:my_movie_hub/src/features/premieres/application/premieres_cubit.dart';
+import 'package:my_movie_hub/src/features/premieres/presentation/premieres_screen.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class MovieDetailScreen extends StatelessWidget {
@@ -183,7 +186,26 @@ class _DetailsBody extends StatelessWidget {
                 voteCount: movie.voteCount.toDouble(),
               ),
               AppSpaces.gapH20,
-              const MovieAccountStatesRow(),
+              if (!state.status.isError)
+                const MovieAccountStatesRow()
+              else
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      padding:
+                          const EdgeInsets.symmetric(vertical: AppSpaces.s4),
+                      decoration: BoxDecoration(
+                        color: context.colors.surface.withOpacity(0.75),
+                      ),
+                      child: const MovieAccountStatesRow(),
+                    ),
+                    ReloadButtonPlaceholder(
+                      onReload: () =>
+                          context.read<MovieDetailCubit>().getMovieDetails(),
+                    ),
+                  ],
+                ),
               AppSpaces.gapH24,
               Divider(
                 indent: AppSpaces.s16,

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:my_movie_hub/src/core/enums/state_status.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
 import 'package:my_movie_hub/src/features/premieres/application/premieres_state.dart';

@@ -4,6 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_message_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/core/utils/datetime_utils.dart';
@@ -39,32 +43,14 @@ class PremieresScreen extends StatelessWidget {
   }
 }
 
-class _Body extends StatelessWidget {
-  const _Body({
-    super.key,
-  });
+class _Body extends StatefulWidget {
+  const _Body({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<PremieresCubit, PremieresState>(
-      builder: (context, state) {
-        return TimeLine(
-          movies: state.movies,
-        );
-      },
-    );
-  }
+  State<_Body> createState() => _BodyState();
 }
 
-class TimeLine extends StatefulWidget {
-  final List<Movie> movies;
-  const TimeLine({required this.movies, super.key});
-
-  @override
-  State<TimeLine> createState() => _TimeLineState();
-}
-
-class _TimeLineState extends State<TimeLine> {
+class _BodyState extends State<_Body> {
   final _scrollController = ScrollController();
   final double _scrollThreshold = 200;
 
@@ -91,78 +77,63 @@ class _TimeLineState extends State<TimeLine> {
 
   @override
   Widget build(BuildContext context) {
-    // Agrupar películas por fecha de estreno
-    final moviesByDate = _groupMoviesByDate(widget.movies);
-
     return CustomScrollView(
       controller: _scrollController,
-      physics: const AlwaysScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       slivers: [
-        BlocBuilder<PremieresCubit, PremieresState>(
-          builder: (context, state) {
-            return SliverAppBar(
-              toolbarHeight: 35,
-              backgroundColor: context.colors.background,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpaces.s16,
-                  AppSpaces.s16,
-                  AppSpaces.s16,
-                  AppSpaces.s2,
-                ),
-                child: Text(
-                  'premieres.headline'.tr(
-                    namedArgs: {
-                      'date':
-                          state.initialDate?.toLongStylizedString(context) ??
-                              '',
-                      'country': CountryCode.fromCountryCode(state.countryCode)
-                              .localize(context)
-                              .name ??
-                          'ES',
-                    },
-                  ),
-                  style: AppTextStyle.bodyMedium.copyWith(
-                    color: context.colors.onBackground,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            );
-          },
-        ),
+        const _HeadlineTextHeader(),
         const _TimeLineFiltersHeader(),
         Refresco(
           refreshTriggerPullDistance: 120,
           onRefresh: () async =>
               context.read<PremieresCubit>().getPremieres(isRefreshing: true),
         ),
-        SliverList.separated(
-          separatorBuilder: (context, index) => AppSpaces.gapH6,
-          itemCount: moviesByDate.keys.length,
-          itemBuilder: (context, index) {
-            final date = moviesByDate.keys.elementAt(index);
-            final dateMovies = moviesByDate[date]!;
-            return _TimeLineItem(date: date, movies: dateMovies);
-          },
-        ),
+        const _TimeLineBody(),
         SliverToBoxAdapter(
           child: SizedBox(height: MediaQuery.of(context).padding.bottom),
         ),
       ],
     );
   }
+}
 
-  // Agrupar las películas por su fecha de lanzamiento
-  Map<String, List<Movie>> _groupMoviesByDate(List<Movie> movies) {
-    final Map<String, List<Movie>> map = {};
-    for (final movie in movies) {
-      if (!map.containsKey(movie.releaseDate)) {
-        map[movie.releaseDate] = [];
-      }
-      map[movie.releaseDate]!.add(movie);
-    }
-    return map;
+class _HeadlineTextHeader extends StatelessWidget {
+  const _HeadlineTextHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PremieresCubit, PremieresState>(
+      builder: (context, state) {
+        return SliverAppBar(
+          toolbarHeight: 35,
+          backgroundColor: context.colors.background,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpaces.s16,
+              AppSpaces.s16,
+              AppSpaces.s16,
+              AppSpaces.s2,
+            ),
+            child: Text(
+              'premieres.headline'.tr(
+                namedArgs: {
+                  'date':
+                      state.initialDate?.toLongStylizedString(context) ?? '',
+                  'country': CountryCode.fromCountryCode(state.countryCode)
+                          .localize(context)
+                          .name ??
+                      'ES',
+                },
+              ),
+              style: AppTextStyle.bodyMedium.copyWith(
+                color: context.colors.onBackground,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -358,11 +329,97 @@ class _CountryInput extends StatelessWidget {
   }
 }
 
+class _TimeLineBody extends StatelessWidget {
+  const _TimeLineBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PremieresCubit, PremieresState>(
+      builder: (context, state) {
+        if (state.status.isInitial ||
+            (state.status.isLoading && state.movies.isEmpty)) {
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: AppSpaces.s16),
+                child: MMHCircularProgressIndicator(),
+              ),
+            ),
+          ); //Shimmer inicial
+        } else if (state.status.isError && state.movies.isEmpty) {
+          return SliverToBoxAdapter(
+            child: ErrorDataReloadPlaceholder(
+              onReload: context.read<PremieresCubit>().getPremieres,
+            ),
+          );
+        } else if (state.movies.isNotEmpty) {
+          return _TimeLine(state: state);
+        } else {
+          return const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(top: AppSpaces.s16),
+              child: EmptyDataMessagePlaceholder(
+                message: 'No hay estrenos para esta fecha en este país',
+              ),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
+
+class _TimeLine extends StatelessWidget {
+  const _TimeLine({
+    required this.state,
+    super.key,
+  });
+
+  final PremieresState state;
+
+  @override
+  Widget build(BuildContext context) {
+    final moviesByDate = _groupMoviesByReleaseDate(state.movies);
+
+    return SliverList.separated(
+      separatorBuilder: (context, index) => AppSpaces.gapH6,
+      itemCount: state.hasReachedMax
+          ? moviesByDate.keys.length
+          : moviesByDate.keys.length + 1,
+      itemBuilder: (context, index) {
+        if (index >= moviesByDate.length) {
+          if (state.status.isError) {
+            return const ErrorLoadingNewDataMessagePlaceholder();
+          } else {
+            return const Center(
+              child: MMHCircularProgressIndicator(),
+            );
+          }
+        } else {
+          final date = moviesByDate.keys.elementAt(index);
+          final dateMovies = moviesByDate[date]!;
+          return _TimeLineItem(date: date, movies: dateMovies);
+        }
+      },
+    );
+  }
+
+  Map<String, List<Movie>> _groupMoviesByReleaseDate(List<Movie> movies) {
+    final Map<String, List<Movie>> map = {};
+    for (final movie in movies) {
+      if (!map.containsKey(movie.releaseDate)) {
+        map[movie.releaseDate] = [];
+      }
+      map[movie.releaseDate]!.add(movie);
+    }
+    return map;
+  }
+}
+
 class _TimeLineItem extends StatelessWidget {
   const _TimeLineItem({
     required this.date,
     required this.movies,
-    super.key,
   });
 
   final String date;
@@ -391,7 +448,6 @@ class _TimeLineItem extends StatelessWidget {
               children: [
                 Container(
                   width: 5,
-                  //margin: const EdgeInsets.symmetric(vertical: AppSpaces.s2),
                   decoration: BoxDecoration(
                     color: context.colors.primary,
                     borderRadius: BorderRadius.circular(AppBorderRadius.brMax),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:my_movie_hub/src/core/network/api_config.dart';
 import 'package:my_movie_hub/src/core/network/endpoints.dart';
 import 'package:my_movie_hub/src/core/network/interceptors/account_id_interceptor.dart';
@@ -19,7 +20,15 @@ class DioClient extends NetworkService {
       ..interceptors.add(ApiKeyInterceptor(apiKey: _apiConfig.apiKey))
       ..interceptors.add(AccountIdInterceptor())
       ..interceptors.add(SessionIdInterceptor())
-      ..interceptors.add(LanguageInterceptor());
+      ..interceptors.add(LanguageInterceptor())
+      ..interceptors.add(LogInterceptor(responseBody: true))
+      ..interceptors.add(
+        DioCacheInterceptor(
+          options: CacheOptions(
+            store: MemCacheStore(),
+          ),
+        ),
+      );
   }
 
   final Dio _dio;

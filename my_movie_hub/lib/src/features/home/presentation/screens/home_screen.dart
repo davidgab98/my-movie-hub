@@ -10,6 +10,7 @@ import 'package:ui_kit/ui_kit.dart';
 
 //TODO: Ver casos de error
 
+//TODO: Hacer widget generico para el texto que usa esta screen: list.errorLoadingNewDataText
 //TODO: Ordenar Widgets de Generos y Listas de Generos
 //TODO: Hacer widget generico de degradado de colores (usado en appbar, reparto, y poster not found background)
 //TODO: Ordenar/Revisar toda la app y ordenar codigo
