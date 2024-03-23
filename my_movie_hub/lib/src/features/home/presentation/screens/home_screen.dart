@@ -8,9 +8,8 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Ver casos de error
+//TODO: Usar Hive o Seambas y Guardado en caché
 
-//TODO: Hacer widget generico para el texto que usa esta screen: list.errorLoadingNewDataText
 //TODO: Ordenar Widgets de Generos y Listas de Generos
 //TODO: Hacer widget generico de degradado de colores (usado en appbar, reparto, y poster not found background)
 //TODO: Ordenar/Revisar toda la app y ordenar codigo

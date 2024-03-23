@@ -32,7 +32,7 @@ class ApiPremieresRepository extends PremieresRepository {
           'sort_by': 'release_date.asc',
         },
       );
-      await Future<void>.delayed(const Duration(seconds: 2));
+
       final MovieListResponse result =
           MovieListResponse.fromJson(response.data as Map<String, Object?>);
 

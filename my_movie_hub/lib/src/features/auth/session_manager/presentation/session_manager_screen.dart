@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
@@ -42,8 +43,13 @@ class _Body extends StatelessWidget {
           context.goNamed(AppRoute.home.name);
         }
       },
-      child: const Center(
-        child: MMHCircularProgressIndicator(),
+      child: Center(
+        child: Image(
+          height: MediaQuery.of(context).size.height * 0.075,
+          image: const AssetImage(
+            'assets/pngs/mmh_logo.png',
+          ),
+        ),
       ),
     );
   }

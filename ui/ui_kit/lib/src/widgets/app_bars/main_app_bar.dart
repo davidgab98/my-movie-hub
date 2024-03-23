@@ -26,7 +26,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             end: Alignment.centerRight,
             colors: [
               AppColors.primary.withOpacity(0.1),
-              AppColors.secondary.withOpacity(0.35),
+              AppColors.secondary.withOpacity(0.25),
               AppColors.primary.withOpacity(0.1),
             ],
             stops: const [0.0, 0.5, 1.0],
@@ -44,7 +44,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : const Image(
               alignment: Alignment.center,
-              height: kToolbarHeight - 18,
+              height: kToolbarHeight - 22,
               image: AssetImage(
                 'assets/pngs/mmh_logo.png',
               ),

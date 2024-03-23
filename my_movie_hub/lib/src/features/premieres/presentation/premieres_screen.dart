@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_message_placeholder.dart';
-import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
@@ -338,14 +338,7 @@ class _TimeLineBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: AppSpaces.s16),
-                child: MMHCircularProgressIndicator(),
-              ),
-            ),
-          ); //Shimmer inicial
+          return const _TimeLineShimmer();
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
             child: ErrorDataReloadPlaceholder(
@@ -391,9 +384,7 @@ class _TimeLine extends StatelessWidget {
           if (state.status.isError) {
             return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
-            return const Center(
-              child: MMHCircularProgressIndicator(),
-            );
+            return const _TimeLineItemShimmer();
           }
         } else {
           final date = moviesByDate.keys.elementAt(index);
@@ -413,6 +404,21 @@ class _TimeLine extends StatelessWidget {
       map[movie.releaseDate]!.add(movie);
     }
     return map;
+  }
+}
+
+class _TimeLineShimmer extends StatelessWidget {
+  const _TimeLineShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList.separated(
+      separatorBuilder: (context, index) => AppSpaces.gapH6,
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return const _TimeLineItemShimmer();
+      },
+    );
   }
 }
 
@@ -516,4 +522,76 @@ class _TimeLineItem extends StatelessWidget {
       ),
     );
   }
+}
+
+class _TimeLineItemShimmer extends StatelessWidget {
+  const _TimeLineItemShimmer();
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return IntrinsicHeight(
+      // Permite que el widget hijo defina la altura
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 2,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                ShimmerPlaceholder(
+                  width: screenWidth * 0.15,
+                  height: screenHeight * 0.1,
+                  shapeBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+                  ),
+                ),
+                ShimmerPlaceholder(
+                  width: 5,
+                  shapeBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppBorderRadius.brMax),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 8,
+            child: SizedBox(
+              height: screenHeight * 0.26,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpaces.s12,
+                    horizontal: AppSpaces.s4,
+                  ),
+                  child: buildShimmerSingleCard(context),
+                ),
+                itemCount: 3,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget buildShimmerSingleCard(BuildContext context) {
+  final screenWidth = MediaQuery.of(context).size.width;
+
+  return AspectRatio(
+    aspectRatio: 1 / 1.5,
+    child: ShimmerPlaceholder(
+      width: screenWidth,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+      ),
+    ),
+  );
 }

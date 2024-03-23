@@ -230,9 +230,7 @@ class _MovieListWithImages extends StatelessWidget {
           if (state.status.isError) {
             return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
-            return const Center(
-              child: MMHCircularProgressIndicator(),
-            );
+            return Center(child: _buildSingleListTileWithImageShimmer(context));
           }
         } else {
           return MovieListTileImage(movie: state.movies[index]);
@@ -267,9 +265,7 @@ class _MovieGrid extends StatelessWidget {
             if (state.status.isError) {
               return const ErrorLoadingNewDataMessagePlaceholder();
             } else {
-              return const Center(
-                child: MMHCircularProgressIndicator(),
-              );
+              return Center(child: _buildSingleGridCardShimmer(context));
             }
           } else {
             return MovieCard(movie: state.movies[index]);
@@ -305,9 +301,7 @@ class _MovieList extends StatelessWidget {
           if (state.status.isError) {
             return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
-            return const Center(
-              child: MMHCircularProgressIndicator(),
-            );
+            return Center(child: _buildSingleListTileShimmer(context));
           }
         } else {
           return MovieListTile(movie: state.movies[index]);
@@ -379,6 +373,40 @@ Widget _buildShimmerList(BuildContext context) {
         ),
       ),
       childCount: 10,
+    ),
+  );
+}
+
+Widget _buildSingleListTileWithImageShimmer(BuildContext context) {
+  return AspectRatio(
+    aspectRatio: 16 / 7,
+    child: ShimmerPlaceholder(
+      width: double.infinity,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+      ),
+    ),
+  );
+}
+
+Widget _buildSingleGridCardShimmer(BuildContext context) {
+  return ShimmerPlaceholder(
+    width: double.infinity,
+    shapeBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppBorderRadius.br8),
+    ),
+  );
+}
+
+Widget _buildSingleListTileShimmer(BuildContext context) {
+  return AspectRatio(
+    aspectRatio: 6 / 1,
+    child: ShimmerPlaceholder(
+      width: double.infinity,
+      height: 60,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br10),
+      ),
     ),
   );
 }

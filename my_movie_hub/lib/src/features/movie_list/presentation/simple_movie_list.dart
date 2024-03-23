@@ -152,12 +152,8 @@ class _MovieListState extends State<_MovieList> {
                   ),
                 );
               } else {
-                return const Center(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.fromLTRB(AppSpaces.s16, 0, AppSpaces.s32, 0),
-                    child: MMHCircularProgressIndicator(),
-                  ),
+                return Center(
+                  child: buildShimmerSingleCard(context),
                 );
               }
             } else {
@@ -209,6 +205,20 @@ Widget buildShimmerHorizontalList(BuildContext context) {
           ),
         );
       },
+    ),
+  );
+}
+
+Widget buildShimmerSingleCard(BuildContext context) {
+  final screenWidth = MediaQuery.of(context).size.width;
+
+  return AspectRatio(
+    aspectRatio: 1 / 1.5,
+    child: ShimmerPlaceholder(
+      width: screenWidth,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+      ),
     ),
   );
 }

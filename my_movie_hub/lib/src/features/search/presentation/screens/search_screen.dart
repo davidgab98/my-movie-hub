@@ -22,7 +22,7 @@ class SearchScreen extends StatelessWidget {
       body: BlocProvider<SearchCubit>(
         create: (context) => SearchCubit(
           searchRepository: locator<SearchRepository>(),
-        )..searchMovies(),
+        ),
         child: const SafeArea(
           bottom: false,
           child: ComplexMovieSearchList(),

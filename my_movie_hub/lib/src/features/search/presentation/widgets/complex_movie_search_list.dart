@@ -206,15 +206,27 @@ class _MovieListBody extends StatelessWidget {
       builder: (context, state) {
         if (state.status.isInitial ||
             (state.status.isLoading && state.movies.isEmpty)) {
-          switch (state.listDisplayMode) {
-            case ListDisplayMode.listWithImages:
-              return _buildShimmerListWithImages(context);
-            case ListDisplayMode.grid2:
-              return _buildShimmerGrid(context, 2);
-            case ListDisplayMode.grid3:
-              return _buildShimmerGrid(context, 3);
-            case ListDisplayMode.list:
-              return _buildShimmerList(context);
+          if (state.year.isNotEmpty || state.query.isNotEmpty) {
+            switch (state.listDisplayMode) {
+              case ListDisplayMode.listWithImages:
+                return _buildShimmerListWithImages(context);
+              case ListDisplayMode.grid2:
+                return _buildShimmerGrid(context, 2);
+              case ListDisplayMode.grid3:
+                return _buildShimmerGrid(context, 3);
+              case ListDisplayMode.list:
+                return _buildShimmerList(context);
+            }
+          } else {
+            return SliverToBoxAdapter(
+              child: Center(
+                child: Text(
+                  'search.textPlaceholder'.tr(),
+                  style: AppTextStyle.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
           }
         } else if (state.status.isError && state.movies.isEmpty) {
           return SliverToBoxAdapter(
@@ -281,9 +293,7 @@ class _MovieListWithImages extends StatelessWidget {
           if (state.status.isError) {
             return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
-            return const Center(
-              child: MMHCircularProgressIndicator(),
-            );
+            return Center(child: _buildSingleListTileWithImageShimmer(context));
           }
         } else {
           return MovieListTileImage(movie: state.movies[index]);
@@ -296,8 +306,8 @@ class _MovieListWithImages extends StatelessWidget {
 class _MovieGrid extends StatelessWidget {
   const _MovieGrid({
     required this.state,
-    super.key,
     required this.crossAxisCount,
+    super.key,
   });
 
   final SearchState state;
@@ -318,9 +328,7 @@ class _MovieGrid extends StatelessWidget {
             if (state.status.isError) {
               return const ErrorLoadingNewDataMessagePlaceholder();
             } else {
-              return const Center(
-                child: MMHCircularProgressIndicator(),
-              );
+              return Center(child: _buildSingleGridCardShimmer(context));
             }
           } else {
             return MovieCard(movie: state.movies[index]);
@@ -356,9 +364,7 @@ class _MovieList extends StatelessWidget {
           if (state.status.isError) {
             return const ErrorLoadingNewDataMessagePlaceholder();
           } else {
-            return const Center(
-              child: MMHCircularProgressIndicator(),
-            );
+            return Center(child: _buildSingleListTileShimmer(context));
           }
         } else {
           return MovieListTile(movie: state.movies[index]);
@@ -430,6 +436,40 @@ Widget _buildShimmerList(BuildContext context) {
         ),
       ),
       childCount: 10,
+    ),
+  );
+}
+
+Widget _buildSingleListTileWithImageShimmer(BuildContext context) {
+  return AspectRatio(
+    aspectRatio: 16 / 7,
+    child: ShimmerPlaceholder(
+      width: double.infinity,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br16),
+      ),
+    ),
+  );
+}
+
+Widget _buildSingleGridCardShimmer(BuildContext context) {
+  return ShimmerPlaceholder(
+    width: double.infinity,
+    shapeBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppBorderRadius.br8),
+    ),
+  );
+}
+
+Widget _buildSingleListTileShimmer(BuildContext context) {
+  return AspectRatio(
+    aspectRatio: 6 / 1,
+    child: ShimmerPlaceholder(
+      width: double.infinity,
+      height: 60,
+      shapeBorder: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppBorderRadius.br10),
+      ),
     ),
   );
 }

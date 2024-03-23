@@ -109,7 +109,7 @@ class _MovieListState extends State<_MovieList> {
       child: SizedBox(
         width: screenWidth,
         child: Swiper(
-          autoplay: true, //TODO: change to true
+          autoplay: true,
           autoplayDelay: 4000,
           itemBuilder: (context, index) {
             if (index >= widget.state.movies.length) {
