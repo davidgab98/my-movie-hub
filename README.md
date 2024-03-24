@@ -50,9 +50,6 @@
 <br />
 <br />
 The application integrates directly with The Movie Data Base API to provide updated data on users, movies and releases from around the world. 
-<br />
-<br />
-Available for Android and soon for IOS.
 
 ### Main functionalities:
 
