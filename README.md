@@ -1,4 +1,3 @@
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 [Español](README-es.md)
@@ -10,9 +9,9 @@
   <img src="my_movie_hub/assets/pngs/mmh_logo.png" alt="Logo" height="50">
   <h1 align="center">MY MOVIE HUB</h1>
   <p align="center">
-    Aplicación móvil centrada en la exploración, búsqueda y gestión de películas, listas y estrenos de cine.
+    Mobile application focused on the exploration, search and management of movies, lists and movie releases.
     <br />
-    Construida con Flutter (Bloc) y la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
+    Built with Flutter (Bloc) and the <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a> API.
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
@@ -38,7 +37,6 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -48,72 +46,52 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+**My Movie Hub is a mobile application developed in Flutter. It has been built under a Hexagonal architecture following the MVVM pattern. It uses the Bloc pattern for state management. Clean Architecture and Clean Clode practices have been adopted in its development, as well as SOLID principles. The Atomic Design methodology has been applied for the design and componentization of the UI.
+<br />
+<br />
+The application integrates directly with The Movie Data Base API to provide updated data on users, movies and releases from around the world. 
+<br />
+<br />
+Available for Android and soon for IOS.
 
-**My Movie Hub** es una aplicación móvil desarrollada en Flutter, utilizando el patrón BLoC para una arquitectura limpia y eficiente, diseñada para cinéfilos y aficionados al cine. Disponible para Android e iOS, nuestra aplicación se integra directamente con la API de The Movie Database (TMDB) para proporcionar datos actualizados y detallados de películas de todo el mundo.
+### Main functionalities:
 
-### Funcionalidades principales:
+- **Movie Discovery:** browse a vast selection of movies and new releases both locally and internationally.
+- **Custom Search:** find specific movies using the search and filter function.
+- **Releases TimeLine:** discover current or any era's releases in your country or elsewhere.
+- **List Management:** save your favorite movies in customized 'To Watch' or 'Favorites' lists. 
+- **Ratings:** rate movies, review your rating history and see global ratings from other users.
+- **Detailed Information:** access complete movie information, including synopsis, cast, ratings and more.
+- **Connection with TMDB:** Synchronize your user with your TMDB account and keep your lists and preferences up to date.
+- **Appearance:** Switch between Dark mode and Light mode.
+- **Language:** Select between different languages.
 
-- **Descubrimiento de Películas:** Explora una vasta selección de películas, incluyendo los últimos estrenos tanto a nivel local como internacional.
-- **Búsqueda Personalizada:** Encuentra películas específicas utilizando la función de búsqueda, basada en títulos, actores, o géneros.
-- **Gestión de Listas:** Guarda tus películas preferidas en listas personalizadas de 'Pendientes' o 'Favoritos' para un fácil acceso y organización.
-- **Votaciones y Opiniones:** Participa en la comunidad con tus votos y observa cómo otros valoran las películas.
-- **Información Detallada:** Accede a información completa sobre películas, incluyendo sinopsis, reparto, valoraciones y más.
+**My Movie Hub** is the ultimate tool to explore, discover and organize your passion for movies. Immerse yourself in the world of cinema with instant updates and take your movie experience to a new level.
 
-**My Movie Hub** es la herramienta definitiva para explorar, descubrir y organizar tu pasión por el cine. Sumérgete en el mundo del séptimo arte con actualizaciones al momento y lleva tu experiencia cinematográfica a un nuevo nivel.
-
-**Nota:** My Movie Hub no está afiliado, respaldado ni certificado por TMDB. Esta aplicación es un proyecto independiente destinado a proporcionar una experiencia rica y personalizada a los amantes del cine.
+**Note:** My Movie Hub is not affiliated with, endorsed or certified by TMDB. This app is an independent project aimed at providing a rich and personalized experience for movie lovers.
 
 ---
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Persistencia de datos offline mediante HIVE
+- [ ] Offline data persistence through HIVE
 - [ ] Push notifications
-- [ ] Widgets para pantalla de inicio
-- [ ] Integración con otros servicios similares como IMDB
-- [ ] Implementación de dynamic links para compartir la aplicación
+- [ ] Home screen widgets
+- [ ] Integration with other similar services such as IMDB
+- [ ] Dynamic links for content sharing
+
+Feel free to contribute:
 
 Feel free to contribute: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
 

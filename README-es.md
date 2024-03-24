@@ -1,11 +1,10 @@
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 [English](README.md)
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
+<div align="center">                                
   
   <img src="my_movie_hub/assets/pngs/mmh_logo.png" alt="Logo" height="50">
   <h1 align="center">MY MOVIE HUB</h1>
@@ -15,9 +14,9 @@
     Construida con Flutter (Bloc) y la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/othneildrew/Best-README-Template">Ver Demo</a>
     ·
-    <a href="https://github.com/davidgab98/my-movie-hub/issues">Report Bug / Request Feature</a>
+    <a href="https://github.com/davidgab98/my-movie-hub/issues">Reportar Bug / Proponer Funcionalidad</a>
   </p>
 </div>
 
@@ -25,40 +24,47 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Tabla de Contenidos</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#sobre-el-proyecto">Sobre el proyecto</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerrequisitos">Prerrequisitos</a></li>
+        <li><a href="#instalación">Instalación</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre el proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-**My Movie Hub** es una aplicación móvil desarrollada en Flutter, utilizando el patrón BLoC para una arquitectura limpia y eficiente, diseñada para cinéfilos y aficionados al cine. Disponible para Android e iOS, nuestra aplicación se integra directamente con la API de The Movie Database (TMDB) para proporcionar datos actualizados y detallados de películas de todo el mundo.
+**My Movie Hub** es una aplicación móvil desarrollada en Flutter. Se ha construido bajo una arquitectura Hexagonal siguiendo el patrón MVVM. Utiliza el patrón Bloc para la gestión de estados. En su desarrollo se han adoptado prácticas de Clean Architecture y Clean Clode, así como principios SOLID. Para el diseño y componentización de la UI se ha aplicado la metodología Atomic Design. 
+<br />
+<br />
+La aplicación se integra directamente con la API de The Movie Data Base para proporcionar datos actualizados de usuarios, películas y estrenos de todo el mundo. 
+<br />
+<br />
+Disponible para Android y próximamente en IOS. 
 
 ### Funcionalidades principales:
 
-- **Descubrimiento de Películas:** Explora una vasta selección de películas, incluyendo los últimos estrenos tanto a nivel local como internacional.
-- **Búsqueda Personalizada:** Encuentra películas específicas utilizando la función de búsqueda, basada en títulos, actores, o géneros.
-- **Gestión de Listas:** Guarda tus películas preferidas en listas personalizadas de 'Pendientes' o 'Favoritos' para un fácil acceso y organización.
-- **Votaciones y Opiniones:** Participa en la comunidad con tus votos y observa cómo otros valoran las películas.
-- **Información Detallada:** Accede a información completa sobre películas, incluyendo sinopsis, reparto, valoraciones y más.
+- **Descubrimiento de Películas:** explora una vasta selección de películas y estrenos tanto a nivel local como internacional.
+- **Búsqueda Personalizada:** encuentra películas específicas utilizando la función de búsqueda y filtrado.
+- **TimeLine de Estrenos:** descubre los estrenos actuales o de cualquier época en tu país o en cualquier otro lugar.
+- **Gestión de Listas:** guarda tus películas preferidas en listas personalizadas de 'Pendientes' o 'Favoritos'. 
+- **Votaciones:** califica películas, revisa tu historial de calificaciones y consulta las votaciones globales de otros usuarios.
+- **Información Detallada:** accede a información completa sobre películas, incluyendo sinopsis, reparto, valoraciones y más.
+- **Conexión con TMDB:** Sincroniza tu usuario con tu cuenta de TMDB y manten actualizadas tus listas y preferencias.
+- **Apariencia:** cambia entre el modo Oscuro y el modo Claro.
+- **Idioma:** selecciona entre diferentes idiomas.
 
 **My Movie Hub** es la herramienta definitiva para explorar, descubrir y organizar tu pasión por el cine. Sumérgete en el mundo del séptimo arte con actualizaciones al momento y lleva tu experiencia cinematográfica a un nuevo nivel.
 
@@ -69,42 +75,12 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+### Prerrequisitos
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### Instalación
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -113,12 +89,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Push notifications
 - [ ] Widgets para pantalla de inicio
 - [ ] Integración con otros servicios similares como IMDB
-- [ ] Implementación de dynamic links para compartir la aplicación
+- [ ] Dynamic links para la compartición de contenido
 
-Feel free to contribute: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
+Siéntete libre de contribuir: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
 
 <!-- CONTACT -->
-## Contact
+## Contacto
 
 David González Íñiguez 
 - Email: davidgab08@gmail.com
@@ -146,3 +122,4 @@ David González Íñiguez
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+
