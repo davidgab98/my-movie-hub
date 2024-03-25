@@ -37,6 +37,13 @@
         <li><a href="#run">Run</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#project-structure-and-dependencies">Project Structure and Dependencies</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#structure">Structure</a></li>
+      </ul>
+    </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -72,6 +79,70 @@ Available soon on Android and IOS.
 **Note:** My Movie Hub is not affiliated with, endorsed or certified by TMDB. This app is an independent project aimed at providing a rich and personalized experience for movie lovers.
 
 ---
+
+## Project Structure and Dependencies
+
+### Packages   
+     
+- [Flutter Bloc](https://bloclibrary.dev)   
+- [Get It](https://github.com/fluttercommunity/get_it)  
+- [Go Router](https://pub.dev/packages/go_router)  
+- [Dio](https://github.com/flutterchina/dio)   
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)  
+- [Json Serializable](https://github.com/dart-lang/json_serializable)  
+- [Freezed](https://pub.dev/packages/freezed)    
+- [Formz](https://pub.dev/packages/formz)  
+- [Easy Localization](https://pub.dev/packages/easy_localization)  
+- [Device Preview](https://pub.dev/packages/device_preview)  
+- [Multiple Result](https://pub.dev/packages/multiple_result)  
+- [Event Bus](https://pub.dev/packages/event_bus)  
+- [Mockito](https://pub.dev/packages/mockito)  
+- [Golden Toolkit](https://pub.dev/packages/golden_toolkit)  
+- [Meta](https://pub.dev/packages/meta) 
+
+  
+### Structure
+
+The project is structured using a modular architecture, comprised of three primary directories: `core`, `core-ui`, y `features`.
+
+### `lib/src`
+  - `core/`: Fundamental and shared elements of the app.
+  - `core-ui/`: Common and reusable user interface elements.
+  - `features/`: Different modules or features of the application, divided by functionality.
+
+### `features/`
+
+Each `feature` or module has its own structure:
+
+```
+|- feature/
+  |- application/
+  |- data/
+      |- repositories/
+  |- domain/
+      |- models/
+      |- repositories/
+  |- presentation/
+      |- screens/
+      |- widgets/
+
+````
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Offline data persistence through HIVE
+- [ ] Push notifications
+- [ ] Home screen widgets
+- [ ] Integration with other similar services such as IMDB
+- [ ] Dynamic links for content sharing
+- [ ] Unit and Bloc Testing, Widget Testing and Golden Tests
+
+Feel free to contribute: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
+
+
+---
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -128,17 +199,7 @@ Now you should be able to see the application running on your device or emulator
 ---
 
 
-<!-- ROADMAP -->
-## Roadmap
 
-- [ ] Offline data persistence through HIVE
-- [ ] Push notifications
-- [ ] Home screen widgets
-- [ ] Integration with other similar services such as IMDB
-- [ ] Dynamic links for content sharing
-- [ ] Unit and Bloc Testing, Widget Testing and Golden Tests
-
-Feel free to contribute: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
 
 <!-- CONTACT -->
 ## Contact
