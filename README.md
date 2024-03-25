@@ -14,8 +14,8 @@
     Built with Flutter (Bloc) and the <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a> API.
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
+      <!-- <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a> -->
+      <!--    ·    -->
     <a href="https://github.com/davidgab98/my-movie-hub/issues">Report Bug / Request Feature</a>
   </p>
 </div>
