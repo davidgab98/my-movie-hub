@@ -127,45 +127,5 @@
         "lib/main_production.dart"
       ]
     },
-    /// ui_kit_storybook
-    {
-      "name": "ui_kit_storybook (debug mode)",
-      "cwd": "ui/ui_kit_storybook",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "flutterMode": "debug"
-    },
-    {
-      "name": "ui_kit_storybook (profile mode)",
-      "cwd": "ui/ui_kit_storybook",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "flutterMode": "profile"
-    },
-    {
-      "name": "ui_kit_storybook (release mode)",
-      "cwd": "ui/ui_kit_storybook",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "flutterMode": "release"
-    },
-    /// Golden tests
-    {
-      "name": "Golden",
-      "request": "launch",
-      "type": "dart",
-      "codeLens": {
-        "for": [
-          "run-test",
-          "run-test-file"
-        ]
-      },
-      "args": [
-        "--update-goldens"
-      ]
-    },
   ]
 }

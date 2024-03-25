@@ -14,7 +14,7 @@
     Construida con Flutter (Bloc) y la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
     <br />
     <br />
-      <!-- <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a> -->
+      <!-- <a href="https://github.com">View Demo</a> -->
       <!--    ·    -->
     <a href="https://github.com/davidgab98/my-movie-hub/issues">Reportar Bug / Proponer Funcionalidad</a>
   </p>
@@ -34,6 +34,7 @@
       <ul>
         <li><a href="#prerrequisitos">Prerrequisitos</a></li>
         <li><a href="#instalación">Instalación</a></li>
+        <li><a href="#ejecución">Ejecución</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -50,6 +51,9 @@
 <br />
 <br />
 La aplicación se integra directamente con la API de The Movie Data Base para proporcionar datos actualizados de usuarios, películas y estrenos de todo el mundo. 
+<br />
+<br />
+Disponible próximamente en Android e IOS.
 
 ### Funcionalidades principales:
 
@@ -72,11 +76,56 @@ La aplicación se integra directamente con la API de The Movie Data Base para pr
 <!-- GETTING STARTED -->
 ## Getting Started
 
+Inicia My Movie Hub siguiendo estas instrucciones para configurar y ejecutar la app en tu dispositivo.
 
 ### Prerrequisitos
 
+Antes de instalar la aplicación, asegúrate de tener instalado lo siguiente:
+
+- Flutter: Debes tener Flutter instalado en tu máquina. Para instalar Flutter, sigue las instrucciones en [Flutter Installation Guide](https://flutter.dev/docs/get-started/install).
+- Android Studio o Visual Studio Code: Necesitas un IDE para ejecutar y probar tu aplicación. Android Studio o Visual Studio Code son recomendables. Asegúrate de instalar los plugins de Flutter y Dart.
+- Un dispositivo o emulador: Para ejecutar la aplicación, necesitarás un dispositivo Android o iOS, o un emulador instalado a través de tu IDE.
+
 
 ### Instalación
+
+1. Clona el repositorio de GitHub:
+   ```sh
+   git clone https://github.com/davidgab98/my-movie-hub.git
+   ```
+
+2. Navega hacia la carpeta del proyecto principal e instala todas las dependencias:
+   ```sh
+   cd my-movie-hub/my_movie_hub
+   flutter pub get
+   ```
+
+3. Instala todas las dependencias necesarias para el paquete de UI:
+   ```sh
+   cd ../ui_kit/ui
+   flutter pub get
+   cd ../../my_movie_hub
+   ```
+
+### Ejecución
+
+1. Asegúrate de haber navegado hacia la carpeta del proyecto principal:
+   ```sh
+   cd my-movie-hub/my_movie_hub
+   ```
+
+2. Utiliza el siguiente comando en tu terminal, reemplazando `<flavor>` por `development`, `staging`, o `production` y `<mode>` por `debug`, `profile`, o `release` según sea tus necesidades:
+
+   ```sh
+   flutter run --flavor <flavor> --target lib/main_<flavor>.dart --<mode>
+   ```
+   
+   Alternativamente, si estás utilizando Visual Studio Code, puedes seleccionar y ejecutar cada configuración desde el menú de "Run and Debug" basado en el archivo `launch.json`.
+
+<br/>
+Ahora deberías ser capaz de ver la aplicación corriendo en tu dispositivo o emulador.
+
+---
 
 
 <!-- ROADMAP -->
@@ -87,8 +136,9 @@ La aplicación se integra directamente con la API de The Movie Data Base para pr
 - [ ] Widgets para pantalla de inicio
 - [ ] Integración con otros servicios similares como IMDB
 - [ ] Dynamic links para la compartición de contenido
+- [ ] Unit y Bloc Testing, Widget Testing y Golden Tests
 
-Siéntete libre de contribuir: [open issues](https://github.com/davidgab98/my-movie-hub/issues)
+Siéntete libre de contribuir: [abrir issues](https://github.com/davidgab98/my-movie-hub/issues)
 
 <!-- CONTACT -->
 ## Contacto
@@ -102,21 +152,3 @@ David González Íñiguez
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/davidgonzaleziniguez
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-
