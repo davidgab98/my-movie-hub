@@ -37,6 +37,13 @@
         <li><a href="#ejecución">Ejecución</a></li>
       </ul>
     </li>
+     <li>
+      <a href="#estructura-del-proyecto-y-dependencias">Estructura del proyecto y Dependencias</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#estructura">Estructura</a></li>
+      </ul>
+    </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ol>
@@ -72,6 +79,71 @@ Disponible próximamente en Android e IOS.
 **Nota:** My Movie Hub no está afiliado, respaldado ni certificado por TMDB. Esta aplicación es un proyecto independiente destinado a proporcionar una experiencia rica y personalizada a los amantes del cine.
 
 ---
+
+## Estructura del proyecto y Dependencias
+
+### Packages   
+     
+- [Flutter Bloc](https://bloclibrary.dev)   
+- [Get It](https://github.com/fluttercommunity/get_it)  
+- [Go Router](https://pub.dev/packages/go_router)  
+- [Dio](https://github.com/flutterchina/dio)   
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)  
+- [Json Serializable](https://github.com/dart-lang/json_serializable)  
+- [Freezed](https://pub.dev/packages/freezed)    
+- [Formz](https://pub.dev/packages/formz)  
+- [Easy Localization](https://pub.dev/packages/easy_localization)  
+- [Device Preview](https://pub.dev/packages/device_preview)  
+- [Multiple Result](https://pub.dev/packages/multiple_result)  
+- [Event Bus](https://pub.dev/packages/event_bus)  
+- [Mockito](https://pub.dev/packages/mockito)  
+- [Golden Toolkit](https://pub.dev/packages/golden_toolkit)  
+- [Meta](https://pub.dev/packages/meta) 
+
+  
+### Estructura
+
+El proyecto sigue una arquitectura modular, en la que se distinguen tres carpetas principales: `core`, `core-ui`, y `features`.
+
+### `lib/src`
+  - `core/`: Elementos fundamentales y compartidos de la app.
+  - `core-ui/`: Elementos de la interfaz de usuario que son comunes y reutilizables.
+  - `features/`: Los distintos módulos o características de la aplicación, divididos por funcionalidad. 
+
+### `features/`
+
+Cada `feature` o módulo tiene su propia estructura:
+
+```
+|- feature/
+  |- application/
+  |- data/
+      |- repositories/
+  |- domain/
+      |- models/
+      |- repositories/
+  |- presentation/
+      |- screens/
+      |- widgets/
+
+````
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [ ] Persistencia de datos offline mediante HIVE
+- [ ] Push notifications
+- [ ] Widgets para pantalla de inicio
+- [ ] Integración con otros servicios similares como IMDB
+- [ ] Dynamic links para la compartición de contenido
+- [ ] Unit y Bloc Testing, Widget Testing y Golden Tests
+
+Siéntete libre de contribuir: [abrir issues](https://github.com/davidgab98/my-movie-hub/issues)
+
+
+---
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -127,18 +199,6 @@ Ahora deberías ser capaz de ver la aplicación corriendo en tu dispositivo o em
 
 ---
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Persistencia de datos offline mediante HIVE
-- [ ] Push notifications
-- [ ] Widgets para pantalla de inicio
-- [ ] Integración con otros servicios similares como IMDB
-- [ ] Dynamic links para la compartición de contenido
-- [ ] Unit y Bloc Testing, Widget Testing y Golden Tests
-
-Siéntete libre de contribuir: [abrir issues](https://github.com/davidgab98/my-movie-hub/issues)
 
 <!-- CONTACT -->
 ## Contacto

@@ -102,7 +102,7 @@ Before installing the application, make sure you have the following installed:
 
 3. Install all necessary dependencies for the UI package:
    ```sh
-   cd ../ui_kit/ui
+   cd ../ui/ui_kit
    flutter pub get
    cd ../../my_movie_hub
    ```
