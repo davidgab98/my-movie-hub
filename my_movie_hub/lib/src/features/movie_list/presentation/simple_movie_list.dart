@@ -43,26 +43,19 @@ class SimpleMovieList extends StatelessWidget {
         fetchMoviesByMovieId: fetchMoviesByMovieId,
         movieId: movieId,
       )..loadMovies(),
-      child: const _Body(),
+      child: const CustomScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: AlwaysScrollableScrollPhysics(),
+        slivers: [
+          _Body(),
+        ],
+      ),
     );
   }
 }
 
 class _Body extends StatelessWidget {
   const _Body({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CustomScrollView(
-      scrollDirection: Axis.horizontal,
-      physics: AlwaysScrollableScrollPhysics(),
-      slivers: [_MovieListBody()],
-    );
-  }
-}
-
-class _MovieListBody extends StatelessWidget {
-  const _MovieListBody({super.key});
 
   @override
   Widget build(BuildContext context) {

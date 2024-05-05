@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
+// ignore_for_file: prefer_single_quotes
 
 import 'dart:ui';
 
@@ -125,6 +125,22 @@ class CodegenLoader extends AssetLoader{
   },
   "language": {
     "mainTitle": "Language"
+  },
+  "helpAndFeedback": {
+    "mainTitle": "Help and Feedback",
+    "contact": {
+      "mainTitle": "Contact the Developer",
+      "mailSubject": "I'd like to invite you to coffee",
+      "mailBody": "Hello! \n\nI'd like to invite you to a virtual coffee to chat about My Movie Hub and to get in touch. \n\nLooking forward to your response! \n\nRegards, [ Your Name ]"
+    },
+    "feedback": {
+      "mainTitle": "Report a Bug / Suggest a Feature",
+      "mailSubject": "Bug Report or Feature Request",
+      "mailBody": "Hello, \n\nI've encountered an issue in My Movie Hub that I'd like to report. Here are the details: \n[Brief description of the bug or issue] \n\nDevice and OS version: \n[Device information and OS version] \n\nOr, \n\nI have an idea for a new feature that could be great for My Movie Hub: \n[Description of the suggested feature] \n\nThank you for your attention. \n\nRegards, [ Your Name ]"
+    }
+  },
+  "about": {
+    "mainTitle": "About"
   },
   "orderType": {
     "ascendent": "Latest",
@@ -263,6 +279,22 @@ static const Map<String,dynamic> es = {
   },
   "language": {
     "mainTitle": "Idioma"
+  },
+  "helpAndFeedback": {
+    "mainTitle": "Ayuda y Feedback",
+    "contact": {
+      "mainTitle": "Contactar con el desarrollador",
+      "mailSubject": "Te invito a un café",
+      "mailBody": "¡Hola! \n\nMe gustaría invitarte a un café virtual para charlar sobre My Movie Hub y ponernos en contacto. \n\n¡Espero tu respuesta! \n\nSaludos, [ Tu Nombre ]"
+    },
+    "feedback": {
+      "mainTitle": "Reportar un bug / Sugerir una funcionalidad",
+      "mailSubject": "Reporte de bug o solicitud de funcionalidad",
+      "mailBody": "Hola, \n\nHe encontrado un problema en My Movie Hub que quiero reportar. Aquí están los detalles: \n[Descripción breve del bug o problema] \n\nDispositivo y versión del sistema operativo: \n[Información del dispositivo y versión del SO] \n\nO, \n\nTengo una idea para una nueva funcionalidad que podría ser genial para My Movie Hub: \n[Descripción de la funcionalidad sugerida] \n\nGracias por tu atención. \n\nSaludos, [ Tu Nombre ]"
+    }
+  },
+  "about": {
+    "mainTitle": "Acerca de"
   },
   "orderType": {
     "ascendent": "Latest",

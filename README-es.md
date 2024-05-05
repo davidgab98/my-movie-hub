@@ -83,6 +83,8 @@ Disponible próximamente en Android e IOS.
 ## Estructura del proyecto y Dependencias
 
 ### Packages   
+
+Estos son algunos de los paquetes principales utilizados en la aplicación.
      
 - [Flutter Bloc](https://bloclibrary.dev)   
 - [Get It](https://github.com/fluttercommunity/get_it)  
@@ -127,7 +129,7 @@ Cada `feature` o módulo tiene su propia estructura:
       |- widgets/
 
 ````
-
+---
 
 <!-- ROADMAP -->
 ## Roadmap

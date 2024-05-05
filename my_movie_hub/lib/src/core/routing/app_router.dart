@@ -10,8 +10,10 @@ import 'package:my_movie_hub/src/features/home/presentation/screens/home_screen.
 import 'package:my_movie_hub/src/features/movie/domain/model/movie.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/screens/movie_detail_screen.dart';
 import 'package:my_movie_hub/src/features/premieres/presentation/premieres_screen.dart';
+import 'package:my_movie_hub/src/features/profile/presentation/screens/about_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_language_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/change_theme_screen.dart';
+import 'package:my_movie_hub/src/features/profile/presentation/screens/help_and_feedback_screen.dart';
 import 'package:my_movie_hub/src/features/profile/presentation/screens/profile_screen.dart';
 import 'package:my_movie_hub/src/features/search/presentation/screens/search_screen.dart';
 import 'package:my_movie_hub/src/features/watchlist/presentation/screens/watchlist_screen.dart';
@@ -27,7 +29,9 @@ enum AppRoute {
   movieDetail('movieDetail'),
   profile('/profile'),
   changeLanguage('changeLanguage'),
-  changeTheme('changeTheme');
+  changeTheme('changeTheme'),
+  helpAndFeedback('helpAndFeedback'),
+  about('about');
 
   final String path;
   const AppRoute(this.path);
@@ -239,6 +243,18 @@ final goRouter = GoRouter(
           path: AppRoute.changeLanguage.path,
           name: AppRoute.changeLanguage.name,
           builder: (context, state) => const ChangeLanguageScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoute.helpAndFeedback.path,
+          name: AppRoute.helpAndFeedback.name,
+          builder: (context, state) => const HelpAndFeedbackScreen(),
+        ),
+        GoRoute(
+          parentNavigatorKey: _rootNavigatorKey,
+          path: AppRoute.about.path,
+          name: AppRoute.about.name,
+          builder: (context, state) => const AboutScreen(),
         ),
       ],
     ),

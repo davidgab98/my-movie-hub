@@ -34,6 +34,9 @@ dependencies:
   meta: ^1.10.0
   country_code_picker: 3.0.0
   dio_cache_interceptor: 3.5.0
+  flutter_launcher_icons: 0.13.1
+  flutter_native_splash: 2.3.10
+  flutter_dotenv: 5.1.0
 
 dev_dependencies:
   bloc_test: ^9.1.4
@@ -50,3 +53,21 @@ flutter:
   assets:
     - assets/l10n/
     - assets/pngs/
+    - assets/google_fonts/
+    - .env
+
+flutter_native_splash:
+  android: true
+  ios: true
+  
+  color: "#121212"
+  image: assets/splash_screen/splash_screen.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: "launcher_icon"
+  image_path_ios: "assets/launcher_icon/ios_launcher_icon.jpg"
+  image_path_android: "assets/launcher_icon/android_launcher_icon.png"
+  adaptive_icon_background: "#0D253F"
+  adaptive_icon_foreground: "assets/launcher_icon/android_launcher_icon.png"
+  min_sdk_android: 21

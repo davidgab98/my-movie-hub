@@ -13,8 +13,6 @@ import 'package:my_movie_hub/src/features/movie/domain/repositories/movie_reposi
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/account_states_icons/movie_account_states_row.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/movie_recommendations_list.dart';
 import 'package:my_movie_hub/src/features/movie/presentation/movie_detail/widgets/overall_rating_stars.dart';
-import 'package:my_movie_hub/src/features/premieres/application/premieres_cubit.dart';
-import 'package:my_movie_hub/src/features/premieres/presentation/premieres_screen.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class MovieDetailScreen extends StatelessWidget {

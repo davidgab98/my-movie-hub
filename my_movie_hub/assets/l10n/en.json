@@ -110,6 +110,22 @@
     "language": {
         "mainTitle": "Language"
     },
+    "helpAndFeedback": {
+        "mainTitle": "Help and Feedback",
+        "contact": {
+            "mainTitle": "Contact the Developer",
+            "mailSubject": "I'd like to invite you to coffee",
+            "mailBody": "Hello! \n\nI'd like to invite you to a virtual coffee to chat about My Movie Hub and to get in touch. \n\nLooking forward to your response! \n\nRegards, [ Your Name ]"
+        },
+        "feedback": {
+            "mainTitle": "Report a Bug / Suggest a Feature",
+            "mailSubject": "Bug Report or Feature Request",
+            "mailBody": "Hello, \n\nI've encountered an issue in My Movie Hub that I'd like to report. Here are the details: \n[Brief description of the bug or issue] \n\nDevice and OS version: \n[Device information and OS version] \n\nOr, \n\nI have an idea for a new feature that could be great for My Movie Hub: \n[Description of the suggested feature] \n\nThank you for your attention. \n\nRegards, [ Your Name ]"
+        }
+    },
+    "about": {
+        "mainTitle": "About"
+    },
     "orderType": {
         "ascendent": "Latest",
         "descendent": "Oldest"

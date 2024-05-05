@@ -110,6 +110,22 @@
     "language": {
         "mainTitle": "Idioma"
     },
+    "helpAndFeedback": {
+        "mainTitle": "Ayuda y Feedback",
+        "contact": {
+            "mainTitle": "Contactar con el desarrollador",
+            "mailSubject": "Te invito a un café",
+            "mailBody": "¡Hola! \n\nMe gustaría invitarte a un café virtual para charlar sobre My Movie Hub y ponernos en contacto. \n\n¡Espero tu respuesta! \n\nSaludos, [ Tu Nombre ]"
+        },
+        "feedback": {
+            "mainTitle": "Reportar un bug / Sugerir una funcionalidad",
+            "mailSubject": "Reporte de bug o solicitud de funcionalidad",
+            "mailBody": "Hola, \n\nHe encontrado un problema en My Movie Hub que quiero reportar. Aquí están los detalles: \n[Descripción breve del bug o problema] \n\nDispositivo y versión del sistema operativo: \n[Información del dispositivo y versión del SO] \n\nO, \n\nTengo una idea para una nueva funcionalidad que podría ser genial para My Movie Hub: \n[Descripción de la funcionalidad sugerida] \n\nGracias por tu atención. \n\nSaludos, [ Tu Nombre ]"
+        }
+    },
+    "about": {
+        "mainTitle": "Acerca de"
+    },
     "orderType": {
         "ascendent": "Latest",
         "descendent": "Oldest"

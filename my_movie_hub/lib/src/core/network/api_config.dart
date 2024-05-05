@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiConfig {
   ApiConfig();
@@ -9,5 +10,5 @@ class ApiConfig {
   final Map<String, String> defaultContentType = {'accept': 'application/json'};
 
   /// the movie data base api-key
-  final String apiKey = '4d84a7e441052a02eea20844a01b8d28';
+  final String apiKey = dotenv.env['API_KEY']!;
 }

@@ -59,7 +59,21 @@ class ProfileScreen extends StatelessWidget {
                         context.pushNamed(AppRoute.changeLanguage.name),
                   ),
                   AppSpaces.gapH32,
+                  ProfileMenuOption(
+                    title: 'helpAndFeedback.mainTitle'.tr(),
+                    icon: Icons.feedback_outlined,
+                    onPress: () =>
+                        context.pushNamed(AppRoute.helpAndFeedback.name),
+                  ),
+                  AppSpaces.gapH32,
+                  ProfileMenuOption(
+                    title: 'about.mainTitle'.tr(),
+                    icon: Icons.info_outline_rounded,
+                    onPress: () => context.pushNamed(AppRoute.about.name),
+                  ),
+                  AppSpaces.gapH32,
                   const LogOutMenuOption(),
+                  AppSpaces.gapH32,
                 ],
               ),
             ),

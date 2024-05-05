@@ -10,7 +10,6 @@ import 'package:my_movie_hub/src/features/auth/session_manager/application/sessi
 import 'package:my_movie_hub/src/features/auth/session_manager/application/session_manager_state.dart';
 import 'package:my_movie_hub/src/features/auth/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:my_movie_hub/src/features/user/application/user_cubit.dart';
-import 'package:ui_kit/ui_kit.dart';
 
 class SessionManagerScreen extends StatelessWidget {
   const SessionManagerScreen({super.key});

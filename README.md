@@ -83,6 +83,8 @@ Available soon on Android and IOS.
 ## Project Structure and Dependencies
 
 ### Packages   
+
+These are some of the main packages used in the application.
      
 - [Flutter Bloc](https://bloclibrary.dev)   
 - [Get It](https://github.com/fluttercommunity/get_it)  
@@ -127,13 +129,14 @@ Each `feature` or module has its own structure:
       |- widgets/
 
 ````
+---
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Offline data persistence through HIVE
 - [ ] Push notifications
 - [ ] Home screen widgets
+- [ ] Offline data persistence through HIVE
 - [ ] Integration with other similar services such as IMDB
 - [ ] Dynamic links for content sharing
 - [ ] Unit and Bloc Testing, Widget Testing and Golden Tests

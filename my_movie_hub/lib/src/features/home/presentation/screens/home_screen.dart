@@ -8,11 +8,6 @@ import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/tren
 import 'package:my_movie_hub/src/features/public_lists/presentation/widgets/upcoming_movies_horizontal_list.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-//TODO: Hacer widget generico de degradado de colores (usado en appbar, reparto, y poster not found background)
-//TODO: Ordenar/Revisar toda la app y ordenar codigo
-
-//TODO: Movie y DetailedMovie DTOS con Freezed y Clases de dominio sin freezed (y así MovieDetailed puede extender de Movie)
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -31,9 +26,9 @@ class HomeScreen extends StatelessWidget {
               AppSpaces.gapH12,
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSpaces.s16),
-                child: GenresDirectAccessList(),
+                child: DecadeDirectAccessList(),
               ),
-              AppSpaces.gapH16,
+              AppSpaces.gapH12,
               const TrendingMoviesCarousel(),
               AppSpaces.gapH16,
               const NowPlayingMoviesHorizontalList(),
@@ -52,8 +47,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class GenresDirectAccessList extends StatelessWidget {
-  const GenresDirectAccessList({
+class DecadeDirectAccessList extends StatelessWidget {
+  const DecadeDirectAccessList({
     super.key,
   });
 
@@ -63,25 +58,37 @@ class GenresDirectAccessList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          _GenreDirectAccess(genre: 'Comedy'),
+          _DecadeDirectAccess(genre: "2020's"),
           AppSpaces.gapW10,
-          _GenreDirectAccess(genre: 'Drama'),
+          _DecadeDirectAccess(genre: "2010's"),
           AppSpaces.gapW10,
-          _GenreDirectAccess(genre: 'Terror'),
+          _DecadeDirectAccess(genre: "2000's"),
           AppSpaces.gapW10,
-          _GenreDirectAccess(genre: 'Action'),
+          _DecadeDirectAccess(genre: "90's"),
           AppSpaces.gapW10,
-          _GenreDirectAccess(genre: 'Romantic'),
+          _DecadeDirectAccess(genre: "80's"),
           AppSpaces.gapW10,
-          _GenreDirectAccess(genre: 'Indie'),
+          _DecadeDirectAccess(genre: "70's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "60's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "50's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "40's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "30's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "20's"),
+          AppSpaces.gapW10,
+          _DecadeDirectAccess(genre: "10's"),
         ],
       ),
     );
   }
 }
 
-class _GenreDirectAccess extends StatelessWidget {
-  const _GenreDirectAccess({required this.genre, super.key});
+class _DecadeDirectAccess extends StatelessWidget {
+  const _DecadeDirectAccess({required this.genre, super.key});
 
   final String genre;
 
