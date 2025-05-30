@@ -25,9 +25,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              AppColors.primary.withOpacity(0.1),
-              AppColors.secondary.withOpacity(0.25),
-              AppColors.primary.withOpacity(0.1),
+              AppColors.primary.withValues(alpha: 0.1),
+              AppColors.secondary.withValues(alpha: 0.25),
+              AppColors.primary.withValues(alpha: 0.1),
             ],
             stops: const [0.0, 0.5, 1.0],
           ),
