@@ -85,7 +85,7 @@ class _SearchInputHeader extends StatelessWidget {
           floating: true,
           snap: true,
           toolbarHeight: 72,
-          backgroundColor: context.colors.background,
+          backgroundColor: context.colors.surface,
           flexibleSpace: Padding(
             padding: const EdgeInsets.symmetric(vertical: AppSpaces.s12),
             child: Row(
@@ -159,21 +159,22 @@ class _MovieListHeader extends StatelessWidget {
               ? Text(
                   '${state.totalMovies} ${'search.totalResultsLabel'.tr()}',
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: context.colors.onBackground,
+                    color: context.colors.onSurface,
                   ),
                 )
               : null,
           primary: false,
           centerTitle: false,
           titleSpacing: 0,
-          backgroundColor: context.colors.background,
+          backgroundColor: context.colors.surface,
           titleTextStyle: AppTextStyle.titleMedium.copyWith(
             color: context.colors.primary,
           ),
           actions: [
             IconButton(
               style: IconButton.styleFrom(
-                backgroundColor: context.colors.onBackground.withOpacity(0.125),
+                backgroundColor:
+                    context.colors.onSurface.withValues(alpha: 0.125),
               ),
               onPressed: context.read<SearchCubit>().toggleListDisplayMode,
               icon: Icon(
@@ -185,7 +186,7 @@ class _MovieListHeader extends StatelessWidget {
                             ? Icons.grid_4x4_rounded
                             : Icons.view_list_outlined,
                 size: 28,
-                color: context.colors.onBackground,
+                color: context.colors.onSurface,
               ),
             ),
           ],

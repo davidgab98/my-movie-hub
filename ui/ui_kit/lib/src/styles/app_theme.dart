@@ -22,8 +22,8 @@ final ThemeData lightTheme = ThemeData(
   ),
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
-    background: AppColors.backgroundAPPLight,
-    onBackground: AppColors.black,
+    surface: AppColors.backgroundAPPLight,
+    onSurface: AppColors.black,
     primary: AppColors.primary,
     onPrimary: AppColors.white,
     secondary: AppColors.secondary,
@@ -32,9 +32,7 @@ final ThemeData lightTheme = ThemeData(
     onTertiary: AppColors.black,
     error: AppColors.red,
     onError: AppColors.white,
-    surface: AppColors.backgroundInputLight,
-    onSurface: AppColors.black,
-    surfaceVariant: AppColors.shimmerBaseColorLight,
+    surfaceContainerHighest: AppColors.shimmerBaseColorLight,
     outline: AppColors.black2,
   ),
 );
@@ -55,8 +53,8 @@ final ThemeData darkTheme = ThemeData(
   ),
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
-    background: AppColors.backgroundAPPDark,
-    onBackground: AppColors.overlayDark,
+    surface: AppColors.backgroundAPPDark,
+    onSurface: AppColors.overlayDark,
     primary: AppColors.primary,
     onPrimary: AppColors.white,
     secondary: AppColors.secondary,
@@ -65,9 +63,7 @@ final ThemeData darkTheme = ThemeData(
     onTertiary: AppColors.black,
     error: AppColors.red,
     onError: AppColors.black,
-    surface: AppColors.backgroundInputDark,
-    onSurface: AppColors.overlayDark,
-    surfaceVariant: AppColors.shimmerBaseColorDark,
+    surfaceContainerHighest: AppColors.shimmerBaseColorDark,
     outline: AppColors.black2,
   ),
 );

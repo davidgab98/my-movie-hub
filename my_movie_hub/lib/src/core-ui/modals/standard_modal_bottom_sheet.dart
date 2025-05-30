@@ -10,7 +10,7 @@ void showStandardModalBottomSheet({
   showModalBottomSheet<void>(
     isScrollControlled: isScrollControlled,
     elevation: 0,
-    backgroundColor: context.colors.background,
+    backgroundColor: context.colors.surface,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppBorderRadius.br16),
@@ -50,7 +50,7 @@ void showStandardModalBottomSheet({
                   child: Text(
                     title,
                     style: AppTextStyle.headlineMedium.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                 ),

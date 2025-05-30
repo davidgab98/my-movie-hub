@@ -21,7 +21,7 @@ class PublicListSection extends StatelessWidget {
           child: Text(
             title,
             style: AppTextStyle.headlineXLLarge
-                .copyWith(color: context.colors.onBackground),
+                .copyWith(color: context.colors.onSurface),
           ),
         ),
         SizedBox(

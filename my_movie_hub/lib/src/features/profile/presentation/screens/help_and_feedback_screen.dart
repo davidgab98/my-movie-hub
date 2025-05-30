@@ -69,8 +69,8 @@ class _OptionListTile extends StatelessWidget {
   const _OptionListTile({
     required this.title,
     required this.icon,
-    this.color,
     required this.onPress,
+    this.color,
     super.key,
   });
 
@@ -86,7 +86,7 @@ class _OptionListTile extends StatelessWidget {
       title: Text(
         title,
         style: AppTextStyle.headlineSmall.copyWith(
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         ),
       ),
       leading: Container(
@@ -94,7 +94,7 @@ class _OptionListTile extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: context.colors.secondary.withOpacity(0.1),
+          color: context.colors.secondary.withValues(alpha: 0.1),
         ),
         child: Icon(icon, color: color ?? context.colors.secondary),
       ),
@@ -103,7 +103,7 @@ class _OptionListTile extends StatelessWidget {
         height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: context.colors.secondary.withOpacity(0.1),
+          color: context.colors.secondary.withValues(alpha: 0.1),
         ),
         child: Icon(
           Icons.arrow_forward_ios_rounded,

@@ -97,7 +97,7 @@ class _DecadeDirectAccess extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
       decoration: BoxDecoration(
-        color: context.colors.onBackground.withOpacity(0.25),
+        color: context.colors.onSurface.withValues(alpha: 0.25),
         borderRadius: BorderRadius.circular(
           AppBorderRadius.br16,
         ),
@@ -107,11 +107,11 @@ class _DecadeDirectAccess extends StatelessWidget {
           horizontal: AppSpaces.s16,
           vertical: AppSpaces.s8,
         ),
-        color: context.colors.background.withOpacity(0.65),
+        color: context.colors.surface.withValues(alpha: 0.65),
         child: Text(
           genre,
           style: AppTextStyle.bodyMedium.copyWith(
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
           ),
         ),
       ),

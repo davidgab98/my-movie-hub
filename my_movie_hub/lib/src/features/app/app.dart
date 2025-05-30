@@ -38,7 +38,7 @@ class _MaterialApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 localizationsDelegates: [
                   CountryLocalizations.delegate,
-                  ...context.localizationDelegates
+                  ...context.localizationDelegates,
                 ],
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,

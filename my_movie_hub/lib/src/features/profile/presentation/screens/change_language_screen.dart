@@ -26,7 +26,7 @@ class ChangeLanguageScreen extends StatelessWidget {
                   title: Text(
                     L10n.all[i].getTranslatedString(),
                     style: AppTextStyle.headlineMedium.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   leading: Radio<Locale>(

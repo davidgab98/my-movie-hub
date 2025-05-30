@@ -18,7 +18,7 @@ class ReloadButtonPlaceholder extends StatelessWidget {
         child: Text(
           'error.placeholder.realoadButtonText'.tr(),
           style: AppTextStyle.bodyMedium.copyWith(
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
           ),
         ),
       ),

@@ -11,7 +11,7 @@ class ErrorLoadingNewDataMessagePlaceholder extends StatelessWidget {
       child: Text(
         'list.errorLoadingNewDataText'.tr(),
         style: AppTextStyle.labelMedium.copyWith(
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         ),
       ),
     );

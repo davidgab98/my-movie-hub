@@ -23,13 +23,13 @@ class _MMHSearchFieldState extends State<MMHSearchField> {
     return Material(
       color: context.colors.surface,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: context.colors.outline.withOpacity(0.25)),
+        side: BorderSide(color: context.colors.outline.withValues(alpha: 0.25)),
         borderRadius: BorderRadius.circular(AppBorderRadius.br12),
       ),
       child: TextFormField(
         controller: _controller,
         style: AppTextStyle.titleSmall,
-        cursorColor: context.colors.onBackground,
+        cursorColor: context.colors.onSurface,
         decoration: InputDecoration(
           suffixIcon: IconButton(
             splashRadius: AppBorderRadius.br20,
@@ -47,7 +47,7 @@ class _MMHSearchFieldState extends State<MMHSearchField> {
             padding: const EdgeInsets.only(left: AppSpaces.s10),
             child: Icon(
               Icons.search_rounded,
-              color: context.colors.onBackground,
+              color: context.colors.onSurface,
             ),
           ),
           hintText: widget.hintText != null ? '${widget.hintText}...' : null,

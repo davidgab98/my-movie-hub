@@ -20,12 +20,12 @@ class MovieRatingIcon extends StatelessWidget {
       builder: (context, state) {
         return PopupMenuButton<int>(
           elevation: 1,
-          color: context.colors.background,
+          color: context.colors.surface,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppBorderRadius.br24),
             side: BorderSide(
-              color: context.colors.onBackground.withOpacity(0.5),
+              color: context.colors.onSurface.withValues(alpha: 0.5),
               width: 0.5,
             ),
           ),
@@ -49,7 +49,7 @@ class MovieRatingIcon extends StatelessWidget {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             disabledBackgroundColor:
-                                context.colors.primary.withOpacity(0.5),
+                                context.colors.primary.withValues(alpha: 0.5),
                             backgroundColor: Colors.amber,
                             padding: EdgeInsets.zero,
                           ),

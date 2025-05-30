@@ -75,7 +75,7 @@ class OpenSourceLicensesButton extends StatelessWidget {
       child: Text(
         'Open Source Licenses',
         style: AppTextStyle.headlineMedium.copyWith(
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         ),
       ),
     );

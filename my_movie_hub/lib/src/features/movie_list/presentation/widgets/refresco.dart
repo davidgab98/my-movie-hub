@@ -12,8 +12,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-const double _kActivityIndicatorRadius = 14.0;
-const double _kActivityIndicatorMargin = 16.0;
+const double _kActivityIndicatorRadius = 14;
+const double _kActivityIndicatorMargin = 16;
 
 class _CupertinoSliverRefresh extends SingleChildRenderObjectWidget {
   const _CupertinoSliverRefresh({
@@ -96,7 +96,7 @@ class _RenderCupertinoSliverRefresh extends RenderSliver
   // so that when [refreshIndicatorLayoutExtent] or [hasLayoutExtent] changes,
   // the appropriate delta can be applied to keep everything in the same place
   // visually.
-  double layoutExtentOffsetCompensation = 0.0;
+  double layoutExtentOffsetCompensation = 0;
 
   @override
   void performLayout() {
@@ -149,13 +149,13 @@ class _RenderCupertinoSliverRefresh extends RenderSliver
           // with a layoutExtent, the indicator builder may decide to not
           // build anything.
           max(child!.size.height, layoutExtent) - constraints.scrollOffset,
-          0.0,
+          0,
         ),
         maxPaintExtent: max(
           max(child!.size.height, layoutExtent) - constraints.scrollOffset,
-          0.0,
+          0,
         ),
-        layoutExtent: max(layoutExtent - constraints.scrollOffset, 0.0),
+        layoutExtent: max(layoutExtent - constraints.scrollOffset, 0),
       );
     } else {
       // If we never started overscrolling, return no geometry.
@@ -347,8 +347,8 @@ class Refresco extends StatefulWidget {
   /// where the sliver will start retracting.
   final RefreshCallback? onRefresh;
 
-  static const double _defaultRefreshTriggerPullDistance = 100.0;
-  static const double _defaultRefreshIndicatorExtent = 60.0;
+  static const double _defaultRefreshTriggerPullDistance = 100;
+  static const double _defaultRefreshIndicatorExtent = 60;
 
   /// Retrieve the current state of the CupertinoSliverRefreshControl. The same as the
   /// state that gets passed into the [builder] function. Used for testing.
@@ -374,7 +374,7 @@ class Refresco extends StatefulWidget {
     double refreshIndicatorExtent,
   ) {
     final double percentageComplete =
-        clampDouble(pulledExtent / refreshTriggerPullDistance, 0.0, 1.0);
+        clampDouble(pulledExtent / refreshTriggerPullDistance, 0, 1);
 
     // Place the indicator at the top of the sliver that opens up. We're using a
     // Stack/Positioned widget because the CupertinoActivityIndicator does some
@@ -389,8 +389,8 @@ class Refresco extends StatefulWidget {
         children: <Widget>[
           Positioned(
             top: _kActivityIndicatorMargin,
-            left: 0.0,
-            right: 0.0,
+            left: 0,
+            right: 0,
             child: _buildIndicatorForRefreshState(
               context,
               refreshState,
@@ -404,22 +404,23 @@ class Refresco extends StatefulWidget {
   }
 
   static Widget _buildIndicatorForRefreshState(
-      BuildContext context,
-      RefreshIndicatorMode refreshState,
-      double radius,
-      double percentageComplete) {
+    BuildContext context,
+    RefreshIndicatorMode refreshState,
+    double radius,
+    double percentageComplete,
+  ) {
     switch (refreshState) {
       case RefreshIndicatorMode.drag:
         // While we're dragging, we draw individual ticks of the spinner while simultaneously
         // easing the opacity in. The opacity curve values here were derived using
         // Xcode through inspecting a native app running on iOS 13.5.
-        const Curve opacityCurve = Interval(0.0, 0.35, curve: Curves.easeInOut);
+        const Curve opacityCurve = Interval(0, 0.35, curve: Curves.easeInOut);
         return Opacity(
           opacity: opacityCurve.transform(percentageComplete),
           child: CupertinoActivityIndicator.partiallyRevealed(
             radius: radius,
             progress: percentageComplete,
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
           ),
         );
       case RefreshIndicatorMode.armed:
@@ -427,13 +428,13 @@ class Refresco extends StatefulWidget {
         // Once we're armed or performing the refresh, we just show the normal spinner.
         return CupertinoActivityIndicator(
           radius: radius,
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         );
       case RefreshIndicatorMode.done:
         // When the user lets go, the standard transition is to shrink the spinner.
         return CupertinoActivityIndicator(
           radius: radius * percentageComplete,
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         );
       case RefreshIndicatorMode.inactive:
         // Anything else doesn't show anything.
@@ -461,7 +462,7 @@ class _RefrescoState extends State<Refresco> {
   //
   // The value of latestIndicatorBoxExtent doesn't change when the sliver scrolls
   // away without retracting; it is independent from the sliver's scrollOffset.
-  double latestIndicatorBoxExtent = 0.0;
+  double latestIndicatorBoxExtent = 0;
   bool hasSliverLayoutExtent = false;
 
   @override

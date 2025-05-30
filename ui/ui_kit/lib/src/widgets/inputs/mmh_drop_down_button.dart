@@ -24,13 +24,13 @@ class MMHDropdownButton<T> extends StatelessWidget {
           contentPadding: const EdgeInsets.all(AppSpaces.s8),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: context.colors.outline.withOpacity(0.25),
+              color: context.colors.outline.withValues(alpha: 0.25),
             ),
             borderRadius: BorderRadius.circular(AppBorderRadius.br12),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: context.colors.outline.withOpacity(0.25),
+              color: context.colors.outline.withValues(alpha: 0.25),
             ),
             borderRadius: BorderRadius.circular(AppBorderRadius.br12),
           ),
@@ -49,7 +49,7 @@ class MMHDropdownButton<T> extends StatelessWidget {
             child: Text(
               value.toString(),
               style: AppTextStyle.titleSmall.copyWith(
-                color: context.colors.onBackground,
+                color: context.colors.onSurface,
               ),
             ),
           );

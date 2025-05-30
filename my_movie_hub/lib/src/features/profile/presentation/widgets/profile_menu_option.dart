@@ -25,14 +25,14 @@ class ProfileMenuOption extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: context.colors.secondary.withOpacity(0.1),
+          color: context.colors.secondary.withValues(alpha: 0.1),
         ),
         child: Icon(icon, color: context.colors.tertiary),
       ),
       title: Text(
         title,
         style: AppTextStyle.headlineSmall.copyWith(
-          color: context.colors.onBackground,
+          color: context.colors.onSurface,
         ),
       ),
       trailing: Container(
@@ -40,7 +40,7 @@ class ProfileMenuOption extends StatelessWidget {
         height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: context.colors.secondary.withOpacity(0.1),
+          color: context.colors.secondary.withValues(alpha: 0.1),
         ),
         child: Icon(
           Icons.arrow_forward_ios_rounded,

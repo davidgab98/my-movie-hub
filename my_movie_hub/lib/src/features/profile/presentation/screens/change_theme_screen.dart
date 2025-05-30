@@ -25,7 +25,7 @@ class ChangeThemeScreen extends StatelessWidget {
                         ? 'theme.darkThemeLabel'.tr()
                         : 'theme.lightThemeLabel'.tr(),
                     style: AppTextStyle.headlineMedium.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   leading: Radio<ThemeMode>(

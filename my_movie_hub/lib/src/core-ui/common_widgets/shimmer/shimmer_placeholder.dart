@@ -17,7 +17,7 @@ class ShimmerPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: context.colors.surfaceVariant,
+      baseColor: context.colors.surfaceContainerHighest,
       highlightColor: Colors.grey[350]!,
       child: Container(
         width: width,

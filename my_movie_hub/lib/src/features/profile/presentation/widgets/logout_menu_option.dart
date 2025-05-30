@@ -19,7 +19,9 @@ class LogOutMenuOption extends StatelessWidget {
         title: 'profile.logoutModalQuestion'.tr(),
         modalActions: [
           ModalActionModel(
-              title: 'profile.cancelLogoutButtonText'.tr(), action: () {}),
+            title: 'profile.cancelLogoutButtonText'.tr(),
+            action: () {},
+          ),
           ModalActionModel(
             title: 'profile.logoutButtonText'.tr(),
             titleColor: AppColors.red,
@@ -27,7 +29,7 @@ class LogOutMenuOption extends StatelessWidget {
               locator<IEventBus>().emitEvent(LogOutEvent());
               context.goNamed(AppRoute.signIn.name);
             },
-          )
+          ),
         ],
       ),
       contentPadding: const EdgeInsets.symmetric(
@@ -38,7 +40,7 @@ class LogOutMenuOption extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: context.colors.secondary.withOpacity(0.1),
+          color: context.colors.secondary.withValues(alpha: 0.1),
         ),
         child: Icon(
           Icons.logout_rounded,

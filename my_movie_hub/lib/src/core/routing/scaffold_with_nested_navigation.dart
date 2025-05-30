@@ -30,9 +30,9 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
             child: ColoredBox(
-              color: AppColors.white.withOpacity(0.25),
+              color: AppColors.white.withValues(alpha: 0.25),
               child: BottomNavigationBar(
-                backgroundColor: AppColors.black.withOpacity(0.55),
+                backgroundColor: AppColors.black.withValues(alpha: 0.55),
                 currentIndex: navigationShell.currentIndex,
                 onTap: (index) => navigationShell.goBranch(
                   index,

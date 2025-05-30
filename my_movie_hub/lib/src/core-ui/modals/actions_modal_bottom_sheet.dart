@@ -34,8 +34,7 @@ void showActionsModalBottomSheet({
             title: Text(
               modalActions[i].title,
               style: AppTextStyle.titleLarge.copyWith(
-                color:
-                    modalActions[i].titleColor ?? context.colors.onBackground,
+                color: modalActions[i].titleColor ?? context.colors.onSurface,
               ),
             ),
             onTap: () {

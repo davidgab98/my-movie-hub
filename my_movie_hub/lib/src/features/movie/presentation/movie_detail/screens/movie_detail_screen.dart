@@ -53,8 +53,8 @@ class _Body extends StatelessWidget {
 
 class _DetailsHeader extends StatelessWidget {
   const _DetailsHeader({
-    super.key,
     required this.movie,
+    super.key,
   });
 
   final Movie movie;
@@ -91,9 +91,9 @@ class _DetailsHeader extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          AppColors.primary.withOpacity(0.3),
-                          AppColors.secondary.withOpacity(0.2),
-                          AppColors.tertiary.withOpacity(0.1),
+                          AppColors.primary.withValues(alpha: 0.3),
+                          AppColors.secondary.withValues(alpha: 0.2),
+                          AppColors.tertiary.withValues(alpha: 0.1),
                         ],
                         stops: const [0.0, 0.5, 1.0],
                       ),
@@ -105,7 +105,7 @@ class _DetailsHeader extends StatelessWidget {
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
                       colors: [
-                        context.colors.background,
+                        context.colors.surface,
                         Colors.transparent,
                       ],
                     ),
@@ -119,7 +119,7 @@ class _DetailsHeader extends StatelessWidget {
                       child: Text(
                         movie.title.toUpperCase(),
                         style: AppTextStyle.mainTitleMedium.copyWith(
-                          color: context.colors.onBackground,
+                          color: context.colors.onSurface,
                         ),
                       ),
                     ),
@@ -155,8 +155,8 @@ class _DetailsHeader extends StatelessWidget {
 
 class _DetailsBody extends StatelessWidget {
   const _DetailsBody({
-    super.key,
     required this.movie,
+    super.key,
   });
 
   final Movie movie;
@@ -194,7 +194,7 @@ class _DetailsBody extends StatelessWidget {
                       padding:
                           const EdgeInsets.symmetric(vertical: AppSpaces.s4),
                       decoration: BoxDecoration(
-                        color: context.colors.surface.withOpacity(0.75),
+                        color: context.colors.surface.withValues(alpha: 0.75),
                       ),
                       child: const MovieAccountStatesRow(),
                     ),
@@ -209,7 +209,7 @@ class _DetailsBody extends StatelessWidget {
                 indent: AppSpaces.s16,
                 endIndent: AppSpaces.s16,
                 height: 0,
-                color: context.colors.onBackground.withOpacity(1),
+                color: context.colors.onSurface.withValues(alpha: 1),
                 thickness: 0.1,
               ),
               AppSpaces.gapH16,
@@ -234,8 +234,8 @@ class _DetailsBody extends StatelessWidget {
 
 class _MainMovieInfo extends StatelessWidget {
   const _MainMovieInfo({
-    super.key,
     required this.movie,
+    super.key,
   });
 
   final Movie movie;
@@ -257,14 +257,14 @@ class _MainMovieInfo extends StatelessWidget {
                   child: Text(
                     state.movie.tagline!,
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                 ),
               Text(
                 movie.overview,
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
                 textAlign: TextAlign.justify,
               ),
@@ -274,7 +274,7 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'movieDetails.originalTitleLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
               Text(
@@ -287,7 +287,7 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'movieDetails.yearLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
               Text(
@@ -302,7 +302,7 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'movieDetails.durationLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
               Text(
@@ -317,7 +317,7 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'movieDetails.countryLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
               Text(
@@ -334,7 +334,7 @@ class _MainMovieInfo extends StatelessWidget {
               Text(
                 'movieDetails.productionCompaniesLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
               Text(
@@ -357,8 +357,8 @@ class _MainMovieInfo extends StatelessWidget {
 
 class _GenresWrapList extends StatelessWidget {
   const _GenresWrapList({
-    super.key,
     required this.genres,
+    super.key,
   });
 
   final List<MovieGenre> genres;
@@ -372,7 +372,7 @@ class _GenresWrapList extends StatelessWidget {
             (genre) => Container(
               margin: const EdgeInsets.symmetric(vertical: AppSpaces.s4),
               decoration: BoxDecoration(
-                color: context.colors.onBackground.withOpacity(0.15),
+                color: context.colors.onSurface.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(
                   AppBorderRadius.br16,
                 ),
@@ -382,11 +382,11 @@ class _GenresWrapList extends StatelessWidget {
                   horizontal: AppSpaces.s10,
                   vertical: AppSpaces.s6,
                 ),
-                color: context.colors.background.withOpacity(0.65),
+                color: context.colors.surface.withValues(alpha: 0.65),
                 child: Text(
                   genre.toTranslatedString(),
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: context.colors.onBackground,
+                    color: context.colors.onSurface,
                   ),
                 ),
               ),
@@ -428,7 +428,7 @@ class MovieCredits extends StatelessWidget {
               child: Text(
                 'movieDetails.castLabel'.tr(),
                 style: AppTextStyle.titleLarge.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
               ),
             ),
@@ -464,9 +464,12 @@ class MovieCredits extends StatelessWidget {
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
                                       colors: [
-                                        AppColors.primary.withOpacity(0.3),
-                                        AppColors.secondary.withOpacity(0.2),
-                                        AppColors.tertiary.withOpacity(0.1),
+                                        AppColors.primary
+                                            .withValues(alpha: 0.3),
+                                        AppColors.secondary
+                                            .withValues(alpha: 0.2),
+                                        AppColors.tertiary
+                                            .withValues(alpha: 0.1),
                                       ],
                                       stops: const [0.0, 0.5, 1.0],
                                     ),
@@ -478,7 +481,7 @@ class MovieCredits extends StatelessWidget {
                         Text(
                           actor.name,
                           style: AppTextStyle.bodyMedium.copyWith(
-                            color: context.colors.onBackground,
+                            color: context.colors.onSurface,
                           ),
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
@@ -499,7 +502,7 @@ class MovieCredits extends StatelessWidget {
                   Text(
                     'movieDetails.directionLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   if (directors.isNotEmpty)
@@ -513,7 +516,7 @@ class MovieCredits extends StatelessWidget {
                   Text(
                     'movieDetails.screenplayLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   if (screenwriters.isNotEmpty)
@@ -527,7 +530,7 @@ class MovieCredits extends StatelessWidget {
                   Text(
                     'movieDetails.musicLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   if (composers.isNotEmpty)
@@ -541,7 +544,7 @@ class MovieCredits extends StatelessWidget {
                   Text(
                     'movieDetails.photographyLabel'.tr(),
                     style: AppTextStyle.titleLarge.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   if (photographers.isNotEmpty)
@@ -553,7 +556,7 @@ class MovieCredits extends StatelessWidget {
                     ),
                 ],
               ),
-            )
+            ),
           ],
         );
       },

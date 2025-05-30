@@ -8,8 +8,8 @@ class MetallicIconButton extends StatelessWidget {
   final double size;
 
   const MetallicIconButton({
-    this.icon,
     required this.baseColor,
+    this.icon,
     this.onPressed,
     this.size = 26.0,
     super.key,
@@ -17,19 +17,19 @@ class MetallicIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lighter = baseColor.withOpacity(0.5);
+    final lighter = baseColor.withValues(alpha: 0.5);
     final darker = baseColor.withAlpha(150);
 
     return Container(
       decoration: BoxDecoration(
-        color: context.colors.onBackground.withOpacity(0.15),
+        color: context.colors.onSurface.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(
           AppBorderRadius.brMax,
         ),
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: context.colors.background.withOpacity(0.65),
+          color: context.colors.surface.withValues(alpha: 0.65),
           borderRadius: BorderRadius.circular(
             AppBorderRadius.brMax,
           ),
@@ -68,7 +68,7 @@ class MetallicIconButton extends StatelessWidget {
                     child: LinearProgressIndicator(
                       color: baseColor,
                       minHeight: 4,
-                      backgroundColor: context.colors.background,
+                      backgroundColor: context.colors.surface,
                     ),
                   ),
                 ),

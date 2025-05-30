@@ -34,13 +34,13 @@ class OpenProfileWebButton extends StatelessWidget {
           Text(
             'profile.goToWebButtonText'.tr(),
             style: AppTextStyle.bodyLarge.copyWith(
-              color: context.colors.onBackground,
+              color: context.colors.onSurface,
             ),
           ),
           AppSpaces.gapW8,
           Icon(
             Icons.open_in_new_rounded,
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
             size: 18,
           ),
         ],

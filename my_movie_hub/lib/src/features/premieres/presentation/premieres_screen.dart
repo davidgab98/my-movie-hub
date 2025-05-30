@@ -106,7 +106,7 @@ class _HeadlineTextHeader extends StatelessWidget {
       builder: (context, state) {
         return SliverAppBar(
           toolbarHeight: 35,
-          backgroundColor: context.colors.background,
+          backgroundColor: context.colors.surface,
           flexibleSpace: Padding(
             padding: const EdgeInsets.fromLTRB(
               AppSpaces.s16,
@@ -126,7 +126,7 @@ class _HeadlineTextHeader extends StatelessWidget {
                 },
               ),
               style: AppTextStyle.bodyMedium.copyWith(
-                color: context.colors.onBackground,
+                color: context.colors.onSurface,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -146,7 +146,7 @@ class _TimeLineFiltersHeader extends StatelessWidget {
       floating: true,
       snap: true,
       toolbarHeight: 72,
-      backgroundColor: context.colors.background,
+      backgroundColor: context.colors.surface,
       flexibleSpace: const Padding(
         padding: EdgeInsets.symmetric(
           vertical: AppSpaces.s12,
@@ -191,7 +191,7 @@ class _InitialDateInput extends StatelessWidget {
               color: context.colors.surface,
               borderRadius: BorderRadius.circular(AppBorderRadius.br10),
               border: Border.all(
-                color: context.colors.outline.withOpacity(0.25),
+                color: context.colors.outline.withValues(alpha: 0.25),
               ),
             ),
             child: Align(
@@ -199,7 +199,7 @@ class _InitialDateInput extends StatelessWidget {
               child: Text(
                 state.initialDate?.toStylizedString() ?? '',
                 style: AppTextStyle.titleMedium.copyWith(
-                  color: context.colors.onBackground,
+                  color: context.colors.onSurface,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -222,11 +222,11 @@ class _InitialDateInput extends StatelessWidget {
         final screenHeight = MediaQuery.of(context).size.height;
 
         return Dialog(
-          backgroundColor: context.colors.background,
+          backgroundColor: context.colors.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppBorderRadius.br20),
             side: BorderSide(
-              color: context.colors.outline.withOpacity(0.25),
+              color: context.colors.outline.withValues(alpha: 0.25),
             ),
           ),
           child: Stack(
@@ -245,7 +245,7 @@ class _InitialDateInput extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.close, color: context.colors.onBackground),
+                icon: Icon(Icons.close, color: context.colors.onSurface),
                 onPressed: context.pop,
               ),
             ],
@@ -276,7 +276,7 @@ class _CountryInput extends StatelessWidget {
         color: context.colors.surface,
         borderRadius: BorderRadius.circular(AppBorderRadius.br10),
         border: Border.all(
-          color: context.colors.outline.withOpacity(0.25),
+          color: context.colors.outline.withValues(alpha: 0.25),
         ),
       ),
       child: Stack(
@@ -290,22 +290,22 @@ class _CountryInput extends StatelessWidget {
             showCountryOnly: true,
             showFlagDialog: true,
             showOnlyCountryWhenClosed: true,
-            backgroundColor: context.colors.background,
-            dialogBackgroundColor: context.colors.background,
-            barrierColor: AppColors.black.withOpacity(0.5),
+            backgroundColor: context.colors.surface,
+            dialogBackgroundColor: context.colors.surface,
+            barrierColor: AppColors.black.withValues(alpha: 0.5),
             dialogSize: Size(screenWidth, screenHeight * 0.5),
             dialogTextStyle: AppTextStyle.titleMedium,
             initialSelection: 'ES',
             searchStyle: AppTextStyle.titleMedium,
             textStyle: AppTextStyle.titleMedium.copyWith(
-              color: context.colors.onBackground,
+              color: context.colors.onSurface,
             ),
             alignLeft: true,
             boxDecoration: BoxDecoration(
-              color: context.colors.background,
+              color: context.colors.surface,
               borderRadius: BorderRadius.circular(AppBorderRadius.br32),
               border: Border.all(
-                color: context.colors.outline.withOpacity(0.25),
+                color: context.colors.outline.withValues(alpha: 0.25),
               ),
             ),
             countryFilter: countries,
@@ -470,7 +470,7 @@ class _TimeLineItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppBorderRadius.br16),
                     border: Border.all(
                       width: 0.5,
-                      color: context.colors.onBackground.withOpacity(0.25),
+                      color: context.colors.onSurface.withValues(alpha: 0.25),
                     ),
                   ),
                   child: FittedBox(

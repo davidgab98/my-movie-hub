@@ -42,7 +42,7 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
         Text(
           widget.model.labelText ?? '',
           style: AppTextStyle.titleLarge.copyWith(
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
           ),
         ),
         TextFormField(
@@ -51,7 +51,7 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
           keyboardType: TextInputType.text,
           obscureText: passwordHidden,
           style: AppTextStyle.titleSmall.copyWith(
-            color: context.colors.onBackground,
+            color: context.colors.onSurface,
           ),
           cursorColor: context.colors.outline,
           decoration: InputDecoration(
@@ -73,7 +73,7 @@ class _MMHPasswordFormFieldState extends State<MMHPasswordFormField> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),
-              borderSide: BorderSide(color: context.colors.onBackground),
+              borderSide: BorderSide(color: context.colors.onSurface),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(AppBorderRadius.br8),

@@ -85,7 +85,7 @@ class _MovieListHeader extends StatelessWidget {
               ? Text(
                   '${state.totalMovies} ${'list.moviesResultsLabel'.tr()}',
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: context.colors.onBackground,
+                    color: context.colors.onSurface,
                   ),
                 )
               : null,
@@ -99,7 +99,8 @@ class _MovieListHeader extends StatelessWidget {
           actions: [
             IconButton(
               style: IconButton.styleFrom(
-                backgroundColor: context.colors.onBackground.withOpacity(0.125),
+                backgroundColor:
+                    context.colors.onSurface.withValues(alpha: 0.125),
               ),
               onPressed:
                   context.read<ComplexMovieListCubit>().toggleListDisplayMode,
@@ -112,7 +113,7 @@ class _MovieListHeader extends StatelessWidget {
                             ? Icons.grid_4x4_rounded
                             : Icons.view_list_outlined,
                 size: 28,
-                color: context.colors.onBackground,
+                color: context.colors.onSurface,
               ),
             ),
             AppSpaces.gapW6,
@@ -124,8 +125,8 @@ class _MovieListHeader extends StatelessWidget {
                     horizontal: AppSpaces.s10,
                   ),
                   disabledBackgroundColor:
-                      context.colors.onBackground.withOpacity(0.125),
-                  backgroundColor: context.colors.background,
+                      context.colors.onSurface.withValues(alpha: 0.125),
+                  backgroundColor: context.colors.surface,
                 ),
                 onPressed: state.orderType == orderType
                     ? () => context
@@ -139,7 +140,7 @@ class _MovieListHeader extends StatelessWidget {
                 child: Text(
                   orderType.toString(),
                   style: AppTextStyle.titleMedium.copyWith(
-                    color: context.colors.onBackground,
+                    color: context.colors.onSurface,
                   ),
                 ),
               ),
@@ -243,8 +244,8 @@ class _MovieListWithImages extends StatelessWidget {
 class _MovieGrid extends StatelessWidget {
   const _MovieGrid({
     required this.state,
-    super.key,
     required this.crossAxisCount,
+    super.key,
   });
 
   final ComplexMovieListState state;

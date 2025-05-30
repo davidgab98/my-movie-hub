@@ -20,9 +20,11 @@ class OverallRatingStars extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(AppSpaces.s6),
           decoration: BoxDecoration(
-            color: Colors.amber.withOpacity(0.2),
-            border:
-                Border.all(color: Colors.amber.withOpacity(0.25), width: 0.5),
+            color: Colors.amber.withValues(alpha: 0.2),
+            border: Border.all(
+              color: Colors.amber.withValues(alpha: 0.25),
+              width: 0.5,
+            ),
             borderRadius: const BorderRadius.all(
               Radius.circular(AppBorderRadius.brMax),
             ),
@@ -30,7 +32,7 @@ class OverallRatingStars extends StatelessWidget {
           child: Text(
             voteAverage.toStringAsFixed(1),
             style: AppTextStyle.titleMedium.copyWith(
-              color: context.colors.onBackground,
+              color: context.colors.onSurface,
             ),
           ),
         ),
@@ -44,7 +46,7 @@ class OverallRatingStars extends StatelessWidget {
               children: [
                 Icon(
                   Icons.star,
-                  color: Colors.grey.withOpacity(0.75),
+                  color: Colors.grey.withValues(alpha: 0.75),
                   size: 30,
                 ),
                 ClipRect(
@@ -66,7 +68,7 @@ class OverallRatingStars extends StatelessWidget {
         Text(
           '${voteCount.ceil()} ${'ratings.reviewsLabel'.tr()}',
           style: AppTextStyle.labelSmall.copyWith(
-            color: Colors.amber.withOpacity(0.75),
+            color: Colors.amber.withValues(alpha: 0.75),
           ),
         ),
       ],

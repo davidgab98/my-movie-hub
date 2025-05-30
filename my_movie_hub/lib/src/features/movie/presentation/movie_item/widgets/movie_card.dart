@@ -34,9 +34,9 @@ class MovieCard extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      AppColors.primary.withOpacity(0.3),
-                      AppColors.secondary.withOpacity(0.2),
-                      AppColors.tertiary.withOpacity(0.1),
+                      AppColors.primary.withValues(alpha: 0.3),
+                      AppColors.secondary.withValues(alpha: 0.2),
+                      AppColors.tertiary.withValues(alpha: 0.1),
                     ],
                     stops: const [0.0, 0.5, 1.0],
                   ),
@@ -55,14 +55,14 @@ class MovieCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: context.colors.outline.withOpacity(0.75),
+                        color: context.colors.outline.withValues(alpha: 0.75),
                       ),
                       textAlign: TextAlign.center,
                     ),
                     Text(
                       movie.title.toUpperCase(),
                       style: AppTextStyle.labelLarge.copyWith(
-                        color: context.colors.onBackground.withOpacity(0.75),
+                        color: context.colors.onSurface.withValues(alpha: 0.75),
                       ),
                       textAlign: TextAlign.center,
                       maxLines: 3,

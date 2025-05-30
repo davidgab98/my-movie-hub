@@ -13,17 +13,20 @@ import 'package:my_movie_hub/src/features/movie_list/domain/models/movie_list_re
 abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     with ExceptionsHelper {
   ComplexMovieListCubit({
-    required Future<Result<MovieListResponse, Exception>> Function(
-            {required int page, OrderType orderType})
-        fetchMovies,
+    required Future<Result<MovieListResponse, Exception>> Function({
+      required int page,
+      OrderType orderType,
+    }) fetchMovies,
     ListDisplayMode initialListDisplayMode = ListDisplayMode.listWithImages,
   })  : _fetchMovies = fetchMovies,
         super(
           ComplexMovieListState(listDisplayMode: initialListDisplayMode),
         );
 
-  final Future<Result<MovieListResponse, Exception>> Function(
-      {required int page, OrderType orderType}) _fetchMovies;
+  final Future<Result<MovieListResponse, Exception>> Function({
+    required int page,
+    OrderType orderType,
+  }) _fetchMovies;
   int _currentPage = 1;
 
   Future<void> loadMovies({bool isRefreshing = false}) async {
@@ -33,7 +36,9 @@ abstract class ComplexMovieListCubit extends Cubit<ComplexMovieListState>
     }
 
     if ((state.status.isLoaded && state.hasReachedMax) ||
-        state.status.isLoading) return;
+        state.status.isLoading) {
+      return;
+    }
 
     emit(state.copyWith(status: StateStatus.loading));
 

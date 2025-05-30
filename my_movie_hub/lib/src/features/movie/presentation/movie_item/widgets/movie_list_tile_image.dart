@@ -49,9 +49,9 @@ class MovieListTileImage extends StatelessWidget {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppColors.primary.withOpacity(0.3),
-                        AppColors.secondary.withOpacity(0.2),
-                        AppColors.tertiary.withOpacity(0.1),
+                        AppColors.primary.withValues(alpha: 0.3),
+                        AppColors.secondary.withValues(alpha: 0.2),
+                        AppColors.tertiary.withValues(alpha: 0.1),
                       ],
                       stops: const [0.0, 0.5, 1.0],
                     ),
@@ -64,7 +64,7 @@ class MovieListTileImage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: context.colors.outline.withOpacity(0.75),
+                          color: context.colors.outline.withValues(alpha: 0.75),
                         ),
                       ),
                     ],
@@ -76,7 +76,7 @@ class MovieListTileImage extends StatelessWidget {
                     gradient: LinearGradient(
                       colors: [
                         Colors.transparent,
-                        Colors.black.withOpacity(0.7),
+                        Colors.black.withValues(alpha: 0.7),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Explanation: This widget is used to restart the main cubits on top of the app
 
 class HotRestartController extends StatefulWidget {
-  const HotRestartController({super.key, required this.child});
+  const HotRestartController({required this.child, super.key});
 
   final Widget child;
 

@@ -249,5 +249,5 @@ const List<String> countries = [
   'ZA',
   'ZM',
   'ZR',
-  'ZW'
+  'ZW',
 ];

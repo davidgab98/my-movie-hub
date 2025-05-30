@@ -32,13 +32,13 @@ class ProfileScreen extends StatelessWidget {
                   Text(
                     state.user.username,
                     style: AppTextStyle.headlineXXL.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   Text(
                     '${'profile.userIdLabel'.tr()}: ${state.user.id}',
                     style: AppTextStyle.labelSmall.copyWith(
-                      color: context.colors.onBackground,
+                      color: context.colors.onSurface,
                     ),
                   ),
                   AppSpaces.gapH24,

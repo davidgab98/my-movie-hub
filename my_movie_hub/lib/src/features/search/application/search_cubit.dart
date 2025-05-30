@@ -22,7 +22,9 @@ class SearchCubit extends Cubit<SearchState> with ExceptionsHelper {
     }
 
     if ((state.status.isLoaded && state.hasReachedMax) ||
-        state.status.isLoading) return;
+        state.status.isLoading) {
+      return;
+    }
 
     emit(state.copyWith(status: StateStatus.loading));
 
