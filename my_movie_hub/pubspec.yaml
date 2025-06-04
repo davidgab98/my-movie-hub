@@ -52,7 +52,7 @@ flutter:
   #generate: false
   assets:
     - assets/l10n/
-    - assets/pngs/
+    - assets/png/
     - assets/google_fonts/
     - .env
 

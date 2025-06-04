@@ -46,7 +46,7 @@ class _Body extends StatelessWidget {
         child: Image(
           height: MediaQuery.of(context).size.height * 0.075,
           image: const AssetImage(
-            'assets/pngs/mmh_logo.png',
+            'assets/png/mmh_logo.png',
           ),
         ),
       ),

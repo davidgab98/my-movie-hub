@@ -6,7 +6,7 @@
 <br />
 <div align="center">                                
   
-  <img src="my_movie_hub/assets/pngs/mmh_logo.png" alt="Logo" height="50">
+  <img src="my_movie_hub/assets/png/mmh_logo.png" alt="Logo" height="50">
   <h1 align="center">MY MOVIE HUB</h1>
   <p align="center">
     Aplicación móvil centrada en la exploración, búsqueda y gestión de películas, listas y estrenos de cine.

@@ -46,7 +46,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               height: kToolbarHeight - 22,
               image: AssetImage(
-                'assets/pngs/mmh_logo.png',
+                'assets/png/mmh_logo.png',
               ),
             ),
       leading: leadingIconAction != null
@@ -68,7 +68,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               height: kToolbarHeight - 28,
               image: AssetImage(
-                'assets/pngs/mmh_logo.png',
+                'assets/png/mmh_logo.png',
               ),
             ),
           )

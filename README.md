@@ -6,7 +6,7 @@
 <br />
 <div align="center">                                
   
-  <img src="my_movie_hub/assets/pngs/mmh_logo.png" alt="Logo" height="50">
+  <img src="my_movie_hub/assets/png/mmh_logo.png" alt="Logo" height="50">
   <h1 align="center">MY MOVIE HUB</h1>
   <p align="center">
     Mobile application focused on the exploration, search and management of movies, lists and movie releases.

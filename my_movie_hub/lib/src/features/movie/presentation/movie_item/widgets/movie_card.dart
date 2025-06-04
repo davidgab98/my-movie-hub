@@ -47,7 +47,7 @@ class MovieCard extends StatelessWidget {
                     const Image(
                       height: kToolbarHeight / 3,
                       image: AssetImage(
-                        'assets/pngs/mmh_logo.png',
+                        'assets/png/mmh_logo.png',
                       ),
                     ),
                     Text(

@@ -39,7 +39,7 @@ class ProfileHeader extends StatelessWidget {
               ),
               child: Image(
                 image: AssetImage(
-                  'assets/pngs/user_profile_frame.png',
+                  'assets/png/user_profile_frame.png',
                 ),
               ),
             ),
