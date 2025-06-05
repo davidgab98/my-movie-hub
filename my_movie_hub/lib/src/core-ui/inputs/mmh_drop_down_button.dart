@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/src/styles/app_styles.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class MMHDropdownButton<T> extends StatelessWidget {
   const MMHDropdownButton({
-    super.key,
     required this.values,
     required this.currentValue,
     required this.onChange,
+    super.key,
   });
 
   final List<T> values;

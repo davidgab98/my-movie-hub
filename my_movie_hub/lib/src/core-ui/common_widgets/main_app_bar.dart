@@ -22,8 +22,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
             colors: [
               AppColors.primary.withValues(alpha: 0.1),
               AppColors.secondary.withValues(alpha: 0.25),
@@ -43,7 +41,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             )
           : const Image(
-              alignment: Alignment.center,
               height: kToolbarHeight - 22,
               image: AssetImage(
                 'assets/png/mmh_logo.png',
@@ -65,13 +62,12 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           const Padding(
             padding: EdgeInsets.only(right: AppSpaces.s16),
             child: Image(
-              alignment: Alignment.center,
               height: kToolbarHeight - 28,
               image: AssetImage(
                 'assets/png/mmh_logo.png',
               ),
             ),
-          )
+          ),
       ],
     );
   }

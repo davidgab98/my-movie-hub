@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/ui_kit.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/mmh_circular_progress_indicator.dart';
 
 class IntermediateLoadingScreen extends StatelessWidget {
   const IntermediateLoadingScreen({super.key});

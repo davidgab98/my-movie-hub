@@ -12,7 +12,7 @@ part of 'movie.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Movie _$MovieFromJson(Map<String, dynamic> json) {
   return _Movie.fromJson(json);
@@ -45,8 +45,12 @@ mixin _$Movie {
   @JsonKey(name: 'account_states')
   AccountStates? get accountStates => throw _privateConstructorUsedError;
 
+  /// Serializes this Movie to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MovieCopyWith<Movie> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -86,6 +90,8 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,6 +175,8 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     ) as $Val);
   }
 
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountStatesCopyWith<$Res>? get accountStates {
@@ -219,6 +227,8 @@ class __$$MovieImplCopyWithImpl<$Res>
       _$MovieImpl _value, $Res Function(_$MovieImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -385,7 +395,7 @@ class _$MovieImpl implements _Movie {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MovieImpl &&
@@ -416,7 +426,7 @@ class _$MovieImpl implements _Movie {
                 other.accountStates == accountStates));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -436,7 +446,9 @@ class _$MovieImpl implements _Movie {
       voteCount,
       accountStates);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
@@ -511,8 +523,11 @@ abstract class _Movie implements Movie {
   @override
   @JsonKey(name: 'account_states')
   AccountStates? get accountStates;
+
+  /// Create a copy of Movie
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -565,8 +580,12 @@ mixin _$DetailedMovie {
   String? get status => throw _privateConstructorUsedError;
   String? get tagline => throw _privateConstructorUsedError;
 
+  /// Serializes this DetailedMovie to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DetailedMovieCopyWith<DetailedMovie> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -620,6 +639,8 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -753,6 +774,8 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
     ) as $Val);
   }
 
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountStatesCopyWith<$Res>? get accountStates {
@@ -765,6 +788,8 @@ class _$DetailedMovieCopyWithImpl<$Res, $Val extends DetailedMovie>
     });
   }
 
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CreditsCopyWith<$Res> get credits {
@@ -825,6 +850,8 @@ class __$$DetailedMovieImplCopyWithImpl<$Res>
       _$DetailedMovieImpl _value, $Res Function(_$DetailedMovieImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1100,7 +1127,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DetailedMovieImpl &&
@@ -1145,7 +1172,7 @@ class _$DetailedMovieImpl implements _DetailedMovie {
             (identical(other.tagline, tagline) || other.tagline == tagline));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -1176,7 +1203,9 @@ class _$DetailedMovieImpl implements _DetailedMovie {
         tagline
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DetailedMovieImplCopyWith<_$DetailedMovieImpl> get copyWith =>
@@ -1287,8 +1316,11 @@ abstract class _DetailedMovie implements DetailedMovie {
   String? get status;
   @override
   String? get tagline;
+
+  /// Create a copy of DetailedMovie
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DetailedMovieImplCopyWith<_$DetailedMovieImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1302,8 +1334,12 @@ mixin _$Credits {
   List<CrewMember> get crew => throw _privateConstructorUsedError;
   List<CastMember> get cast => throw _privateConstructorUsedError;
 
+  /// Serializes this Credits to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Credits
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreditsCopyWith<Credits> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1325,6 +1361,8 @@ class _$CreditsCopyWithImpl<$Res, $Val extends Credits>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Credits
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1362,6 +1400,8 @@ class __$$CreditsImplCopyWithImpl<$Res>
       _$CreditsImpl _value, $Res Function(_$CreditsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Credits
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1418,7 +1458,7 @@ class _$CreditsImpl extends _Credits {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreditsImpl &&
@@ -1426,14 +1466,16 @@ class _$CreditsImpl extends _Credits {
             const DeepCollectionEquality().equals(other._cast, _cast));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_crew),
       const DeepCollectionEquality().hash(_cast));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Credits
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreditsImplCopyWith<_$CreditsImpl> get copyWith =>
@@ -1459,8 +1501,11 @@ abstract class _Credits extends Credits {
   List<CrewMember> get crew;
   @override
   List<CastMember> get cast;
+
+  /// Create a copy of Credits
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreditsImplCopyWith<_$CreditsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1477,8 +1522,12 @@ mixin _$CrewMember {
   String get job => throw _privateConstructorUsedError;
   String? get profilePath => throw _privateConstructorUsedError;
 
+  /// Serializes this CrewMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CrewMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CrewMemberCopyWith<CrewMember> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1507,6 +1556,8 @@ class _$CrewMemberCopyWithImpl<$Res, $Val extends CrewMember>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CrewMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1565,6 +1616,8 @@ class __$$CrewMemberImplCopyWithImpl<$Res>
       _$CrewMemberImpl _value, $Res Function(_$CrewMemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CrewMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1629,7 +1682,7 @@ class _$CrewMemberImpl implements _CrewMember {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CrewMemberImpl &&
@@ -1642,12 +1695,14 @@ class _$CrewMemberImpl implements _CrewMember {
                 other.profilePath == profilePath));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, department, job, profilePath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CrewMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CrewMemberImplCopyWith<_$CrewMemberImpl> get copyWith =>
@@ -1682,8 +1737,11 @@ abstract class _CrewMember implements CrewMember {
   String get job;
   @override
   String? get profilePath;
+
+  /// Create a copy of CrewMember
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CrewMemberImplCopyWith<_$CrewMemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1700,8 +1758,12 @@ mixin _$CastMember {
   @JsonKey(name: 'profile_path')
   String? get profilePath => throw _privateConstructorUsedError;
 
+  /// Serializes this CastMember to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CastMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CastMemberCopyWith<CastMember> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1729,6 +1791,8 @@ class _$CastMemberCopyWithImpl<$Res, $Val extends CastMember>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CastMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1781,6 +1845,8 @@ class __$$CastMemberImplCopyWithImpl<$Res>
       _$CastMemberImpl _value, $Res Function(_$CastMemberImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CastMember
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1838,7 +1904,7 @@ class _$CastMemberImpl implements _CastMember {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CastMemberImpl &&
@@ -1850,12 +1916,14 @@ class _$CastMemberImpl implements _CastMember {
                 other.profilePath == profilePath));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, character, profilePath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CastMember
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CastMemberImplCopyWith<_$CastMemberImpl> get copyWith =>
@@ -1889,8 +1957,11 @@ abstract class _CastMember implements CastMember {
   @override
   @JsonKey(name: 'profile_path')
   String? get profilePath;
+
+  /// Create a copy of CastMember
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CastMemberImplCopyWith<_$CastMemberImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1908,8 +1979,12 @@ mixin _$ProductionCompany {
   @JsonKey(name: 'origin_country')
   String? get originCountry => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductionCompany to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductionCompany
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductionCompanyCopyWith<ProductionCompany> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1937,6 +2012,8 @@ class _$ProductionCompanyCopyWithImpl<$Res, $Val extends ProductionCompany>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductionCompany
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1989,6 +2066,8 @@ class __$$ProductionCompanyImplCopyWithImpl<$Res>
       $Res Function(_$ProductionCompanyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductionCompany
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2047,7 +2126,7 @@ class _$ProductionCompanyImpl implements _ProductionCompany {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductionCompanyImpl &&
@@ -2059,12 +2138,14 @@ class _$ProductionCompanyImpl implements _ProductionCompany {
                 other.originCountry == originCountry));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, logoPath, name, originCountry);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductionCompany
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductionCompanyImplCopyWith<_$ProductionCompanyImpl> get copyWith =>
@@ -2100,8 +2181,11 @@ abstract class _ProductionCompany implements ProductionCompany {
   @override
   @JsonKey(name: 'origin_country')
   String? get originCountry;
+
+  /// Create a copy of ProductionCompany
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductionCompanyImplCopyWith<_$ProductionCompanyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2116,8 +2200,12 @@ mixin _$ProductionCountry {
   String get isoCode => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductionCountry to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductionCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductionCountryCopyWith<ProductionCountry> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2141,6 +2229,8 @@ class _$ProductionCountryCopyWithImpl<$Res, $Val extends ProductionCountry>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductionCountry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2179,6 +2269,8 @@ class __$$ProductionCountryImplCopyWithImpl<$Res>
       $Res Function(_$ProductionCountryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductionCountry
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2219,7 +2311,7 @@ class _$ProductionCountryImpl implements _ProductionCountry {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductionCountryImpl &&
@@ -2227,11 +2319,13 @@ class _$ProductionCountryImpl implements _ProductionCountry {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isoCode, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductionCountry
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductionCountryImplCopyWith<_$ProductionCountryImpl> get copyWith =>
@@ -2259,8 +2353,11 @@ abstract class _ProductionCountry implements ProductionCountry {
   String get isoCode;
   @override
   String? get name;
+
+  /// Create a copy of ProductionCountry
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductionCountryImplCopyWith<_$ProductionCountryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2277,8 +2374,12 @@ mixin _$SpokenLanguage {
   @JsonKey(name: 'english_name')
   String? get englishName => throw _privateConstructorUsedError;
 
+  /// Serializes this SpokenLanguage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpokenLanguage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SpokenLanguageCopyWith<SpokenLanguage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2305,6 +2406,8 @@ class _$SpokenLanguageCopyWithImpl<$Res, $Val extends SpokenLanguage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SpokenLanguage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2351,6 +2454,8 @@ class __$$SpokenLanguageImplCopyWithImpl<$Res>
       _$SpokenLanguageImpl _value, $Res Function(_$SpokenLanguageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpokenLanguage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2401,7 +2506,7 @@ class _$SpokenLanguageImpl implements _SpokenLanguage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpokenLanguageImpl &&
@@ -2411,11 +2516,13 @@ class _$SpokenLanguageImpl implements _SpokenLanguage {
                 other.englishName == englishName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isoCode, name, englishName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpokenLanguage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SpokenLanguageImplCopyWith<_$SpokenLanguageImpl> get copyWith =>
@@ -2448,8 +2555,11 @@ abstract class _SpokenLanguage implements SpokenLanguage {
   @override
   @JsonKey(name: 'english_name')
   String? get englishName;
+
+  /// Create a copy of SpokenLanguage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SpokenLanguageImplCopyWith<_$SpokenLanguageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2465,8 +2575,12 @@ mixin _$AccountStates {
   @JsonKey(fromJson: _ratedFromJson)
   double? get rated => throw _privateConstructorUsedError;
 
+  /// Serializes this AccountStates to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountStates
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountStatesCopyWith<AccountStates> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2493,6 +2607,8 @@ class _$AccountStatesCopyWithImpl<$Res, $Val extends AccountStates>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AccountStates
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2539,6 +2655,8 @@ class __$$AccountStatesImplCopyWithImpl<$Res>
       _$AccountStatesImpl _value, $Res Function(_$AccountStatesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountStates
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2590,7 +2708,7 @@ class _$AccountStatesImpl implements _AccountStates {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountStatesImpl &&
@@ -2601,11 +2719,13 @@ class _$AccountStatesImpl implements _AccountStates {
             (identical(other.rated, rated) || other.rated == rated));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, favorite, watchlist, rated);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountStates
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountStatesImplCopyWith<_$AccountStatesImpl> get copyWith =>
@@ -2636,8 +2756,11 @@ abstract class _AccountStates implements AccountStates {
   @override
   @JsonKey(fromJson: _ratedFromJson)
   double? get rated;
+
+  /// Create a copy of AccountStates
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountStatesImplCopyWith<_$AccountStatesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

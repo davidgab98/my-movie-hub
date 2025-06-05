@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/src/styles/app_styles.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class MMHPasswordFormFieldModel {
   final String? initialValue;
@@ -22,9 +22,9 @@ class MMHPasswordFormField extends StatefulWidget {
   final void Function(String) onChanged;
 
   const MMHPasswordFormField({
-    super.key,
     required this.model,
     required this.onChanged,
+    super.key,
   });
 
   @override

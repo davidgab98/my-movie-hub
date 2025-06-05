@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:my_movie_hub/src/core-ui/forms/sign_in_inputs.dart';
+import 'package:my_movie_hub/src/core-ui/forms/sign_in__form_inputs.dart';
 import 'package:my_movie_hub/src/core/exceptions/exceptions_helper.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_state.dart';

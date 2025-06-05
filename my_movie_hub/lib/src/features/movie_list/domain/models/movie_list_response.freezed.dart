@@ -12,7 +12,7 @@ part of 'movie_list_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MovieListResponse _$MovieListResponseFromJson(Map<String, dynamic> json) {
   return _MovieListResponse.fromJson(json);
@@ -27,8 +27,12 @@ mixin _$MovieListResponse {
   @JsonKey(name: 'total_results')
   int get totalResults => throw _privateConstructorUsedError;
 
+  /// Serializes this MovieListResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MovieListResponseCopyWith<MovieListResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$MovieListResponseCopyWithImpl<$Res, $Val extends MovieListResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$MovieListResponseImplCopyWithImpl<$Res>
       $Res Function(_$MovieListResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +167,7 @@ class _$MovieListResponseImpl implements _MovieListResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MovieListResponseImpl &&
@@ -170,12 +178,14 @@ class _$MovieListResponseImpl implements _MovieListResponse {
                 other.totalResults == totalResults));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_movies), totalPages, totalResults);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MovieListResponseImplCopyWith<_$MovieListResponseImpl> get copyWith =>
@@ -209,8 +219,11 @@ abstract class _MovieListResponse implements MovieListResponse {
   @override
   @JsonKey(name: 'total_results')
   int get totalResults;
+
+  /// Create a copy of MovieListResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MovieListResponseImplCopyWith<_$MovieListResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

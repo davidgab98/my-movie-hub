@@ -27,6 +27,14 @@
             "realoadButtonText": "Reload"
         }
     },
+    "common": {
+        "ok": "Ok",
+        "and": "and"
+    },
+    "policy": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Use"
+    },
     "signIn": {
         "notHaveAccountMessage": "Not registered?",
         "notHaveAccountButtonText": "Create a User",
@@ -70,7 +78,8 @@
     },
     "premieres": {
         "mainTitle": "Premieres",
-        "headline": "In theaters from {date} in {country}"
+        "headline": "In theaters from {date} in {country}",
+        "showPremieresButton": "Show Premieres"
     },
     "list": {
         "errorLoadingNewDataText": "Error loading new data",
@@ -124,7 +133,9 @@
         }
     },
     "about": {
-        "mainTitle": "About"
+        "mainTitle": "About",
+        "openSourceLicenses": "Open Source Licenses",
+        "attributionText": "All film-related metadata used in My Movie Hub, including actor, director and studio names, synopses, release dates and poster art is supplied by "
     },
     "orderType": {
         "ascendent": "Latest",

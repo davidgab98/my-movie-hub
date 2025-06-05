@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/main_app_bar.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,13 +52,6 @@ class HelpAndFeedbackScreen extends StatelessWidget {
                 await launchUrl(mail);
               },
             ),
-            // AppSpaces.gapH20,
-            // _OptionListTile(
-            //   title: 'Rate the app',
-            //   icon: Icons.star_rate_outlined,
-            //   color: Colors.amber,
-            //   onPress: () {},
-            // ),
           ],
         ),
       ),
@@ -70,13 +64,11 @@ class _OptionListTile extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.onPress,
-    this.color,
     super.key,
   });
 
   final String title;
   final IconData icon;
-  final Color? color;
   final VoidCallback onPress;
 
   @override
@@ -96,7 +88,7 @@ class _OptionListTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           color: context.colors.secondary.withValues(alpha: 0.1),
         ),
-        child: Icon(icon, color: color ?? context.colors.secondary),
+        child: Icon(icon, color: context.colors.secondary),
       ),
       trailing: Container(
         width: 30,
@@ -108,7 +100,7 @@ class _OptionListTile extends StatelessWidget {
         child: Icon(
           Icons.arrow_forward_ios_rounded,
           size: 18,
-          color: color ?? context.colors.secondary,
+          color: context.colors.secondary,
         ),
       ),
     );

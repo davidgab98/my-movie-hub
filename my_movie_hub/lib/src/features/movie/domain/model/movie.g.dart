@@ -7,7 +7,7 @@ part of 'movie.dart';
 // **************************************************************************
 
 _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       adult: json['adult'] as bool? ?? false,
       backdropPath: json['backdrop_path'] as String? ?? '',
       genres: json['genre_ids'] == null
@@ -22,7 +22,7 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       title: json['title'] as String? ?? '',
       video: json['video'] as bool? ?? false,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0.0,
-      voteCount: json['vote_count'] as int? ?? 0,
+      voteCount: (json['vote_count'] as num?)?.toInt() ?? 0,
       accountStates: json['account_states'] == null
           ? null
           : AccountStates.fromJson(
@@ -72,7 +72,7 @@ const _$MovieGenreEnumMap = {
 
 _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
     _$DetailedMovieImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       adult: json['adult'] as bool? ?? false,
       backdropPath: json['backdrop_path'] as String? ?? '',
       originalLanguage: json['original_language'] as String? ?? '',
@@ -84,7 +84,7 @@ _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       video: json['video'] as bool? ?? false,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0.0,
-      voteCount: json['vote_count'] as int? ?? 0,
+      voteCount: (json['vote_count'] as num?)?.toInt() ?? 0,
       accountStates: json['account_states'] == null
           ? null
           : AccountStates.fromJson(
@@ -92,7 +92,7 @@ _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
       credits: json['credits'] == null
           ? const Credits()
           : Credits.fromLimitedJson(json['credits'] as Map<String, dynamic>),
-      budget: json['budget'] as int?,
+      budget: (json['budget'] as num?)?.toInt(),
       homepage: json['homepage'] as String?,
       imdbId: json['imdb_id'] as String?,
       productionCompanies: (json['production_companies'] as List<dynamic>?)
@@ -101,8 +101,8 @@ _$DetailedMovieImpl _$$DetailedMovieImplFromJson(Map<String, dynamic> json) =>
       productionCountries: (json['production_countries'] as List<dynamic>?)
           ?.map((e) => ProductionCountry.fromJson(e as Map<String, dynamic>))
           .toList(),
-      revenue: json['revenue'] as int?,
-      runtime: json['runtime'] as int?,
+      revenue: (json['revenue'] as num?)?.toInt(),
+      runtime: (json['runtime'] as num?)?.toInt(),
       spokenLanguages: (json['spoken_languages'] as List<dynamic>?)
           ?.map((e) => SpokenLanguage.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -159,7 +159,7 @@ Map<String, dynamic> _$$CreditsImplToJson(_$CreditsImpl instance) =>
 
 _$CrewMemberImpl _$$CrewMemberImplFromJson(Map<String, dynamic> json) =>
     _$CrewMemberImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       department: json['department'] as String,
       job: json['job'] as String,
@@ -177,7 +177,7 @@ Map<String, dynamic> _$$CrewMemberImplToJson(_$CrewMemberImpl instance) =>
 
 _$CastMemberImpl _$$CastMemberImplFromJson(Map<String, dynamic> json) =>
     _$CastMemberImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       character: json['character'] as String?,
       profilePath: json['profile_path'] as String?,
@@ -194,7 +194,7 @@ Map<String, dynamic> _$$CastMemberImplToJson(_$CastMemberImpl instance) =>
 _$ProductionCompanyImpl _$$ProductionCompanyImplFromJson(
         Map<String, dynamic> json) =>
     _$ProductionCompanyImpl(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       logoPath: json['logo_path'] as String?,
       name: json['name'] as String?,
       originCountry: json['origin_country'] as String?,

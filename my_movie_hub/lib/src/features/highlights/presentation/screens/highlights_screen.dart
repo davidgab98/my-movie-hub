@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/main_app_bar.dart';
 import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:my_movie_hub/src/features/ratings/presentation/screens/ratings_screen.dart';

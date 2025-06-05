@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ui_kit/src/styles/app_styles.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class MMHCircularProgressIndicator extends StatelessWidget {
   final double? size;
   final double? strokeWidth;
   final Color? color;
   const MMHCircularProgressIndicator({
-    Key? key,
+    super.key,
     this.size,
     this.strokeWidth,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

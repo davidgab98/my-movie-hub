@@ -12,13 +12,15 @@ part of 'session_manager_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SessionManagerState {
   SessionManagerStatus get status => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionManagerStateCopyWith<SessionManagerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$SessionManagerStateCopyWithImpl<$Res, $Val extends SessionManagerState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$SessionManagerImplCopyWithImpl<$Res>
       _$SessionManagerImpl _value, $Res Function(_$SessionManagerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -104,7 +110,7 @@ class _$SessionManagerImpl implements _SessionManager {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SessionManagerImpl &&
@@ -114,7 +120,9 @@ class _$SessionManagerImpl implements _SessionManager {
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionManagerImplCopyWith<_$SessionManagerImpl> get copyWith =>
@@ -128,8 +136,11 @@ abstract class _SessionManager implements SessionManagerState {
 
   @override
   SessionManagerStatus get status;
+
+  /// Create a copy of SessionManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionManagerImplCopyWith<_$SessionManagerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

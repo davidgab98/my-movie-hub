@@ -1,6 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/policy_privacy_and_terms_of_use.dart';
+import 'package:my_movie_hub/src/core-ui/modals/actions_modal_bottom_sheet.dart';
+import 'package:my_movie_hub/src/core-ui/modals/info_modal.dart';
+import 'package:my_movie_hub/src/core/constants/external_urls.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';
 import 'package:my_movie_hub/src/core/storage/local_storage.dart';
 import 'package:my_movie_hub/src/features/auth/sign_in/application/sign_in_cubit.dart';
@@ -22,49 +26,26 @@ class SignInScreen extends StatelessWidget {
           userCubit: locator<UserCubit>(),
           localStorageService: locator<LocalStorageService>(),
         ),
-        child: SafeArea(
+        child: const SafeArea(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(AppSpaces.s32),
+              padding: EdgeInsets.all(AppSpaces.s32),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Stack(
-                      children: [
-                        Icon(
-                          Icons.movie_filter,
-                          size: 132,
-                          color: Colors.blueGrey.shade200,
-                        ),
-                        Icon(
-                          Icons.movie_filter,
-                          size: 128,
-                          color: Colors.blueGrey.shade400,
-                        ),
-                        Icon(
-                          Icons.movie_filter,
-                          size: 124,
-                          color: Colors.blueGrey.shade600,
-                        ),
-                        Icon(
-                          Icons.movie_filter,
-                          size: 120,
-                          color: Colors.blueGrey.shade800,
-                        ),
-                      ],
+                    Image(
+                      height: 80,
+                      image: AssetImage('assets/png/mmh_logo.png'),
                     ),
                     AppSpaces.gapH16,
-                    Text(
-                      'MY MOVIE HUB',
-                      style: AppTextStyle.headlineLarge.copyWith(
-                        fontSize: 22,
-                        color: context.colors.onSurface,
-                      ),
-                    ),
                     AppSpaces.gapH24,
-                    const SignInForm(),
-                    AppSpaces.gapH32,
-                    const _CreateNewAccount(),
+                    SignInForm(),
+                    AppSpaces.gapH16,
+                    PolicyPrivacyAndTermsOfUse(
+                      text: 'By logging in, you agree to the',
+                    ),
+                    AppSpaces.gapH16,
+                    _CreateNewAccount(),
                     AppSpaces.gapH16,
                   ],
                 ),
@@ -78,9 +59,7 @@ class SignInScreen extends StatelessWidget {
 }
 
 class _CreateNewAccount extends StatelessWidget {
-  const _CreateNewAccount({
-    super.key,
-  });
+  const _CreateNewAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,16 +68,21 @@ class _CreateNewAccount extends StatelessWidget {
       children: [
         Text(
           'signIn.notHaveAccountMessage'.tr(),
-          style: AppTextStyle.bodySmall.copyWith(
+          style: AppTextStyle.bodyMedium.copyWith(
             color: context.colors.onSurface,
           ),
         ),
         TextButton(
-          onPressed: () async {
-            //TODO: Save url in const
-            final uri = Uri.parse('https://www.themoviedb.org/signup');
-            await launchUrl(uri);
-          },
+          onPressed: () => showInfoModal(
+            context: context,
+            content:
+                'Para usar My Movie Hub, necesitas\nuna cuenta de TMDB.\n\nPor seguridad, te llevaremos a su web oficial para crearla allí.\n\nCuando termines, vuelve aquí e inicia sesión con tu nueva cuenta.',
+            actionButtonText: 'Ir al Registro',
+            action: () async {
+              final uri = Uri.parse(ExternalUrls.tmdbSignUpUrl);
+              await launchUrl(uri);
+            },
+          ),
           child: Text(
             'signIn.notHaveAccountButtonText'.tr(),
             style: AppTextStyle.button.copyWith(

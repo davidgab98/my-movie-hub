@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_movie_hub/src/core-ui/styles/theme/theme_cubit.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/main_app_bar.dart';
+import 'package:my_movie_hub/src/core-ui/theme/theme_cubit.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class ChangeThemeScreen extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:my_movie_hub/src/core-ui/forms/sign_in_inputs.dart';
+import 'package:my_movie_hub/src/core-ui/forms/sign_in__form_inputs.dart';
 
 part 'sign_in_state.freezed.dart';
 

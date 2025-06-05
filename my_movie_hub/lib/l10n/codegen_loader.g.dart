@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters, constant_identifier_names
 
 import 'dart:ui';
 
@@ -14,7 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> en = {
+  static const Map<String,dynamic> _en = {
   "appTitle": "MMH (EN)",
   "error": {
     "notImplemented": "Not Implemented",
@@ -42,6 +42,14 @@ class CodegenLoader extends AssetLoader{
       "message": "Data could not be loaded,\ncheck the internet connection",
       "realoadButtonText": "Reload"
     }
+  },
+  "common": {
+    "ok": "Ok",
+    "and": "and"
+  },
+  "policy": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
   },
   "signIn": {
     "notHaveAccountMessage": "Not registered?",
@@ -86,7 +94,8 @@ class CodegenLoader extends AssetLoader{
   },
   "premieres": {
     "mainTitle": "Premieres",
-    "headline": "In theaters from {date} in {country}"
+    "headline": "In theaters from {date} in {country}",
+    "showPremieresButton": "Show Premieres"
   },
   "list": {
     "errorLoadingNewDataText": "Error loading new data",
@@ -140,7 +149,9 @@ class CodegenLoader extends AssetLoader{
     }
   },
   "about": {
-    "mainTitle": "About"
+    "mainTitle": "About",
+    "openSourceLicenses": "Open Source Licenses",
+    "attributionText": "All film-related metadata used in My Movie Hub, including actor, director and studio names, synopses, release dates and poster art is supplied by "
   },
   "orderType": {
     "ascendent": "Latest",
@@ -168,7 +179,7 @@ class CodegenLoader extends AssetLoader{
     "western": "Western"
   }
 };
-static const Map<String,dynamic> es = {
+static const Map<String,dynamic> _es = {
   "appTitle": "MMH (ES)",
   "error": {
     "notImplemented": "No Implementado",
@@ -196,6 +207,14 @@ static const Map<String,dynamic> es = {
       "message": "No se han podido cargar los datos,\ncomprueba la conexión a internet",
       "realoadButtonText": "Recargar"
     }
+  },
+  "common": {
+    "ok": "Ok",
+    "and": "y"
+  },
+  "policy": {
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Uso"
   },
   "signIn": {
     "notHaveAccountMessage": "¿No estás registrado?",
@@ -240,7 +259,8 @@ static const Map<String,dynamic> es = {
   },
   "premieres": {
     "mainTitle": "Estrenos",
-    "headline": "En cines desde el {date} en {country}"
+    "headline": "En cines desde el {date} en {country}",
+    "showPremieresButton": "Ver estrenos"
   },
   "list": {
     "errorLoadingNewDataText": "Error cargando datos nuevos",
@@ -294,7 +314,9 @@ static const Map<String,dynamic> es = {
     }
   },
   "about": {
-    "mainTitle": "Acerca de"
+    "mainTitle": "Acerca de",
+    "openSourceLicenses": "Licencias Open Source",
+    "attributionText": "Todos los metadatos de películas usados en My Movie Hub, incluyendo actores, directores, estudios, sinopsis, fechas de estreno y pósters son proporcionados por "
   },
   "orderType": {
     "ascendent": "Latest",
@@ -322,5 +344,5 @@ static const Map<String,dynamic> es = {
     "western": "Western"
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "es": es};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "es": _es};
 }

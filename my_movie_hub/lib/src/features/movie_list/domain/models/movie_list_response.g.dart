@@ -13,8 +13,8 @@ _$MovieListResponseImpl _$$MovieListResponseImplFromJson(
               ?.map((e) => Movie.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      totalPages: json['total_pages'] as int? ?? 1,
-      totalResults: json['total_results'] as int? ?? 0,
+      totalPages: (json['total_pages'] as num?)?.toInt() ?? 1,
+      totalResults: (json['total_results'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$MovieListResponseImplToJson(

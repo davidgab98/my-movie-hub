@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/main_app_bar.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/modals/standard_modal.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_message_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';
@@ -181,7 +183,7 @@ class _InitialDateInput extends StatelessWidget {
     return BlocBuilder<PremieresCubit, PremieresState>(
       builder: (context, state) {
         return GestureDetector(
-          onTap: () => showDatePickerDialog(
+          onTap: () => _showDatePickerDialog(
             context,
             cubit: context.read<PremieresCubit>(),
           ),
@@ -210,54 +212,53 @@ class _InitialDateInput extends StatelessWidget {
     );
   }
 
-  void showDatePickerDialog(
+  Future<void> _showDatePickerDialog(
     BuildContext context, {
     required PremieresCubit cubit,
   }) {
     DateTime? selectedDate;
 
-    showDialog<void>(
+    return showStandardModal(
       context: context,
-      builder: (BuildContext context) {
-        final screenHeight = MediaQuery.of(context).size.height;
-
-        return Dialog(
-          backgroundColor: context.colors.surface,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppBorderRadius.br20),
-            side: BorderSide(
-              color: context.colors.outline.withValues(alpha: 0.25),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 216,
+            child: CupertinoDatePicker(
+              initialDateTime: cubit.state.initialDate,
+              mode: CupertinoDatePickerMode.date,
+              onDateTimeChanged: (DateTime date) {
+                selectedDate = date;
+              },
             ),
           ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.topRight,
-            children: [
-              Container(
-                height: screenHeight * 0.5,
-                padding: const EdgeInsets.symmetric(horizontal: AppSpaces.s20),
-                child: CupertinoDatePicker(
-                  initialDateTime: cubit.state.initialDate,
-                  mode: CupertinoDatePickerMode.date,
-                  onDateTimeChanged: (DateTime date) {
-                    selectedDate = date;
-                  },
-                ),
+          AppSpaces.gapH8,
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppBorderRadius.br10),
               ),
-              IconButton(
-                icon: Icon(Icons.close, color: context.colors.onSurface),
-                onPressed: context.pop,
+              backgroundColor: context.colors.primary,
+            ),
+            onPressed: () {
+              if (selectedDate != null) {
+                cubit.updateInitialDateAndRefreshData(
+                  initialDate: selectedDate!,
+                );
+              }
+              context.pop();
+            },
+            child: Text(
+              'premieres.showPremieresButton'.tr(),
+              style: AppTextStyle.titleMedium.copyWith(
+                color: context.colors.onPrimary,
               ),
-            ],
+            ),
           ),
-        );
-      },
-    ).then((_) {
-      if (selectedDate != null) {
-        // update date when modal is closed
-        cubit.updateInitialDateAndRefreshData(initialDate: selectedDate!);
-      }
-    });
+        ],
+      ),
+    );
   }
 }
 

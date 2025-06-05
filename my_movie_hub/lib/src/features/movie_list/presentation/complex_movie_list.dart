@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer/shimmer_placeholder.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/shimmer_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/empty_data_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_data_reload_placeholder.dart';
 import 'package:my_movie_hub/src/core-ui/placeholders/error_loading_new_data_message_placeholder.dart';

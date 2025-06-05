@@ -12,7 +12,7 @@ part of 'complex_movie_list_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ComplexMovieListState {
@@ -24,7 +24,9 @@ mixin _$ComplexMovieListState {
   StateStatus get status => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ComplexMovieListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ComplexMovieListStateCopyWith<ComplexMovieListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$ComplexMovieListStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ComplexMovieListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +132,8 @@ class __$$ComplexMovieListStateImplCopyWithImpl<$Res>
       $Res Function(_$ComplexMovieListStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ComplexMovieListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,7 +224,7 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ComplexMovieListStateImpl &&
@@ -247,7 +253,9 @@ class _$ComplexMovieListStateImpl implements _ComplexMovieListState {
       status,
       errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ComplexMovieListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ComplexMovieListStateImplCopyWith<_$ComplexMovieListStateImpl>
@@ -279,8 +287,11 @@ abstract class _ComplexMovieListState implements ComplexMovieListState {
   StateStatus get status;
   @override
   String get errorMessage;
+
+  /// Create a copy of ComplexMovieListState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ComplexMovieListStateImplCopyWith<_$ComplexMovieListStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

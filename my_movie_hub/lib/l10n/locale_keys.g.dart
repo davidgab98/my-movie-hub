@@ -1,5 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
+// ignore_for_file: constant_identifier_names
+
 abstract class  LocaleKeys {
   static const appTitle = 'appTitle';
   static const error_notImplemented = 'error.notImplemented';
@@ -25,6 +27,12 @@ abstract class  LocaleKeys {
   static const error_placeholder_realoadButtonText = 'error.placeholder.realoadButtonText';
   static const error_placeholder = 'error.placeholder';
   static const error = 'error';
+  static const common_ok = 'common.ok';
+  static const common_and = 'common.and';
+  static const common = 'common';
+  static const policy_privacy = 'policy.privacy';
+  static const policy_terms = 'policy.terms';
+  static const policy = 'policy';
   static const signIn_notHaveAccountMessage = 'signIn.notHaveAccountMessage';
   static const signIn_notHaveAccountButtonText = 'signIn.notHaveAccountButtonText';
   static const signIn_signInButtonText = 'signIn.signInButtonText';
@@ -60,6 +68,7 @@ abstract class  LocaleKeys {
   static const search = 'search';
   static const premieres_mainTitle = 'premieres.mainTitle';
   static const premieres_headline = 'premieres.headline';
+  static const premieres_showPremieresButton = 'premieres.showPremieresButton';
   static const premieres = 'premieres';
   static const list_errorLoadingNewDataText = 'list.errorLoadingNewDataText';
   static const list_emptyResultsText = 'list.emptyResultsText';
@@ -104,6 +113,8 @@ abstract class  LocaleKeys {
   static const helpAndFeedback_feedback = 'helpAndFeedback.feedback';
   static const helpAndFeedback = 'helpAndFeedback';
   static const about_mainTitle = 'about.mainTitle';
+  static const about_openSourceLicenses = 'about.openSourceLicenses';
+  static const about_attributionText = 'about.attributionText';
   static const about = 'about';
   static const orderType_ascendent = 'orderType.ascendent';
   static const orderType_descendent = 'orderType.descendent';

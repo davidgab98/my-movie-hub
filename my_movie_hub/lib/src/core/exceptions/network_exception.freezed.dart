@@ -12,7 +12,7 @@ part of 'network_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$NetworkException {
@@ -174,6 +174,9 @@ class _$NetworkExceptionCopyWithImpl<$Res, $Val extends NetworkException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -190,6 +193,9 @@ class __$$RequestCancelledImplCopyWithImpl<$Res>
   __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
       $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -207,11 +213,11 @@ class _$RequestCancelledImpl extends RequestCancelled
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.requestCancelled'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.requestCancelled'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RequestCancelledImpl);
   }
@@ -403,6 +409,9 @@ class __$$UnauthorizedRequestImplCopyWithImpl<$Res>
   __$$UnauthorizedRequestImplCopyWithImpl(_$UnauthorizedRequestImpl _value,
       $Res Function(_$UnauthorizedRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -419,12 +428,13 @@ class _$UnauthorizedRequestImpl extends UnauthorizedRequest
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'NetworkException.unauthorizedRequest'));
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'NetworkException.unauthorizedRequest'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnauthorizedRequestImpl);
@@ -617,6 +627,9 @@ class __$$BadRequestImplCopyWithImpl<$Res>
   __$$BadRequestImplCopyWithImpl(
       _$BadRequestImpl _value, $Res Function(_$BadRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -632,11 +645,11 @@ class _$BadRequestImpl extends BadRequest with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'NetworkException.badRequest'));
+    properties..add(DiagnosticsProperty('type', 'NetworkException.badRequest'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BadRequestImpl);
   }
@@ -828,6 +841,9 @@ class __$$BadCertificateImplCopyWithImpl<$Res>
   __$$BadCertificateImplCopyWithImpl(
       _$BadCertificateImpl _value, $Res Function(_$BadCertificateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -844,11 +860,11 @@ class _$BadCertificateImpl extends BadCertificate with DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.badCertificate'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.badCertificate'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BadCertificateImpl);
   }
@@ -1040,6 +1056,9 @@ class __$$ConnectionErrorImplCopyWithImpl<$Res>
   __$$ConnectionErrorImplCopyWithImpl(
       _$ConnectionErrorImpl _value, $Res Function(_$ConnectionErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1057,11 +1076,11 @@ class _$ConnectionErrorImpl extends ConnectionError
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.connectionError'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.connectionError'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ConnectionErrorImpl);
   }
@@ -1256,6 +1275,8 @@ class __$$NotFoundImplCopyWithImpl<$Res>
       _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1292,7 +1313,7 @@ class _$NotFoundImpl extends NotFound with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotFoundImpl &&
@@ -1302,7 +1323,9 @@ class _$NotFoundImpl extends NotFound with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(runtimeType, reason);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
@@ -1478,7 +1501,10 @@ abstract class NotFound extends NetworkException {
   const NotFound._() : super._();
 
   String get reason;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1497,6 +1523,9 @@ class __$$MethodNotAllowedImplCopyWithImpl<$Res>
   __$$MethodNotAllowedImplCopyWithImpl(_$MethodNotAllowedImpl _value,
       $Res Function(_$MethodNotAllowedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1514,11 +1543,11 @@ class _$MethodNotAllowedImpl extends MethodNotAllowed
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.methodNotAllowed'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.methodNotAllowed'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$MethodNotAllowedImpl);
   }
@@ -1710,6 +1739,9 @@ class __$$NotAcceptableImplCopyWithImpl<$Res>
   __$$NotAcceptableImplCopyWithImpl(
       _$NotAcceptableImpl _value, $Res Function(_$NotAcceptableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1726,11 +1758,11 @@ class _$NotAcceptableImpl extends NotAcceptable with DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.notAcceptable'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.notAcceptable'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NotAcceptableImpl);
   }
@@ -1922,6 +1954,9 @@ class __$$RequestTimeoutImplCopyWithImpl<$Res>
   __$$RequestTimeoutImplCopyWithImpl(
       _$RequestTimeoutImpl _value, $Res Function(_$RequestTimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1938,11 +1973,11 @@ class _$RequestTimeoutImpl extends RequestTimeout with DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.requestTimeout'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.requestTimeout'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RequestTimeoutImpl);
   }
@@ -2134,6 +2169,9 @@ class __$$SendTimeoutImplCopyWithImpl<$Res>
   __$$SendTimeoutImplCopyWithImpl(
       _$SendTimeoutImpl _value, $Res Function(_$SendTimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2149,11 +2187,12 @@ class _$SendTimeoutImpl extends SendTimeout with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'NetworkException.sendTimeout'));
+    properties
+      ..add(DiagnosticsProperty('type', 'NetworkException.sendTimeout'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SendTimeoutImpl);
   }
@@ -2345,6 +2384,9 @@ class __$$ConflictImplCopyWithImpl<$Res>
   __$$ConflictImplCopyWithImpl(
       _$ConflictImpl _value, $Res Function(_$ConflictImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2360,11 +2402,11 @@ class _$ConflictImpl extends Conflict with DiagnosticableTreeMixin {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'NetworkException.conflict'));
+    properties..add(DiagnosticsProperty('type', 'NetworkException.conflict'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ConflictImpl);
   }
@@ -2556,6 +2598,9 @@ class __$$InternalServerErrorImplCopyWithImpl<$Res>
   __$$InternalServerErrorImplCopyWithImpl(_$InternalServerErrorImpl _value,
       $Res Function(_$InternalServerErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2572,12 +2617,13 @@ class _$InternalServerErrorImpl extends InternalServerError
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'NetworkException.internalServerError'));
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'NetworkException.internalServerError'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InternalServerErrorImpl);
@@ -2770,6 +2816,9 @@ class __$$NotImplementedImplCopyWithImpl<$Res>
   __$$NotImplementedImplCopyWithImpl(
       _$NotImplementedImpl _value, $Res Function(_$NotImplementedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2786,11 +2835,11 @@ class _$NotImplementedImpl extends NotImplemented with DiagnosticableTreeMixin {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.notImplemented'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.notImplemented'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NotImplementedImpl);
   }
@@ -2982,6 +3031,9 @@ class __$$ServiceUnavailableImplCopyWithImpl<$Res>
   __$$ServiceUnavailableImplCopyWithImpl(_$ServiceUnavailableImpl _value,
       $Res Function(_$ServiceUnavailableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2998,12 +3050,12 @@ class _$ServiceUnavailableImpl extends ServiceUnavailable
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'NetworkException.serviceUnavailable'));
+    properties
+      ..add(DiagnosticsProperty('type', 'NetworkException.serviceUnavailable'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ServiceUnavailableImpl);
   }
@@ -3195,6 +3247,9 @@ class __$$NoInternetConnectionImplCopyWithImpl<$Res>
   __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
       $Res Function(_$NoInternetConnectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3211,12 +3266,13 @@ class _$NoInternetConnectionImpl extends NoInternetConnection
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'NetworkException.noInternetConnection'));
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'NetworkException.noInternetConnection'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoInternetConnectionImpl);
@@ -3409,6 +3465,9 @@ class __$$FormatExceptionImplCopyWithImpl<$Res>
   __$$FormatExceptionImplCopyWithImpl(
       _$FormatExceptionImpl _value, $Res Function(_$FormatExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3426,11 +3485,11 @@ class _$FormatExceptionImpl extends FormatException
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.formatException'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.formatException'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$FormatExceptionImpl);
   }
@@ -3622,6 +3681,9 @@ class __$$UnableToProcessImplCopyWithImpl<$Res>
   __$$UnableToProcessImplCopyWithImpl(
       _$UnableToProcessImpl _value, $Res Function(_$UnableToProcessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3639,11 +3701,11 @@ class _$UnableToProcessImpl extends UnableToProcess
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.unableToProcess'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.unableToProcess'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UnableToProcessImpl);
   }
@@ -3838,6 +3900,8 @@ class __$$DefaultErrorImplCopyWithImpl<$Res>
       _$DefaultErrorImpl _value, $Res Function(_$DefaultErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3874,7 +3938,7 @@ class _$DefaultErrorImpl extends DefaultError with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DefaultErrorImpl &&
@@ -3884,7 +3948,9 @@ class _$DefaultErrorImpl extends DefaultError with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DefaultErrorImplCopyWith<_$DefaultErrorImpl> get copyWith =>
@@ -4060,7 +4126,10 @@ abstract class DefaultError extends NetworkException {
   const DefaultError._() : super._();
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DefaultErrorImplCopyWith<_$DefaultErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4079,6 +4148,9 @@ class __$$UnexpectedErrorImplCopyWithImpl<$Res>
   __$$UnexpectedErrorImplCopyWithImpl(
       _$UnexpectedErrorImpl _value, $Res Function(_$UnexpectedErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NetworkException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4096,11 +4168,11 @@ class _$UnexpectedErrorImpl extends UnexpectedError
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'NetworkException.unexpectedError'));
+      ..add(DiagnosticsProperty('type', 'NetworkException.unexpectedError'));
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UnexpectedErrorImpl);
   }
