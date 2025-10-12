@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_movie_hub/src/core-ui/common_widgets/mmh_circular_progress_indicator.dart';
 import 'package:my_movie_hub/src/core-ui/inputs/mmh_password_form_field.dart';
 import 'package:my_movie_hub/src/core-ui/inputs/mmh_text_form_field.dart';
 import 'package:my_movie_hub/src/core-ui/snackbars/snackbars.dart';
@@ -96,8 +97,6 @@ class _SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInState>(
-      buildWhen: (previous, current) =>
-          previous.isFormValid != current.isFormValid,
       builder: (context, state) {
         return SizedBox(
           width: double.infinity,
@@ -105,13 +104,17 @@ class _SignInButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: context.colors.secondary.withValues(alpha: 0.5),
             ),
-            onPressed: context.read<SignInCubit>().signIn,
-            child: Text(
-              'signIn.signInButtonText'.tr(),
-              style: const TextStyle(
-                color: AppColors.white,
-              ),
-            ),
+            onPressed: !state.formStatus.isInProgress
+                ? context.read<SignInCubit>().signIn
+                : () {},
+            child: !state.formStatus.isInProgress
+                ? Text(
+                    'signIn.signInButtonText'.tr(),
+                    style: AppTextStyle.button.copyWith(
+                      color: context.colors.onPrimary,
+                    ),
+                  )
+                : const MMHCircularProgressIndicator(),
           ),
         );
       },

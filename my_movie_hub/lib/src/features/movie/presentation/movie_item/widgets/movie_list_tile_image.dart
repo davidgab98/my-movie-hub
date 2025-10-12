@@ -100,10 +100,8 @@ class MovieListTileImage extends StatelessWidget {
                     ),
                     Text(
                       movie.overview,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .copyWith(color: Colors.white),
+                      style:
+                          AppTextStyle.bodySmall.copyWith(color: Colors.white),
                     ),
                   ],
                 ),
