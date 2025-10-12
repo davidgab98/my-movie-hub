@@ -3,7 +3,6 @@
 [Español](README-es.md)
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">                                
   
   <img src="my_movie_hub/assets/png/mmh_logo.png" alt="Logo" height="50">
@@ -62,43 +61,41 @@
 <!-- APP SHOWCASE -->
 ## App Showcase 
 
+<!-- 3 ARRIBA -->
 <div align="center">
-  <table>
-    <!-- Fila de títulos (3 arriba, en el orden pedido) -->
+  <table style="border-collapse:separate; border-spacing:12px 0; table-layout:fixed;">
     <tr>
-      <th align="center">Login, Home & Profile</th><td width="16"></td>
-      <th align="center">Movie Details</th><td width="16"></td>
-      <th align="center">Premieres</th>
+      <th text-align:center;">Login, Home & Profile</th>
+      <th text-align:center;">Movie Details</th>
+      <th text-align:center;">Premieres</th>
     </tr>
-    <!-- Fila de imágenes (3 arriba) -->
     <tr>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/e5060161-52e6-4b94-b982-a4bc31b99dab" width="260" alt="Login, Home & Profile">
-      </td><td></td>
+        <img src="https://github.com/user-attachments/assets/e5060161-52e6-4b94-b982-a4bc31b99dab" width="245" alt="Login, Home & Profile">
+      </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/772567db-5dea-41e6-bff4-912c7d49a264" width="260" alt="Movie Details">
-      </td><td></td>
+        <img src="https://github.com/user-attachments/assets/772567db-5dea-41e6-bff4-912c7d49a264" width="245" alt="Movie Details">
+      </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/6577c17f-ddbe-4de5-8198-6fbbc8e3c0c5" width="260" alt="Premieres">
+        <img src="https://github.com/user-attachments/assets/6577c17f-ddbe-4de5-8198-6fbbc8e3c0c5" width="245" alt="Premieres">
       </td>
     </tr>
   </table>
 </div>
 
+<!-- 2 ABAJO -->
 <div align="center">
-  <table>
-    <!-- Fila de títulos (2 abajo, en el orden pedido) -->
+  <table style="border-collapse:separate; border-spacing:12px 0; table-layout:fixed;">
     <tr>
-      <th align="center">My Lists (Favorites • Rated • Watchlist)</th><td width="16"></td>
-      <th align="center">Search</th>
+      <th text-align:center;>Lists (Favorites • Rated • Watchlist)</th>
+      <th text-align:center;">Search</th>
     </tr>
-    <!-- Fila de imágenes (2 abajo) -->
     <tr>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/361f7375-2e63-4845-8c4d-86c65e2907be" width="260" alt="My Lists (Favorites • Rated • Watchlist)">
-      </td><td></td>
+        <img src="https://github.com/user-attachments/assets/361f7375-2e63-4845-8c4d-86c65e2907be" width="245" alt="My Lists (Favorites • Rated • Watchlist)">
+      </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/f6904fdd-91cb-4e10-89ef-33806fb364c7" width="260" alt="Search">
+        <img src="https://github.com/user-attachments/assets/f6904fdd-91cb-4e10-89ef-33806fb364c7" width="245" alt="Search">
       </td>
     </tr>
   </table>
