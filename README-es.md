@@ -9,9 +9,9 @@
   <img src="my_movie_hub/assets/png/mmh_logo.png" alt="Logo" height="50">
   <h1 align="center">MY MOVIE HUB</h1>
   <p align="center">
-    Aplicación móvil centrada en la exploración, búsqueda y gestión de películas, listas y estrenos de cine.
+    Aplicación Flutter lista para producción que te permite explorar, buscar y organizar tus películas — detalles, listas, valoraciones y estrenos.
     <br />
-    Construida con Flutter (Bloc) y la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
+    Construida con <b>BLoC</b> y arquitectura <b>Clean/Hexagonal</b>, integrada con la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
     <br />
     <br />
       <!-- <a href="https://github.com">View Demo</a> -->
@@ -20,12 +20,21 @@
   </p>
 </div>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter" />
+  <img src="https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart" />
+  <img src="https://img.shields.io/badge/State-Bloc-7f52ff" />
+  <img src="https://img.shields.io/badge/Architecture-Clean%20%7C%20Hexagonal-success" />
+</p>
 
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Tabla de Contenidos</summary>
   <ol>
+    <li>
+      <a href="#app-showcase">Vista previa de la App</a>
+    </li>
     <li>
       <a href="#sobre-el-proyecto">Sobre el proyecto</a>
     </li>
@@ -49,6 +58,54 @@
   </ol>
 </details>
 
+
+<!-- APP SHOWCASE -->
+## Vista previa de la App
+
+<!-- 3 ARRIBA -->
+<div align="center">
+  <table style="border-collapse:separate; border-spacing:12px 0; table-layout:fixed;">
+    <tr>
+      <th text-align:center;">Login, Inicio y Perfil</th>
+      <th text-align:center;">Detalles de Película</th>
+      <th text-align:center;">Estrenos</th>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/e5060161-52e6-4b94-b982-a4bc31b99dab" width="245" alt="Login, Home & Profile">
+      </td>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/772567db-5dea-41e6-bff4-912c7d49a264" width="245" alt="Movie Details">
+      </td>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/6577c17f-ddbe-4de5-8198-6fbbc8e3c0c5" width="245" alt="Premieres">
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- 2 ABAJO -->
+<div align="center">
+  <table style="border-collapse:separate; border-spacing:12px 0; table-layout:fixed;">
+    <tr>
+      <th text-align:center;>Listas (Favoritas • Valoradas • Pendientes)</th>
+      <th text-align:center;">Búsqueda</th>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/361f7375-2e63-4845-8c4d-86c65e2907be" width="245" alt="My Lists (Favorites • Rated • Watchlist)">
+      </td>
+      <td align="center">
+        <img src="https://github.com/user-attachments/assets/f6904fdd-91cb-4e10-89ef-33806fb364c7" width="245" alt="Search">
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+---
 
 
 <!-- ABOUT THE PROJECT -->
@@ -86,21 +143,38 @@ Disponible próximamente en Android e IOS.
 
 Estos son algunos de los paquetes principales utilizados en la aplicación.
      
-- [Flutter Bloc](https://bloclibrary.dev)   
-- [Get It](https://github.com/fluttercommunity/get_it)  
-- [Go Router](https://pub.dev/packages/go_router)  
-- [Dio](https://github.com/flutterchina/dio)   
-- [Shared Preferences](https://pub.dev/packages/shared_preferences)  
-- [Json Serializable](https://github.com/dart-lang/json_serializable)  
-- [Freezed](https://pub.dev/packages/freezed)    
-- [Formz](https://pub.dev/packages/formz)  
-- [Easy Localization](https://pub.dev/packages/easy_localization)  
-- [Device Preview](https://pub.dev/packages/device_preview)  
-- [Multiple Result](https://pub.dev/packages/multiple_result)  
-- [Event Bus](https://pub.dev/packages/event_bus)  
-- [Mockito](https://pub.dev/packages/mockito)  
-- [Golden Toolkit](https://pub.dev/packages/golden_toolkit)  
-- [Meta](https://pub.dev/packages/meta) 
+**Gestión de estados**
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [formz](https://pub.dev/packages/formz)
+
+**Inyección de dependencias**
+- [get_it](https://pub.dev/packages/get_it)
+
+**Rutas**
+- [go_router](https://pub.dev/packages/go_router)
+
+**Red y almacenamiento**
+- [dio](https://pub.dev/packages/dio)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+
+**Serialización y modelado**
+- [json_serializable](https://pub.dev/packages/json_serializable)
+- [freezed](https://pub.dev/packages/freezed)
+
+**Localización**
+- [easy_localization](https://pub.dev/packages/easy_localization)
+
+**Herramientas de UI**
+- [device_preview](https://pub.dev/packages/device_preview)
+
+**Utilidades**
+- [multiple_result](https://pub.dev/packages/multiple_result)
+- [event_bus](https://pub.dev/packages/event_bus)
+- [meta](https://pub.dev/packages/meta)
+
+**Testing**
+- [mockito](https://pub.dev/packages/mockito)
+- [golden_toolkit](https://pub.dev/packages/golden_toolkit)
 
   
 ### Estructura
@@ -134,12 +208,11 @@ Cada `feature` o módulo tiene su propia estructura:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Persistencia de datos offline mediante HIVE
 - [ ] Push notifications
-- [ ] Widgets para pantalla de inicio
-- [ ] Integración con otros servicios similares como IMDB
+- [ ] Widgets para pantalla de inicio (Android App Widgets y iOS WidgetKit)
+- [ ] Persistencia de datos offline con HIVE
+- [ ] Integración con otros servicios como IMDB
 - [ ] Dynamic links para la compartición de contenido
-- [ ] Unit y Bloc Testing, Widget Testing y Golden Tests
 
 Siéntete libre de contribuir: [abrir issues](https://github.com/davidgab98/my-movie-hub/issues)
 
