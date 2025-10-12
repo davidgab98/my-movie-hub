@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -9,7 +11,7 @@ import 'package:my_movie_hub/src/core/routing/app_router.dart';
 import 'package:my_movie_hub/src/core/utils/hot_restart_controller.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-const useDevicePreview = false;
+const useDevicePreview = true;
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -62,34 +64,50 @@ class _MaterialAppWithDevicePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeMode>(
-      builder: (context, themeMode) {
-        return GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: HotRestartController(
-            child: DevicePreview(
-              builder: (context) => MaterialApp.router(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: const [
-                  CountryLocalizations.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                ],
-                supportedLocales: context.supportedLocales,
-                locale: DevicePreview.locale(context),
-                routerConfig: goRouter,
-                builder: DevicePreview.appBuilder,
-                darkTheme: darkTheme,
-                theme: lightTheme,
-                themeMode: context.select<ThemeCubit, ThemeMode>(
-                  (themeCubit) => themeCubit.state,
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: HotRestartController(
+              child: DevicePreview(
+                builder: (context) => MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  scrollBehavior: const AppScrollBehavior(),
+                  useInheritedMediaQuery: true,
+                  localizationsDelegates: [
+                    CountryLocalizations.delegate,
+                    ...context.localizationDelegates,
+                  ],
+                  supportedLocales: context.supportedLocales,
+                  locale: DevicePreview.locale(context),
+                  routerConfig: goRouter,
+                  builder: DevicePreview.appBuilder,
+                  darkTheme: darkTheme,
+                  theme: lightTheme,
+                  themeMode: context.select<ThemeCubit, ThemeMode>(
+                    (themeCubit) => themeCubit.state,
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  const AppScrollBehavior();
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.stylus,
+        PointerDeviceKind.trackpad,
+        PointerDeviceKind.unknown,
+      };
 }

@@ -35,8 +35,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? FittedBox(
               child: Text(
                 title!,
-                style: AppTextStyle.headlineXXL.copyWith(
-                  color: AppColors.white,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
                 ),
               ),
             )

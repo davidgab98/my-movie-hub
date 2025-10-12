@@ -102,7 +102,7 @@ class NetworkException with _$NetworkException implements Exception {
             }
             networkException = const NetworkException.unexpectedError();
         }
-      } else if (error is SocketException) {
+      } else if (!kIsWeb && error is SocketException) {
         ErrorLogger().logException(error);
         networkException = const NetworkException.noInternetConnection();
       } else {

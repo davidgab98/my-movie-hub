@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_movie_hub/src/core-ui/common_widgets/policy_privacy_and_terms_of_use.dart';
-import 'package:my_movie_hub/src/core-ui/modals/actions_modal_bottom_sheet.dart';
 import 'package:my_movie_hub/src/core-ui/modals/info_modal.dart';
 import 'package:my_movie_hub/src/core/constants/external_urls.dart';
 import 'package:my_movie_hub/src/core/di/service_locator.dart';

@@ -50,7 +50,6 @@ final _shellNavigatorHighlightsKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell Highlights');
 
 final goRouter = GoRouter(
-  redirect: (context, state) {},
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
   routes: [
