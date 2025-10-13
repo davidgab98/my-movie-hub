@@ -32,34 +32,34 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#app-showcase">App Showcase</a>
+      <a href="#app-showcase">🎥 App Showcase</a>
     </li>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">📖 About The Project</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#project-structure-and-dependencies">🧩 Project Structure and Dependencies</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#structure">Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">🗺️ Roadmap</a></li>
+    <li>
+      <a href="#getting-started">🚀 Setup & Run</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#run">Run</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#project-structure-and-dependencies">Project Structure and Dependencies</a>
-      <ul>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#structure">Structure</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">📫 Contact</a></li>
   </ol>
 </details>
 
 
 <!-- APP SHOWCASE -->
-## App Showcase 
+## 🎥 App Showcase 
 
 <!-- 3 ARRIBA -->
 <div align="center">
@@ -108,7 +108,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## 📖 About The Project
 
 **My Movie Hub** is a mobile application developed in Flutter. It has been built under a Hexagonal architecture following the MVVM pattern. It uses the Bloc pattern for state management. Clean Architecture and Clean Code practices have been adopted in its development, as well as SOLID principles. The Atomic Design methodology has been applied for the design and componentization of the UI.
 <br />
@@ -136,7 +136,7 @@ Available soon on Android and iOS.
 
 ---
 
-## Project Structure and Dependencies
+## 🧩 Project Structure and Dependencies
 
 ### Packages   
 
@@ -175,7 +175,8 @@ These are some of the main packages used in the application.
 - [mockito](https://pub.dev/packages/mockito)
 - [golden_toolkit](https://pub.dev/packages/golden_toolkit)
 
-  
+
+
 ### Structure
 
 The project is structured using a modular architecture, comprised of three primary directories: `core`, `core-ui`, y `features`.
@@ -205,7 +206,7 @@ Each `feature` or module has its own structure:
 ---
 
 <!-- ROADMAP -->
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Push notifications
 - [ ] Home screen widgets (Android App Widgets & iOS WidgetKit)
@@ -220,7 +221,7 @@ Feel free to contribute: [open issues](https://github.com/davidgab98/my-movie-hu
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## 🚀 Setup & Run
 
 Start using My Movie Hub by following these instructions to set up and run the app on your device.
 
@@ -277,7 +278,7 @@ Now you should be able to see the application running on your device or emulator
 
 
 <!-- CONTACT -->
-## Contact
+## 📫 Contact
 
 David González Íñiguez 
 - Email: davidgab08@gmail.com
