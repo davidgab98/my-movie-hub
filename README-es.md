@@ -13,13 +13,10 @@
     <br />
     Construida con <b>BLoC</b> y arquitectura <b>Clean/Hexagonal</b>, integrada con la API de <a href="https://developer.themoviedb.org/reference/intro/getting-started">TMDB</a>.
     <br />
-    <br />
-      <!-- <a href="https://github.com">View Demo</a> -->
-      <!--    ·    -->
-    <a href="https://github.com/davidgab98/my-movie-hub/issues">Reportar Bug / Proponer Funcionalidad</a>
   </p>
 </div>
 
+<br />
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter" />
   <img src="https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart" />
