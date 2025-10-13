@@ -33,34 +33,34 @@
   <summary>Tabla de Contenidos</summary>
   <ol>
     <li>
-      <a href="#app-showcase">Vista previa de la App</a>
+      <a href="#app-showcase">🎥 Vista previa de la App</a>
     </li>
     <li>
-      <a href="#sobre-el-proyecto">Sobre el proyecto</a>
+      <a href="#sobre-el-proyecto">📖 Sobre el proyecto</a>
     </li>
+     <li>
+      <a href="#estructura-del-proyecto-y-dependencias">🧩 Estructura del proyecto y Dependencias</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#estructura">Estructura</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">🗺️ Roadmap</a></li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">🚀 Getting Started</a>
       <ul>
         <li><a href="#prerrequisitos">Prerrequisitos</a></li>
         <li><a href="#instalación">Instalación</a></li>
         <li><a href="#ejecución">Ejecución</a></li>
       </ul>
     </li>
-     <li>
-      <a href="#estructura-del-proyecto-y-dependencias">Estructura del proyecto y Dependencias</a>
-      <ul>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#estructura">Estructura</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto">📫 Contacto</a></li>
   </ol>
 </details>
 
 
 <!-- APP SHOWCASE -->
-## Vista previa de la App
+## 🎥 Vista previa de la App
 
 <!-- 3 ARRIBA -->
 <div align="center">
@@ -109,7 +109,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Sobre el proyecto
+## 📖 Sobre el proyecto
 
 **My Movie Hub** es una aplicación móvil desarrollada en Flutter. Se ha construido bajo una arquitectura Hexagonal siguiendo el patrón MVVM. Utiliza el patrón Bloc para la gestión de estados. En su desarrollo se han adoptado prácticas de Clean Architecture y Clean Clode, así como principios SOLID. Para el diseño y componentización de la UI se ha aplicado la metodología Atomic Design. 
 <br />
@@ -137,7 +137,7 @@ Disponible próximamente en Android e IOS.
 
 ---
 
-## Estructura del proyecto y Dependencias
+## 🧩 Estructura del proyecto y Dependencias
 
 ### Packages   
 
@@ -206,7 +206,7 @@ Cada `feature` o módulo tiene su propia estructura:
 ---
 
 <!-- ROADMAP -->
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Push notifications
 - [ ] Widgets para pantalla de inicio (Android App Widgets y iOS WidgetKit)
@@ -221,7 +221,7 @@ Siéntete libre de contribuir: [abrir issues](https://github.com/davidgab98/my-m
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## 🚀 Instalación y ejecución
 
 Inicia My Movie Hub siguiendo estas instrucciones para configurar y ejecutar la app en tu dispositivo.
 
@@ -276,7 +276,7 @@ Ahora deberías ser capaz de ver la aplicación corriendo en tu dispositivo o em
 
 
 <!-- CONTACT -->
-## Contacto
+## 📫 Contacto
 
 David González Íñiguez 
 - Email: davidgab08@gmail.com
